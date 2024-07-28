@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anforderung erstellen - Require4Testing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 100%;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 1rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+        }
+        button {
+            padding: 0.7rem;
+            font-size: 1em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .back-button {
+            background-color: #d9534f;
+        }
+        .back-button:hover {
+            background-color: #c9302c;
+        }
+        .edit-button {
+            background-color: #f0ad4e;
+        }
+        .edit-button:hover {
+            background-color: #ec971f;
+        }
+        .delete-button {
+            background-color: #d9534f;
+        }
+        .delete-button:hover {
+            background-color: #c9302c;
+        }
+        .success-message {
+            margin-top: 1rem;
+            color: green;
+            font-size: 1.2em;
+            display: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f9;
+        }
+        .priority-high {
+            background-color: #f8d7da;
+        }
+        .priority-medium {
+            background-color: #fff3cd;
+        }
+        .priority-low {
+            background-color: #d4edda;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Anforderung erstellen</h1>
+    </header>
+    <div class="container">
+        <h1>Neue Anforderung erstellen</h1>
+        <form id="requirementForm">
+            <label for="title">Titel der Anforderung</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="description">Beschreibung</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <label for="priority">Priorität</label>
+            <select id="priority" name="priority" required>
+                <option value="hoch">Hoch</option>
+                <option value="mittel">Mittel</option>
+                <option value="niedrig">Niedrig</option>
+            </select>
+
+            <label for="category">Kategorie</label>
+            <input type="text" id="category" name="category" required>
+
+            <label for="testCriteria">Testkriterien</label>
+            <textarea id="testCriteria" name="testCriteria" rows="4" required></textarea>
+
+            <div class="button-group">
+                <button type="button" class="back-button" onclick="window.location.href='index.html'">Zurück</button>
+                <button type="submit">Anforderung erstellen</button>
+            </div>
+        </form>
+        <div class="success-message" id="successMessage">Anforderung erfolgreich erstellt!</div>
+
+        <h2>Erstellte Anforderungen</h2>
+        <table id="requirementsTable">
+            <thead>
+                <tr>
+                    <th>Titel</th>
+                    <th>Beschreibung</th>
+                    <th>Priorität</th>
+                    <th>Kategorie</th>
+                    <th>Testkriterien</th>
+                    <th>Ersteller</th>
+                    <th>Aktionen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamische Inhalte hier -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.getElementById('requirementForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const priority = document.getElementById('priority').value;
+            const category = document.getElementById('category').value;
+            const testCriteria = document.getElementById('testCriteria').value;
+
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            const creator = loggedInUser ? loggedInUser.username : 'Unbekannt';
+
+            const requirement = {
+                title,
+                description,
+                priority,
+                category,
+                testCriteria,
+                creator
+            };
+
+            let requirements = localStorage.getItem('requirements');
+            if (requirements) {
+                requirements = JSON.parse(requirements);
+            } else {
+                requirements = [];
+            }
+
+            requirements.push(requirement);
+            localStorage.setItem('requirements', JSON.stringify(requirements));
+
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('requirementForm').reset();
+
+            renderRequirementsTable();
+        });
+
+        function renderRequirementsTable() {
+            const requirements = JSON.parse(localStorage.getItem('requirements')) || [];
+            const tableBody = document.getElementById('requirementsTable').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = '';
+
+            requirements.forEach((requirement, index) => {
+                const row = tableBody.insertRow();
+                row.insertCell(0).textContent = requirement.title;
+                row.insertCell(1).textContent = requirement.description;
+                row.insertCell(2).textContent = requirement.priority;
+                row.insertCell(3).textContent = requirement.category;
+                row.insertCell(4).textContent = requirement.testCriteria;
+                row.insertCell(5).textContent = requirement.creator;
+
+                // Assign priority class based on requirement priority
+                if (requirement.priority === 'hoch') {
+                    row.classList.add('priority-high');
+                } else if (requirement.priority === 'mittel') {
+                    row.classList.add('priority-medium');
+                } else if (requirement.priority === 'niedrig') {
+                    row.classList.add('priority-low');
+                }
+                
+                const actionsCell = row.insertCell(6);
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Bearbeiten';
+                editButton.className = 'edit-button';
+                editButton.onclick = () => editRequirement(index);
+                actionsCell.appendChild(editButton);
+                
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Löschen';
+                deleteButton.className = 'delete-button';
+                deleteButton.onclick = () => deleteRequirement(index);
+                actionsCell.appendChild(deleteButton);
+            });
+        }
+
+        function editRequirement(index) {
+            const requirements = JSON.parse(localStorage.getItem('requirements'));
+            const requirement = requirements[index];
+
+            document.getElementById('title').value = requirement.title;
+            document.getElementById('description').value = requirement.description;
+            document.getElementById('priority').value = requirement.priority;
+            document.getElementById('category').value = requirement.category;
+            document.getElementById('testCriteria').value = requirement.testCriteria;
+
+            requirements.splice(index, 1);
+            localStorage.setItem('requirements', JSON.stringify(requirements));
+
+            renderRequirementsTable();
+        }
+
+        function deleteRequirement(index) {
+            const requirements = JSON.parse(localStorage.getItem('requirements'));
+            requirements.splice(index, 1);
+            localStorage.setItem('requirements', JSON.stringify(requirements));
+
+            renderRequirementsTable();
+        }
+
+        document.addEventListener('DOMContentLoaded', renderRequirementsTable);
+    </script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Require4Testing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-buttons button {
+            background-color: white;
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .header-buttons button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .container {
+            max-width: 100%;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 1rem;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        button {
+            padding: 0.7rem;
+            font-size: 1em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .form-container {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 1rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        input, select {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .button-group button {
+            margin-left: 1rem;
+        }
+        .hidden {
+            display: none;
+        }
+        .user-info {
+            margin-left: auto;
+        }
+        .test-cases {
+            margin-top: 2rem;
+        }
+        .test-case {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .test-case-result {
+            display: flex;
+            align-items: center;
+        }
+        .test-case-result select {
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Require4Testing</h1>
+        <div class="header-buttons hidden" id="authButtons">
+            <button onclick="redirectToLogin()">Login</button>
+            <button onclick="redirectToRegistration()">Registrierung</button>
+        </div>
+        <div class="user-info hidden" id="userInfo">
+            Eingeloggt als: <span id="username"></span> (<span id="role"></span>)
+            <button onclick="logout()">Logout</button>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Willkommen zu Require4Testing</h1>
+        <p>Erstellen und verwalten Sie Anforderungen einfach und effizient.</p>
+        <button onclick="window.location.href='Anforderung erstellen.html'">Anforderung erstellen</button>
+        <p>Erstellen und verwalten Sie Testläufe einfach und effizient.</p>
+        <button onclick="window.location.href='Testlauf anlegen.html'">Testlauf anlegen</button>
+        <p>Erstellen und verwalten Sie Testfälle einfach und effizient.</p>
+        <button onclick="window.location.href='Testfall erstellen.html'">Testfall erstellen</button>
+        <div class="test-cases hidden" id="testCasesContainer">
+            <h2>Zugeordnete Testfälle</h2>
+            <div id="testCases"></div>
+        </div>
+    </div>
+
+    <div class="form-container" id="loginForm">
+        <h2>Login</h2>
+        <form id="login">
+            <label for="loginUsername">Benutzername</label>
+            <input type="text" id="loginUsername" name="username" required>
+            <label for="loginPassword">Passwort</label>
+            <input type="password" id="loginPassword" name="password" required>
+            <div class="button-group">
+                <button type="button" onclick="toggleForm('loginForm')">Abbrechen</button>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-container" id="registrationForm">
+        <h2>Registrierung</h2>
+        <form id="registration">
+            <label for="regUsername">Benutzername</label>
+            <input type="text" id="regUsername" name="username" required>
+            <label for="regPassword">Passwort</label>
+            <input type="password" id="regPassword" name="password" required>
+            <label for="role">Rolle</label>
+            <select id="role" name="role" required>
+                <option value="Requirements Engineer">Requirements Engineer</option>
+                <option value="Testmanager">Testmanager</option>
+                <option value="Testfallersteller">Testfallersteller</option>
+                <option value="Tester">Tester</option>
+            </select>
+            <div class="button-group">
+                <button type="button" onclick="toggleForm('registrationForm')">Abbrechen</button>
+                <button type="submit">Registrieren</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function toggleForm(formId) {
+            const form = document.getElementById(formId);
+            form.style.display = (form.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function logout() {
+            localStorage.removeItem('loggedInUser');
+            displayAuthButtons();
+            document.getElementById('testCasesContainer').classList.add('hidden');
+        }
+
+        function displayAuthButtons() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                const user = JSON.parse(loggedInUser);
+                document.getElementById('username').textContent = user.username;
+                document.getElementById('role').textContent = user.role;
+                document.getElementById('userInfo').classList.remove('hidden');
+                document.getElementById('authButtons').classList.add('hidden');
+                if (user.role === 'Tester') {
+                    displayTestCases(user.username);
+                }
+            } else {
+                document.getElementById('userInfo').classList.add('hidden');
+                document.getElementById('authButtons').classList.remove('hidden');
+                document.getElementById('testCasesContainer').classList.add('hidden');
+            }
+        }
+
+        function redirectToLogin() {
+            window.location.href = 'login.html';
+        }
+
+        function redirectToRegistration() {
+            window.location.href = 'registrierung.html';
+        }
+         
+        document.getElementById('registration').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
+            const role = document.getElementById('role').value;
+
+            let users = localStorage.getItem('users');
+            users = users ? JSON.parse(users) : [];
+
+            users.push({ username, password, role });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert('Registrierung erfolgreich!');
+            document.getElementById('registration').reset();
+            toggleForm('registrationForm');
+        });
+
+        document.getElementById('login').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(user => user.username === username && user.password === password);
+
+            if (user) {
+                localStorage.setItem('loggedInUser', JSON.stringify(user));
+                displayAuthButtons();
+                toggleForm('loginForm');
+                alert('Login erfolgreich!');
+            } else {
+                alert('Ungültige Anmeldedaten');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            displayAuthButtons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testlauf anlegen - Require4Testing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 100%;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 1rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+        }
+        button {
+            padding: 0.7rem;
+            font-size: 1em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .back-button {
+            background-color: #d9534f;
+        }
+        .back-button:hover {
+            background-color: #c9302c;
+        }
+        .edit-button {
+            background-color: #f0ad4e;
+        }
+        .edit-button:hover {
+            background-color: #ec971f;
+        }
+        .delete-button {
+            background-color: #d9534f;
+        }
+        .delete-button:hover {
+            background-color: #c9302c;
+        }
+        .success-message {
+            margin-top: 1rem;
+            color: green;
+            font-size: 1.2em;
+            display: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f9;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Testlauf anlegen</h1>
+    </header>
+    <div class="container">
+        <h1>Neuen Testlauf anlegen</h1>
+        <form id="testlaufForm">
+            <label for="title">Titel des Testlaufs</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="description">Beschreibung</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <label for="tester">Tester</label>
+            <select id="tester" name="tester" required>
+                <!-- Dynamische Auswahl der Tester -->
+            </select>
+
+            <label for="testfälle">Testfälle</label>
+            <select id="testfälle" name="testfälle" multiple required>
+                <!-- Dynamische Auswahl der Testfälle -->
+            </select>
+
+            <div class="button-group">
+                <button type="button" class="back-button" onclick="window.location.href='index.html'">Zurück</button>
+                <button type="submit">Testlauf erstellen</button>
+            </div>
+        </form>
+        <div class="success-message" id="successMessage">Testlauf erfolgreich erstellt!</div>
+
+        <h2>Erstellte Testläufe</h2>
+        <table id="testlaufTable">
+            <thead>
+                <tr>
+                    <th>Titel</th>
+                    <th>Beschreibung</th>
+                    <th>Tester</th>
+                    <th>Testfälle</th>
+                    <th>Aktionen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamische Inhalte hier -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.getElementById('testlaufForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const tester = document.getElementById('tester').value;
+            const testfälle = Array.from(document.getElementById('testfälle').selectedOptions).map(option => option.text);
+
+            const testlauf = {
+                title,
+                description,
+                tester,
+                testfälle
+            };
+
+            let testläufe = localStorage.getItem('testläufe');
+            if (testläufe) {
+                testläufe = JSON.parse(testläufe);
+            } else {
+                testläufe = [];
+            }
+
+            testläufe.push(testlauf);
+            localStorage.setItem('testläufe', JSON.stringify(testläufe));
+
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('testlaufForm').reset();
+
+            renderTestlaufTable();
+        });
+
+        function renderTestlaufTable() {
+            const testläufe = JSON.parse(localStorage.getItem('testläufe')) || [];
+            const tableBody = document.getElementById('testlaufTable').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = '';
+
+            testläufe.forEach((testlauf, index) => {
+                const row = tableBody.insertRow();
+                row.insertCell(0).textContent = testlauf.title;
+                row.insertCell(1).textContent = testlauf.description;
+                row.insertCell(2).textContent = testlauf.tester;
+                row.insertCell(3).textContent = testlauf.testfälle.join(', ');
+
+                const actionsCell = row.insertCell(4);
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Bearbeiten';
+                editButton.className = 'edit-button';
+                editButton.onclick = () => editTestlauf(index);
+                actionsCell.appendChild(editButton);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Löschen';
+                deleteButton.className = 'delete-button';
+                deleteButton.onclick = () => deleteTestlauf(index);
+                actionsCell.appendChild(deleteButton);
+            });
+        }
+
+        function editTestlauf(index) {
+            const testläufe = JSON.parse(localStorage.getItem('testläufe'));
+            const testlauf = testläufe[index];
+
+            document.getElementById('title').value = testlauf.title;
+            document.getElementById('description').value = testlauf.description;
+            document.getElementById('tester').value = testlauf.tester;
+            Array.from(document.getElementById('testfälle').options).forEach(option => {
+                option.selected = testlauf.testfälle.includes(option.text);
+            });
+
+            testläufe.splice(index, 1);
+            localStorage.setItem('testläufe', JSON.stringify(testläufe));
+
+            renderTestlaufTable();
+        }
+
+        function deleteTestlauf(index) {
+            const testläufe = JSON.parse(localStorage.getItem('testläufe'));
+            testläufe.splice(index, 1);
+            localStorage.setItem('testläufe', JSON.stringify(testläufe));
+
+            renderTestlaufTable();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const testcases = JSON.parse(localStorage.getItem('testfälle')) || [];
+
+            const testerSelect = document.getElementById('tester');
+            users.filter(user => user.role === 'Tester').forEach(user => {
+                const option = document.createElement('option');
+                option.value = user.username;
+                option.textContent = user.username;
+                testerSelect.appendChild(option);
+            });
+
+            const testfälleSelect = document.getElementById('testfälle');
+            testcases.forEach((testcase, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = testcase.testfallName;
+                testfälleSelect.appendChild(option);
+            });
+
+            renderTestlaufTable();
+        });
+    </script>
+</body>
+</html>

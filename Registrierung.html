@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrierung - Require4Testing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        input, select {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 0.7rem;
+            font-size: 1em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            color: #ff0000;
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .back-button {
+            background-color: #f4f4f4;
+            color: #333;
+            border: 1px solid #ccc;
+            width: auto;
+            margin-top: 1rem;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registrierung</h1>
+        <form id="registrationForm">
+            <label for="regUsername">Benutzername</label>
+            <input type="text" id="regUsername" name="username" required>
+            <label for="regPassword">Passwort</label>
+            <input type="password" id="regPassword" name="password" required>
+            <label for="role">Rolle</label>
+            <select id="role" name="role" required>
+                <option value="Requirements Engineer">Requirements Engineer</option>
+                <option value="Testmanager">Testmanager</option>
+                <option value="Testfallersteller">Testfallersteller</option>
+                <option value="Tester">Tester</option>
+            </select>
+            <button type="submit">Registrieren</button>
+            <button type="button" class="back-button" onclick="window.location.href='index.html'">Zurück zur Startseite</button>
+            <div class="message" id="message"></div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
+            const role = document.getElementById('role').value;
+
+            let users = localStorage.getItem('users');
+            users = users ? JSON.parse(users) : [];
+
+            users.push({ username, password, role });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert('Registrierung erfolgreich!');
+            document.getElementById('registrationForm').reset();
+        });
+    </script>
+</body>
+</html>
