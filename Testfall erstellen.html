@@ -121,7 +121,7 @@
         <form id="testfallForm">
             <label for="anforderung">Anforderung</label>
             <select id="anforderung" name="anforderung" required>
-                <!-- Dynamisch laden -->
+                <!-- Dynamische Auswahl der Anforderungen -->
             </select>
 
             <label for="testfallName">Name des Testfalls</label>
@@ -136,6 +136,11 @@
             <label for="erwartetesErgebnis">Erwartetes Ergebnis</label>
             <textarea id="erwartetesErgebnis" name="erwartetesErgebnis" rows="4" required></textarea>
 
+            <label for="tester">Tester</label>
+            <select id="tester" name="tester" required>
+                <!-- Dynamische Auswahl der Tester -->
+            </select>
+
             <div class="button-group">
                 <button type="button" class="back-button" onclick="window.location.href='index.html'">Zurück</button>
                 <button type="submit">Testfall erstellen</button>
@@ -144,7 +149,7 @@
         <div class="success-message" id="successMessage">Testfall erfolgreich erstellt!</div>
 
         <h2>Erstellte Testfälle</h2>
-        <table id="testfallTabelle">
+        <table id="testfallTable">
             <thead>
                 <tr>
                     <th>Anforderung</th>
@@ -152,6 +157,7 @@
                     <th>Beschreibung</th>
                     <th>Schritte</th>
                     <th>Erwartetes Ergebnis</th>
+                    <th>Tester</th>
                     <th>Aktionen</th>
                 </tr>
             </thead>
@@ -169,13 +175,15 @@
             const beschreibung = document.getElementById('beschreibung').value;
             const schritte = document.getElementById('schritte').value;
             const erwartetesErgebnis = document.getElementById('erwartetesErgebnis').value;
+            const tester = document.getElementById('tester').value;
 
             const testfall = {
                 anforderung,
                 testfallName,
                 beschreibung,
                 schritte,
-                erwartetesErgebnis
+                erwartetesErgebnis,
+                tester
             };
 
             let testfälle = localStorage.getItem('testfälle');
@@ -188,16 +196,51 @@
             testfälle.push(testfall);
             localStorage.setItem('testfälle', JSON.stringify(testfälle));
 
+            // Update test cases dropdown
+            updateAnforderungenDropdown();
+            updateTestersDropdown();
+
             document.getElementById('successMessage').style.display = 'block';
             document.getElementById('testfallForm').reset();
 
             renderTestfallTable();
-            loadRequirements();
         });
+
+        function updateAnforderungenDropdown() {
+            const anforderungen = JSON.parse(localStorage.getItem('requirements')) || [];
+            const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
+            const anforderungSelect = document.getElementById('anforderung');
+
+            anforderungSelect.innerHTML = '';
+
+            anforderungen.forEach(anforderung => {
+                const option = document.createElement('option');
+                option.value = anforderung.title;
+                option.textContent = anforderung.title;
+                if (testfälle.some(testfall => testfall.anforderung === anforderung.title)) {
+                    option.disabled = true;
+                }
+                anforderungSelect.appendChild(option);
+            });
+        }
+
+        function updateTestersDropdown() {
+            const testers = JSON.parse(localStorage.getItem('users')) || [];
+            const testerSelect = document.getElementById('tester');
+
+            testerSelect.innerHTML = '';
+
+            testers.filter(user => user.role === 'Tester').forEach(user => {
+                const option = document.createElement('option');
+                option.value = user.username;
+                option.textContent = user.username;
+                testerSelect.appendChild(option);
+            });
+        }
 
         function renderTestfallTable() {
             const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
-            const tableBody = document.getElementById('testfallTabelle').getElementsByTagName('tbody')[0];
+            const tableBody = document.getElementById('testfallTable').getElementsByTagName('tbody')[0];
             tableBody.innerHTML = '';
 
             testfälle.forEach((testfall, index) => {
@@ -207,8 +250,9 @@
                 row.insertCell(2).textContent = testfall.beschreibung;
                 row.insertCell(3).textContent = testfall.schritte;
                 row.insertCell(4).textContent = testfall.erwartetesErgebnis;
+                row.insertCell(5).textContent = testfall.tester;
 
-                const actionsCell = row.insertCell(5);
+                const actionsCell = row.insertCell(6);
                 const editButton = document.createElement('button');
                 editButton.textContent = 'Bearbeiten';
                 editButton.className = 'edit-button';
@@ -232,12 +276,14 @@
             document.getElementById('beschreibung').value = testfall.beschreibung;
             document.getElementById('schritte').value = testfall.schritte;
             document.getElementById('erwartetesErgebnis').value = testfall.erwartetesErgebnis;
+            document.getElementById('tester').value = testfall.tester;
 
             testfälle.splice(index, 1);
             localStorage.setItem('testfälle', JSON.stringify(testfälle));
 
             renderTestfallTable();
-            loadRequirements();
+            updateAnforderungenDropdown(); // Update dropdown to reflect the changes
+            updateTestersDropdown(); // Update dropdown to reflect the changes
         }
 
         function deleteTestfall(index) {
@@ -246,29 +292,13 @@
             localStorage.setItem('testfälle', JSON.stringify(testfälle));
 
             renderTestfallTable();
-            loadRequirements();
-        }
-
-        function loadRequirements() {
-            const anforderungen = JSON.parse(localStorage.getItem('requirements')) || [];
-            const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
-            const anforderungSelect = document.getElementById('anforderung');
-
-            anforderungSelect.innerHTML = '';
-
-            anforderungen.forEach((anforderung, index) => {
-                const option = document.createElement('option');
-                option.value = anforderung.title;
-                option.textContent = anforderung.title;
-                if (testfälle.some(testfall => testfall.anforderung === anforderung.title)) {
-                    option.disabled = true;
-                }
-                anforderungSelect.appendChild(option);
-            });
+            updateAnforderungenDropdown(); // Update dropdown to reflect the changes
+            updateTestersDropdown(); // Update dropdown to reflect the changes
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            loadRequirements();
+            updateAnforderungenDropdown();
+            updateTestersDropdown();
             renderTestfallTable();
         });
     </script>
