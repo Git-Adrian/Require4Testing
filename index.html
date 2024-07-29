@@ -60,6 +60,10 @@
         button:hover {
             background-color: #45a049;
         }
+        .disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
         .form-container {
             display: none;
             background: white;
@@ -124,18 +128,22 @@
             <button onclick="redirectToRegistration()">Registrierung</button>
         </div>
         <div class="user-info hidden" id="userInfo">
-            Eingeloggt als: <span id="username"></span> (<span id="role"></span>)
+            <span id="username"></span> (<span id="role"></span>)
             <button onclick="logout()">Logout</button>
         </div>
     </header>
     <div class="container">
         <h1>Willkommen zu Require4Testing</h1>
         <p>Erstellen und verwalten Sie Anforderungen einfach und effizient.</p>
-        <button onclick="window.location.href='Anforderung erstellen.html'">Anforderung erstellen</button>
+        <button id="createRequirementButton" class="disabled" onclick="handleCreateRequirementClick()">Anforderung erstellen</button>
+        <button id="overviewRequirementsButton" onclick="redirectToOverviewRequirements()">Anforderungen</button>
+        
         <p>Erstellen und verwalten Sie Testläufe einfach und effizient.</p>
-        <button onclick="window.location.href='Testlauf anlegen.html'">Testlauf anlegen</button>
+        <button id="createTestRunButton" class="disabled" onclick="handleCreateTestRunClick()">Testlauf anlegen</button>
+        <button id="overviewTestRunsButton" onclick="redirectToOverviewTestRuns()">Testläufe</button>
         <p>Erstellen und verwalten Sie Testfälle einfach und effizient.</p>
-        <button onclick="window.location.href='Testfall erstellen.html'">Testfall erstellen</button>
+        <button id="createTestCaseButton" class="disabled" onclick="handleCreateTestCaseClick()">Testfall erstellen</button>
+        <button id="overviewTestCasesButton" onclick="redirectToOverviewTestCases()">Testfälle</button>
         <div class="test-cases hidden" id="testCasesContainer">
             <h2>Zugeordnete Testfälle</h2>
             <div id="testCases"></div>
@@ -191,30 +199,108 @@
 
         function displayAuthButtons() {
             const loggedInUser = localStorage.getItem('loggedInUser');
+            const requirementButton = document.getElementById('createRequirementButton');
+            const testRunButton = document.getElementById('createTestRunButton');
+            const testCaseButton = document.getElementById('createTestCaseButton');
+            
             if (loggedInUser) {
                 const user = JSON.parse(loggedInUser);
                 document.getElementById('username').textContent = user.username;
                 document.getElementById('role').textContent = user.role;
                 document.getElementById('userInfo').classList.remove('hidden');
                 document.getElementById('authButtons').classList.add('hidden');
-                if (user.role === 'Tester') {
-                    displayTestCases(user.username);
+                
+                if (user.role === 'Requirements Engineer') {
+                    requirementButton.classList.remove('disabled');
+                    requirementButton.onclick = function() {
+                        window.location.href = 'Anforderung erstellen.html';
+                    };
+                } else {
+                    requirementButton.classList.add('disabled');
+                    requirementButton.onclick = function() {
+                        // Nothing happens
+                    };
+                }
+
+                if (user.role === 'Testmanager') {
+                    testRunButton.classList.remove('disabled');
+                    testRunButton.onclick = function() {
+                        window.location.href = 'Testlauf anlegen.html';
+                    };
+                } else {
+                    testRunButton.classList.add('disabled');
+                    testRunButton.onclick = function() {
+                        // Nothing happens
+                    };
+                }
+
+                if (user.role === 'Testfallersteller') {
+                    testCaseButton.classList.remove('disabled');
+                    testCaseButton.onclick = function() {
+                        window.location.href = 'Testfall erstellen.html';
+                    };
+                } else {
+                    testCaseButton.classList.add('disabled');
+                    testCaseButton.onclick = function() {
+                        // Nothing happens
+                    };
                 }
             } else {
                 document.getElementById('userInfo').classList.add('hidden');
                 document.getElementById('authButtons').classList.remove('hidden');
                 document.getElementById('testCasesContainer').classList.add('hidden');
+                
+                const buttons = document.querySelectorAll('.container button');
+                buttons.forEach(button => {
+                    button.classList.add('disabled');
+                    button.onclick = function() {
+                        // Nothing happens
+                    };
+                });
             }
         }
 
         function redirectToLogin() {
             window.location.href = 'login.html';
         }
-
+         
         function redirectToRegistration() {
             window.location.href = 'registrierung.html';
         }
-         
+
+        function redirectToOverviewRequirements() {
+            window.location.href = 'Übersicht Anforderung.html';
+        }
+
+        function redirectToOverviewTestRuns() {
+            window.location.href = 'Übersicht Testlauf.html'; // Link zur Übersicht Testlauf.html
+        }
+
+        function redirectToOverviewTestCases() {
+            window.location.href = 'Übersicht Testfall.html'; // Link zur Übersicht Testfall.html
+        }
+
+        function handleCreateRequirementClick() {
+            if (document.getElementById('createRequirementButton').classList.contains('disabled')) {
+                return; // Do nothing if the button is disabled
+            }
+            window.location.href = 'Anforderung erstellen.html';
+        }
+
+        function handleCreateTestRunClick() {
+            if (document.getElementById('createTestRunButton').classList.contains('disabled')) {
+                return; // Do nothing if the button is disabled
+            }
+            window.location.href = 'Testlauf anlegen.html';
+        }
+
+        function handleCreateTestCaseClick() {
+            if (document.getElementById('createTestCaseButton').classList.contains('disabled')) {
+                return; // Do nothing if the button is disabled
+            }
+            window.location.href = 'Testfall erstellen.html';
+        }
+
         document.getElementById('registration').addEventListener('submit', function(event) {
             event.preventDefault();
             const username = document.getElementById('regUsername').value;

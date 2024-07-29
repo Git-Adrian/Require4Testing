@@ -161,54 +161,67 @@
     <script>
         document.getElementById('testlaufForm').addEventListener('submit', function(event) {
             event.preventDefault();
-
+    
             const title = document.getElementById('title').value;
             const description = document.getElementById('description').value;
             const tester = document.getElementById('tester').value;
             const testfälle = Array.from(document.getElementById('testfälle').selectedOptions).map(option => option.text);
-
+    
             const testlauf = {
                 title,
                 description,
                 tester,
                 testfälle
             };
-
+    
             let testläufe = localStorage.getItem('testläufe');
             if (testläufe) {
                 testläufe = JSON.parse(testläufe);
             } else {
                 testläufe = [];
             }
-
+    
             testläufe.push(testlauf);
             localStorage.setItem('testläufe', JSON.stringify(testläufe));
-
+    
+            // Deaktiviere die ausgewählten Testfälle
+            disableSelectedTestfälle();
+    
             document.getElementById('successMessage').style.display = 'block';
             document.getElementById('testlaufForm').reset();
-
+    
             renderTestlaufTable();
         });
-
+    
+        function disableSelectedTestfälle() {
+            const testläufe = JSON.parse(localStorage.getItem('testläufe')) || [];
+            const usedTestfälle = new Set(testläufe.flatMap(testlauf => testlauf.testfälle));
+    
+            const testfälleSelect = document.getElementById('testfälle');
+            Array.from(testfälleSelect.options).forEach(option => {
+                option.disabled = usedTestfälle.has(option.text);
+            });
+        }
+    
         function renderTestlaufTable() {
             const testläufe = JSON.parse(localStorage.getItem('testläufe')) || [];
             const tableBody = document.getElementById('testlaufTable').getElementsByTagName('tbody')[0];
             tableBody.innerHTML = '';
-
+    
             testläufe.forEach((testlauf, index) => {
                 const row = tableBody.insertRow();
                 row.insertCell(0).textContent = testlauf.title;
                 row.insertCell(1).textContent = testlauf.description;
                 row.insertCell(2).textContent = testlauf.tester;
                 row.insertCell(3).textContent = testlauf.testfälle.join(', ');
-
+    
                 const actionsCell = row.insertCell(4);
                 const editButton = document.createElement('button');
                 editButton.textContent = 'Bearbeiten';
                 editButton.className = 'edit-button';
                 editButton.onclick = () => editTestlauf(index);
                 actionsCell.appendChild(editButton);
-
+    
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Löschen';
                 deleteButton.className = 'delete-button';
@@ -216,36 +229,38 @@
                 actionsCell.appendChild(deleteButton);
             });
         }
-
+    
         function editTestlauf(index) {
             const testläufe = JSON.parse(localStorage.getItem('testläufe'));
             const testlauf = testläufe[index];
-
+    
             document.getElementById('title').value = testlauf.title;
             document.getElementById('description').value = testlauf.description;
             document.getElementById('tester').value = testlauf.tester;
             Array.from(document.getElementById('testfälle').options).forEach(option => {
                 option.selected = testlauf.testfälle.includes(option.text);
             });
-
+    
             testläufe.splice(index, 1);
             localStorage.setItem('testläufe', JSON.stringify(testläufe));
-
+    
             renderTestlaufTable();
+            disableSelectedTestfälle(); // Update dropdown to reflect the changes
         }
-
+    
         function deleteTestlauf(index) {
             const testläufe = JSON.parse(localStorage.getItem('testläufe'));
             testläufe.splice(index, 1);
             localStorage.setItem('testläufe', JSON.stringify(testläufe));
-
+    
             renderTestlaufTable();
+            disableSelectedTestfälle(); // Update dropdown to reflect the changes
         }
-
+    
         document.addEventListener('DOMContentLoaded', () => {
             const users = JSON.parse(localStorage.getItem('users')) || [];
             const testcases = JSON.parse(localStorage.getItem('testfälle')) || [];
-
+    
             const testerSelect = document.getElementById('tester');
             users.filter(user => user.role === 'Tester').forEach(user => {
                 const option = document.createElement('option');
@@ -253,7 +268,7 @@
                 option.textContent = user.username;
                 testerSelect.appendChild(option);
             });
-
+    
             const testfälleSelect = document.getElementById('testfälle');
             testcases.forEach((testcase, index) => {
                 const option = document.createElement('option');
@@ -261,9 +276,11 @@
                 option.textContent = testcase.testfallName;
                 testfälleSelect.appendChild(option);
             });
-
+    
             renderTestlaufTable();
+            disableSelectedTestfälle(); // Ensure test cases are correctly disabled
         });
     </script>
+    
 </body>
 </html>

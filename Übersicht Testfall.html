@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Übersicht Testfälle - Require4Testing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 1rem;
+        }
+        .test-cases {
+            margin-top: 1rem;
+        }
+        .test-case {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            background: #fafafa;
+        }
+        .test-case h2 {
+            margin-top: 0;
+        }
+        .button-group {
+            margin-top: 1rem;
+        }
+        .button-group button {
+            padding: 0.7rem;
+            font-size: 1em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+        .button-group button:hover {
+            background-color: #45a049;
+        }
+        .button-group .back-button {
+            background-color: #d9534f;
+        }
+        .button-group .back-button:hover {
+            background-color: #c9302c;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f9;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Übersicht Testfälle</h1>
+    </header>
+    <div class="container">
+        <h1>Erstellte Testfälle</h1>
+        <table id="testfallTabelle">
+            <thead>
+                <tr>
+                    <th>Anforderung</th>
+                    <th>Name des Testfalls</th>
+                    <th>Beschreibung</th>
+                    <th>Schritte</th>
+                    <th>Erwartetes Ergebnis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamische Inhalte hier -->
+            </tbody>
+        </table>
+        <div class="button-group">
+            <button class="back-button" onclick="window.location.href='index.html'">Zurück zur Startseite</button>
+        </div>
+    </div>
+
+    <script>
+        function renderTestfallTable() {
+            const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
+            const tableBody = document.getElementById('testfallTabelle').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = '';
+
+            testfälle.forEach((testfall) => {
+                const row = tableBody.insertRow();
+                row.insertCell(0).textContent = testfall.anforderung;
+                row.insertCell(1).textContent = testfall.testfallName;
+                row.insertCell(2).textContent = testfall.beschreibung;
+                row.insertCell(3).textContent = testfall.schritte;
+                row.insertCell(4).textContent = testfall.erwartetesErgebnis;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTestfallTable();
+        });
+    </script>
+</body>
+</html>

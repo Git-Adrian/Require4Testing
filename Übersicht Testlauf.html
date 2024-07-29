@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testläufe Übersicht - Require4Testing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 100%;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f9;
+        }
+        .status-success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .status-failed {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .status-open { 
+            color: #000;
+        }
+        .button-group {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+        button {
+            padding: 0.7rem;
+            font-size: 1em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .back-button {
+            background-color: #d9534f;
+        }
+        .back-button:hover {
+            background-color: #c9302c;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Übersicht Testläufe</h1>
+    </header>
+    <div class="container">
+        <h1>Alle Testläufe</h1>
+        <table id="testlaufTable">
+            <thead>
+                <tr>
+                    <th>Titel</th>
+                    <th>Beschreibung</th>
+                    <th>Tester</th>
+                    <th>Testfälle</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamische Inhalte hier -->
+            </tbody>
+        </table>
+        <div class="button-group">
+            <button class="back-button" onclick="window.location.href='index.html'">Zurück</button>
+        </div>
+    </div>
+    <script>
+        // Funktion zum Abrufen des aktuell angemeldeten Benutzers
+        function getCurrentUser() {
+            // Diese Funktion sollte durch die tatsächliche Authentifizierungslösung ersetzt werden.
+            // Für die Demozwecke nehmen wir an, dass der Benutzername im LocalStorage gespeichert ist.
+            return localStorage.getItem('currentUser');
+        }
+
+        function renderTestlaufTable() {
+            const testläufe = JSON.parse(localStorage.getItem('testläufe')) || [];
+            const currentUser = getCurrentUser();
+            const tableBody = document.getElementById('testlaufTable').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = '';
+
+            testläufe.forEach((testlauf, index) => {
+                const row = tableBody.insertRow();
+
+                row.insertCell(0).textContent = testlauf.title;
+                row.insertCell(1).textContent = testlauf.description;
+                row.insertCell(2).textContent = testlauf.tester;
+                row.insertCell(3).textContent = testlauf.testfälle.join(', ');
+
+                const statusCell = row.insertCell(4);
+                if (currentUser === testlauf.tester) {
+                    const statusSelect = document.createElement('select');
+                    const optionOpen = document.createElement('option');
+                    optionOpen.value = 'Offen';
+                    optionOpen.textContent = 'Offen';
+                    const optionSuccess = document.createElement('option');
+                    optionSuccess.value = 'Erfolgreich';
+                    optionSuccess.textContent = 'Erfolgreich';
+                    const optionFailed = document.createElement('option');
+                    optionFailed.value = 'Fehlgeschlagen';
+                    optionFailed.textContent = 'Fehlgeschlagen';
+
+                    statusSelect.appendChild(optionOpen);
+                    statusSelect.appendChild(optionSuccess);
+                    statusSelect.appendChild(optionFailed);
+
+                    // Setze den aktuellen Status der Auswahl
+                    statusSelect.value = testlauf.status || 'Offen';
+
+                    // Füge Event Listener hinzu, um den Status in localStorage zu aktualisieren
+                    statusSelect.addEventListener('change', function() {
+                        testläufe[index].status = this.value;
+                        localStorage.setItem('testläufe', JSON.stringify(testläufe));
+                        renderTestlaufTable(); // Rendern Sie die Tabelle neu, um die Statusfarbe zu aktualisieren
+                    });
+
+                    statusCell.appendChild(statusSelect);
+                } else {
+                    statusCell.textContent = testlauf.status || 'Offen';
+                }
+
+                // Status der Testläufe bestimmen und Klasse zuweisen
+                if (testlauf.status === 'Erfolgreich') {
+                    row.classList.add('status-success');
+                } else if (testlauf.status === 'Fehlgeschlagen') {
+                    row.classList.add('status-failed');
+                } else if (testlauf.status === 'Offen') {
+                    row.classList.add('status-open');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTestlaufTable();
+        });
+    </script>
+</body>
+</html>
