@@ -41,6 +41,9 @@
             border-radius: 4px;
             margin-right: 1rem;
         }
+        .table-responsive {
+            overflow-x: auto;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -82,11 +85,32 @@
             .container {
                 padding: 1rem;
             }
+            .filter-group {
+                flex-direction: column;
+            }
             th, td {
                 padding: 0.5rem;
             }
-            .filter-group {
-                flex-direction: column;
+            th, td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            th::before, td::before {
+                content: attr(data-title);
+                float: left;
+                font-weight: bold;
+            }
+            th, td {
+                border: none;
+                text-align: right;
+                padding-left: 50%;
+            }
+            td {
+                border-bottom: 1px solid #ddd;
+            }
+            thead {
+                display: none;
             }
         }
     </style>
@@ -108,20 +132,22 @@
             </div>
         </div>
 
-        <table id="requirementsTable">
-            <thead>
-                <tr>
-                    <th>Titel</th>
-                    <th>Beschreibung</th>
-                    <th>Priorität</th>
-                    <th>Testkriterien</th>
-                    <th>Ersteller</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dynamische Inhalte hier -->
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table id="requirementsTable">
+                <thead>
+                    <tr>
+                        <th data-title="Titel">Titel</th>
+                        <th data-title="Beschreibung">Beschreibung</th>
+                        <th data-title="Priorität">Priorität</th>
+                        <th data-title="Testkriterien">Testkriterien</th>
+                        <th data-title="Ersteller">Ersteller</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamische Inhalte hier -->
+                </tbody>
+            </table>
+        </div>
         <button class="back-button" onclick="window.location.href='index.html'">Zurück zur Startseite</button>
     </div>
     <script>

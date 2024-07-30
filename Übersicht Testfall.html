@@ -18,7 +18,7 @@
             text-align: center;
         }
         .container {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 2rem auto;
             background: white;
             padding: 2rem;
@@ -28,19 +28,6 @@
         h1 {
             font-size: 1.5em;
             margin-bottom: 1rem;
-        }
-        .test-cases {
-            margin-top: 1rem;
-        }
-        .test-case {
-            padding: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            background: #fafafa;
-        }
-        .test-case h2 {
-            margin-top: 0;
         }
         .button-group {
             margin-top: 1rem;
@@ -64,6 +51,9 @@
         .button-group .back-button:hover {
             background-color: #c9302c;
         }
+        .table-responsive {
+            overflow-x: auto;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -79,12 +69,39 @@
         th {
             background-color: #f4f4f9;
         }
+        .status-open {
+            background-color: white;
+        }
+        .status-erfolgreich {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .status-failed {
+            background-color: #f2dede;
+            color: #a94442;
+        }
         @media (max-width: 600px) {
-            .container {
-                padding: 1rem;
-            }
             th, td {
                 padding: 0.5rem;
+            }
+            th, td {
+                display: block;
+                text-align: right;
+            }
+            th::before {
+                content: attr(data-title);
+                float: left;
+                font-weight: bold;
+            }
+            th, td {
+                border: none;
+                position: relative;
+            }
+            td {
+                border-bottom: 1px solid #ddd;
+            }
+            thead {
+                display: none;
             }
         }
     </style>
@@ -95,41 +112,92 @@
     </header>
     <div class="container">
         <h1>Erstellte Testfälle</h1>
-        <table id="testfallTabelle">
-            <thead>
-                <tr>
-                    <th>Anforderung</th>
-                    <th>Name des Testfalls</th>
-                    <th>Beschreibung</th>
-                    <th>Schritte</th>
-                    <th>Erwartetes Ergebnis</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dynamische Inhalte hier -->
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table id="testfallTabelle">
+                <thead>
+                    <tr>
+                        <th>Anforderung</th>
+                        <th>Name des Testfalls</th>
+                        <th>Beschreibung</th>
+                        <th>Schritte</th>
+                        <th>Erwartetes Ergebnis</th>
+                        <th>Tester</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamische Inhalte hier -->
+                </tbody>
+            </table>
+        </div>
         <div class="button-group">
             <button class="back-button" onclick="window.location.href='index.html'">Zurück zur Startseite</button>
         </div>
     </div>
 
     <script>
+        // Funktion zum Abrufen des aktuell angemeldeten Benutzers
+        function getCurrentUser() {
+            return localStorage.getItem('currentUser');
+        }
+
+        // Funktion zum Rendern der Testfall-Tabelle
         function renderTestfallTable() {
             const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
+            const currentUser = getCurrentUser();
             const tableBody = document.getElementById('testfallTabelle').getElementsByTagName('tbody')[0];
             tableBody.innerHTML = '';
 
-            testfälle.forEach((testfall) => {
+            testfälle.forEach((testfall, index) => {
                 const row = tableBody.insertRow();
+
                 row.insertCell(0).textContent = testfall.anforderung;
                 row.insertCell(1).textContent = testfall.testfallName;
                 row.insertCell(2).textContent = testfall.beschreibung;
                 row.insertCell(3).textContent = testfall.schritte;
                 row.insertCell(4).textContent = testfall.erwartetesErgebnis;
+                row.insertCell(5).textContent = testfall.tester || 'Nicht zugewiesen';
+
+                const statusCell = row.insertCell(6);
+                if (currentUser === testfall.tester) {
+                    const statusSelect = document.createElement('select');
+                    ['Offen', 'Erfolgreich', 'Fehlgeschlagen'].forEach(statusOption => {
+                        const option = document.createElement('option');
+                        option.value = statusOption.toLowerCase();
+                        option.textContent = statusOption;
+                        if (testfall.testergebnis && testfall.testergebnis.toLowerCase() === statusOption.toLowerCase()) {
+                            option.selected = true;
+                        }
+                        statusSelect.appendChild(option);
+                    });
+
+                    statusSelect.addEventListener('change', function() {
+                        testfälle[index].testergebnis = this.value;
+                        localStorage.setItem('testfälle', JSON.stringify(testfälle));
+                        renderTestfallTable(); // Tabelle neu rendern, um die Statusfarbe zu aktualisieren
+                    });
+
+                    statusCell.appendChild(statusSelect);
+                } else {
+                    statusCell.textContent = testfall.testergebnis ? testfall.testergebnis.charAt(0).toUpperCase() + testfall.testergebnis.slice(1) : 'Offen';
+                }
+
+                switch (testfall.testergebnis?.toLowerCase()) {
+                    case 'erfolgreich':
+                        row.classList.add('status-erfolgreich');
+                        break;
+                    case 'fehlgeschlagen':
+                    case 'failed':
+                        row.classList.add('status-failed');
+                        break;
+                    default:
+                        row.classList.add('status-open');
+                        break;
+                }
             });
         }
 
+        // Initialisierung nach dem Laden des DOM
         document.addEventListener('DOMContentLoaded', () => {
             renderTestfallTable();
         });

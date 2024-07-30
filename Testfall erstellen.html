@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testfall erstellen - Require4Testing</title>
     <style>
+        /* CSS-Stile wie zuvor definiert, aber jetzt mit zusätzlichen Regeln für Zeilenfarben */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -87,6 +88,9 @@
             font-size: 1.2em;
             display: none;
         }
+        .table-responsive {
+            overflow-x: auto;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -102,12 +106,44 @@
         th {
             background-color: #f4f4f9;
         }
+        /* Zusätzliche Stile für die Zeilenfarben basierend auf dem Status */
+        .status-offen {
+            background-color: white;
+        }
+        .status-erfolgreich {
+            background-color: #dff0d8;
+        }
+        .status-failed {
+            background-color: #f2dede;
+        }
         @media (max-width: 600px) {
             .container {
                 padding: 1rem;
             }
             th, td {
                 padding: 0.5rem;
+            }
+            table, th, td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            th {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            td {
+                display: flex;
+                justify-content: space-between;
+                padding: 0.5rem 1rem;
+                border: none;
+                border-bottom: 1px solid #ddd;
+            }
+            td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                flex: 1;
             }
         }
     </style>
@@ -141,6 +177,16 @@
                 <!-- Dynamische Auswahl der Tester -->
             </select>
 
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+                <option value="offen">Offen</option>
+                <option value="erfolgreich">Erfolgreich</option>
+                <option value="failed">Failed</option>
+            </select>
+
+            <label for="testergebnis">Testergebnis</label>
+            <textarea id="testergebnis" name="testergebnis" rows="4" required></textarea>
+
             <div class="button-group">
                 <button type="button" class="back-button" onclick="window.location.href='index.html'">Zurück</button>
                 <button type="submit">Testfall erstellen</button>
@@ -149,22 +195,26 @@
         <div class="success-message" id="successMessage">Testfall erfolgreich erstellt!</div>
 
         <h2>Erstellte Testfälle</h2>
-        <table id="testfallTable">
-            <thead>
-                <tr>
-                    <th>Anforderung</th>
-                    <th>Name des Testfalls</th>
-                    <th>Beschreibung</th>
-                    <th>Schritte</th>
-                    <th>Erwartetes Ergebnis</th>
-                    <th>Tester</th>
-                    <th>Aktionen</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dynamische Inhalte hier -->
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table id="testfallTable">
+                <thead>
+                    <tr>
+                        <th>Anforderung</th>
+                        <th>Name des Testfalls</th>
+                        <th>Beschreibung</th>
+                        <th>Schritte</th>
+                        <th>Erwartetes Ergebnis</th>
+                        <th>Tester</th>
+                        <th>Status</th>
+                        <th>Testergebnis</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamische Inhalte hier -->
+                </tbody>
+            </table>
+        </div>
     </div>
     <script>
         document.getElementById('testfallForm').addEventListener('submit', function(event) {
@@ -176,6 +226,8 @@
             const schritte = document.getElementById('schritte').value;
             const erwartetesErgebnis = document.getElementById('erwartetesErgebnis').value;
             const tester = document.getElementById('tester').value;
+            const status = document.getElementById('status').value;
+            const testergebnis = document.getElementById('testergebnis').value;
 
             const testfall = {
                 anforderung,
@@ -183,7 +235,9 @@
                 beschreibung,
                 schritte,
                 erwartetesErgebnis,
-                tester
+                tester,
+                status,
+                testergebnis
             };
 
             let testfälle = localStorage.getItem('testfälle');
@@ -196,10 +250,6 @@
             testfälle.push(testfall);
             localStorage.setItem('testfälle', JSON.stringify(testfälle));
 
-            // Update test cases dropdown
-            updateAnforderungenDropdown();
-            updateTestersDropdown();
-
             document.getElementById('successMessage').style.display = 'block';
             document.getElementById('testfallForm').reset();
 
@@ -208,7 +258,6 @@
 
         function updateAnforderungenDropdown() {
             const anforderungen = JSON.parse(localStorage.getItem('requirements')) || [];
-            const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
             const anforderungSelect = document.getElementById('anforderung');
 
             anforderungSelect.innerHTML = '';
@@ -217,9 +266,6 @@
                 const option = document.createElement('option');
                 option.value = anforderung.title;
                 option.textContent = anforderung.title;
-                if (testfälle.some(testfall => testfall.anforderung === anforderung.title)) {
-                    option.disabled = true;
-                }
                 anforderungSelect.appendChild(option);
             });
         }
@@ -245,14 +291,18 @@
 
             testfälle.forEach((testfall, index) => {
                 const row = tableBody.insertRow();
+                row.className = `status-${testfall.status}`; // Zeilenklasse basierend auf dem Status festlegen
+
                 row.insertCell(0).textContent = testfall.anforderung;
                 row.insertCell(1).textContent = testfall.testfallName;
                 row.insertCell(2).textContent = testfall.beschreibung;
                 row.insertCell(3).textContent = testfall.schritte;
                 row.insertCell(4).textContent = testfall.erwartetesErgebnis;
                 row.insertCell(5).textContent = testfall.tester;
+                row.insertCell(6).textContent = testfall.status;
+                row.insertCell(7).textContent = testfall.testergebnis;
 
-                const actionsCell = row.insertCell(6);
+                const actionsCell = row.insertCell(8);
                 const editButton = document.createElement('button');
                 editButton.textContent = 'Bearbeiten';
                 editButton.className = 'edit-button';
@@ -277,13 +327,13 @@
             document.getElementById('schritte').value = testfall.schritte;
             document.getElementById('erwartetesErgebnis').value = testfall.erwartetesErgebnis;
             document.getElementById('tester').value = testfall.tester;
+            document.getElementById('status').value = testfall.status;
+            document.getElementById('testergebnis').value = testfall.testergebnis;
 
             testfälle.splice(index, 1);
             localStorage.setItem('testfälle', JSON.stringify(testfälle));
 
             renderTestfallTable();
-            updateAnforderungenDropdown(); // Update dropdown to reflect the changes
-            updateTestersDropdown(); // Update dropdown to reflect the changes
         }
 
         function deleteTestfall(index) {
@@ -292,8 +342,6 @@
             localStorage.setItem('testfälle', JSON.stringify(testfälle));
 
             renderTestfallTable();
-            updateAnforderungenDropdown(); // Update dropdown to reflect the changes
-            updateTestersDropdown(); // Update dropdown to reflect the changes
         }
 
         document.addEventListener('DOMContentLoaded', () => {
