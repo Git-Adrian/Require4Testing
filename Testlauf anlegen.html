@@ -166,70 +166,6 @@
             </tbody>
         </table>
     </div>
-    <!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testlauf anlegen - Require4Testing</title>
-    <style>
-        /* Ihre CSS-Stile hier */
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Testlauf anlegen</h1>
-    </header>
-    <div class="container">
-        <h1>Neuen Testlauf anlegen</h1>
-        <form id="testlaufForm">
-            <label for="title">Titel des Testlaufs</label>
-            <input type="text" id="title" name="title" required>
-
-            <label for="description">Beschreibung</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
-
-            <label for="tester">Tester</label>
-            <select id="tester" name="tester" required>
-                <!-- Dynamische Auswahl der Tester -->
-            </select>
-
-            <label for="testfälle">Testfälle</label>
-            <select id="testfälle" name="testfälle" multiple required>
-                <!-- Dynamische Auswahl der Testfälle -->
-            </select>
-
-            <label for="status">Status</label>
-            <select id="status" name="status" required>
-                <option value="Offen">Offen</option>
-                <option value="Erfolgreich">Erfolgreich</option>
-                <option value="Fehlgeschlagen">Fehlgeschlagen</option>
-            </select>
-
-            <div class="button-group">
-                <button type="button" class="back-button" onclick="window.location.href='index.html'">Zurück</button>
-                <button type="submit">Testlauf erstellen</button>
-            </div>
-        </form>
-        <div class="success-message" id="successMessage">Testlauf erfolgreich erstellt!</div>
-
-        <h2>Erstellte Testläufe</h2>
-        <table id="testlaufTable">
-            <thead>
-                <tr>
-                    <th>Titel</th>
-                    <th>Beschreibung</th>
-                    <th>Tester</th>
-                    <th>Testfälle</th>
-                    <th>Status</th>
-                    <th>Aktionen</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dynamische Inhalte hier -->
-            </tbody>
-        </table>
-    </div>
     <script>
         document.getElementById('testlaufForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -335,16 +271,8 @@
     
         document.addEventListener('DOMContentLoaded', () => {
             const users = JSON.parse(localStorage.getItem('users')) || [];
-            const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
-
-            // Überprüfen, ob der aktuelle Benutzer ein Tester ist
-            if (currentUser.role !== 'Tester') {
-                alert('Sie haben keinen Zugriff auf diese Seite.');
-                window.location.href = 'index.html'; // Weiterleitung zur Startseite oder Login-Seite
-                return;
-            }
-
-            // Dynamisches Laden der Tester-Daten
+            const testcases = JSON.parse(localStorage.getItem('testfälle')) || [];
+    
             const testerSelect = document.getElementById('tester');
             users.filter(user => user.role === 'Tester').forEach(user => {
                 const option = document.createElement('option');
@@ -352,9 +280,7 @@
                 option.textContent = user.username;
                 testerSelect.appendChild(option);
             });
-
-            // Testfälle laden
-            const testcases = JSON.parse(localStorage.getItem('testfälle')) || [];
+    
             const testfälleSelect = document.getElementById('testfälle');
             testcases.forEach((testcase, index) => {
                 const option = document.createElement('option');
@@ -362,7 +288,7 @@
                 option.textContent = testcase.testfallName;
                 testfälleSelect.appendChild(option);
             });
-
+    
             renderTestlaufTable();
             disableSelectedTestfälle(); // Ensure test cases are correctly disabled
         });
