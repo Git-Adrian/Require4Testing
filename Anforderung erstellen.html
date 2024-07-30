@@ -91,6 +91,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 2rem;
+            max-width: 100%; /* Sicherstellen, dass die Tabelle nicht breiter wird als der Container */
         }
         table, th, td {
             border: 1px solid #ddd;
@@ -117,6 +118,11 @@
             }
             th, td {
                 padding: 0.5rem;
+            }
+            table {
+                display: block;
+                overflow-x: auto; /* Ermöglicht horizontales Scrollen auf kleinen Bildschirmen */
+                white-space: nowrap; /* Verhindert Zeilenumbruch innerhalb der Zellen */
             }
         }
     </style>
@@ -164,7 +170,6 @@
                     <th>Kategorie</th>
                     <th>Testkriterien</th>
                     <th>Ersteller</th>
-                    <th>Status</th>
                     <th>Aktionen</th>
                 </tr>
             </thead>
@@ -225,19 +230,8 @@
                 row.insertCell(3).textContent = requirement.category;
                 row.insertCell(4).textContent = requirement.testCriteria;
                 row.insertCell(5).textContent = requirement.creator;
-                
-                // Zeigt, ob ein Testfall existiert
-                row.insertCell(6).textContent = requirement.hasTestCase ? 'Testfall vorhanden' : 'Kein Testfall';
 
-                if (requirement.priority === 'hoch') {
-                    row.classList.add('priority-high');
-                } else if (requirement.priority === 'mittel') {
-                    row.classList.add('priority-medium');
-                } else if (requirement.priority === 'niedrig') {
-                    row.classList.add('priority-low');
-                }
-
-                const actionsCell = row.insertCell(7);
+                const actionsCell = row.insertCell(6);
                 if (!requirement.hasTestCase) { // Nur bearbeiten/löschen, wenn kein Testfall existiert
                     const editButton = document.createElement('button');
                     editButton.textContent = 'Bearbeiten';
