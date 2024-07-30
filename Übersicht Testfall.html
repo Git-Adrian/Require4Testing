@@ -143,6 +143,13 @@
     </header>
     <div class="container">
         <h1>Erstellte Testfälle</h1>
+        <div class="filter-container">
+            <label for="testerFilter">Filter nach Tester:</label>
+            <select id="testerFilter">
+                <option value="">Alle Tester</option>
+                <!-- Dynamische Testeroptionen hier -->
+            </select>
+        </div>
         <div class="table-responsive">
             <table id="testfallTabelle">
                 <thead>
@@ -175,13 +182,13 @@
         }
 
         // Funktion zum Rendern der Testfall-Tabelle
-        function renderTestfallTable() {
+        function renderTestfallTable(testerFilter = '') {
             const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
             const currentUser = getCurrentUser();
             const tableBody = document.getElementById('testfallTabelle').getElementsByTagName('tbody')[0];
             tableBody.innerHTML = '';
 
-            testfälle.forEach((testfall, index) => {
+            testfälle.filter(testfall => !testerFilter || testfall.tester === testerFilter).forEach((testfall, index) => {
                 const row = tableBody.insertRow();
 
                 row.insertCell(0).textContent = testfall.anforderung;
@@ -263,9 +270,29 @@
             }
         }
 
+        // Funktion zum Initialisieren des Tester-Filters
+        function initializeTesterFilter() {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const testerSelect = document.getElementById('testerFilter');
+
+            // Optionen für Tester hinzufügen
+            const uniqueTesters = [...new Set(users.filter(user => user.role === 'Tester').map(user => user.username))];
+            uniqueTesters.forEach(tester => {
+                const option = document.createElement('option');
+                option.value = tester;
+                option.textContent = tester;
+                testerSelect.appendChild(option);
+            });
+
+            testerSelect.addEventListener('change', () => {
+                renderTestfallTable(testerSelect.value);
+            });
+        }
+
         // Initialisierung nach dem Laden des DOM
         document.addEventListener('DOMContentLoaded', () => {
-            renderTestfallTable();
+            initializeTesterFilter();
+            renderTestfallTable(); // Initiales Rendern der Tabelle ohne Filter
         });
     </script>
 </body>
