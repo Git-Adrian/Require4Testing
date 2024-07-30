@@ -56,7 +56,8 @@
             color: #a94442;
         }
         .status-open { 
-            color: #000;
+            background-color: #fcf8e3;
+            color: #8a6d3b;
         }
         .button-group {
             margin-top: 1rem;
@@ -124,8 +125,6 @@
     <script>
         // Funktion zum Abrufen des aktuell angemeldeten Benutzers
         function getCurrentUser() {
-            // Diese Funktion sollte durch die tatsächliche Authentifizierungslösung ersetzt werden.
-            // Für die Demozwecke nehmen wir an, dass der Benutzername im LocalStorage gespeichert ist.
             return localStorage.getItem('currentUser');
         }
 
@@ -146,45 +145,45 @@
                 const statusCell = row.insertCell(4);
 
                 if (currentUser === testlauf.tester) {
-                    // Nur dem zugewiesenen Tester wird das Dropdown zur Statusänderung angezeigt
+                    // Dropdown für Statusänderung erstellen
                     const statusSelect = document.createElement('select');
-                    const optionOpen = document.createElement('option');
-                    optionOpen.value = 'Offen';
-                    optionOpen.textContent = 'Offen';
-                    const optionSuccess = document.createElement('option');
-                    optionSuccess.value = 'Erfolgreich';
-                    optionSuccess.textContent = 'Erfolgreich';
-                    const optionFailed = document.createElement('option');
-                    optionFailed.value = 'Fehlgeschlagen';
-                    optionFailed.textContent = 'Fehlgeschlagen';
+                    statusSelect.className = 'status-select';
+                    const statuses = ['Offen', 'Erfolgreich', 'Fehlgeschlagen'];
 
-                    statusSelect.appendChild(optionOpen);
-                    statusSelect.appendChild(optionSuccess);
-                    statusSelect.appendChild(optionFailed);
+                    statuses.forEach(status => {
+                        const option = document.createElement('option');
+                        option.value = status;
+                        option.textContent = status;
+                        statusSelect.appendChild(option);
+                    });
 
                     // Setze den aktuellen Status der Auswahl
                     statusSelect.value = testlauf.status || 'Offen';
 
-                    // Füge Event Listener hinzu, um den Status in localStorage zu aktualisieren
+                    // Event Listener hinzufügen, um den Status in localStorage zu aktualisieren
                     statusSelect.addEventListener('change', function() {
                         testläufe[index].status = this.value;
                         localStorage.setItem('testläufe', JSON.stringify(testläufe));
-                        renderTestlaufTable(); // Rendern Sie die Tabelle neu, um die Statusfarbe zu aktualisieren
+                        renderTestlaufTable(); // Tabelle neu rendern, um die Statusfarbe zu aktualisieren
                     });
 
                     statusCell.appendChild(statusSelect);
                 } else {
-                    // Für andere Benutzer wird der Status nur als Text angezeigt
+                    // Status als Text anzeigen
                     statusCell.textContent = testlauf.status || 'Offen';
                 }
 
-                // Status der Testläufe bestimmen und Klasse zuweisen
-                if (testlauf.status === 'Erfolgreich') {
-                    row.classList.add('status-success');
-                } else if (testlauf.status === 'Fehlgeschlagen') {
-                    row.classList.add('status-failed');
-                } else if (testlauf.status === 'Offen') {
-                    row.classList.add('status-open');
+                // Statusfarbe anhand der Statuszuweisung bestimmen
+                switch (testlauf.status) {
+                    case 'Erfolgreich':
+                        row.classList.add('status-success');
+                        break;
+                    case 'Fehlgeschlagen':
+                        row.classList.add('status-failed');
+                        break;
+                    default:
+                        row.classList.add('status-open');
+                        break;
                 }
             });
         }

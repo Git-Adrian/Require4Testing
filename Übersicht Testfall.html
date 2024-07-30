@@ -69,16 +69,20 @@
         th {
             background-color: #f4f4f9;
         }
+       /* Farben für verschiedene Status */
         .status-open {
-            background-color: white;
+            background-color: #fcf8e3; /* Orange für Offen */
+            color: #000; /* Schwarzer Text für bessere Lesbarkeit */
         }
+
         .status-erfolgreich {
-            background-color: #dff0d8;
-            color: #3c763d;
+            background-color: #dff0d8; /* Grün für Erfolgreich */
+            color: #3c763d; /* Dunkelgrüner Text für bessere Lesbarkeit */
         }
+
         .status-failed {
-            background-color: #f2dede;
-            color: #a94442;
+            background-color: #f2dede; /* Rot für Fehlgeschlagen */
+            color: #a94442; /* Dunkelroter Text für bessere Lesbarkeit */
         }
         @media (max-width: 600px) {
             th, td {
@@ -145,7 +149,6 @@
         // Funktion zum Rendern der Testfall-Tabelle
         function renderTestfallTable() {
             const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
-            const currentUser = getCurrentUser();
             const tableBody = document.getElementById('testfallTabelle').getElementsByTagName('tbody')[0];
             tableBody.innerHTML = '';
 
