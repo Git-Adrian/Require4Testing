@@ -123,6 +123,7 @@
                         <th>Erwartetes Ergebnis</th>
                         <th>Tester</th>
                         <th>Status</th>
+                        <th>Testergebnis</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -157,32 +158,15 @@
                 row.insertCell(3).textContent = testfall.schritte;
                 row.insertCell(4).textContent = testfall.erwartetesErgebnis;
                 row.insertCell(5).textContent = testfall.tester || 'Nicht zugewiesen';
-
+                
                 const statusCell = row.insertCell(6);
-                if (currentUser === testfall.tester) {
-                    const statusSelect = document.createElement('select');
-                    ['Offen', 'Erfolgreich', 'Fehlgeschlagen'].forEach(statusOption => {
-                        const option = document.createElement('option');
-                        option.value = statusOption.toLowerCase();
-                        option.textContent = statusOption;
-                        if (testfall.testergebnis && testfall.testergebnis.toLowerCase() === statusOption.toLowerCase()) {
-                            option.selected = true;
-                        }
-                        statusSelect.appendChild(option);
-                    });
+                statusCell.textContent = testfall.status ? testfall.status.charAt(0).toUpperCase() + testfall.status.slice(1) : 'Offen';
 
-                    statusSelect.addEventListener('change', function() {
-                        testfälle[index].testergebnis = this.value;
-                        localStorage.setItem('testfälle', JSON.stringify(testfälle));
-                        renderTestfallTable(); // Tabelle neu rendern, um die Statusfarbe zu aktualisieren
-                    });
+                const testergebnisCell = row.insertCell(7);
+                testergebnisCell.textContent = testfall.testergebnis || 'Kein Ergebnis';
 
-                    statusCell.appendChild(statusSelect);
-                } else {
-                    statusCell.textContent = testfall.testergebnis ? testfall.testergebnis.charAt(0).toUpperCase() + testfall.testergebnis.slice(1) : 'Offen';
-                }
-
-                switch (testfall.testergebnis?.toLowerCase()) {
+                // Klassen für die Status-Hintergrundfarben setzen
+                switch (testfall.status?.toLowerCase()) {
                     case 'erfolgreich':
                         row.classList.add('status-erfolgreich');
                         break;

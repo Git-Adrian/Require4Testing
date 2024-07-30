@@ -258,15 +258,21 @@
 
         function updateAnforderungenDropdown() {
             const anforderungen = JSON.parse(localStorage.getItem('requirements')) || [];
+            const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
             const anforderungSelect = document.getElementById('anforderung');
+
+            // Sammeln von Anforderungen, die bereits in Testfällen verwendet werden
+            const verwendeteAnforderungen = new Set(testfälle.map(testfall => testfall.anforderung));
 
             anforderungSelect.innerHTML = '';
 
             anforderungen.forEach(anforderung => {
-                const option = document.createElement('option');
-                option.value = anforderung.title;
-                option.textContent = anforderung.title;
-                anforderungSelect.appendChild(option);
+                if (!verwendeteAnforderungen.has(anforderung.title)) {
+                    const option = document.createElement('option');
+                    option.value = anforderung.title;
+                    option.textContent = anforderung.title;
+                    anforderungSelect.appendChild(option);
+                }
             });
         }
 
