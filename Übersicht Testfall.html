@@ -69,20 +69,47 @@
         th {
             background-color: #f4f4f9;
         }
-       /* Farben für verschiedene Status */
+        /* Farben für verschiedene Status */
         .status-open {
             background-color: #fcf8e3; /* Orange für Offen */
             color: #000; /* Schwarzer Text für bessere Lesbarkeit */
         }
-
         .status-erfolgreich {
             background-color: #dff0d8; /* Grün für Erfolgreich */
             color: #3c763d; /* Dunkelgrüner Text für bessere Lesbarkeit */
         }
-
         .status-failed {
             background-color: #f2dede; /* Rot für Fehlgeschlagen */
             color: #a94442; /* Dunkelroter Text für bessere Lesbarkeit */
+        }
+        select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .editable-cell {
+            position: relative;
+        }
+        .editable-cell input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .save-button {
+            padding: 0.5rem;
+            font-size: 0.9em;
+            color: white;
+            background-color: #5bc0de;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        .save-button:hover {
+            background-color: #31b0d5;
         }
         @media (max-width: 600px) {
             th, td {
@@ -128,7 +155,6 @@
                         <th>Tester</th>
                         <th>Status</th>
                         <th>Testergebnis</th>
-                        <th>Aktionen</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -166,10 +192,40 @@
                 row.insertCell(5).textContent = testfall.tester || 'Nicht zugewiesen';
 
                 const statusCell = row.insertCell(6);
-                statusCell.textContent = testfall.status ? testfall.status.charAt(0).toUpperCase() + testfall.status.slice(1) : 'Offen';
+                const statusSelect = document.createElement('select');
+                const options = ['Offen', 'Erfolgreich', 'Fehlgeschlagen'];
+
+                options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option.toLowerCase();
+                    opt.textContent = option;
+                    if (testfall.status?.toLowerCase() === opt.value) {
+                        opt.selected = true;
+                    }
+                    statusSelect.appendChild(opt);
+                });
+
+                statusSelect.disabled = !(currentUser && testfall.tester === currentUser);
+                statusSelect.addEventListener('change', () => updateStatus(index, statusSelect.value));
+                statusCell.appendChild(statusSelect);
 
                 const testergebnisCell = row.insertCell(7);
-                testergebnisCell.textContent = testfall.testergebnis || 'Kein Ergebnis';
+                const isEditable = currentUser && testfall.tester === currentUser;
+                if (isEditable) {
+                    // Wenn der Tester das Testergebnis bearbeiten kann
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = testfall.testergebnis || '';
+                    input.className = 'editable-cell';
+                    const saveButton = document.createElement('button');
+                    saveButton.textContent = 'Speichern';
+                    saveButton.className = 'save-button';
+                    saveButton.onclick = () => saveTestergebnis(index, input.value);
+                    testergebnisCell.appendChild(input);
+                    testergebnisCell.appendChild(saveButton);
+                } else {
+                    testergebnisCell.textContent = testfall.testergebnis || 'Kein Ergebnis';
+                }
 
                 // Klassen für die Status-Hintergrundfarben setzen
                 switch (testfall.status?.toLowerCase()) {
@@ -184,31 +240,27 @@
                         row.classList.add('status-open');
                         break;
                 }
-
-                // Aktionen-Button nur für den zugewiesenen Tester anzeigen
-                const actionsCell = row.insertCell(8);
-                if (currentUser && testfall.tester === currentUser) {
-                    const editButton = document.createElement('button');
-                    editButton.textContent = 'Bearbeiten';
-                    editButton.className = 'edit-button';
-                    editButton.onclick = () => editTestfall(index);
-                    actionsCell.appendChild(editButton);
-                }
             });
         }
 
-        // Funktion zum Bearbeiten eines Testfalls (Beispielhaft, Details je nach Logik)
-        function editTestfall(index) {
-            // Logik zum Bearbeiten des Testfalls
-            alert('Testfall bearbeiten: ' + index);
+        // Funktion zum Speichern des Testergebnisses
+        function saveTestergebnis(index, newTestergebnis) {
+            const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
+            if (testfälle[index]) {
+                testfälle[index].testergebnis = newTestergebnis;
+                localStorage.setItem('testfälle', JSON.stringify(testfälle));
+                renderTestfallTable(); // Tabelle neu rendern, um die Änderungen anzuzeigen
+            }
         }
 
-        function editTestfall(index) {
-            // Speichere den Index des Testfalls im lokalen Speicher
-            localStorage.setItem('editTestfallIndex', index);
-
-            // Weiterleitung zur Testfall erstellen-Seite im Bearbeitungsmodus
-            window.location.href = 'testfall-erstellen.html?editMode=true';
+        // Funktion zum Aktualisieren des Status
+        function updateStatus(index, newStatus) {
+            const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
+            if (testfälle[index]) {
+                testfälle[index].status = newStatus.charAt(0).toUpperCase() + newStatus.slice(1);
+                localStorage.setItem('testfälle', JSON.stringify(testfälle));
+                renderTestfallTable(); // Tabelle neu rendern, um die Änderungen anzuzeigen
+            }
         }
 
         // Initialisierung nach dem Laden des DOM
