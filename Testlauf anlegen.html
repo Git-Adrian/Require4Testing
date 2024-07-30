@@ -102,6 +102,19 @@
         th {
             background-color: #f4f4f9;
         }
+        /* Farben für verschiedene Status */
+        .status-open {
+            background-color: #fcf8e3; /* Orange für Offen */
+            color: #000; /* Schwarzer Text für bessere Lesbarkeit */
+        }
+        .status-erfolgreich {
+            background-color: #dff0d8; /* Grün für Erfolgreich */
+            color: #3c763d; /* Dunkelgrüner Text für bessere Lesbarkeit */
+        }
+        .status-failed {
+            background-color: #f2dede; /* Rot für Fehlgeschlagen */
+            color: #a94442; /* Dunkelroter Text für bessere Lesbarkeit */
+        }
         @media (max-width: 600px) {
             .container {
                 padding: 1rem;
@@ -224,15 +237,33 @@
                 row.insertCell(1).textContent = testlauf.description;
                 row.insertCell(2).textContent = testlauf.tester;
                 row.insertCell(3).textContent = testlauf.testfälle.join(', ');
-                row.insertCell(4).textContent = testlauf.status;
-    
+                
+                const statusCell = row.insertCell(4);
+                statusCell.textContent = testlauf.status;
+
+                // Status-Klasse anwenden
+                switch (testlauf.status) {
+                    case 'Offen':
+                        statusCell.classList.add('status-open');
+                        break;
+                    case 'Erfolgreich':
+                        statusCell.classList.add('status-erfolgreich');
+                        break;
+                    case 'Fehlgeschlagen':
+                        statusCell.classList.add('status-failed');
+                        break;
+                    default:
+                        statusCell.classList.add('status-open'); // Default-Farbe
+                        break;
+                }
+
                 const actionsCell = row.insertCell(5);
                 const editButton = document.createElement('button');
                 editButton.textContent = 'Bearbeiten';
                 editButton.className = 'edit-button';
                 editButton.onclick = () => editTestlauf(index);
                 actionsCell.appendChild(editButton);
-    
+
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Löschen';
                 deleteButton.className = 'delete-button';

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testfall erstellen - Require4Testing</title>
     <style>
-        /* CSS-Stile wie zuvor definiert, aber jetzt mit zusätzlichen Regeln für Zeilenfarben */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -106,15 +105,15 @@
         th {
             background-color: #f4f4f9;
         }
-        /* Zusätzliche Stile für die Zeilenfarben basierend auf dem Status */
+        /* Farben für Status in den Tabellenzeilen */
         .status-offen {
-            background-color: white;
+            background-color: #fcf8e3; /* Orange für Offen */
         }
         .status-erfolgreich {
-            background-color: #dff0d8;
+            background-color: #dff0d8; /* Grün für Erfolgreich */
         }
         .status-failed {
-            background-color: #f2dede;
+            background-color: #f2dede; /* Rot für Fehlgeschlagen */
         }
         @media (max-width: 600px) {
             .container {
@@ -277,7 +276,6 @@
             const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
             const anforderungSelect = document.getElementById('anforderung');
 
-            // Sammeln von Anforderungen, die bereits in Testfällen verwendet werden
             const verwendeteAnforderungen = new Set(testfälle.map(testfall => testfall.anforderung));
 
             anforderungSelect.innerHTML = '';
@@ -371,7 +369,6 @@
             const isEditMode = urlParams.get('editMode') === 'true';
 
             if (isEditMode) {
-                // Bearbeitungsmodus: Lade die Testfalldaten
                 const index = localStorage.getItem('editTestfallIndex');
                 if (index !== null) {
                     loadTestfallForEditing(index);
