@@ -100,19 +100,40 @@
     <script>
         document.getElementById('registrationForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            const username = document.getElementById('regUsername').value;
+            
+            const username = document.getElementById('regUsername').value.trim();
             const password = document.getElementById('regPassword').value;
             const role = document.getElementById('role').value;
+
+            // Validate input
+            if (!username || !password || !role) {
+                showMessage('Bitte füllen Sie alle Felder aus.');
+                return;
+            }
 
             let users = localStorage.getItem('users');
             users = users ? JSON.parse(users) : [];
 
+            // Check if username already exists
+            const userExists = users.some(user => user.username === username);
+            if (userExists) {
+                showMessage('Dieser Benutzername ist bereits vergeben.');
+                return;
+            }
+
+            // Add new user
             users.push({ username, password, role });
             localStorage.setItem('users', JSON.stringify(users));
 
             alert('Registrierung erfolgreich!');
             document.getElementById('registrationForm').reset();
+            document.getElementById('message').textContent = ''; // Clear the message
         });
+
+        function showMessage(message) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = message;
+        }
     </script>
 </body>
 </html>
