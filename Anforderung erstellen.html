@@ -164,6 +164,7 @@
                     <th>Kategorie</th>
                     <th>Testkriterien</th>
                     <th>Ersteller</th>
+                    <th>Status</th>
                     <th>Aktionen</th>
                 </tr>
             </thead>
@@ -191,7 +192,8 @@
                 priority,
                 category,
                 testCriteria,
-                creator
+                creator,
+                hasTestCase: false // Status, ob ein Testfall erstellt wurde
             };
 
             let requirements = localStorage.getItem('requirements');
@@ -223,8 +225,10 @@
                 row.insertCell(3).textContent = requirement.category;
                 row.insertCell(4).textContent = requirement.testCriteria;
                 row.insertCell(5).textContent = requirement.creator;
+                
+                // Zeigt, ob ein Testfall existiert
+                row.insertCell(6).textContent = requirement.hasTestCase ? 'Testfall vorhanden' : 'Kein Testfall';
 
-                // Assign priority class based on requirement priority
                 if (requirement.priority === 'hoch') {
                     row.classList.add('priority-high');
                 } else if (requirement.priority === 'mittel') {
@@ -232,19 +236,21 @@
                 } else if (requirement.priority === 'niedrig') {
                     row.classList.add('priority-low');
                 }
-                
-                const actionsCell = row.insertCell(6);
-                const editButton = document.createElement('button');
-                editButton.textContent = 'Bearbeiten';
-                editButton.className = 'edit-button';
-                editButton.onclick = () => editRequirement(index);
-                actionsCell.appendChild(editButton);
-                
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Löschen';
-                deleteButton.className = 'delete-button';
-                deleteButton.onclick = () => deleteRequirement(index);
-                actionsCell.appendChild(deleteButton);
+
+                const actionsCell = row.insertCell(7);
+                if (!requirement.hasTestCase) { // Nur bearbeiten/löschen, wenn kein Testfall existiert
+                    const editButton = document.createElement('button');
+                    editButton.textContent = 'Bearbeiten';
+                    editButton.className = 'edit-button';
+                    editButton.onclick = () => editRequirement(index);
+                    actionsCell.appendChild(editButton);
+                    
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Löschen';
+                    deleteButton.className = 'delete-button';
+                    deleteButton.onclick = () => deleteRequirement(index);
+                    actionsCell.appendChild(deleteButton);
+                }
             });
         }
 

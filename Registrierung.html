@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrierung - Require4Testing</title>
+    <title>Require4Testing</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,7 +16,7 @@
             height: 100vh;
         }
         .container {
-            max-width: 400px;
+            max-width: 600px;
             width: 100%;
             background: white;
             padding: 2rem;
@@ -74,11 +74,51 @@
         .back-button:hover {
             background-color: #ddd;
         }
+        .admin-button {
+            background-color: #007bff;
+            color: white;
+        }
+        .admin-button:hover {
+            background-color: #0056b3;
+        }
+        .table-container {
+            display: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .edit-button, .delete-button {
+            background-color: #f0ad4e;;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+        .edit-button:hover {
+            background-color: #ec971f;
+        }
+        .delete-button {
+            background-color: #dc3545;
+        }
+        .delete-button:hover {
+            background-color: #c82333;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Registrierung</h1>
+        <h1 id="formTitle">Registrierung</h1>
         <form id="registrationForm">
             <label for="regUsername">Benutzername</label>
             <input type="text" id="regUsername" name="username" required>
@@ -93,8 +133,23 @@
             </select>
             <button type="submit">Registrieren</button>
             <button type="button" class="back-button" onclick="window.location.href='index.html'">Zurück zur Startseite</button>
+            <button type="button" class="admin-button" onclick="showForm('admin')">Verwaltung</button>
             <div class="message" id="message"></div>
         </form>
+        <div class="table-container" id="tableContainer">
+             
+            <table id="userTable">
+                <thead>
+                    <tr>
+                        <th>Benutzername</th>
+                        <th>Rolle</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button type="button" class="back-button" onclick="showForm('registration')">Zurück zur Registrierung</button>
+        </div>
     </div>
 
     <script>
@@ -105,7 +160,6 @@
             const password = document.getElementById('regPassword').value;
             const role = document.getElementById('role').value;
 
-            // Validate input
             if (!username || !password || !role) {
                 showMessage('Bitte füllen Sie alle Felder aus.');
                 return;
@@ -114,25 +168,86 @@
             let users = localStorage.getItem('users');
             users = users ? JSON.parse(users) : [];
 
-            // Check if username already exists
             const userExists = users.some(user => user.username === username);
             if (userExists) {
                 showMessage('Dieser Benutzername ist bereits vergeben.');
                 return;
             }
 
-            // Add new user
             users.push({ username, password, role });
             localStorage.setItem('users', JSON.stringify(users));
 
             alert('Registrierung erfolgreich!');
             document.getElementById('registrationForm').reset();
-            document.getElementById('message').textContent = ''; // Clear the message
+            document.getElementById('message').textContent = '';
         });
 
         function showMessage(message) {
             const messageDiv = document.getElementById('message');
             messageDiv.textContent = message;
+        }
+
+        function showForm(form) {
+            if (form === 'registration') {
+                document.getElementById('registrationForm').style.display = 'block';
+                document.getElementById('tableContainer').style.display = 'none';
+                document.getElementById('formTitle').textContent = 'Registrierung';
+            } else if (form === 'admin') {
+                document.getElementById('registrationForm').style.display = 'none';
+                document.getElementById('tableContainer').style.display = 'block';
+                document.getElementById('formTitle').textContent = 'Verwaltung der Anwender';
+                loadUserTable();
+            }
+        }
+
+        function loadUserTable() {
+            const userTable = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+            userTable.innerHTML = '';
+
+            let users = localStorage.getItem('users');
+            users = users ? JSON.parse(users) : [];
+
+            users.forEach((user, index) => {
+                const row = userTable.insertRow();
+                row.insertCell(0).textContent = user.username;
+                row.insertCell(1).textContent = user.role;
+
+                const actionsCell = row.insertCell(2);
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Bearbeiten';
+                editButton.className = 'edit-button';
+                editButton.onclick = () => editUser(index);
+                
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Löschen';
+                deleteButton.className = 'delete-button';
+                deleteButton.onclick = () => deleteUser(index);
+
+                actionsCell.appendChild(editButton);
+                actionsCell.appendChild(deleteButton);
+            });
+        }
+
+        function editUser(index) {
+            let users = localStorage.getItem('users');
+            users = users ? JSON.parse(users) : [];
+
+            const user = users[index];
+            document.getElementById('regUsername').value = user.username;
+            document.getElementById('regPassword').value = user.password;
+            document.getElementById('role').value = user.role;
+
+            showForm('registration');
+        }
+
+        function deleteUser(index) {
+            let users = localStorage.getItem('users');
+            users = users ? JSON.parse(users) : [];
+
+            users.splice(index, 1);
+            localStorage.setItem('users', JSON.stringify(users));
+
+            loadUserTable();
         }
     </script>
 </body>
