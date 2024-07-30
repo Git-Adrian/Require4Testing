@@ -128,6 +128,7 @@
                         <th>Tester</th>
                         <th>Status</th>
                         <th>Testergebnis</th>
+                        <th>Aktionen</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -143,12 +144,14 @@
     <script>
         // Funktion zum Abrufen des aktuell angemeldeten Benutzers
         function getCurrentUser() {
-            return localStorage.getItem('currentUser');
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            return loggedInUser ? loggedInUser.username : null;
         }
 
         // Funktion zum Rendern der Testfall-Tabelle
         function renderTestfallTable() {
             const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
+            const currentUser = getCurrentUser();
             const tableBody = document.getElementById('testfallTabelle').getElementsByTagName('tbody')[0];
             tableBody.innerHTML = '';
 
@@ -161,7 +164,7 @@
                 row.insertCell(3).textContent = testfall.schritte;
                 row.insertCell(4).textContent = testfall.erwartetesErgebnis;
                 row.insertCell(5).textContent = testfall.tester || 'Nicht zugewiesen';
-                
+
                 const statusCell = row.insertCell(6);
                 statusCell.textContent = testfall.status ? testfall.status.charAt(0).toUpperCase() + testfall.status.slice(1) : 'Offen';
 
@@ -181,7 +184,31 @@
                         row.classList.add('status-open');
                         break;
                 }
+
+                // Aktionen-Button nur für den zugewiesenen Tester anzeigen
+                const actionsCell = row.insertCell(8);
+                if (currentUser && testfall.tester === currentUser) {
+                    const editButton = document.createElement('button');
+                    editButton.textContent = 'Bearbeiten';
+                    editButton.className = 'edit-button';
+                    editButton.onclick = () => editTestfall(index);
+                    actionsCell.appendChild(editButton);
+                }
             });
+        }
+
+        // Funktion zum Bearbeiten eines Testfalls (Beispielhaft, Details je nach Logik)
+        function editTestfall(index) {
+            // Logik zum Bearbeiten des Testfalls
+            alert('Testfall bearbeiten: ' + index);
+        }
+
+        function editTestfall(index) {
+            // Speichere den Index des Testfalls im lokalen Speicher
+            localStorage.setItem('editTestfallIndex', index);
+
+            // Weiterleitung zur Testfall erstellen-Seite im Bearbeitungsmodus
+            window.location.href = 'testfall-erstellen.html?editMode=true';
         }
 
         // Initialisierung nach dem Laden des DOM

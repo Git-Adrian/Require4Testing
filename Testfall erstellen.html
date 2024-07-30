@@ -256,6 +256,22 @@
             renderTestfallTable();
         });
 
+        function loadTestfallForEditing(index) {
+            const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
+            const testfall = testfälle[index];
+
+            if (testfall) {
+                document.getElementById('anforderung').value = testfall.anforderung;
+                document.getElementById('testfallName').value = testfall.testfallName;
+                document.getElementById('beschreibung').value = testfall.beschreibung;
+                document.getElementById('schritte').value = testfall.schritte;
+                document.getElementById('erwartetesErgebnis').value = testfall.erwartetesErgebnis;
+                document.getElementById('tester').value = testfall.tester;
+                document.getElementById('status').value = testfall.status;
+                document.getElementById('testergebnis').value = testfall.testergebnis;
+            }
+        }
+
         function updateAnforderungenDropdown() {
             const anforderungen = JSON.parse(localStorage.getItem('requirements')) || [];
             const testfälle = JSON.parse(localStorage.getItem('testfälle')) || [];
@@ -351,6 +367,17 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const isEditMode = urlParams.get('editMode') === 'true';
+
+            if (isEditMode) {
+                // Bearbeitungsmodus: Lade die Testfalldaten
+                const index = localStorage.getItem('editTestfallIndex');
+                if (index !== null) {
+                    loadTestfallForEditing(index);
+                }
+            }
+
             updateAnforderungenDropdown();
             updateTestersDropdown();
             renderTestfallTable();
