@@ -178,7 +178,7 @@
         // Funktion zum Abrufen des aktuell angemeldeten Benutzers
         function getCurrentUser() {
             const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-            return loggedInUser ? loggedInUser.username : null;
+            return loggedInUser ? loggedInUser : null;
         }
 
         // Funktion zum Rendern der Testfall-Tabelle
@@ -212,12 +212,12 @@
                     statusSelect.appendChild(opt);
                 });
 
-                statusSelect.disabled = !(currentUser && testfall.tester === currentUser);
+                statusSelect.disabled = !(currentUser && testfall.tester === currentUser.username);
                 statusSelect.addEventListener('change', () => updateStatus(index, statusSelect.value));
                 statusCell.appendChild(statusSelect);
 
                 const testergebnisCell = row.insertCell(7);
-                const isEditable = currentUser && testfall.tester === currentUser;
+                const isEditable = currentUser && testfall.tester === currentUser.username;
                 if (isEditable) {
                     // Wenn der Tester das Testergebnis bearbeiten kann
                     const input = document.createElement('input');
@@ -284,15 +284,22 @@
                 testerSelect.appendChild(option);
             });
 
-            testerSelect.addEventListener('change', () => {
-                renderTestfallTable(testerSelect.value);
-            });
+            // Filter standardmäßig auf den eingeloggten Tester setzen, falls vorhanden
+            const currentUser = getCurrentUser();
+            if (currentUser && currentUser.role === 'Tester') {
+                testerSelect.value = currentUser.username;
+                renderTestfallTable(currentUser.username);
+            } else {
+                testerSelect.addEventListener('change', () => {
+                    renderTestfallTable(testerSelect.value);
+                });
+                renderTestfallTable(); // Initiales Rendern der Tabelle ohne Filter
+            }
         }
 
         // Initialisierung nach dem Laden des DOM
         document.addEventListener('DOMContentLoaded', () => {
             initializeTesterFilter();
-            renderTestfallTable(); // Initiales Rendern der Tabelle ohne Filter
         });
     </script>
 </body>

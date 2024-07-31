@@ -198,6 +198,7 @@
             const testCaseButton = document.getElementById('createTestCaseButton');
             const overviewTestRunsButton = document.getElementById('overviewTestRunsButton');
             const overviewRequirementsButton = document.getElementById('overviewRequirementsButton');
+            const overviewTestCasesButton = document.getElementById('overviewTestCasesButton');
 
             if (loggedInUser) {
                 const user = JSON.parse(loggedInUser);
@@ -207,10 +208,17 @@
                 document.getElementById('authButtons').classList.add('hidden');
 
                 // Rechte für Anforderungserstellung
-                requirementButton.classList.remove('disabled');
-                requirementButton.onclick = function() {
-                    window.location.href = 'Anforderung erstellen.html';
-                };
+                if (user.role === 'Requirements Engineer') {
+                    requirementButton.classList.remove('disabled');
+                    requirementButton.onclick = function() {
+                        window.location.href = 'Anforderung erstellen.html';
+                    };
+                } else {
+                    requirementButton.classList.add('disabled');
+                    requirementButton.onclick = function() {
+                        // Keine Aktion
+                    };
+                }
 
                 // Rechte für Testlauf-Erstellung
                 if (user.role === 'Testmanager') {
@@ -239,13 +247,34 @@
                     testCaseButton.onclick = function() {
                         window.location.href = 'Testfall erstellen.html';
                     };
+                    overviewTestCasesButton.classList.remove('disabled');
+                    overviewTestCasesButton.onclick = function() {
+                        window.location.href = 'Übersicht Testfall.html';
+                    };
                 } else {
                     testCaseButton.classList.add('disabled');
                     testCaseButton.onclick = function() {
                         // Keine Aktion
                     };
+                    overviewTestCasesButton.classList.add('disabled');
+                    overviewTestCasesButton.onclick = function() {
+                        // Keine Aktion
+                    };
                 }
-                
+
+                // Rechte für Tester
+                if (user.role === 'Tester') {
+                    overviewTestCasesButton.classList.remove('disabled');
+                    overviewTestCasesButton.onclick = function() {
+                        window.location.href = 'Übersicht Testfall.html';
+                    };
+                } else {
+                    overviewTestCasesButton.classList.add('disabled');
+                    overviewTestCasesButton.onclick = function() {
+                        // Keine Aktion
+                    };
+                }
+
                 // "Anforderungen"-Button aktivieren
                 overviewRequirementsButton.classList.remove('disabled');
                 overviewRequirementsButton.onclick = function() {
@@ -285,7 +314,7 @@
                 const password = document.getElementById('loginPassword').value;
                 // Dummy-Authentifizierung
                 if (username && password) {
-                    const user = { username, role: 'Testmanager' }; // Beispielrolle
+                    const user = { username, role: 'Tester' }; // Beispielrolle
                     localStorage.setItem('loggedInUser', JSON.stringify(user));
                     displayAuthButtons();
                     toggleForm('loginForm');
