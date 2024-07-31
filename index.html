@@ -230,6 +230,13 @@
                     overviewTestRunsButton.onclick = function() {
                         window.location.href = 'Übersicht Testlauf.html';
                     };
+
+                    // Testfälle für Testmanager aktivieren
+                     
+                    overviewTestCasesButton.classList.remove('disabled');
+                    overviewTestCasesButton.onclick = function() {
+                        window.location.href = 'Übersicht Testfall.html';
+                    };
                 } else {
                     testRunButton.classList.add('disabled');
                     testRunButton.onclick = function() {
@@ -239,27 +246,27 @@
                     overviewTestRunsButton.onclick = function() {
                         // Keine Aktion
                     };
-                }
 
-                // Rechte für Testfallerstellung
-                if (user.role === 'Testfallersteller') {
-                    testCaseButton.classList.remove('disabled');
-                    testCaseButton.onclick = function() {
-                        window.location.href = 'Testfall erstellen.html';
-                    };
-                    overviewTestCasesButton.classList.remove('disabled');
-                    overviewTestCasesButton.onclick = function() {
-                        window.location.href = 'Übersicht Testfall.html';
-                    };
-                } else {
-                    testCaseButton.classList.add('disabled');
-                    testCaseButton.onclick = function() {
-                        // Keine Aktion
-                    };
-                    overviewTestCasesButton.classList.add('disabled');
-                    overviewTestCasesButton.onclick = function() {
-                        // Keine Aktion
-                    };
+                    // Testfälle für Testmanager
+                    if (user.role === 'Testfallersteller') {
+                        testCaseButton.classList.remove('disabled');
+                        testCaseButton.onclick = function() {
+                            window.location.href = 'Testfall erstellen.html';
+                        };
+                        overviewTestCasesButton.classList.remove('disabled');
+                        overviewTestCasesButton.onclick = function() {
+                            window.location.href = 'Übersicht Testfall.html';
+                        };
+                    } else {
+                        testCaseButton.classList.add('disabled');
+                        testCaseButton.onclick = function() {
+                            // Keine Aktion
+                        };
+                        overviewTestCasesButton.classList.add('disabled');
+                        overviewTestCasesButton.onclick = function() {
+                            // Keine Aktion
+                        };
+                    }
                 }
 
                 // Rechte für Tester
@@ -268,11 +275,7 @@
                     overviewTestCasesButton.onclick = function() {
                         window.location.href = 'Übersicht Testfall.html';
                     };
-                } else {
-                    overviewTestCasesButton.classList.add('disabled');
-                    overviewTestCasesButton.onclick = function() {
-                        // Keine Aktion
-                    };
+                 
                 }
 
                 // "Anforderungen"-Button aktivieren
@@ -335,6 +338,7 @@
                 }
             });
         });
+
     </script>
 </body>
 </html>
