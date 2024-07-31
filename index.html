@@ -312,38 +312,7 @@
         function redirectTo(page) {
             window.location.href = page;
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            displayAuthButtons();
-
-            document.getElementById('login').addEventListener('submit', (event) => {
-                event.preventDefault();
-                const username = document.getElementById('loginUsername').value;
-                const password = document.getElementById('loginPassword').value;
-                // Dummy-Authentifizierung
-                if (username && password) {
-                    const user = { username, role: 'Tester' }; // Beispielrolle
-                    localStorage.setItem('loggedInUser', JSON.stringify(user));
-                    displayAuthButtons();
-                    toggleForm('loginForm');
-                }
-            });
-
-            document.getElementById('registration').addEventListener('submit', (event) => {
-                event.preventDefault();
-                const username = document.getElementById('regUsername').value;
-                const password = document.getElementById('regPassword').value;
-                const role = document.getElementById('role').value;
-                // Dummy-Registrierung
-                if (username && password && role) {
-                    const user = { username, role };
-                    localStorage.setItem('loggedInUser', JSON.stringify(user));
-                    displayAuthButtons();
-                    toggleForm('registrationForm');
-                }
-            });
-        });
-
+ 
     </script>
 </body>
 </html>

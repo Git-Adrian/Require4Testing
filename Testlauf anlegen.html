@@ -244,16 +244,16 @@
                 // Status-Klasse anwenden
                 switch (testlauf.status) {
                     case 'Offen':
-                        statusCell.classList.add('status-open');
+                        row.classList.add('status-open');
                         break;
                     case 'Erfolgreich':
-                        statusCell.classList.add('status-erfolgreich');
+                        row.classList.add('status-erfolgreich');
                         break;
                     case 'Fehlgeschlagen':
-                        statusCell.classList.add('status-failed');
+                        row.classList.add('status-failed');
                         break;
                     default:
-                        statusCell.classList.add('status-open'); // Default-Farbe
+                        row.classList.add('status-open'); // Default-Farbe
                         break;
                 }
 
