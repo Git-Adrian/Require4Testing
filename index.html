@@ -136,13 +136,13 @@
         <h1>Willkommen zu Require4Testing</h1>
         <p>Erstellen und verwalten Sie Anforderungen einfach und effizient.</p>
         <button id="createRequirementButton" class="disabled">Anforderung erstellen</button>
-        <button id="overviewRequirementsButton">Anforderungen</button>
+        <button id="overviewRequirementsButton" class="disabled">Anforderungen</button>
         <p>Erstellen und verwalten Sie Testfälle einfach und effizient.</p>
         <button id="createTestCaseButton" class="disabled">Testfall erstellen</button>
-        <button id="overviewTestCasesButton">Testfälle</button>
+        <button id="overviewTestCasesButton" class="disabled">Testfälle</button>
         <p>Erstellen und verwalten Sie Testläufe einfach und effizient.</p>
         <button id="createTestRunButton" class="disabled">Testlauf anlegen</button>
-        <button id="overviewTestRunsButton">Testläufe</button>
+        <button id="overviewTestRunsButton" class="disabled">Testläufe</button>
     </div>
 
     <div class="form-container" id="loginForm">
@@ -197,6 +197,7 @@
             const testRunButton = document.getElementById('createTestRunButton');
             const testCaseButton = document.getElementById('createTestCaseButton');
             const overviewTestRunsButton = document.getElementById('overviewTestRunsButton');
+            const overviewRequirementsButton = document.getElementById('overviewRequirementsButton');
 
             if (loggedInUser) {
                 const user = JSON.parse(loggedInUser);
@@ -204,19 +205,12 @@
                 document.getElementById('role').textContent = user.role;
                 document.getElementById('userInfo').classList.remove('hidden');
                 document.getElementById('authButtons').classList.add('hidden');
-                
+
                 // Rechte für Anforderungserstellung
-                if (user.role === 'Requirements Engineer') {
-                    requirementButton.classList.remove('disabled');
-                    requirementButton.onclick = function() {
-                        window.location.href = 'Anforderung erstellen.html';
-                    };
-                } else {
-                    requirementButton.classList.add('disabled');
-                    requirementButton.onclick = function() {
-                        // Keine Aktion
-                    };
-                }
+                requirementButton.classList.remove('disabled');
+                requirementButton.onclick = function() {
+                    window.location.href = 'Anforderung erstellen.html';
+                };
 
                 // Rechte für Testlauf-Erstellung
                 if (user.role === 'Testmanager') {
@@ -251,18 +245,30 @@
                         // Keine Aktion
                     };
                 }
+                
+                // "Anforderungen"-Button aktivieren
+                overviewRequirementsButton.classList.remove('disabled');
+                overviewRequirementsButton.onclick = function() {
+                    window.location.href = 'Übersicht Anforderung.html';
+                };
             } else {
                 document.getElementById('userInfo').classList.add('hidden');
                 document.getElementById('authButtons').classList.remove('hidden');
 
-                // Deaktivieren aller Buttons
+                // Deaktivieren aller Buttons außer "Anforderungen"
                 const buttons = document.querySelectorAll('.container button');
                 buttons.forEach(button => {
-                    button.classList.add('disabled');
-                    button.onclick = function() {
-                        // Keine Aktion
-                    };
+                    if (button.id !== 'overviewRequirementsButton') {
+                        button.classList.add('disabled');
+                        button.onclick = function() {
+                            // Keine Aktion
+                        };
+                    }
                 });
+                overviewRequirementsButton.classList.add('disabled');
+                overviewRequirementsButton.onclick = function() {
+                    // Keine Aktion
+                };
             }
         }
 
