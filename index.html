@@ -123,9 +123,9 @@
 <body>
     <header>
         <h1>Require4Testing</h1>
-        <div class="header-buttons hidden" id="authButtons">
-            <button onclick="redirectToLogin()">Login</button>
-            <button onclick="redirectToRegistration()">Registrierung</button>
+        <div class="header-buttons" id="authButtons">
+            <button onclick="redirectTo('Login.html')">Login</button>
+            <button onclick="redirectTo('Registrierung.html')">Registrierung</button>
         </div>
         <div class="user-info hidden" id="userInfo">
             <span id="username"></span> (<span id="role"></span>)
@@ -135,16 +135,14 @@
     <div class="container">
         <h1>Willkommen zu Require4Testing</h1>
         <p>Erstellen und verwalten Sie Anforderungen einfach und effizient.</p>
-        <button id="createRequirementButton" class="disabled" onclick="handleCreateRequirementClick()">Anforderung erstellen</button>
-        <button id="overviewRequirementsButton" onclick="redirectToOverviewRequirements()">Anforderungen</button>
-         <p>Erstellen und verwalten Sie Testfälle einfach und effizient.</p>
-        <button id="createTestCaseButton" class="disabled" onclick="handleCreateTestCaseClick()">Testfall erstellen</button>
-        <button id="overviewTestCasesButton" onclick="redirectToOverviewTestCases()">Testfälle</button>
+        <button id="createRequirementButton" class="disabled">Anforderung erstellen</button>
+        <button id="overviewRequirementsButton">Anforderungen</button>
+        <p>Erstellen und verwalten Sie Testfälle einfach und effizient.</p>
+        <button id="createTestCaseButton" class="disabled">Testfall erstellen</button>
+        <button id="overviewTestCasesButton">Testfälle</button>
         <p>Erstellen und verwalten Sie Testläufe einfach und effizient.</p>
-        <button id="createTestRunButton" class="disabled" onclick="handleCreateTestRunClick()">Testlauf anlegen</button>
-        <button id="overviewTestRunsButton" onclick="redirectToOverviewTestRuns()">Testläufe</button>
-       
-         
+        <button id="createTestRunButton" class="disabled">Testlauf anlegen</button>
+        <button id="overviewTestRunsButton">Testläufe</button>
     </div>
 
     <div class="form-container" id="loginForm">
@@ -191,7 +189,6 @@
         function logout() {
             localStorage.removeItem('loggedInUser');
             displayAuthButtons();
-            document.getElementById('testCasesContainer').classList.add('hidden');
         }
 
         function displayAuthButtons() {
@@ -199,7 +196,8 @@
             const requirementButton = document.getElementById('createRequirementButton');
             const testRunButton = document.getElementById('createTestRunButton');
             const testCaseButton = document.getElementById('createTestCaseButton');
-            
+            const overviewTestRunsButton = document.getElementById('overviewTestRunsButton');
+
             if (loggedInUser) {
                 const user = JSON.parse(loggedInUser);
                 document.getElementById('username').textContent = user.username;
@@ -207,6 +205,7 @@
                 document.getElementById('userInfo').classList.remove('hidden');
                 document.getElementById('authButtons').classList.add('hidden');
                 
+                // Rechte für Anforderungserstellung
                 if (user.role === 'Requirements Engineer') {
                     requirementButton.classList.remove('disabled');
                     requirementButton.onclick = function() {
@@ -215,22 +214,32 @@
                 } else {
                     requirementButton.classList.add('disabled');
                     requirementButton.onclick = function() {
-                        // Nothing happens
+                        // Keine Aktion
                     };
                 }
 
+                // Rechte für Testlauf-Erstellung
                 if (user.role === 'Testmanager') {
                     testRunButton.classList.remove('disabled');
                     testRunButton.onclick = function() {
                         window.location.href = 'Testlauf anlegen.html';
                     };
+                    overviewTestRunsButton.classList.remove('disabled');
+                    overviewTestRunsButton.onclick = function() {
+                        window.location.href = 'Übersicht Testlauf.html';
+                    };
                 } else {
                     testRunButton.classList.add('disabled');
                     testRunButton.onclick = function() {
-                        // Nothing happens
+                        // Keine Aktion
+                    };
+                    overviewTestRunsButton.classList.add('disabled');
+                    overviewTestRunsButton.onclick = function() {
+                        // Keine Aktion
                     };
                 }
 
+                // Rechte für Testfallerstellung
                 if (user.role === 'Testfallersteller') {
                     testCaseButton.classList.remove('disabled');
                     testCaseButton.onclick = function() {
@@ -239,102 +248,57 @@
                 } else {
                     testCaseButton.classList.add('disabled');
                     testCaseButton.onclick = function() {
-                        // Nothing happens
+                        // Keine Aktion
                     };
                 }
             } else {
                 document.getElementById('userInfo').classList.add('hidden');
                 document.getElementById('authButtons').classList.remove('hidden');
-                document.getElementById('testCasesContainer').classList.add('hidden');
-                
+
+                // Deaktivieren aller Buttons
                 const buttons = document.querySelectorAll('.container button');
                 buttons.forEach(button => {
                     button.classList.add('disabled');
                     button.onclick = function() {
-                        // Nothing happens
+                        // Keine Aktion
                     };
                 });
             }
         }
 
-        function redirectToLogin() {
-            window.location.href = 'login.html';
-        }
-         
-        function redirectToRegistration() {
-            window.location.href = 'registrierung.html';
+        function redirectTo(page) {
+            window.location.href = page;
         }
 
-        function redirectToOverviewRequirements() {
-            window.location.href = 'Übersicht Anforderung.html';
-        }
-
-        function redirectToOverviewTestRuns() {
-            window.location.href = 'Übersicht Testlauf.html'; // Link zur Übersicht Testlauf.html
-        }
-
-        function redirectToOverviewTestCases() {
-            window.location.href = 'Übersicht Testfall.html'; // Link zur Übersicht Testfall.html
-        }
-
-        function handleCreateRequirementClick() {
-            if (document.getElementById('createRequirementButton').classList.contains('disabled')) {
-                return; // Do nothing if the button is disabled
-            }
-            window.location.href = 'Anforderung erstellen.html';
-        }
-
-        function handleCreateTestRunClick() {
-            if (document.getElementById('createTestRunButton').classList.contains('disabled')) {
-                return; // Do nothing if the button is disabled
-            }
-            window.location.href = 'Testlauf anlegen.html';
-        }
-
-        function handleCreateTestCaseClick() {
-            if (document.getElementById('createTestCaseButton').classList.contains('disabled')) {
-                return; // Do nothing if the button is disabled
-            }
-            window.location.href = 'Testfall erstellen.html';
-        }
-
-        document.getElementById('registration').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const username = document.getElementById('regUsername').value;
-            const password = document.getElementById('regPassword').value;
-            const role = document.getElementById('role').value;
-
-            let users = localStorage.getItem('users');
-            users = users ? JSON.parse(users) : [];
-
-            users.push({ username, password, role });
-            localStorage.setItem('users', JSON.stringify(users));
-
-            alert('Registrierung erfolgreich!');
-            document.getElementById('registration').reset();
-            toggleForm('registrationForm');
-        });
-
-        document.getElementById('login').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = users.find(user => user.username === username && user.password === password);
-
-            if (user) {
-                localStorage.setItem('loggedInUser', JSON.stringify(user));
-                displayAuthButtons();
-                toggleForm('loginForm');
-                alert('Login erfolgreich!');
-            } else {
-                alert('Ungültige Anmeldedaten');
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', () => {
             displayAuthButtons();
+
+            document.getElementById('login').addEventListener('submit', (event) => {
+                event.preventDefault();
+                const username = document.getElementById('loginUsername').value;
+                const password = document.getElementById('loginPassword').value;
+                // Dummy-Authentifizierung
+                if (username && password) {
+                    const user = { username, role: 'Testmanager' }; // Beispielrolle
+                    localStorage.setItem('loggedInUser', JSON.stringify(user));
+                    displayAuthButtons();
+                    toggleForm('loginForm');
+                }
+            });
+
+            document.getElementById('registration').addEventListener('submit', (event) => {
+                event.preventDefault();
+                const username = document.getElementById('regUsername').value;
+                const password = document.getElementById('regPassword').value;
+                const role = document.getElementById('role').value;
+                // Dummy-Registrierung
+                if (username && password && role) {
+                    const user = { username, role };
+                    localStorage.setItem('loggedInUser', JSON.stringify(user));
+                    displayAuthButtons();
+                    toggleForm('registrationForm');
+                }
+            });
         });
     </script>
 </body>
