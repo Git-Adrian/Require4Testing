@@ -224,6 +224,22 @@
 
             requirements.forEach((requirement, index) => {
                 const row = tableBody.insertRow();
+                
+                // Hintergrundfarbe basierend auf Priorität
+                let priorityClass = '';
+                switch (requirement.priority) {
+                    case 'hoch':
+                        priorityClass = 'priority-high';
+                        break;
+                    case 'mittel':
+                        priorityClass = 'priority-medium';
+                        break;
+                    case 'niedrig':
+                        priorityClass = 'priority-low';
+                        break;
+                }
+                row.className = priorityClass;
+
                 row.insertCell(0).textContent = requirement.title;
                 row.insertCell(1).textContent = requirement.description;
                 row.insertCell(2).textContent = requirement.priority;
@@ -238,7 +254,7 @@
                     editButton.className = 'edit-button';
                     editButton.onclick = () => editRequirement(index);
                     actionsCell.appendChild(editButton);
-                    
+
                     const deleteButton = document.createElement('button');
                     deleteButton.textContent = 'Löschen';
                     deleteButton.className = 'delete-button';
@@ -247,6 +263,7 @@
                 }
             });
         }
+
 
         function editRequirement(index) {
             const requirements = JSON.parse(localStorage.getItem('requirements'));
