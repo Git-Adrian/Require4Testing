@@ -98,7 +98,7 @@
             background-color: #f4f4f4;
         }
         .edit-button, .delete-button {
-            background-color: #f0ad4e;;
+            background-color: #f0ad4e;
             color: white;
             border: none;
             padding: 0.5rem;
@@ -113,6 +113,20 @@
         }
         .delete-button:hover {
             background-color: #c82333;
+        }
+
+        /* Role color styles */
+        .Requirements-Engineer {
+            background-color: #d4edda; /* Light green */
+        }
+        .Testmanager {
+            background-color: #cce5ff; /* Light blue */
+        }
+        .Testfallersteller {
+            background-color: #fff3cd; /* Light yellow */
+        }
+        .Tester {
+            background-color: #f8d7da; /* Light red */
         }
     </style>
 </head>
@@ -137,7 +151,6 @@
             <div class="message" id="message"></div>
         </form>
         <div class="table-container" id="tableContainer">
-             
             <table id="userTable">
                 <thead>
                     <tr>
@@ -209,6 +222,8 @@
 
             users.forEach((user, index) => {
                 const row = userTable.insertRow();
+                row.className = user.role.replace(/\s+/g, '-'); // Replace spaces with hyphens
+
                 row.insertCell(0).textContent = user.username;
                 row.insertCell(1).textContent = user.role;
 
