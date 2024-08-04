@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qualitätssicherung in der Softwareentwicklung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-image: url('Bilder/bild7.jpeg');  
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 1rem;
+        }
+        .section {
+            margin: 1rem 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .overview, .exercise {
+            background-color: white;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        .hidden {
+            display: none;
+        }
+        .collapsible-header {
+            cursor: pointer;
+            padding: 0.5rem;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+        .collapsible-content {
+            padding: 1rem;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        .collapsible-content.hidden {
+            display: none;
+        }
+        #card-question {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #card-question:hover {
+            background-color: #1976D2;
+        }
+        .answer {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header> 
+    </header>
+    
+    <div class="container">
+        <h1>Qualitätssicherung in der Softwareentwicklung</h1>
+        
+        <div class="section">
+            <h2>Kapitel auswählen</h2>
+            <select id="chapterSelector" onchange="showChapterContent()">
+                <option value="">Bitte wählen Sie ein Kapitel</option>
+                <option value="chapter1">Kapitel 1: Einführung</option>
+                <option value="chapter2">Kapitel 2: Methoden</option>
+                <option value="chapter3">Kapitel 3: Werkzeuge</option>
+                <!-- Weitere Kapitel können hier hinzugefügt werden -->
+            </select>
+        </div>
+
+        <div id="chapter1" class="section hidden">
+            <h2>Kapitel 1: Einführung</h2>
+            <div class="collapsible-header" onclick="toggleContent('content1')">Karteikarten lernen</div>
+            <div id="content1" class="collapsible-content hidden">
+                <button id="card-question" onclick="startCardQuiz('chapter1')">Karteikarten abfragen</button>
+                <div id="card-overview-chapter1">
+                    <p id="card-count-chapter1"></p>
+                   
+                </div>
+                <div id="card-quiz-chapter1" class="hidden"></div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content2')">Übersichten ansehen</div>
+            <div id="content2" class="collapsible-content hidden">
+                <div class="overview">
+                    <h4>Übersicht 1</h4>
+                    <p>Grundlagen der Qualitätssicherung.</p>
+                </div>
+                <div class="overview">
+                    <h4>Übersicht 2</h4>
+                    <p>Prozesse und Methoden.</p>
+                </div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content3')">Übungsaufgaben</div>
+            <div id="content3" class="collapsible-content hidden">
+                <div class="exercise">
+                    <h4>Übungsaufgabe 1</h4>
+                    <p>Beschreiben Sie den Begriff der Qualitätssicherung.</p>
+                    <button onclick="showSolution('exercise1')">Lösung anzeigen</button>
+                    <div id="exercise1" class="hidden answer">
+                        <p>Die Qualitätssicherung umfasst alle Maßnahmen zur Sicherstellung der Qualität von Software.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="chapter2" class="section hidden">
+            <h2>Kapitel 2: Methoden</h2>
+            <div class="collapsible-header" onclick="toggleContent('content4')">Karteikarten lernen</div>
+            <div id="content4" class="collapsible-content hidden">
+                <button id="card-question" onclick="startCardQuiz('chapter2')">Karteikarten abfragen</button>
+                <div id="card-overview-chapter2">
+                    <p id="card-count-chapter2"></p>
+                   
+                </div>
+                <div id="card-quiz-chapter2" class="hidden"></div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content5')">Übersichten ansehen</div>
+            <div id="content5" class="collapsible-content hidden">
+                <div class="overview">
+                    <h4>Übersicht 1</h4>
+                    <p>Übersicht der Methoden der Qualitätssicherung.</p>
+                </div>
+                <div class="overview">
+                    <h4>Übersicht 2</h4>
+                    <p>Prozesse und Standards.</p>
+                </div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content6')">Übungsaufgaben</div>
+            <div id="content6" class="collapsible-content hidden">
+                <div class="exercise">
+                    <h4>Übungsaufgabe 1</h4>
+                    <p>Erklären Sie die Unterschiede zwischen verschiedenen Methoden.</p>
+                    <button onclick="showSolution('exercise2')">Lösung anzeigen</button>
+                    <div id="exercise2" class="hidden answer">
+                        <p>Unterschiede bestehen in den Ansätzen, Zielen und Anwendungen der Methoden.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="chapter3" class="section hidden">
+            <h2>Kapitel 3: Werkzeuge</h2>
+            <div class="collapsible-header" onclick="toggleContent('content7')">Karteikarten lernen</div>
+            <div id="content7" class="collapsible-content hidden">
+                <button id="card-question" onclick="startCardQuiz('chapter3')">Karteikarten abfragen</button>
+                <div id="card-overview-chapter3">
+                    <p id="card-count-chapter3"></p>
+                   
+                </div>
+                <div id="card-quiz-chapter3" class="hidden"></div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content8')">Übersichten ansehen</div>
+            <div id="content8" class="collapsible-content hidden">
+                <div class="overview">
+                    <h4>Übersicht 1</h4>
+                    <p>Werkzeuge für die Qualitätssicherung.</p>
+                </div>
+                <div class="overview">
+                    <h4>Übersicht 2</h4>
+                    <p>Vergleich von Werkzeugen.</p>
+                </div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content9')">Übungsaufgaben</div>
+            <div id="content9" class="collapsible-content hidden">
+                <div class="exercise">
+                    <h4>Übungsaufgabe 1</h4>
+                    <p>Beschreiben Sie die Verwendung von Qualitätssicherungswerkzeugen.</p>
+                    <button onclick="showSolution('exercise3')">Lösung anzeigen</button>
+                    <div id="exercise3" class="hidden answer">
+                        <p>Werkzeuge werden verwendet, um Prozesse zu automatisieren und die Qualität zu verbessern.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button onclick="goBack()">Zurück zur Auswahl</button>
+        </div>
+    </div>
+
+    <script>
+        let quizActive = false;
+        let currentCardIndex = 0;
+        let currentCards = [];
+        const cards = {
+            chapter1: [
+                { question: 'Karteikarte 1: Einführung in die Qualitätssicherung', answer: 'Antwort 1' },
+                { question: 'Karteikarte 2: Wichtige Begriffe der Qualitätssicherung', answer: 'Antwort 2' }
+            ],
+            chapter2: [
+                { question: 'Karteikarte 1: Wichtige Methoden der Qualitätssicherung', answer: 'Antwort 1' },
+                { question: 'Karteikarte 2: Vergleich der Methoden', answer: 'Antwort 2' }
+            ],
+            chapter3: [
+                { question: 'Karteikarte 1: Werkzeuge zur Qualitätssicherung', answer: 'Antwort 1' },
+                { question: 'Karteikarte 2: Anwendung und Nutzen von Werkzeugen', answer: 'Antwort 2' }
+            ]
+        };
+
+        function startCardQuiz(chapter) {
+            if (quizActive) {
+                alert('Abfrage läuft bereits!');
+                return;
+            }
+            quizActive = true;
+            currentCardIndex = 0;
+            currentCards = cards[chapter] || [];
+            if (currentCards.length) {
+                document.getElementById(`card-count-${chapter}`).innerText = `Anzahl der Karteikarten: ${currentCards.length}`;
+                document.getElementById(`card-quiz-${chapter}`).innerHTML = `
+                    <div>
+                        <h4>${currentCards[currentCardIndex].question}</h4>
+                        <button onclick="showAnswer('${chapter}')">Antwort anzeigen</button>
+                        <button onclick="nextCard('${chapter}')">Nächste Karteikarte</button>
+                        <button onclick="endQuiz('${chapter}')">Abbrechen</button>
+                        <div id="answer-${chapter}" class="hidden answer">${currentCards[currentCardIndex].answer}</div>
+                    </div>
+                `;
+                document.getElementById(`card-overview-${chapter}`).classList.add('hidden');
+                document.getElementById(`card-quiz-${chapter}`).classList.remove('hidden');
+            }
+        }
+
+        function showAnswer(chapter) {
+            const answerElement = document.getElementById(`answer-${chapter}`);
+            if (answerElement.classList.contains('hidden')) {
+                answerElement.classList.remove('hidden');
+            } else {
+                answerElement.classList.add('hidden');
+            }
+        }
+
+        function nextCard(chapter) {
+            if (currentCards.length) {
+                currentCardIndex++;
+                if (currentCardIndex < currentCards.length) {
+                    document.getElementById(`card-quiz-${chapter}`).innerHTML = `
+                        <div>
+                            <h4>${currentCards[currentCardIndex].question}</h4>
+                            <button onclick="showAnswer('${chapter}')">Antwort anzeigen</button>
+                            <button onclick="nextCard('${chapter}')">Nächste Karteikarte</button>
+                            <button onclick="endQuiz('${chapter}')">Abbrechen</button>
+                            <div id="answer-${chapter}" class="hidden answer">${currentCards[currentCardIndex].answer}</div>
+                        </div>
+                    `;
+                } else {
+                    alert('Alle Karteikarten wurden abgearbeitet.');
+                    endQuiz(chapter);
+                }
+            }
+        }
+
+        function endQuiz(chapter) {
+            quizActive = false;
+            document.getElementById(`card-overview-${chapter}`).classList.remove('hidden');
+            document.getElementById(`card-quiz-${chapter}`).classList.add('hidden');
+        }
+
+        function showChapterContent() {
+            const selectedChapter = document.getElementById('chapterSelector').value;
+            const chapters = ['chapter1', 'chapter2', 'chapter3'];
+            chapters.forEach(chapter => {
+                document.getElementById(chapter).classList.add('hidden');
+            });
+            if (selectedChapter) {
+                document.getElementById(selectedChapter).classList.remove('hidden');
+                const cardCountElement = document.getElementById(`card-count-${selectedChapter}`);
+                cardCountElement.innerText = `Anzahl der Karteikarten: ${cards[selectedChapter].length}`;
+            }
+        }
+
+        function toggleContent(contentId) {
+            const contentElement = document.getElementById(contentId);
+            if (contentElement.classList.contains('hidden')) {
+                contentElement.classList.remove('hidden');
+            } else {
+                contentElement.classList.add('hidden');
+            }
+        }
+
+        function showSolution(exerciseId) {
+            const solutionElement = document.getElementById(exerciseId);
+            if (solutionElement.classList.contains('hidden')) {
+                solutionElement.classList.remove('hidden');
+            } else {
+                solutionElement.classList.add('hidden');
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

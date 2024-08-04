@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agile Softwareentwicklung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-image: url('Bilder/bild7.jpeg');  
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 1rem;
+        }
+        .section {
+            margin: 1rem 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .overview, .exercise {
+            background-color: white;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        .hidden {
+            display: none;
+        }
+        .collapsible-header {
+            cursor: pointer;
+            padding: 0.5rem;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+        .collapsible-content {
+            padding: 1rem;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        .collapsible-content.hidden {
+            display: none;
+        }
+        #card-question {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #card-question:hover {
+            background-color: #1976D2;
+        }
+        .answer {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header> 
+    </header>
+    
+    <div class="container">
+        <h1>Agile Softwareentwicklung</h1>
+        
+        <div class="section">
+            <h2>Kapitel auswählen</h2>
+            <select id="chapterSelector" onchange="showChapterContent()">
+                <option value="">Bitte wählen Sie ein Kapitel</option>
+                <option value="chapter1">Kapitel 1: Merkmale und Prinzipien von Agilität</option>
+                <option value="chapter2">Kapitel 2: Agilität in kleinen Teams mit Scrum</option>
+                <option value="chapter3">Kapitel 3: Agiles Portfolio- und Projektmanagement</option>
+                <option value="chapter4">Kapitel 4: Agiles Anforderungs- und IT-Architekturmanagement</option>
+                <option value="chapter5">Kapitel 5: Agiles Testen</option>
+                <option value="chapter6">Kapitel 6: Agiles Delivery und Deployment</option>
+            </select>
+        </div>
+
+        <div id="chapter1" class="section hidden">
+            <h2>Kapitel 1: Merkmale und Prinzipien von Agilität</h2>
+            <div class="collapsible-header" onclick="toggleContent('content1')">Karteikarten lernen</div>
+            <div id="content1" class="collapsible-content hidden">
+                <button id="card-question" onclick="startCardQuiz('chapter1')">Karteikarten abfragen</button>
+                <div id="card-overview-chapter1">
+                    <p id="card-count-chapter1"></p>
+                </div>
+                <div id="card-quiz-chapter1" class="hidden"></div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content2')">Übersichten ansehen</div>
+            <div id="content2" class="collapsible-content hidden">
+                <div class="overview">
+                    <h4>Übersicht 1</h4>
+                    <p>Einführung in die Merkmale der Agilität.</p>
+                </div>
+                <div class="overview">
+                    <h4>Übersicht 2</h4>
+                    <p>Wichtige Prinzipien der agilen Softwareentwicklung.</p>
+                </div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content3')">Übungsaufgaben</div>
+            <div id="content3" class="collapsible-content hidden">
+                <div class="exercise">
+                    <h4>Übungsaufgabe 1</h4>
+                    <p>Beschreiben Sie die Merkmale der Agilität.</p>
+                    <button onclick="showSolution('exercise1')">Lösung anzeigen</button>
+                    <div id="exercise1" class="hidden answer">
+                        <p>Agilität zeichnet sich durch Flexibilität, Iteration und kontinuierliche Verbesserung aus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="chapter2" class="section hidden">
+            <h2>Kapitel 2: Agilität in kleinen Teams mit Scrum</h2>
+            <div class="collapsible-header" onclick="toggleContent('content4')">Karteikarten lernen</div>
+            <div id="content4" class="collapsible-content hidden">
+                <button id="card-question" onclick="startCardQuiz('chapter2')">Karteikarten abfragen</button>
+                <div id="card-overview-chapter2">
+                    <p id="card-count-chapter2"></p>
+                </div>
+                <div id="card-quiz-chapter2" class="hidden"></div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content5')">Übersichten ansehen</div>
+            <div id="content5" class="collapsible-content hidden">
+                <div class="overview">
+                    <h4>Übersicht 1</h4>
+                    <p>Scrum Framework für kleine Teams.</p>
+                </div>
+                <div class="overview">
+                    <h4>Übersicht 2</h4>
+                    <p>Rollen und Verantwortlichkeiten im Scrum.</p>
+                </div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content6')">Übungsaufgaben</div>
+            <div id="content6" class="collapsible-content hidden">
+                <div class="exercise">
+                    <h4>Übungsaufgabe 1</h4>
+                    <p>Erklären Sie die Rolle des Scrum Masters in einem kleinen Team.</p>
+                    <button onclick="showSolution('exercise2')">Lösung anzeigen</button>
+                    <div id="exercise2" class="hidden answer">
+                        <p>Der Scrum Master hilft dem Team, Scrum korrekt anzuwenden und Hindernisse zu beseitigen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="chapter3" class="section hidden">
+            <h2>Kapitel 3: Agiles Portfolio- und Projektmanagement</h2>
+            <div class="collapsible-header" onclick="toggleContent('content7')">Karteikarten lernen</div>
+            <div id="content7" class="collapsible-content hidden">
+                <button id="card-question" onclick="startCardQuiz('chapter3')">Karteikarten abfragen</button>
+                <div id="card-overview-chapter3">
+                    <p id="card-count-chapter3"></p>
+                </div>
+                <div id="card-quiz-chapter3" class="hidden"></div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content8')">Übersichten ansehen</div>
+            <div id="content8" class="collapsible-content hidden">
+                <div class="overview">
+                    <h4>Übersicht 1</h4>
+                    <p>Agiles Portfolio-Management verstehen.</p>
+                </div>
+                <div class="overview">
+                    <h4>Übersicht 2</h4>
+                    <p>Projektmanagement-Praktiken im agilen Kontext.</p>
+                </div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content9')">Übungsaufgaben</div>
+            <div id="content9" class="collapsible-content hidden">
+                <div class="exercise">
+                    <h4>Übungsaufgabe 1</h4>
+                    <p>Was sind die Hauptziele des agilen Portfolio-Managements?</p>
+                    <button onclick="showSolution('exercise3')">Lösung anzeigen</button>
+                    <div id="exercise3" class="hidden answer">
+                        <p>Die Hauptziele sind Flexibilität, Transparenz und kontinuierliche Anpassung der Projektprioritäten.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="chapter4" class="section hidden">
+            <h2>Kapitel 4: Agiles Anforderungs- und IT-Architekturmanagement</h2>
+            <div class="collapsible-header" onclick="toggleContent('content10')">Karteikarten lernen</div>
+            <div id="content10" class="collapsible-content hidden">
+                <button id="card-question" onclick="startCardQuiz('chapter4')">Karteikarten abfragen</button>
+                <div id="card-overview-chapter4">
+                    <p id="card-count-chapter4"></p>
+                </div>
+                <div id="card-quiz-chapter4" class="hidden"></div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content11')">Übersichten ansehen</div>
+            <div id="content11" class="collapsible-content hidden">
+                <div class="overview">
+                    <h4>Übersicht 1</h4>
+                    <p>Management von Anforderungen im agilen Kontext.</p>
+                </div>
+                <div class="overview">
+                    <h4>Übersicht 2</h4>
+                    <p>Agile IT-Architektur und ihre Prinzipien.</p>
+                </div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content12')">Übungsaufgaben</div>
+            <div id="content12" class="collapsible-content hidden">
+                <div class="exercise">
+                    <h4>Übungsaufgabe 1</h4>
+                    <p>Wie geht man mit sich ändernden Anforderungen in einem agilen Projekt um?</p>
+                    <button onclick="showSolution('exercise4')">Lösung anzeigen</button>
+                    <div id="exercise4" class="hidden answer">
+                        <p>Durch regelmäßige Überprüfungen und Anpassungen, um sicherzustellen, dass die Anforderungen weiterhin den Projektzielen entsprechen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="chapter5" class="section hidden">
+            <h2>Kapitel 5: Agiles Testen</h2>
+            <div class="collapsible-header" onclick="toggleContent('content13')">Karteikarten lernen</div>
+            <div id="content13" class="collapsible-content hidden">
+                <button id="card-question" onclick="startCardQuiz('chapter5')">Karteikarten abfragen</button>
+                <div id="card-overview-chapter5">
+                    <p id="card-count-chapter5"></p>
+                </div>
+                <div id="card-quiz-chapter5" class="hidden"></div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content14')">Übersichten ansehen</div>
+            <div id="content14" class="collapsible-content hidden">
+                <div class="overview">
+                    <h4>Übersicht 1</h4>
+                    <p>Grundlagen des agilen Testens.</p>
+                </div>
+                <div class="overview">
+                    <h4>Übersicht 2</h4>
+                    <p>Techniken und Tools für agiles Testen.</p>
+                </div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content15')">Übungsaufgaben</div>
+            <div id="content15" class="collapsible-content hidden">
+                <div class="exercise">
+                    <h4>Übungsaufgabe 1</h4>
+                    <p>Welche Rolle spielt automatisiertes Testen in agilen Projekten?</p>
+                    <button onclick="showSolution('exercise5')">Lösung anzeigen</button>
+                    <div id="exercise5" class="hidden answer">
+                        <p>Automatisiertes Testen ermöglicht eine schnelle und wiederholbare Prüfung von Software, was die Qualitätssicherung in agilen Projekten unterstützt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="chapter6" class="section hidden">
+            <h2>Kapitel 6: Agiles Delivery und Deployment</h2>
+            <div class="collapsible-header" onclick="toggleContent('content16')">Karteikarten lernen</div>
+            <div id="content16" class="collapsible-content hidden">
+                <button id="card-question" onclick="startCardQuiz('chapter6')">Karteikarten abfragen</button>
+                <div id="card-overview-chapter6">
+                    <p id="card-count-chapter6"></p>
+                </div>
+                <div id="card-quiz-chapter6" class="hidden"></div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content17')">Übersichten ansehen</div>
+            <div id="content17" class="collapsible-content hidden">
+                <div class="overview">
+                    <h4>Übersicht 1</h4>
+                    <p>Strategien für agiles Delivery und Deployment.</p>
+                </div>
+                <div class="overview">
+                    <h4>Übersicht 2</h4>
+                    <p>Best Practices für kontinuierliches Deployment.</p>
+                </div>
+            </div>
+            <div class="collapsible-header" onclick="toggleContent('content18')">Übungsaufgaben</div>
+            <div id="content18" class="collapsible-content hidden">
+                <div class="exercise">
+                    <h4>Übungsaufgabe 1</h4>
+                    <p>Was sind die Vorteile eines kontinuierlichen Deployment-Prozesses?</p>
+                    <button onclick="showSolution('exercise6')">Lösung anzeigen</button>
+                    <div id="exercise6" class="hidden answer">
+                        <p>Kontinuierliches Deployment ermöglicht schnelle Reaktionen auf Kundenfeedback, reduziert die Zeit bis zur Markteinführung und verbessert die Softwarequalität durch regelmäßige Tests.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button onclick="goBack()">Zurück zur Auswahl</button>
+        </div>
+    </div>
+
+    <script>
+        let quizActive = false;
+        let currentCardIndex = 0;
+        let currentCards = [];
+        const cards = {
+            chapter1: [
+                { question: 'Karteikarte 1: Merkmale der Agilität', answer: 'Antwort 1' },
+                { question: 'Karteikarte 2: Prinzipien der Agilität', answer: 'Antwort 2' }
+            ],
+            chapter2: [
+                { question: 'Karteikarte 1: Scrum Rollen und Aufgaben', answer: 'Antwort 1' },
+                { question: 'Karteikarte 2: Scrum Artefakte und Prozesse', answer: 'Antwort 2' }
+            ],
+            chapter3: [
+                { question: 'Karteikarte 1: Agiles Portfolio-Management', answer: 'Antwort 1' },
+                { question: 'Karteikarte 2: Projektmanagement-Praktiken', answer: 'Antwort 2' }
+            ],
+            chapter4: [
+                { question: 'Karteikarte 1: Anforderungsmanagement im agilen Kontext', answer: 'Antwort 1' },
+                { question: 'Karteikarte 2: Agile IT-Architektur', answer: 'Antwort 2' }
+            ],
+            chapter5: [
+                { question: 'Karteikarte 1: Grundlagen des agilen Testens', answer: 'Antwort 1' },
+                { question: 'Karteikarte 2: Techniken und Tools', answer: 'Antwort 2' }
+            ],
+            chapter6: [
+                { question: 'Karteikarte 1: Strategien für agiles Delivery', answer: 'Antwort 1' },
+                { question: 'Karteikarte 2: Best Practices für Deployment', answer: 'Antwort 2' }
+            ]
+        };
+
+        function startCardQuiz(chapter) {
+            if (quizActive) {
+                alert('Abfrage läuft bereits!');
+                return;
+            }
+            quizActive = true;
+            currentCardIndex = 0;
+            currentCards = cards[chapter] || [];
+            if (currentCards.length) {
+                document.getElementById(`card-count-${chapter}`).textContent = `Karteikarten: ${currentCards.length}`;
+                showNextCard();
+            } else {
+                alert('Keine Karteikarten für dieses Kapitel gefunden.');
+                quizActive = false;
+            }
+        }
+
+        function showNextCard() {
+            if (currentCardIndex < currentCards.length) {
+                document.getElementById('card-quiz-' + getSelectedChapter()).innerHTML = `
+                    <p>${currentCards[currentCardIndex].question}</p>
+                    <button onclick="showAnswer()">Antwort anzeigen</button>
+                    <button onclick="nextCard()">Nächste Karte</button>
+                `;
+            } else {
+                document.getElementById('card-quiz-' + getSelectedChapter()).innerHTML = `
+                    <p>Quiz beendet. Sie haben alle Karten durchgesehen!</p>
+                `;
+                quizActive = false;
+            }
+        }
+
+        function showAnswer() {
+            document.getElementById('card-quiz-' + getSelectedChapter()).innerHTML += `
+                <p>${currentCards[currentCardIndex].answer}</p>
+                <button onclick="nextCard()">Nächste Karte</button>
+            `;
+        }
+
+        function nextCard() {
+            currentCardIndex++;
+            showNextCard();
+        }
+
+        function getSelectedChapter() {
+            return document.getElementById('chapterSelector').value;
+        }
+
+        function showChapterContent() {
+            const chapterId = document.getElementById('chapterSelector').value;
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            if (chapterId) {
+                document.getElementById(chapterId).classList.remove('hidden');
+            }
+        }
+
+        function toggleContent(contentId) {
+            const content = document.getElementById(contentId);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+            } else {
+                content.classList.add('hidden');
+            }
+        }
+
+        function showSolution(exerciseId) {
+            document.getElementById(exerciseId).classList.toggle('hidden');
+        }
+
+        function goBack() {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById('chapterSelector').value = '';
+        }
+    </script>
+</body>
+</html>

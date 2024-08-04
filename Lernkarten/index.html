@@ -3,60 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karteikarten Lernen</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Uni Lernkarteien und Übersichten</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-image: url('Bilder/bild7.jpeg');  
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 2rem;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem; /* Schriftgröße für bessere Lesbarkeit */
+            margin-bottom: 2rem; /* Abstand unter der Überschrift */
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            text-align: center;
+            width: 200px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: white; /* Textfarbe in Weiß für besseren Kontrast */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        /* Hintergrundfarben für die Karten */
+        .card-qualitaetssicherung { background-color: #4CAF50; } /* Grün */
+        .card-marketing { background-color: #2196F3; } /* Blau */
+        .card-bwl { background-color: #FFC107; } /* Gelb */
+        .card-it-projektmanagement { background-color: #FF5722; } /* Orange */
+        .card-agile-softwareentwicklung { background-color: #9C27B0; } /* Lila */
+        .card-personal-und-unternehmensfuehrung { background-color: #009688; } /* Teal */
+        .card-datenbankmodellierung { background-color: #3F51B5; } /* Indigo */
+        .card-digitale-geschaeftsmodelle { background-color: #E91E63; } /* Rosa */
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .card-description {
+            font-size: 1rem;
+            color: #f4f4f4; /* Textfarbe auf Kartenhintergrund abgestimmt */
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>LEARNING BY DOING</h1>
-        <nav>
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Geographie</a>
-                    <ul class="dropdown">
-                        <li><a class="dropdown-link" href="#" onclick="changeTopic('geography', 'capitals')">Hauptstädte</a></li>
-                        <li><a class="dropdown-link" href="#" onclick="changeTopic('geography', 'rivers')">Flüsse</a></li>
-                        <li><a class="dropdown-link" href="#" onclick="changeTopic('geography', 'mountains')">Gebirge</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Mathematik</a>
-                    <ul class="dropdown">
-                        <li><a class="dropdown-link" href="#" onclick="changeTopic('math', 'arithmetic')">Arithmetik</a></li>
-                        <li><a class="dropdown-link" href="#" onclick="changeTopic('math', 'geometry')">Geometrie</a></li>
-                        <li><a class="dropdown-link" href="#" onclick="changeTopic('math', 'algebra')">Algebra</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Wissenschaft</a>
-                    <ul class="dropdown">
-                        <li><a class="dropdown-link" href="#" onclick="changeTopic('science', 'chemistry')">Chemie</a></li>
-                        <li><a class="dropdown-link" href="#" onclick="changeTopic('science', 'physics')">Physik</a></li>
-                        <li><a class="dropdown-link" href="#" onclick="changeTopic('science', 'biology')">Biologie</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
-            </ul>
-        </nav>
+    <header> 
     </header>
-     
-    <main>
-        <section class="card-display">
-            <h2>Karteikarten</h2>
-            <div class="container">
-                <div id="card" class="card">Wähle ein Thema</div>
-                <div class="buttons">
-                    <button onclick="showPreviousCard()">Zurück</button>
-                    <button onclick="flipCard()">Umdrehen</button>
-                    <button onclick="showNextCard()">Weiter</button>
-                </div>
+    <div class="container">
+        <h1>LEARNING BY DOING</h1>
+        <div class="card-container">
+            <div class="card card-qualitaetssicherung" onclick="navigateTo('qualitaetssicherung')">
+                <div class="card-title">Qualitätssicherung</div>
+                <div class="card-description">Qualitätssicherung in der Softwareentwicklung</div>
             </div>
-        </section>
-    </main>
+            <div class="card card-marketing" onclick="navigateTo('marketing')">
+                <div class="card-title">Marketing</div>
+                <div class="card-description">Marketing-Strategien und Konzepte</div>
+            </div>
+            <div class="card card-bwl" onclick="navigateTo('bwl')">
+                <div class="card-title">BWL</div>
+                <div class="card-description">Einkauf, Beschaffung und Distribution</div>
+            </div>
+            <div class="card card-it-projektmanagement" onclick="navigateTo('it-projektmanagement')">
+                <div class="card-title">IT-Projektmanagement</div>
+                <div class="card-description">Projektmanagement in der IT-Branche</div>
+            </div>
+            <div class="card card-agile-softwareentwicklung" onclick="navigateTo('agile-softwareentwicklung')">
+                <div class="card-title">Agile Softwareentwicklung</div>
+                <div class="card-description">Methoden der agilen Softwareentwicklung</div>
+            </div>
+            <div class="card card-personal-und-unternehmensfuehrung" onclick="navigateTo('personal-und-unternehmensfuehrung')">
+                <div class="card-title">Personalführung</div>
+                <div class="card-description">Personal- und Unternehmensführung</div>
+            </div>
+            <div class="card card-datenbankmodellierung" onclick="navigateTo('datenbankmodellierung')">
+                <div class="card-title">Datenbankmodellierung</div>
+                <div class="card-description">Modelle für Datenbanken erstellen</div>
+            </div>
+            <div class="card card-digitale-geschaeftsmodelle" onclick="navigateTo('digitale-geschaeftsmodelle')">
+                <div class="card-title">Digitale Geschäftsmodelle</div>
+                <div class="card-description">Geschäftsmodelle im digitalen Zeitalter</div>
+            </div>
+        </div>
+    </div>
 
-    <script src="script.js"></script>
+    <script>
+        function navigateTo(subject) {
+            const pages = {
+                'qualitaetssicherung': 'qualitaetssicherung.html',
+                'marketing': 'marketing.html',
+                'bwl': 'bwl.html',
+                'it-projektmanagement': 'it-projektmanagement.html',
+                'agile-softwareentwicklung': 'agile-softwareentwicklung.html',
+                'personal-und-unternehmensfuehrung': 'personal-und-unternehmensfuehrung.html',
+                'datenbankmodellierung': 'datenbankmodellierung.html',
+                'digitale-geschaeftsmodelle': 'digitale-geschaeftsmodelle.html'
+            };
+
+            const pageUrl = pages[subject];
+            if (pageUrl) {
+                window.location.href = pageUrl;
+            } else {
+                alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
+            }
+        }
+    </script>
 </body>
 </html>
