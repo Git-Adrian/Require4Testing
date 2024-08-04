@@ -339,9 +339,199 @@
         let currentCards = [];
         const cards = {
             chapter1: [
-                { question: 'Karteikarte 1: Merkmale der Agilität', answer: 'Antwort 1' },
-                { question: 'Karteikarte 2: Prinzipien der Agilität', answer: 'Antwort 2' }
+                { 
+                    "question": "Wie unterscheiden sich Softwareprojekte von industriellen Produktionsprozessen in Bezug auf Planung und Präzision?", 
+                    "answer": "Im Vergleich zu industriellen Produktionsprozessen, bei denen Arbeitsschritte in Bezug auf Dauer und Ressourcen exakt eingeplant werden können, ist eine präzise Planung bei Softwareprojekten oft nicht möglich. Die genauen Kosten, der Funktionsumfang und das technische Design eines Softwaresystems lassen sich meist erst am Ende eines Projekts genau bestimmen, was zu höheren Unsicherheiten und Risiken führt." 
+                },
+               
+                { 
+                    "question": "Welche Herausforderungen ergeben sich aus der Immaterialität und Komplexität von Softwareprojekten?", 
+                    "answer": "Die Immaterialität von Software bedeutet, dass man sie nicht anfassen oder visuell überprüfen kann, was die Überwachung des Baufortschritts erschwert. Die Komplexität von Softwaresystemen und deren abstrakte Natur machen es schwierig, genaue Planungen und Fortschrittsbewertungen vorzunehmen, was das Projektmanagement und die Kommunikation komplizierter macht." 
+                },
+              
+                { "question": "Wie werden Anforderungen im Softwareprozess typischerweise erkannt und entwickelt?", 
+                "answer": "Anforderungen an ein Softwaresystem werden oft erst im Verlauf des Softwareprozesses erkannt. Dies geschieht häufig erst, nachdem eine erste Version des Systems vorliegt und von den Anwendenden ausprobiert werden kann. Dies führt dazu, dass Anforderungen sich im Laufe des Projekts weiterentwickeln und präzisiert werden." },
+               
+                { "question": "Was ist der Unterschied zwischen funktionalen und nichtfunktionalen Anforderungen in der Softwareentwicklung?", 
+                "answer": "Funktionale Anforderungen beschreiben, welche konkreten Funktionen ein System bieten soll, also was das System tun soll. Nichtfunktionale Anforderungen beziehen sich auf die Qualitätsmerkmale und andere Aspekte, wie Performance, Benutzbarkeit, Sicherheit und Wartbarkeit, die beschreiben, wie das System die funktionalen Anforderungen erfüllen soll." },
+               
+                { "question": "Was ist das Dilemma bei der Entwicklung eines Systems mit unklaren Anforderungen?", 
+                "answer": "Das Dilemma besteht darin, dass die Anforderungen oft zu Beginn eines Projekts nicht klar definiert sind. Ohne klare Anforderungen besteht das Risiko, dass die entwickelte Software nicht die gewünschten Funktionen erfüllt. Andererseits können wichtige Funktionen erst entdeckt werden, nachdem eine erste Version des Systems getestet wird." },
+               
+                { "question": "Wie beeinflussen Stakeholder die Anforderungen an ein Softwaresystem während eines Projekts?", 
+                "answer": "Stakeholder können während eines Softwareprojekts neue Anforderungen formulieren oder bestehende Anforderungen ändern. Da häufig viele Stakeholder aus verschiedenen Organisationseinheiten beteiligt sind, kann dies zu sich ändernden und widersprüchlichen Anforderungen führen, was das Projektmanagement erschwert." },
+               
+                { "question": "Wie beeinflussen rechtliche Vorgaben und technologische Entwicklungen die Anforderungen an ein Softwaresystem?", 
+                "answer": "Neue rechtliche Vorgaben oder technologische Entwicklungen können maßgeblichen Einfluss auf die Anforderungen an Softwaresysteme haben. Dies kann zu Änderungen oder Erweiterungen der Anforderungen führen, die wiederum das Projektmanagement und die Planung komplizieren." },
+               
+                { "question": "Was versteht man unter Technologiezentriertheit in Softwareprojekten, und warum ist sie problematisch?", 
+                "answer": "Technologiezentriertheit bezeichnet den Fokus auf den Einsatz neuester Technologien, während der tatsächliche Nutzen für die Anwendenden in den Hintergrund tritt. Dies kann dazu führen, dass das entwickelte System zwar technologisch fortschrittlich ist, aber nicht den tatsächlichen Bedürfnissen der Anwendenden entspricht, was das Risiko des Scheiterns des Projekts erhöht." },
+                
+                { "question": "Welche Probleme können durch mangelnde Kommunikation und Koordination in Softwareprojekten entstehen?", 
+                "answer": "Mangelnde Kommunikation und Koordination können zu unterschiedlichen Zielvorstellungen, unklaren Verantwortlichkeiten und Verzögerungen bei Entscheidungen führen. Diese Probleme können das Projektrisiko erhöhen, da sie zu Missverständnissen, Konflikten und ineffizientem Projektmanagement beitragen." },
+                
+                { "question": "Wie sollten Softwareprojekte mit komplexen Stakeholder-Strukturen umgehen, um erfolgreich zu sein?", 
+                "answer": "Softwareprojekte sollten klare Kommunikationswege etablieren, regelmäßige Abstimmungen durchführen und sicherstellen, dass alle Stakeholder in den Anforderungsprozess einbezogen werden. Es ist wichtig, ein gemeinsames Verständnis der Ziele und Anforderungen zu schaffen und gegebenenfalls Konflikte frühzeitig zu lösen, um das Projektrisiko zu minimieren." },
+                
+                { "question": "Welche fünf wesentlichen Herausforderungen treten insbesondere in Softwareprojekten für industrielle Informationssysteme auf?", 
+                "answer": "Die wesentlichen Herausforderungen in Softwareprojekten sind: wirtschaftliche Ungewissheit, technologische Ungewissheit, Kommunikation, Zielkonflikte und Komplexität." },
+    
+                { "question": "Was beschreibt der „Cone of Uncertainty“ in Bezug auf wirtschaftliche Ungewissheit in Softwareprojekten?", 
+                "answer": "Der „Cone of Uncertainty“ veranschaulicht, dass die Schätzung der Gesamtkosten eines Softwareprojekts zu Beginn sehr ungenau ist. Mit fortschreitendem Projektverlauf wird die Schätzung genauer, aber eine präzise Kostenangabe kann erst am Ende des Projekts gemacht werden." },
+    
+                { "question": "Wie entwickelt sich die technologische Ungewissheit während eines Softwareprojekts?", 
+                "answer": "Zu Beginn eines Projekts gibt es viel Entscheidungsspielraum bezüglich der Technologien. Im Verlauf des Projekts werden technische Entscheidungen getroffen und die Lösung kontinuierlich angepasst, wobei die Entscheidungsspielräume mit dem Projektfortschritt immer kleiner werden." },
+    
+                { "question": "Welche Herausforderung stellt die Kommunikation in Softwareprojekten dar?", 
+                "answer": "Die Herausforderung besteht darin, unterschiedliche Stakeholder mit verschiedenen Hintergründen und Interessen einzubeziehen, neue Erkenntnisse verständlich zu kommunizieren und alle relevanten Stakeholder aktiv in Entscheidungen und Qualitätssicherung einzubeziehen." },
+    
+                { "question": "Was beschreibt das „Magische Dreieck“ in Bezug auf Zielkonflikte in Softwareprojekten?", 
+                "answer": "Das „Magische Dreieck“ zeigt, dass die drei Zielgrößen Qualität, Termin und Kosten in einem Spannungsverhältnis stehen. Wenn eine Zielgröße verändert wird, beeinflusst dies die anderen beiden: Eine Erhöhung der Qualität kann zu Verzögerungen führen, während Kosteneinsparungen möglicherweise die Qualität beeinträchtigen." },
+    
+                { "question": "Welche Herausforderungen entstehen durch die Komplexität und Immaterialität von Software?", 
+                "answer": "Die Komplexität von Software, einschließlich vieler technischer Komponenten und Schnittstellen, kombiniert mit der Immaterialität (d.h. die Software ist nicht sichtbar), erfordert ein hohes Maß an Abstraktionsvermögen. Grafische Modelle wie UML oder BPMN werden verwendet, um die Softwarestruktur und -verhalten darzustellen, wobei der Rückschluss auf die tatsächliche Software eine intellektuelle Leistung darstellt." },
+    
+                { "question": "Was ist „Paralyse durch Analyse“ und wie kann sie Softwareprojekte beeinträchtigen?", 
+                "answer": "„Paralyse durch Analyse“ bezeichnet das Phänomen, dass übermäßige und detaillierte Analyseversuche, um Ungewissheit zu kompensieren, dazu führen können, dass das Team zögert, praktische Schritte zu unternehmen. Dies kann dazu führen, dass viele Ressourcen in die Analyse fließen, anstatt in die tatsächliche Umsetzung, wodurch der Fortschritt der Softwareentwicklung gehemmt wird." },
+                
+                { "question": "Welche Typen von Unsicherheit werden bei der Entwicklung komplexer Produkte unterschieden?", 
+                "answer": "Die Typen von Unsicherheit sind: Produkt-Unsicherheit (Was-Unsicherheit), Methoden-Unsicherheit (Wie-Unsicherheit), Stakeholder-Unsicherheit (Wer-Unsicherheit) und Domänen-Unsicherheit (Worin-Unsicherheit)." },
+    
+                { "question": "Was beschreibt die Produkt-Unsicherheit in einem Softwareprojekt?", 
+                "answer": "Produkt-Unsicherheit bezieht sich auf die Ungewissheit über die Eigenschaften des fertigen Softwaresystems, wie umgesetzte Funktionen, technische Architektur oder Qualität. Diese Unsicherheit wird erst nach Abschluss der Entwicklung beseitigt." },
+    
+                { "question": "Wie wird Methoden-Unsicherheit definiert?", 
+                "answer": "Methoden-Unsicherheit bezieht sich auf Ungewissheit über die Methoden, Werkzeuge und Vorgehensweisen, die bei der Entwicklung des Softwaresystems eingesetzt werden. Diese Unsicherheit wird erst nach Abschluss des Projekts klar, wenn die genauen Aktivitäten und deren Reihenfolge bekannt sind." },
+                
+                { "question": "Was ist Stakeholder-Unsicherheit und wann wird sie typischerweise beseitigt?", 
+                "answer": "Stakeholder-Unsicherheit betrifft die Ungewissheit über die beteiligten Stakeholder und deren Interessen und Einfluss. Diese Unsicherheit wird in der Regel erst nach Abschluss des Projekts beseitigt, insbesondere bei Start-ups auch bezüglich der Ziel- oder Kundengruppe." },
+                
+                { "question": "Was umfasst die Domänen-Unsicherheit?", 
+                "answer": "Domänen-Unsicherheit bezieht sich auf die Unsicherheit über das Fachgebiet oder den Geschäftsbereich, in dem das System eingesetzt werden soll, einschließlich der typischen Geschäftsobjekte, -prozesse und -regeln." },
+                
+                { "question": "Wie beschreibt das Modell „The Five Orders of Ignorance“ die verschiedenen Ebenen von Unwissenheit?", 
+                "answer": "Das Modell „The Five Orders of Ignorance“ beschreibt fünf Ebenen von Unwissenheit: 0th Level (Fehlen von Unwissenheit), 1st Level (Fehlen von Wissen), 2nd Level (Fehlen des Bewusstseins), 3rd Level (Fehlen eines Prozesses) und 4th Level (Meta-Unwissenheit). Jede Ebene repräsentiert eine unterschiedliche Tiefe der Unkenntnis über spezifisches Wissen oder Prozesse." },
+                
+                { "question": "Was ist der 0th Level of Ignorance und ein Beispiel dafür?", 
+                "answer": "Der 0th Level of Ignorance (Fehlen von Unwissenheit) ist die Ebene, bei der alles Wissen vorhanden ist und nachgewiesen werden kann. Beispiel: „Ich beherrsche die Programmiersprache Java und kann meine Fähigkeiten durch die Programmierung einer Java-Anwendung demonstrieren.“" },
+                
+                { "question": "Was versteht man unter dem 1st Level of Ignorance und wie kann man diesen Level überwinden?", 
+                "answer": "Der 1st Level of Ignorance (Fehlen von Wissen) beschreibt die Situation, in der bekannt ist, dass bestimmtes Wissen fehlt und gezielt erlangt werden muss. Beispiel: „Ich kann noch nicht Java programmieren, aber durch Lehrbücher oder Kurse kann ich es lernen.“ Um diesen Level zu überwinden, sollte man gezielt Wissen erwerben." },
+                
+                { "question": "Was ist der 2nd Level of Ignorance und wie unterscheidet er sich vom 1st Level?", 
+                "answer": "Der 2nd Level of Ignorance (Fehlen des Bewusstseins) beschreibt die Unkenntnis über das Fehlen von Wissen. Man weiß nicht, dass man etwas nicht weiß. Beispiel: „Ich soll ein Softwaresystem für eine Versicherung erstellen, bin mir aber nicht bewusst, dass ich einen Algorithmus zur Prämienberechnung implementieren muss.“ Dieser Level unterscheidet sich vom 1st Level, da hier das Fehlen des Wissens nicht erkannt wird." },
+                
+                { "question": "Wie definiert sich der 3rd Level of Ignorance und welche Schritte sind notwendig, um ihn zu überwinden?", 
+                "answer": "Der 3rd Level of Ignorance (Fehlen eines Prozesses) bezeichnet die Kenntnis darüber, dass Wissen fehlt, jedoch Unklarheit darüber besteht, wie dieses Wissen methodisch erlangt werden kann. Beispiel: „Ich weiß, dass es einen Bereich namens Software Engineering gibt, aber ich weiß nicht, wie ich strukturierte Kompetenzen in diesem Gebiet erlangen kann.“ Um diesen Level zu überwinden, muss man Wissen darüber erlangen, wie man strukturiert Wissen erlangt." },
+                
+                { "question": "Was bedeutet der 4th Level of Ignorance und wie beeinflusst er die Wahrnehmung von Unwissenheit?", 
+                "answer": "Der 4th Level of Ignorance (Meta-Unwissenheit) beschreibt das Fehlen des Bewusstseins, dass es verschiedene Ebenen von Unwissenheit gibt. Beispiel: „Ich weiß nicht, dass es verschiedene Ebenen von Unwissenheit gibt.“ Nachdem man sich mit den fünf Ebenen vertraut gemacht hat, ist diese Art der Unwissenheit nicht mehr gegeben." },
+                
+                { "question": "Wie beeinflusst die Ebene der Unwissenheit die Steuerung der Aktivitäten in einem Softwareprojekt?", 
+                "answer": "Je höher die Ebene der Unwissenheit, desto größer ist das Risiko im Projekt. Hohe Ebenen von Unwissenheit führen oft zu detaillierten Planungen oder Modellen, die auf Vermutungen basieren und nicht auf gesichertem Wissen. Dies wird durch agiles Software Engineering adressiert, das auf kontinuierliche Anpassung und Erkenntnisgewinn setzt." },
+
+                { "question": "Was unterscheidet agile Softwareentwicklung von klassischer Softwareentwicklung in Bezug auf die Entscheidungsfindung?", "answer": "Agile Softwareentwicklung ist erkenntnisgesteuert, das heißt, Entscheidungen werden auf Basis von im Projektverlauf gewonnenen Erkenntnissen getroffen. Klassische Softwareentwicklung hingegen ist annahmegesteuert, was bedeutet, dass Entscheidungen auf Basis von Annahmen und Plänen getroffen werden, die zu Beginn des Projekts erstellt wurden." },
+    
+                { "question": "Welche typischen Begriffe werden mit agiler Softwareentwicklung und klassischer Softwareentwicklung assoziiert?", 
+                "answer": "Agile Softwareentwicklung wird oft mit Begriffen wie ‚agil‘ und ‚Agilität‘ assoziiert, während klassische Softwareentwicklung als ‚plangetrieben‘ bezeichnet wird." },
+                
+                { "question": "Nenne ein Beispiel für ein Vorgehensmodell der agilen Softwareentwicklung und eines der klassischen Softwareentwicklung.", 
+                "answer": "Ein Beispiel für ein agiles Vorgehensmodell ist Scrum, während klassische Softwareentwicklung häufig durch das Wasserfallmodell oder das V-Modell charakterisiert wird." },
+                
+                { "question": "Was sind die Hauptunterschiede in den Release-Zyklen und Projektphasen zwischen agiler und klassischer Softwareentwicklung?", 
+                "answer": "In der agilen Softwareentwicklung gibt es kurze Release-Zyklen und Projektphasen in hoher Frequenz, während in der klassischen Softwareentwicklung lange Release-Zyklen und verhältnismäßig lange Projektphasen in geringer Frequenz typisch sind." },
+                
+                { "question": "Wie unterscheiden sich die Detailgrade von Spezifikationen und Planungsartefakten zwischen agiler und klassischer Softwareentwicklung?", 
+                "answer": "In der agilen Softwareentwicklung sind die Spezifikationen und Planungsartefakte zu Beginn weniger detailliert und der Detailgrad kann sich im Verlauf des Projekts ändern. In der klassischen Softwareentwicklung hingegen wird zu Beginn ein hoher Detailgrad bei Spezifikationen und Planungsartefakten angestrebt." },
+                
+                { "question": "Wie werden Planänderungen in der agilen Softwareentwicklung im Vergleich zur klassischen Softwareentwicklung betrachtet?", 
+                "answer": "In der agilen Softwareentwicklung werden Planänderungen positiv aufgenommen, da sie als Teil des adaptiven Prozesses betrachtet werden. In der klassischen Softwareentwicklung hingegen werden Planänderungen eher negativ betrachtet und als Ausnahme angesehen." },
+                
+                { "question": "Was ist das grundlegende Prinzip der Erkenntnisgesteuerten Softwareentwicklung, und wie wird es illustriert?", 
+                "answer": "Das grundlegende Prinzip der erkenntnisgesteuerten Softwareentwicklung ist, dass die Entwicklungsaktivitäten auf Basis von Feedback und gewonnenen Erkenntnissen angepasst werden. Dies wird illustriert durch den Ansatz, bei dem initiale Anforderungen zergliedert werden und nur mit einem Teil davon ein Entwicklungszyklus gestartet wird. Die Ergebnisse und die Organisation werden überprüft, und die gewonnenen Erkenntnisse modifizieren die Anforderungen für den nächsten Zyklus." },
+                
+                { "question": "Was wird unter Unternehmensagilität verstanden, und wie unterscheiden sich moderne Ansätze wie Disciplined Agile und das Scaled Agile Framework von traditionellen agilen Methoden?", 
+                "answer": "Unternehmensagilität versteht man die Anwendung agiler Prinzipien auf die gesamte Organisation und große Projekte. Moderne Ansätze wie Disciplined Agile und das Scaled Agile Framework zielen darauf ab, Agilität nicht nur in der Softwareentwicklung, sondern auch in den Geschäftsprozessen eines Unternehmens zu integrieren, und berücksichtigen die komplexen Wechselwirkungen zwischen verschiedenen Projekten und Managemententscheidungen." },
+                
+                { 
+                    "question": "Wie beeinflussen die Rahmenbedingungen des Projekts die Wahl zwischen agiler und klassischer Softwareentwicklung?", 
+                    "answer": "Die Wahl zwischen agiler und klassischer Softwareentwicklung wird maßgeblich durch die Rahmenbedingungen des Projekts beeinflusst. Bei kleinen Projekten mit erfahrenen Teams und einfachen Anpassungen kann ein annahmegesteuertes Modell ausreichen. Bei großen Projekten mit neuen Technologien und vielen Unsicherheiten ist ein erkenntnisgesteuertes Modell, das auf fortlaufenden Erkenntnissen basiert, besser geeignet." 
+                },
+
+                { 
+                    "question": "Was sind die vier Werte des Agilen Manifests?",
+                    "answer": "1. Individuen und Interaktionen mehr als Prozesse und Werkzeuge\n2. Funktionierende Software mehr als umfassende Dokumentation\n3. Zusammenarbeit mit dem Kunden mehr als Vertragsverhandlung\n4. Reagieren auf Veränderung mehr als das Befolgen eines Plans"
+                },
+                {
+                    "question": "Was bedeutet das Prinzip ‚Veränderlichkeit des Erstellungsprozesses‘ in der agilen Softwareentwicklung?",
+                    "answer": "Es bedeutet, dass der Softwareprozess an das spezifische Projekt angepasst werden sollte, da jedes Softwaresystem einzigartig ist. Der Prozess sollte flexibel genug sein, um sich auch nach Projektstart auf neue Anforderungen oder Erkenntnisse anzupassen."
+                },
+                {
+                    "question": "Was ist der Unterschied zwischen iterativer und inkrementeller Entwicklung?",
+                    "answer": "Iterative Entwicklung bedeutet, dass der Entwicklungsprozess in Zyklen abläuft, in denen Zwischenergebnisse erstellt und auf Basis von Erkenntnissen verbessert werden. Inkrementelle Entwicklung bedeutet, dass in jeder Iteration ein Teil der Gesamtfunktionalität hinzugefügt wird, wobei am Ende jeder Iteration ein ausführbares Zwischenergebnis vorliegt."
+                },
+                {
+                    "question": "Wie trägt das Prinzip ‚Anpassung durch Inspektion, Reflexion und Transparenz‘ zur Qualitätssicherung bei?",
+                    "answer": "Dieses Prinzip fördert die kontinuierliche Verbesserung, indem es regelmäßige Inspektionen und Reflexionen des Softwaresystems und des Entwicklungsprozesses vorsieht. Transparenz ist dabei wichtig, damit alle Beteiligten Zugang zu allen relevanten Informationen haben."
+                },
+                {
+                    "question": "Was bedeutet das Prinzip ‚Gleichzeitige Reduzierung aller Formen von Unsicherheit‘?",
+                    "answer": "Es bedeutet, dass verschiedene Typen von Unsicherheiten im Projekt gleichzeitig adressiert werden sollten. Statt Unsicherheiten nacheinander zu beseitigen, werden alle Unsicherheitstypen kontinuierlich und parallel reduziert."
+                },
+                {
+                    "question": "Was besagt das Prinzip ‚Offenhaltung von Optionen‘?",
+                    "answer": "Dieses Prinzip empfiehlt, Entscheidungen zur Realisierung von Anforderungen oder zur Durchführung von Aktivitäten so lange wie möglich offen zu halten. Die Entscheidung sollte erst getroffen werden, wenn das größtmögliche Wissen vorliegt."
+                },
+                {
+                    "question": "Warum ist das Prinzip ‚Lernen durch schnelle Fehler‘ wichtig für agile Projekte?",
+                    "answer": "Es ist wichtig, weil frühzeitige Fehler identifiziert und behoben werden können, wodurch Unsicherheiten schneller reduziert werden. Schnelle Fehler helfen, Erkenntnisse zu gewinnen und Anpassungen vorzunehmen, bevor größere Probleme entstehen."
+                },
+                {
+                    "question": "Wie unterstützt das Prinzip ‚Untersuchung und Adaption statt Vorhersage‘ die agile Entwicklung?",
+                    "answer": "Es fördert die Beseitigung von Unsicherheiten durch schnelles Umsetzen und Testen von Ideen anstelle von Vorhersagen über zukünftiges Wissen. Dies ermöglicht es, Anpassungen basierend auf realen Ergebnissen und Feedback vorzunehmen."
+                },
+                {
+                    "question": "Was ist das Ziel des Prinzips ‚Ermöglichung ökonomisch sinnvoller Änderungen‘?",
+                    "answer": "Das Ziel ist, den Softwareprozess und das System so zu gestalten, dass auch späte Änderungen wirtschaftlich umsetzbar sind. Dies bedeutet oft, dass funktionale Anforderungen zuerst umgesetzt werden, bevor komplexe Leistungsoptimierungen vorgenommen werden."
+                },
+                {
+                    "question": "Was besagt das Prinzip ‚Wirtschaftlich sinnvolle Batch-Größen‘?",
+                    "answer": "Es bezieht sich auf die Größe der Arbeitspakete, die in einem Schritt bearbeitet werden. Kleinere Batch-Größen führen zu kürzeren Zykluszeiten, schnellerem Feedback, reduziertem Risiko und geringerer Komplexität, da sie kleinere Mengen an Aufgaben gleichzeitig bearbeiten."
+                },
+                {
+                    "question": "Was bedeutet ‚Gezielte Verwaltung von Lagerbeständen‘ im Kontext der agilen Softwareentwicklung?",
+                    "answer": "Es bedeutet, den Bestand an begonnenen, aber noch nicht abgeschlossenen Arbeiten (Work in Process, WIP) zu überwachen und zu verwalten. Ein großer WIP kann zu hohen Änderungsaufwänden führen, daher sollte der Lagerbestand so gering wie möglich gehalten werden."
+                },
+                {
+                    "question": "Wie trägt das Prinzip ‚Konzentration auf Beseitigung von Verzögerungen im Ablauf‘ zur Effizienz im Entwicklungsprozess bei?",
+                    "answer": "Es zielt darauf ab, Verzögerungen im Arbeitsablauf zu identifizieren und zu beseitigen, um einen gleichmäßigen Fluss der Arbeit zu gewährleisten. Dies hilft, unnötige Verzögerungen und eine Erhöhung des WIP zu vermeiden."
+                },
+                {
+                    "question": "Warum ist das Prinzip ‚Verzögerungskosten betrachten‘ wichtig für die Planung im agilen Projektmanagement?",
+                    "answer": "Es ist wichtig, weil es hilft, die Kosten von Verzögerungen zu berücksichtigen. Es kann ökonomisch sinnvoller sein, Ressourcen gleichmäßig über die Projektlaufzeit zu verteilen, um hohe Verzögerungskosten am Ende des Projekts zu vermeiden."
+                },
+                {
+                    "question": "Was bedeutet das Prinzip ‚Konzentration auf eine wertorientierte Auslieferung‘?",
+                    "answer": "Es bedeutet, dass der Fokus auf der kontinuierlichen Lieferung von Funktionen liegt, die für die Kunden einen echten Mehrwert bieten. Die erzeugten Artefakte sollen tatsächlichen Nutzen für die Kunden haben, nicht nur interne Kommunikations- oder Organisationsmittel sein."
+                },
+                {
+                    "question": "Wie wird der Fortschritt in agilen Projekten gemessen laut dem Prinzip ‚Fortschrittsmessung durch Validierung von Ergebnissen‘?",
+                    "answer": "Der Fortschritt wird anhand der gelieferten Ergebnisse gemessen, wie z.B. der umgesetzten Anforderungen oder dem geschaffenen Wert für das Unternehmen. Der Planstatus wird dabei nicht als Fortschrittsmaßstab verwendet."
+                },
+                {
+                    "question": "Was ist das Ziel des Prinzips ‚Nachhaltige Geschwindigkeit, schnell aber nicht gehetzt‘?",
+                    "answer": "Das Ziel ist es, eine konstante, nachhaltige Geschwindigkeit zu etablieren, die langfristig vom Team aufrechterhalten werden kann, ohne dass es überlastet wird. Kurzfristige Leistungssteigerungen durch Überarbeitung oder Überstunden können die mittlere Performance negativ beeinflussen."
+                },
+                {
+                    "question": "Wie trägt das Prinzip ‚Lieferung von kontinuierlich hoher Qualität‘ zur Produktqualität in agilen Projekten bei?",
+                    "answer": "Es bedeutet, dass hohe Qualität kontinuierlich über den gesamten Entwicklungsprozess hinweg sichergestellt wird. Qualitätsmanagement ist eine fortlaufende Aufgabe des gesamten Teams und nicht nur eine Endphase."
+                },
+                {
+                    "question": "Was besagt das Prinzip ‚Vermeidung unnötiger Formalitäten‘ in der agilen Softwareentwicklung?",
+                    "answer": "Es besagt, dass nur Dokumentation und Managementartefakte erstellt werden sollten, die tatsächlichen Nutzen haben oder gesetzlich gefordert sind. Überflüssige Formalitäten und Dokumente, die keinen Mehrwert bieten, sollten vermieden werden."
+                }
             ],
+
             chapter2: [
                 { question: 'Karteikarte 1: Scrum Rollen und Aufgaben', answer: 'Antwort 1' },
                 { question: 'Karteikarte 2: Scrum Artefakte und Prozesse', answer: 'Antwort 2' }
@@ -363,7 +553,7 @@
                 { question: 'Karteikarte 2: Best Practices für Deployment', answer: 'Antwort 2' }
             ]
         };
-
+    
         function startCardQuiz(chapter) {
             if (quizActive) {
                 alert('Abfrage läuft bereits!');
@@ -373,74 +563,91 @@
             currentCardIndex = 0;
             currentCards = cards[chapter] || [];
             if (currentCards.length) {
-                document.getElementById(`card-count-${chapter}`).textContent = `Karteikarten: ${currentCards.length}`;
-                showNextCard();
-            } else {
-                alert('Keine Karteikarten für dieses Kapitel gefunden.');
-                quizActive = false;
+                document.getElementById(`card-count-${chapter}`).innerText = `Anzahl der Karteikarten: ${currentCards.length}`;
+                document.getElementById(`card-quiz-${chapter}`).innerHTML = `
+                    <div>
+                        <h4>${currentCards[currentCardIndex].question}</h4>
+                        <button onclick="showAnswer('${chapter}')">Antwort anzeigen</button>
+                        <button onclick="nextCard('${chapter}')">Nächste Karteikarte</button>
+                        <button onclick="endQuiz('${chapter}')">Abbrechen</button>
+                        <div id="answer-${chapter}" class="hidden answer">${currentCards[currentCardIndex].answer}</div>
+                    </div>
+                `;
+                document.getElementById(`card-overview-${chapter}`).classList.add('hidden');
+                document.getElementById(`card-quiz-${chapter}`).classList.remove('hidden');
             }
         }
 
-        function showNextCard() {
-            if (currentCardIndex < currentCards.length) {
-                document.getElementById('card-quiz-' + getSelectedChapter()).innerHTML = `
-                    <p>${currentCards[currentCardIndex].question}</p>
-                    <button onclick="showAnswer()">Antwort anzeigen</button>
-                    <button onclick="nextCard()">Nächste Karte</button>
-                `;
+        function showAnswer(chapter) {
+            const answerElement = document.getElementById(`answer-${chapter}`);
+            if (answerElement.classList.contains('hidden')) {
+                answerElement.classList.remove('hidden');
             } else {
-                document.getElementById('card-quiz-' + getSelectedChapter()).innerHTML = `
-                    <p>Quiz beendet. Sie haben alle Karten durchgesehen!</p>
-                `;
-                quizActive = false;
+                answerElement.classList.add('hidden');
             }
         }
 
-        function showAnswer() {
-            document.getElementById('card-quiz-' + getSelectedChapter()).innerHTML += `
-                <p>${currentCards[currentCardIndex].answer}</p>
-                <button onclick="nextCard()">Nächste Karte</button>
-            `;
+        function nextCard(chapter) {
+            if (currentCards.length) {
+                currentCardIndex++;
+                if (currentCardIndex < currentCards.length) {
+                    document.getElementById(`card-quiz-${chapter}`).innerHTML = `
+                        <div>
+                            <h4>${currentCards[currentCardIndex].question}</h4>
+                            <button onclick="showAnswer('${chapter}')">Antwort anzeigen</button>
+                            <button onclick="nextCard('${chapter}')">Nächste Karteikarte</button>
+                            <button onclick="endQuiz('${chapter}')">Abbrechen</button>
+                            <div id="answer-${chapter}" class="hidden answer">${currentCards[currentCardIndex].answer}</div>
+                        </div>
+                    `;
+                } else {
+                    alert('Alle Karteikarten wurden abgearbeitet.');
+                    endQuiz(chapter);
+                }
+            }
         }
 
-        function nextCard() {
-            currentCardIndex++;
-            showNextCard();
-        }
-
-        function getSelectedChapter() {
-            return document.getElementById('chapterSelector').value;
+        function endQuiz(chapter) {
+            quizActive = false;
+            document.getElementById(`card-overview-${chapter}`).classList.remove('hidden');
+            document.getElementById(`card-quiz-${chapter}`).classList.add('hidden');
         }
 
         function showChapterContent() {
-            const chapterId = document.getElementById('chapterSelector').value;
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.add('hidden');
+            const selectedChapter = document.getElementById('chapterSelector').value;
+            const chapters = ['chapter1', 'chapter2', 'chapter3'];
+            chapters.forEach(chapter => {
+                document.getElementById(chapter).classList.add('hidden');
             });
-            if (chapterId) {
-                document.getElementById(chapterId).classList.remove('hidden');
+            if (selectedChapter) {
+                document.getElementById(selectedChapter).classList.remove('hidden');
+                const cardCountElement = document.getElementById(`card-count-${selectedChapter}`);
+                cardCountElement.innerText = `Anzahl der Karteikarten: ${cards[selectedChapter].length}`;
             }
         }
 
         function toggleContent(contentId) {
-            const content = document.getElementById(contentId);
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
+            const contentElement = document.getElementById(contentId);
+            if (contentElement.classList.contains('hidden')) {
+                contentElement.classList.remove('hidden');
             } else {
-                content.classList.add('hidden');
+                contentElement.classList.add('hidden');
             }
         }
 
         function showSolution(exerciseId) {
-            document.getElementById(exerciseId).classList.toggle('hidden');
+            const solutionElement = document.getElementById(exerciseId);
+            if (solutionElement.classList.contains('hidden')) {
+                solutionElement.classList.remove('hidden');
+            } else {
+                solutionElement.classList.add('hidden');
+            }
         }
 
         function goBack() {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.add('hidden');
-            });
-            document.getElementById('chapterSelector').value = '';
+            window.history.back();
         }
     </script>
+    
 </body>
 </html>
