@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karteikarten Lernen</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>LEARNING BY DOING</h1>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Geographie</a>
+                    <ul class="dropdown">
+                        <li><a class="dropdown-link" href="#" onclick="changeTopic('geography', 'capitals')">Hauptstädte</a></li>
+                        <li><a class="dropdown-link" href="#" onclick="changeTopic('geography', 'rivers')">Flüsse</a></li>
+                        <li><a class="dropdown-link" href="#" onclick="changeTopic('geography', 'mountains')">Gebirge</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Mathematik</a>
+                    <ul class="dropdown">
+                        <li><a class="dropdown-link" href="#" onclick="changeTopic('math', 'arithmetic')">Arithmetik</a></li>
+                        <li><a class="dropdown-link" href="#" onclick="changeTopic('math', 'geometry')">Geometrie</a></li>
+                        <li><a class="dropdown-link" href="#" onclick="changeTopic('math', 'algebra')">Algebra</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Wissenschaft</a>
+                    <ul class="dropdown">
+                        <li><a class="dropdown-link" href="#" onclick="changeTopic('science', 'chemistry')">Chemie</a></li>
+                        <li><a class="dropdown-link" href="#" onclick="changeTopic('science', 'physics')">Physik</a></li>
+                        <li><a class="dropdown-link" href="#" onclick="changeTopic('science', 'biology')">Biologie</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+     
+    <main>
+        <section class="card-display">
+            <h2>Karteikarten</h2>
+            <div class="container">
+                <div id="card" class="card">Wähle ein Thema</div>
+                <div class="buttons">
+                    <button onclick="showPreviousCard()">Zurück</button>
+                    <button onclick="flipCard()">Umdrehen</button>
+                    <button onclick="showNextCard()">Weiter</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
