@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daten hinzufügen - Like Hero To Zero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #4CAF50;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], input[type="date"], textarea {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Neue Klimaforschungsdaten hinzufügen</h1>
+        <form id="data-form">
+            <label for="country">Land:</label>
+            <input type="text" id="country" name="country" required>
+
+            <label for="data-date">Datum:</label>
+            <input type="date" id="data-date" name="data-date" required>
+
+            <label for="co2-emissions">CO2-Emissionen (in kt):</label>
+            <input type="number" id="co2-emissions" name="co2-emissions" step="any" required>
+
+            <label for="description">Beschreibung:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <button type="submit">Daten speichern</button>
+        </form>
+        <div id="response-message" class="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('data-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const country = document.getElementById('country').value;
+            const dataDate = document.getElementById('data-date').value;
+            const co2Emissions = document.getElementById('co2-emissions').value;
+            const description = document.getElementById('description').value;
+
+            // Validierung der Eingaben
+            if (!country || !dataDate || !co2Emissions || !description) {
+                document.getElementById('response-message').textContent = 'Bitte füllen Sie alle Felder aus.';
+                return;
+            }
+
+            const formData = {
+                country: country,
+                date: dataDate,
+                co2Emissions: parseFloat(co2Emissions),
+                description: description
+            };
+
+            try {
+                // Hier wird ein POST-Request an den Server gesendet
+                const response = await fetch('/api/save-co2-data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('response-message').textContent = 'Daten erfolgreich gespeichert.';
+                } else {
+                    document.getElementById('response-message').textContent = 'Fehler beim Speichern der Daten: ' + result.message;
+                }
+            } catch (error) {
+                document.getElementById('response-message').textContent = 'Fehler beim Speichern der Daten. Bitte versuchen Sie es später erneut.';
+            }
+        });
+    </script>
+</body>
+</html>

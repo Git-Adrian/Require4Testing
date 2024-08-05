@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Login - Like Hero To Zero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #4CAF50;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .register-link, .home-link {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .register-link a, .home-link a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .register-link a:hover, .home-link a:hover {
+            text-decoration: underline;
+        }
+        .user-info {
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #4CAF50;
+            display: none; /* Versteckt das Element standardmäßig */
+        }
+        .error-message {
+            color: #d9534f;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <div class="user-info" id="user-info">
+            <!-- Benutzername wird hier angezeigt -->
+        </div>
+        <form id="login-form">
+            <label for="username">Benutzername:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Passwort:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Anmelden</button>
+        </form>
+        <div class="error-message" id="error-message">
+            <!-- Fehlermeldung wird hier angezeigt -->
+        </div>
+        <div class="register-link">
+            <p>Keinen Account?</p>
+            <a href="register.html">Jetzt registrieren</a>
+        </div>
+        <div class="home-link">
+            <button onclick="window.location.href='index.html'">Zurück zur Hauptseite</button>
+        </div>
+    </div>
+
+    <script>
+        // Funktion, um den eingeloggten Benutzer anzuzeigen
+        function displayUser() {
+            const userInfo = document.getElementById('user-info');
+            const user = localStorage.getItem('loggedInUser');
+
+            if (user) {
+                userInfo.textContent = `Eingeloggt als: ${user}`;
+                userInfo.style.display = 'block'; // Zeigt das Element an
+            } else {
+                userInfo.style.display = 'none'; // Versteckt das Element
+            }
+        }
+
+        // Aufrufen der Funktion, um den Benutzer anzuzeigen
+        displayUser();
+
+        document.getElementById('login-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            try {
+                // Hier wird ein POST-Request an den Server gesendet
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    localStorage.setItem('loggedInUser', username);
+                    errorMessage.textContent = ''; // Fehlermeldung leeren
+                    alert('Anmeldung erfolgreich! Sie werden weitergeleitet.');
+                    window.location.href = 'index.html';
+                } else {
+                    // Fehlermeldung entsprechend der Serverantwort
+                    errorMessage.textContent = 'Sie sind noch nicht registriert. Bitte registrieren Sie sich zuerst.';
+                }
+            } catch (error) {
+                errorMessage.textContent = 'User nicht gefunden. Bitte registrieren Sie sich zuerst..';
+            }
+        });
+    </script>
+</body>
+</html>

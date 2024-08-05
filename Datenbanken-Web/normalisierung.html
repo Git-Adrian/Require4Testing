@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normalisierung von Datenbanken</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: #6fff9f;
+        }
+
+        .section p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .section ul li {
+            margin-bottom: 10px;
+        }
+
+        .section img {
+            max-width: 100%;
+            margin: 10px 0;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #6fff9f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-link:hover {
+            background-color: #5cd98c;
+        }
+
+        .interactive-exercise {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .interactive-exercise h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .interactive-exercise label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .interactive-exercise input,
+        .interactive-exercise select,
+        .interactive-exercise textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .interactive-exercise button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #6fff9f;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .interactive-exercise button:hover {
+            background-color: #5cd98c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Normalisierung von Datenbanken</h1>
+    <div class="content">
+        <div class="section">
+            <h2>Was ist Normalisierung?</h2>
+            <p>
+                Normalisierung ist der Prozess der Organisation der Spalten und Tabellen einer relationalen Datenbank, um 
+                Redundanzen zu minimieren und die Datenintegrität zu maximieren. Ziel ist es, Datenbankstrukturen so zu 
+                gestalten, dass Anomalien bei der Datenmanipulation vermieden werden.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Die verschiedenen Normalformen</h2>
+            <p>Es gibt mehrere Stufen der Normalisierung, die als "Normalformen" bekannt sind:</p>
+            <ul>
+                <li>
+                    <strong>1. Normalform (1NF):</strong> Eine Tabelle ist in der 1NF, wenn sie keine wiederholenden Gruppen von Attributen enthält.
+                </li>
+                <li>
+                    <strong>2. Normalform (2NF):</strong> Eine Tabelle ist in der 2NF, wenn sie in der 1NF ist und jedes Nicht-Schlüsselattribut 
+                    voll funktional abhängig vom gesamten Primärschlüssel ist.
+                </li>
+                <li>
+                    <strong>3. Normalform (3NF):</strong> Eine Tabelle ist in der 3NF, wenn sie in der 2NF ist und kein Nicht-Schlüsselattribut 
+                    transitiv abhängig vom Primärschlüssel ist.
+                </li>
+                <li>
+                    <strong>Boyce-Codd-Normalform (BCNF):</strong> Eine Erweiterung der 3NF, bei der jede Determinante ein Superschlüssel ist.
+                </li>
+                <li>
+                    <strong>4. Normalform (4NF):</strong> Eine Tabelle ist in der 4NF, wenn sie in der BCNF ist und keine mehrwertigen Abhängigkeiten 
+                    zwischen den Attributen existieren.
+                </li>
+                <li>
+                    <strong>5. Normalform (5NF):</strong> Auch bekannt als Projektions-Join-Normalform. Eine Tabelle ist in der 5NF, wenn sie in der 4NF ist 
+                    und jede Join-Abhängigkeit ein Ergebnis des Schlüssels ist.
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Spezielle Fälle der Normalisierung</h2>
+            <p>
+                Es gibt besondere Fälle und Herausforderungen bei der Normalisierung, wie z.B.:
+            </p>
+            <ul>
+                <li><strong>Mehrwertige Abhängigkeiten:</strong> Diese treten auf, wenn eine Attributmenge von einer anderen Attributmenge unabhängig ist, 
+                aber beide von einer dritten abhängen. Dies wird in der 4NF behandelt.</li>
+                <li><strong>Join-Abhängigkeiten:</strong> Diese betreffen die Aufteilung einer Tabelle in mehrere, ohne dass Informationen verloren gehen 
+                oder redundante Daten entstehen. Sie sind für die 5NF relevant.</li>
+                <li><strong>Denormalisierung:</strong> In einigen praktischen Fällen kann es sinnvoll sein, Daten absichtlich zu denormalisieren, 
+                um die Leistung zu verbessern, selbst auf Kosten der Redundanz.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Beispiel: Normalisierung einer Tabelle</h2>
+            <p>Gegeben ist folgende Tabelle <code>Bestellungen</code>:</p>
+            <img src="orders-table-unnormalized.png" alt="Unnormalisierte Tabelle Bestellungen">
+            <p>Diese Tabelle enthält Redundanzen und potenzielle Anomalien. Nach Normalisierung könnte sie in folgende Tabellen aufgeteilt werden:</p>
+            <ul>
+                <li><code>Kunden</code> (KundenID, KundenName, KundenAdresse)</li>
+                <li><code>Produkte</code> (ProduktID, ProduktName, ProduktPreis)</li>
+                <li><code>Bestellungen</code> (BestellID, KundenID, BestellDatum)</li>
+                <li><code>BestellDetails</code> (BestellID, ProduktID, Menge)</li>
+            </ul>
+            <img src="orders-table-normalized.png" alt="Normalisierte Tabellen">
+        </div>
+
+        <div class="section interactive-exercise">
+            <h3>Interaktive Übung: Normalisierung üben</h3>
+            <form>
+                <label for="table-name">Tabellenname:</label>
+                <input type="text" id="table-name" name="table-name" placeholder="z.B. Kunden" required>
+
+                <label for="attributes">Attribute (durch Komma getrennt):</label>
+                <input type="text" id="attributes" name="attributes" placeholder="z.B. KundenID, KundenName, KundenAdresse" required>
+
+                <label for="dependencies">Funktionale Abhängigkeiten (z.B. KundenID -> KundenName):</label>
+                <textarea id="dependencies" name="dependencies" rows="4" placeholder="z.B. KundenID -> KundenName, KundenAdresse" required></textarea>
+
+                <label for="normal-form">Ziel-Normalform:</label>
+                <select id="normal-form" name="normal-form" required>
+                    <option value="1NF">1NF</option>
+                    <option value="2NF">2NF</option>
+                    <option value="3NF">3NF</option>
+                    <option value="BCNF">BCNF</option>
+                    <option value="4NF">4NF</option>
+                    <option value="5NF">5NF</option>
+                </select>
+
+                <button type="submit">Normalisierung überprüfen</button>
+            </form>
+        </div>
+
+        <a class="back-link" href="index.html">Zurück zur Startseite</a>
+    </div>
+</body>
+</html>

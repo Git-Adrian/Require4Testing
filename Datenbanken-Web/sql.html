@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL - Structured Query Language</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: #6f9fff;
+        }
+
+        .section p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .section code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 4px;
+            color: #c7254e;
+            font-family: monospace;
+        }
+
+        .section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .section ul li {
+            margin-bottom: 10px;
+        }
+
+        .section img {
+            max-width: 100%;
+            margin: 10px 0;
+        }
+
+        .interactive-editor {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .interactive-editor h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .interactive-editor label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .interactive-editor textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: monospace;
+            height: 150px;
+        }
+
+        .interactive-editor button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #6f9fff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .interactive-editor button:hover {
+            background-color: #4e7ecb;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #6f9fff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-link:hover {
+            background-color: #4e7ecb;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f0fe;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>SQL - Structured Query Language</h1>
+    <div class="content">
+        <div class="section">
+            <h2>Was ist SQL?</h2>
+            <p>
+                SQL (Structured Query Language) ist eine standardisierte Sprache, die zur Verwaltung und Manipulation von 
+                relationalen Datenbanken verwendet wird. Mit SQL können Sie Daten in einer Datenbank erstellen, lesen, 
+                aktualisieren und löschen.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Grundlegende SQL-Befehle</h2>
+            <p>Hier sind einige der grundlegenden SQL-Befehle, die Sie kennen sollten:</p>
+            <ul>
+                <li><code>SELECT</code>: Wird verwendet, um Daten aus einer oder mehreren Tabellen abzurufen.</li>
+                <li><code>INSERT</code>: Fügt neue Datensätze in eine Tabelle ein.</li>
+                <li><code>UPDATE</code>: Aktualisiert bestehende Datensätze in einer Tabelle.</li>
+                <li><code>DELETE</code>: Löscht Datensätze aus einer Tabelle.</li>
+                <li><code>CREATE TABLE</code>: Erstellt eine neue Tabelle in der Datenbank.</li>
+                <li><code>DROP TABLE</code>: Löscht eine Tabelle aus der Datenbank.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Erweiterte SQL-Themen</h2>
+            <p>Zusätzlich zu den grundlegenden Befehlen gibt es mehrere erweiterte Themen in SQL, darunter:</p>
+            <ul>
+                <li>
+                    <strong>Joins:</strong> Joins werden verwendet, um Daten aus mehreren Tabellen basierend auf einer 
+                    verwandten Spalte zu kombinieren. Typen von Joins umfassen <code>INNER JOIN</code>, <code>LEFT JOIN</code>, 
+                    <code>RIGHT JOIN</code> und <code>FULL OUTER JOIN</code>.
+                </li>
+                <li>
+                    <strong>Unterabfragen:</strong> Eine Unterabfrage ist eine Abfrage, die in einer anderen SQL-Abfrage 
+                    eingebettet ist. Sie kann dazu verwendet werden, komplexere Abfragen zu erstellen.
+                </li>
+                <li>
+                    <strong>Transaktionen:</strong> Transaktionen sind eine Folge von SQL-Befehlen, die als eine Einheit 
+                    ausgeführt werden. Transaktionen helfen, die Datenintegrität sicherzustellen. Wichtige Befehle sind 
+                    <code>BEGIN TRANSACTION</code>, <code>COMMIT</code> und <code>ROLLBACK</code>.
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Beispieldatenbank</h2>
+            <p>Wir verwenden eine Beispieldatenbank mit den folgenden Tabellen:</p>
+            <ul>
+                <li><code>Kunden</code> (KundenID, Name, Adresse, E-Mail)</li>
+                <li><code>Bestellungen</code> (BestellID, KundenID, BestellDatum)</li>
+                <li><code>Produkte</code> (ProduktID, Name, Preis)</li>
+                <li><code>BestellDetails</code> (BestellID, ProduktID, Menge)</li>
+            </ul>
+            <p>Diese Tabellen sind miteinander verbunden und können verwendet werden, um verschiedene SQL-Abfragen zu üben.</p>
+        </div>
+
+        <div class="section interactive-editor">
+            <h3>Interaktive SQL-Übung</h3>
+            <form id="sql-form">
+                <label for="sql-query">Schreiben Sie Ihre SQL-Abfrage:</label>
+                <textarea id="sql-query" name="sql-query" placeholder="z.B. SELECT * FROM Kunden WHERE Name = 'Max Mustermann';" required></textarea>
+                <button type="submit">Abfrage ausführen</button>
+            </form>
+            <div id="sql-result" class="result" style="display: none;"></div>
+        </div>
+
+        <a class="back-link" href="index.html">Zurück zur Startseite</a>
+    </div>
+
+    <script>
+        document.getElementById('sql-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var query = document.getElementById('sql-query').value;
+            var resultDiv = document.getElementById('sql-result');
+
+            // Simulierte Antwort, in einer realen Anwendung würde dies von einem Server kommen
+            var simulatedResult = "Ergebnis der Abfrage:\n\nKundenID | Name           | Adresse        | E-Mail\n" +
+                                  "---------|----------------|----------------|------------------------\n" +
+                                  "1        | Max Mustermann | Musterstr. 1   | max@example.com\n" +
+                                  "2        | Erika Mustermann | Beispielweg 2 | erika@example.com";
+
+            resultDiv.innerText = simulatedResult;
+            resultDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

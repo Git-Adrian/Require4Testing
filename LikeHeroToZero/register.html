@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrierung - Like Hero To Zero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .register-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #4CAF50;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .login-link {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .login-link a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        .user-management-link {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .user-management-link a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .user-management-link a:hover {
+            text-decoration: underline;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .popup.active {
+            display: block;
+        }
+        .popup h2 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+        .popup button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .popup button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h1>Registrierung</h1>
+        <form id="register-form">
+            <div class="user-management-link">
+                <a href="user-management.html">Benutzerverwaltung</a>
+            </div>
+            <label for="username">Benutzername:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="email">E-Mail-Adresse:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Passwort:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="confirm-password">Passwort bestätigen:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+            
+            <button type="submit">Registrieren</button>
+        </form>
+        <div class="login-link"> 
+            <a href="backend-login.html">Zurück zum Login</a>
+        </div>
+    </div>
+
+    <!-- Popup-Container -->
+    <div id="popup" class="popup">
+        <h2 id="popup-message"></h2>
+        <button id="popup-button">OK</button>
+    </div>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Verhindert das Standard-Formular-Submit-Verhalten
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                showPopup('Die Passwörter stimmen nicht überein.');
+                return;
+            }
+
+            const formData = {
+                username: username,
+                email: email,
+                password: password
+            };
+
+            try {
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Netzwerkantwort war nicht ok.');
+                }
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showPopup('Registrierung erfolgreich! Sie werden zum Login-Bereich weitergeleitet.', true);
+                } else {
+                    showPopup('Registrierung fehlgeschlagen: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Fehler bei der Registrierung:', error);
+                showPopup('Fehler bei der Registrierung. Bitte versuchen Sie es später erneut.');
+            }
+        });
+
+        function showPopup(message, redirect = false) {
+            const popup = document.getElementById('popup');
+            const popupMessage = document.getElementById('popup-message');
+            const popupButton = document.getElementById('popup-button');
+
+            popupMessage.textContent = message;
+            popup.classList.add('active');
+
+            popupButton.onclick = function() {
+                popup.classList.remove('active');
+                if (redirect) {
+                    window.location.href = 'backend-login.html';
+                }
+            };
+        }
+    </script>
+</body>
+</html>
