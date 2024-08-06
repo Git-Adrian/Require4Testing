@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Übungsanwendung</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 15px;
+            font-size: 1.2em;
+            color: #fff;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+        }
+
+        .card p {
+            padding: 15px;
+            color: #555;
+        }
+
+        .konsumentenverhaltensforschung {
+            background-color: #FF6F61;
+        }
+
+        .marketingbotschaft {
+            background-color: #6F9FFF;
+        }
+
+        .kaufentscheidungsmodelle {
+            background-color: #17dd59;
+        }
+
+        .marktforschung {
+            background-color: #FFC107;
+        }
+
+        .kundenzufriedenheit {
+            background-color: #9C27B0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Marketing Übungsanwendung</h1>
+    <div class="card-container">
+        <div class="card">
+            <h2 class="konsumentenverhaltensforschung" onclick="location.href='konsumentenverhaltensforschung.html'">Konsumenten-verhaltensforschung</h2>
+            <p>Erfahren Sie mehr über die Forschung zum Verhalten der Konsumenten.</p>
+        </div>
+        <div class="card">
+            <h2 class="marketingbotschaft" onclick="location.href='konsumenten_marketingbotschaft.html'">Konsumenten und Marketingbotschaft</h2>
+            <p>Verstehen Sie, wie Marketingbotschaften auf Konsumenten wirken.</p>
+        </div>
+        <div class="card">
+            <h2 class="kaufentscheidungsmodelle" onclick="location.href='kaufentscheidungsmodelle.html'">Kaufentscheidungsmodelle</h2>
+            <p>Erforschen Sie verschiedene Modelle der Kaufentscheidung.</p>
+        </div>
+        <div class="card">
+            <h2 class="marktforschung" onclick="location.href='marktforschung_segmentierung.html'">Marktforschung und Segmentierung</h2>
+            <p>Lernen Sie Methoden zur Marktforschung und Segmentierung kennen.</p>
+        </div>
+        <div class="card">
+            <h2 class="kundenzufriedenheit" onclick="location.href='kundenzufriedenheit.html'">Kundenzufriedenheit</h2>
+            <p>Erfahren Sie, wie Kundenzufriedenheit gemessen und verbessert werden kann.</p>
+        </div>
+    </div>
+</body>
+</html>

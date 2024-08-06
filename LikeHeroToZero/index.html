@@ -78,6 +78,22 @@
         .data-manipulation {
             display: none; /* Anfangs versteckt */
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -95,11 +111,6 @@
                 <label for="country-select">Land auswählen:</label>
                 <select id="country-select">
                     <option value="" disabled selected>Wählen Sie ein Land</option>
-                    <option value="DE">Deutschland</option>
-                    <option value="US">Vereinigte Staaten</option>
-                    <option value="CN">China</option>
-                    <option value="IN">Indien</option>
-                    <!-- Weitere Länderoptionen können hier hinzugefügt werden -->
                 </select>
 
                 <label for="year-select">Jahr auswählen:</label>
@@ -110,7 +121,19 @@
                 <button type="button" onclick="fetchCO2Data()">Daten anzeigen</button>
             </form>
             <div id="co2-data">
-                <!-- Hier werden die CO2-Daten angezeigt -->
+                <!-- Hier wird die Tabelle angezeigt -->
+                <table id="co2-data-table" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>Jahr</th>
+                            <th>Land</th>
+                            <th>CO2-Emissionen (kt)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Daten werden hier dynamisch hinzugefügt -->
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -158,11 +181,56 @@
             }
         }
 
+        // Funktion, um Länder für die Dropdown-Liste zu laden
+        async function loadCountries() {
+            const countrySelect = document.getElementById('country-select');
+            try {
+                // Die API-URL für die Liste der Länder könnte hier verwendet werden.
+                // Für das Beispiel nehmen wir an, wir haben die Daten lokal
+                const countries = [
+                    { iso_code: 'AR', name: 'Argentinien' },
+                    { iso_code: 'AU', name: 'Australien' },
+                    { iso_code: 'BR', name: 'Brasilien' },
+                    { iso_code: 'CA', name: 'Kanada' },
+                    { iso_code: 'CN', name: 'China' },
+                    { iso_code: 'DE', name: 'Deutschland' },
+                    { iso_code: 'ES', name: 'Spanien' },
+                    { iso_code: 'FR', name: 'Frankreich' },
+                    { iso_code: 'GB', name: 'Vereinigtes Königreich' },
+                    { iso_code: 'ID', name: 'Indonesien' },
+                    { iso_code: 'IN', name: 'Indien' },
+                    { iso_code: 'IT', name: 'Italien' },
+                    { iso_code: 'JP', name: 'Japan' },
+                    { iso_code: 'KR', name: 'Südkorea' },
+                    { iso_code: 'MX', name: 'Mexiko' },
+                    { iso_code: 'MY', name: 'Malaysia' },
+                    { iso_code: 'NG', name: 'Nigeria' },
+                    { iso_code: 'PH', name: 'Philippinen' },
+                    { iso_code: 'PL', name: 'Polen' },
+                    { iso_code: 'RU', name: 'Russland' },
+                    { iso_code: 'SA', name: 'Saudi-Arabien' },
+                    { iso_code: 'ZA', name: 'Südafrika' },
+                    { iso_code: 'TH', name: 'Thailand' },
+                    { iso_code: 'TR', name: 'Türkei' },
+                    { iso_code: 'US', name: 'Vereinigte Staaten' }
+                ];
+
+                countries.forEach(country => {
+                    const option = document.createElement('option');
+                    option.value = country.iso_code;
+                    option.textContent = country.name;
+                    countrySelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Fehler beim Laden der Länder:', error);
+            }
+        }
+
         // Funktion, um die Jahre für die Dropdown-Liste zu laden
-        async function loadYears() {
+        function loadYears() {
             const yearSelect = document.getElementById('year-select');
+            const startYear = 1990;
             const currentYear = new Date().getFullYear();
-            const startYear = 2014; // Startjahr für die CO2-Daten
 
             for (let year = currentYear; year >= startYear; year--) {
                 const option = document.createElement('option');
@@ -172,13 +240,17 @@
             }
         }
 
-        // Funktion, um CO2-Daten abzurufen
+        // Funktion, um CO2-Daten abzurufen und in der Tabelle anzuzeigen
         async function fetchCO2Data() {
             const countrySelect = document.getElementById('country-select');
             const yearSelect = document.getElementById('year-select');
             const selectedCountry = countrySelect.value;
             const selectedYear = yearSelect.value;
-            const co2DataDiv = document.getElementById('co2-data');
+            const co2DataTable = document.getElementById('co2-data-table');
+            const co2DataBody = co2DataTable.querySelector('tbody');
+
+            // Leeren Sie die Tabelle, bevor neue Daten hinzugefügt werden
+            co2DataBody.innerHTML = '';
 
             if (selectedCountry && selectedYear) {
                 try {
@@ -190,15 +262,28 @@
                         const year = yearData.date;
                         const co2Emissions = yearData.value;
                         
-                        co2DataDiv.innerHTML = `<p>CO2-Emissionen für ${selectedCountry} (${year}): ${co2Emissions ? co2Emissions.toFixed(2) : 'Daten nicht verfügbar'} kt</p>`;
+                        // Zeige die Tabelle
+                        co2DataTable.style.display = 'table';
+
+                        // Füge die Daten zur Tabelle hinzu
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${year}</td>
+                            <td>${countrySelect.options[countrySelect.selectedIndex].textContent}</td>
+                            <td>${co2Emissions ? co2Emissions.toFixed(2) : 'Daten nicht verfügbar'} kt</td>
+                        `;
+                        co2DataBody.appendChild(row);
                     } else {
-                        co2DataDiv.innerHTML = '<p>Keine Daten verfügbar für das ausgewählte Jahr und Land.</p>';
+                        co2DataTable.style.display = 'none';
+                        co2DataBody.innerHTML = '<tr><td colspan="3">Keine Daten verfügbar für das ausgewählte Jahr und Land.</td></tr>';
                     }
                 } catch (error) {
-                    co2DataDiv.innerHTML = '<p>Fehler beim Abrufen der Daten. Bitte versuchen Sie es später erneut.</p>';
+                    co2DataTable.style.display = 'none';
+                    co2DataBody.innerHTML = '<tr><td colspan="3">Fehler beim Abrufen der Daten. Bitte versuchen Sie es später erneut.</td></tr>';
                 }
             } else {
-                co2DataDiv.innerHTML = '<p>Bitte wählen Sie ein Land und ein Jahr aus.</p>';
+                co2DataTable.style.display = 'none';
+                co2DataBody.innerHTML = '<tr><td colspan="3">Bitte wählen Sie ein Land und ein Jahr aus.</td></tr>';
             }
         }
 
@@ -239,6 +324,7 @@
 
         // Initialisierung der Seite
         window.onload = function() {
+            loadCountries();
             loadYears();
             displayUser();
         };

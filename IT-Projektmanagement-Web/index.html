@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT-Projektmanagement Übungsanwendung</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 15px;
+            font-size: 1.2em;
+            color: #fff;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+        }
+
+        .card p {
+            padding: 15px;
+            color: #555;
+        }
+
+        .grundlagen {
+            background-color: #FF6F61;
+        }
+
+        .planungstechniken {
+            background-color: #6F9FFF;
+        }
+
+        .priorisierung {
+            background-color: #6FFF9F;
+        }
+
+        .aufwandschaetzung {
+            background-color: #FFC107;
+        }
+
+        .projektcontrolling {
+            background-color: #9C27B0;
+        }
+
+        .stakeholdermanagement {
+            background-color: #FF9800;
+        }
+
+        .risikomanagement {
+            background-color: #00BCD4;
+        }
+
+        .organisation {
+            background-color: #8BC34A;
+        }
+
+        .pitpm {
+            background-color: #3F51B5;
+        }
+
+        .card h2.grundlagen {
+            background-color: #FF6F61;
+        }
+
+        .card h2.planungstechniken {
+            background-color: #6F9FFF;
+        }
+
+        .card h2.priorisierung {
+            background-color: #6FFF9F;
+        }
+
+        .card h2.aufwandschaetzung {
+            background-color: #FFC107;
+        }
+
+        .card h2.projektcontrolling {
+            background-color: #9C27B0;
+        }
+
+        .card h2.stakeholdermanagement {
+            background-color: #FF9800;
+        }
+
+        .card h2.risikomanagement {
+            background-color: #00BCD4;
+        }
+
+        .card h2.organisation {
+            background-color: #8BC34A;
+        }
+
+        .card h2.pitpm {
+            background-color: #3F51B5;
+        }
+    </style>
+</head>
+<body>
+    <h1>IT-Projektmanagement Übungsanwendung</h1>
+    <div class="card-container">
+        <div class="card">
+            <h2 class="grundlagen" onclick="location.href='begriffe-und-grundlagen.html'">Begriffe und Grundlagen</h2>
+            <p>Erfahren Sie mehr über die grundlegenden Begriffe und Konzepte des IT-Projektmanagements.</p>
+        </div>
+        <div class="card">
+            <h2 class="planungstechniken" onclick="location.href='planungstechniken.html'">Planungstechniken</h2>
+            <p>Lernen Sie verschiedene Techniken kennen, um ein IT-Projekt erfolgreich zu planen.</p>
+        </div>
+        <div class="card">
+            <h2 class="priorisierung" onclick="location.href='priorisierung.html'">Priorisierung</h2>
+            <p>Verstehen Sie, wie Aufgaben und Anforderungen in Projekten priorisiert werden.</p>
+        </div>
+        <div class="card">
+            <h2 class="aufwandschaetzung" onclick="location.href='aufwandschaetzung.html'">Aufwandsschätzung</h2>
+            <p>Lernen Sie Methoden zur präzisen Schätzung des Aufwands in IT-Projekten kennen.</p>
+        </div>
+        <div class="card">
+            <h2 class="projektcontrolling" onclick="location.href='projektcontrolling.html'">Projektcontrolling</h2>
+            <p>Entdecken Sie, wie man den Fortschritt und die Finanzen eines Projekts überwacht.</p>
+        </div>
+        <div class="card">
+            <h2 class="stakeholdermanagement" onclick="location.href='stakeholder-management.html'">Stakeholder- & Kommunikationsmanagement</h2>
+            <p>Erfahren Sie, wie Sie effektiv mit Stakeholdern kommunizieren und deren Bedürfnisse managen.</p>
+        </div>
+        <div class="card">
+            <h2 class="risikomanagement" onclick="location.href='risikomanagement.html'">Risikomanagement</h2>
+            <p>Lernen Sie, Risiken zu identifizieren, zu bewerten und zu steuern.</p>
+        </div>
+        <div class="card">
+            <h2 class="organisation" onclick="location.href='organisation-und-struktur.html'">Organisation und Struktur</h2>
+            <p>Verstehen Sie die organisatorischen Aspekte und Strukturen in IT-Projekten.</p>
+        </div>
+        <div class="card">
+            <h2 class="pitpm" onclick="location.href='pragmatisches-itpm.html'">Pragmatisches IT-Projektmanagement</h2>
+            <p>Entdecken Sie praxisnahe Ansätze für ein effizientes IT-Projektmanagement.</p>
+        </div>
+    </div>
+</body>
+</html>
