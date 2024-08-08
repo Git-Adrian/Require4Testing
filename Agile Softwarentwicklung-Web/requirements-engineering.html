@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirements Engineering in Agilen Projekten</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header { 
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            background: #007bff;
+        }
+
+        h1 {
+            color: #fff;
+            margin: 20px 0;
+        }
+
+        section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #333; 
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .image {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .highlight {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-left: 4px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Requirements Engineering in Agilen Projekten</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Einführung</h2>
+            <p>Requirements Engineering (RE) umfasst die Aktivitäten zur Ermittlung, Dokumentation, Abstimmung und Verwaltung von Anforderungen. Laut Pohl und Rupp (2011) ist RE definiert als:</p>
+            <blockquote class="highlight">
+                „Requirements Engineering (RE) ist ein kooperativer, iterativer, inkrementeller Prozess, dessen Ziel ist zu gewährleisten, dass…<br>
+                – alle relevanten Anforderungen bekannt und im erforderlichen Detaillierungsgrad verstanden sind.<br>
+                – alle Anforderungen konform zu den Dokumentationsvorschriften dokumentiert bzw. konform zu den Spezifikationsvorschriften spezifiziert sind.<br>
+                – die involvierten Stakeholder ausreichende Übereinstimmung über die bekannten Anforderungen erzielen.“
+            </blockquote>
+        </section>
+        
+        <section>
+            <h2>Kernaktivitäten im Requirements Engineering</h2>
+            <ul>
+                <li>Ermittlung von Anforderungen</li>
+                <li>Dokumentation von Anforderungen</li>
+                <li>Prüfen und Abstimmen von Anforderungen</li>
+                <li>Verwalten von Anforderungen</li>
+            </ul>
+            <p>In agilen Projekten werden diese Aktivitäten flexibel und iterativ durchgeführt. Anstatt eine fixe Reihenfolge festzulegen, erfolgt die Auswahl und Bearbeitung der Anforderungen je nach Projektbedarf und Stakeholder-Verfügbarkeit.</p>
+        </section>
+
+        <section>
+            <h2>Agile Unterschiede im Requirements Engineering</h2>
+            <p>Im Gegensatz zu traditionellen Projekten wird in agilen Projekten kein großes Anforderungsdokument vor der Implementierung erstellt. Stattdessen wird das <strong>Product Backlog</strong> kontinuierlich verfeinert und detailliert, um den Entwicklungsteams nur die notwendigen Informationen zur Verfügung zu stellen.</p>
+            <p>Der <strong>Chief Product Owner</strong> sorgt dafür, dass immer ausreichend detaillierte Anforderungen bereitgestellt werden, die die <strong>Definition of Ready</strong> erfüllen.</p>
+        </section>
+
+        <section>
+            <h2>Techniken zur Verfeinerung und Detaillierung</h2>
+            <p>Einige gängige Techniken zur Verfeinerung und Detaillierung von Anforderungen sind:</p>
+            
+            <h3>Use Case (Anwendungsfall)</h3>
+            <p>Use Cases beschreiben Hauptfunktionen eines Systems auf abstrakter Ebene und werden in frühen Projektphasen verwendet. Sie werden im weiteren Verlauf verfeinert und detailliert.</p>
+            <div class="example">
+                <p><strong>Beispiel:</strong> Ein Use Case könnte die Funktion „Vertragsverwaltung“ darstellen, die später durch spezifische User Stories detailliert wird.</p>
+            </div>
+            
+            <h3>User Story</h3>
+            <p>User Stories beschreiben Anforderungen aus Sicht einer Rolle nach dem Schema:<br>
+            <strong>Als &lt;Rolle&gt;, möchte ich &lt;Ziel erreichen&gt;, um/damit &lt;Begründung&gt;.</strong></p>
+            <div class="example">
+                <p><strong>Beispiel:</strong> „Als Kunde möchte ich meine Verträge online verwalten können, damit ich auch außerhalb der Geschäftszeiten Änderungen vornehmen kann.“</p>
+            </div>
+
+            <h3>Story Maps</h3>
+            <p>Story Maps veranschaulichen Abhängigkeiten zwischen User Stories und Use Cases. Sie helfen dabei, die Reihenfolge und Priorität der Anforderungen zu visualisieren.</p>
+            <div class="example">
+                <p><strong>Beispiel:</strong> In einer Story Map könnte die Hauptfunktion „Online-Kartenkauf“ durch User Stories wie „Sitzplatz auswählen“ und „Bezahlung durchführen“ detailliert werden.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Kriterien für die Zerlegung von User Stories</h2>
+            <p>Große Backlog-Elemente müssen in kleinere User Stories zerlegt werden. Mögliche Zerlegungskriterien sind:</p>
+            <ul>
+                <li>Zerlegung nach Workflow</li>
+                <li>Zerlegung nach Geschäftsregel</li>
+                <li>Zerlegung nach Geschäftsobjekten</li>
+                <li>Zerlegung nach Dateneingabe</li>
+                <li>Zerlegung nach Aufwand</li>
+                <li>Zerlegung nach Rolle</li>
+            </ul>
+            <p>Welche Zerlegungskriterien angewendet werden, hängt von der Projektsituation ab und kann bei Bedarf angepasst werden.</p>
+        </section>
+
+        <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>

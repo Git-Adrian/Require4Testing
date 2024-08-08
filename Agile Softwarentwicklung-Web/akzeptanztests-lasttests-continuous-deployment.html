@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akzeptanztests, Lasttests und Continuous Deployment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header { 
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin: 20px 0;
+        }
+
+        section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #333; 
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .image {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .highlight {
+            background-color: #e7f0ff;
+            border-left: 5px solid #007bff;
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Akzeptanztests, Lasttests und Continuous Deployment</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Einführung</h2>
+            <p>Nachdem der Build-Server (z. B. Jenkins) ein neues Release erstellt hat, können weiterführende Tests durchgeführt werden. Diese umfassen automatisierte Akzeptanz- und Lasttests, die gemäß der Continuous Delivery-Pipeline vor den explorativen Tests durchgeführt werden. Dies betrifft die Testarten der Quadranten 2 und 4 des agilen Testens.</p>
+            <div class="image">
+                <img src="Bilder/vier Quadranten des agilen Testens.jpg">
+            </div>
+            <div class="image">
+                <img src="Bilder/Werkzeuge der Continuous Delivery-Pipeline im Anschluss an die Integration.jpg" alt="Schritte und Werkzeuge der Continuous Delivery-Pipeline">
+            </div>
+        </section>
+
+        <section>
+            <h2>Akzeptanztests</h2>
+            <h3>Prinzipien und Methoden</h3>
+            <p>Akzeptanztests prüfen die Grundfunktionalität der Software und werden vor den Lasttests durchgeführt. Dies folgt dem agilen Prinzip „First make it run, then make it fast“. Automatisierte Akzeptanztests testen die fachlichen Grundfunktionen, während die finale Abnahme manuell durch Kunden erfolgt.</p>
+
+            <div class="highlight">
+                <p>„First make it run – then make it fast!“ bedeutet, dass zunächst die Grundfunktionalität implementiert wird, bevor nicht-funktionale Anforderungen wie Performanz berücksichtigt werden.</p>
+            </div>
+
+            <h3>Automatisierung der Akzeptanztests</h3>
+            <p>Automatisierte Akzeptanztests nutzen Werkzeuge wie Behaviour-Driven Development (BDD), um Testfälle in einer für Kunden verständlichen Sprache zu definieren. Ein Beispiel ist JBehave für Java, das mit der BDD-Sprache Gherkin arbeitet.</p>
+        </section>
+
+        <section>
+            <h2>Lasttests</h2>
+            <h3>Durchführung und Werkzeuge</h3>
+            <p>Lasttests prüfen die Software unter Lastbedingungen, um sicherzustellen, dass sie auch bei hoher Nutzeranzahl performant bleibt. Werkzeuge wie Gatling werden verwendet, um Benutzerinteraktionen aufzuzeichnen und zu simulieren.</p>
+
+            <h3>Integration von Lasttests</h3>
+            <p>Die Lasttests werden oft als letzter Schritt in der Jenkins-Build-Pipeline durchgeführt. Gatling bietet Plugins für Maven und Jenkins, um die Lasttests nahtlos in den Build-Prozess zu integrieren.</p>
+        </section>
+
+        <section>
+            <h2>Continuous Deployment</h2>
+            <h3>Deployment und Herausforderungen</h3>
+            <p>Das Deployment in die Produktion stellt den letzten Schritt der Continuous Delivery-Pipeline dar. Während auf Testumgebungen Deployments weniger kritisch sind, erfordert das Deployment auf Produktivsystemen spezielle Maßnahmen zur Risikominderung, wie Rollforward statt Rollback und die Verwaltung von Datenbankänderungen.</p>
+
+            <div class="highlight">
+                <p>Continuous Deployment reduziert die Komplexität und Risiken, indem es die Frequenz von Deployments erhöht und die Größe von Änderungen minimiert.</p>
+            </div>
+
+            <h3>Methoden zur Risikominderung</h3>
+            <p>Bei Continuous Deployment werden Risiken durch Rollforward-Strategien und detaillierte Versionskontrollen gemindert. Die Aktualisierung von Datenbanken wird separat getestet und ausgerollt, um die Komplexität zu reduzieren.</p>
+        </section>
+
+        <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>

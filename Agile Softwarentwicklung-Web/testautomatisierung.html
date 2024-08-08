@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testautomatisierung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header { 
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #bbb 3px solid;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            padding: 20px;
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        h3 {
+            color: #555;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul li {
+            margin: 10px 0;
+        }
+        .code {
+            background: #eee;
+            border-left: 3px solid #333;
+            padding: 10px;
+            font-family: monospace;
+        }
+        .code pre {
+            margin: 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Testautomatisierung</h1>
+        </div>
+    </header>
+
+    <div class="container content">
+        <h2>Einführung</h2>
+        <p>Um häufige Änderungen an der Software effizient zu testen, sind Regressionstests erforderlich. Diese Tests müssen automatisiert werden, um den Aufwand für die Testdurchführung und -dokumentation zu minimieren.</p>
+
+        <h2>Automatisierung von Unit-Tests mit JUnit</h2>
+        <p>Unit-Tests sind weit verbreitet und zielen darauf ab, alle Anweisungen, Bedingungen und Pfade in Systemkomponenten zu testen. Die Automatisierung dieser Tests bietet Vorteile wie:</p>
+        <ul>
+            <li><strong>Reproduzierbarkeit:</strong> Unit-Tests sollten reproduzierbar sein und durch festgelegte Testdaten unabhängig von anderen Tests funktionieren.</li>
+            <li><strong>Unabhängigkeit:</strong> Tests sollten unabhängig sein und keine funktionalen Abhängigkeiten aufweisen. Jeder Test muss die benötigten Vorbedingungen selbst herstellen.</li>
+            <li><strong>Regressionsfähigkeit:</strong> Tests müssen nach Änderungen am Code weiterhin erfolgreich sein, um die Funktionalität sicherzustellen.</li>
+        </ul>
+
+        <h3>JUnit</h3>
+        <p>JUnit ist ein beliebtes Tool für die Automatisierung von Unit-Tests in Java. Die Tests werden in derselben Umgebung wie der Quellcode programmiert, um die Übersichtlichkeit zu wahren. Ein Testfall wird durch Annotationen wie <code>@Test</code> definiert, und Assertions wie <code>assertEquals</code> überprüfen die Ergebnisse.</p>
+
+        <div class="code">
+            <pre>
+@Test
+public void testBerechneGesamtwert() {
+    // Testdaten
+    double kurs = 100.0;
+    int anzahl = 10;
+    
+    // Methode aufrufen
+    double gesamtwert = wertpapierRechner.berechneGesamtwert(kurs, anzahl);
+    
+    // Überprüfung
+    assertEquals(1000.0, gesamtwert, 0.001);
+}
+            </pre>
+        </div>
+
+        <h2>Automatisierte Integrationstests mit Mockito</h2>
+        <p>Integrationstests prüfen das Zusammenspiel von Komponenten. Bei fehlenden Komponenten verwenden wir Platzhalter wie Treiber und Mock-Objekte. Mockito ist ein Tool zur Erzeugung dieser Mock-Objekte und hilft bei der Simulation von Schnittstellenverhalten.</p>
+
+        <div class="code">
+            <pre>
+Mockito.when(mockDAO.getKurs()).thenReturn(100.0);
+            </pre>
+        </div>
+
+        <h2>Automatisierung von System- und Systemintegrationstests</h2>
+        <p>Diese Tests prüfen integrierte Systeme und deren Umgebung. Hier können auch Benutzerschnittstellen automatisiert werden, wobei Werkzeuge wie Selenium oder SikuliX zum Einsatz kommen.</p>
+
+        <h2>Automatisierung fachlicher Tests</h2>
+        <p>Für fachliche Tests, die Benutzerschnittstellen beinhalten, können Automatisierungswerkzeuge verwendet werden. Diese müssen jedoch sorgfältig gepflegt werden, um Stabilität bei Änderungen an der Benutzeroberfläche zu gewährleisten.</p>
+
+        <h2>Testdatenmanagement</h2>
+        <p>In größeren Projekten ist es wichtig, Testdaten getrennt von Testfällen zu verwalten. Dies erleichtert die Pflege und Anpassung der Testdaten und reduziert die Wartungskosten.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Testautomatisierung</p>
+    </footer>
+</body>
+</html>

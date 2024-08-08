@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agiles Projektmanagement Lektionen</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.2s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 15px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card p {
+            padding: 15px;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .card a {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            margin-bottom: 15px;
+        }
+
+        .card a:hover {
+            background-color: #0056b3;
+        }
+
+        .planungsebenen {
+            background-color: #FF6F61; /* Red */
+        }
+
+        .portfoliomanagement {
+            background-color: #6F9FFF; /* Blue */
+        }
+
+        .organisation {
+            background-color: #17dd59; /* Green */
+        }
+
+        .planung {
+            background-color: #FFC107; /* Yellow */
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #ccc;
+            color: #333;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agiles Projektmanagement Lektionen</h1>
+    <div class="card-container">
+        <div class="card planungsebenen">
+            <h2 onclick="location.href='planungsebenen.html'">Planungsebenen im agilen Projektmanagement</h2>
+            <p>Entdecken Sie die verschiedenen Planungsebenen im agilen Projektmanagement und wie sie zur erfolgreichen Umsetzung von Projekten beitragen.</p>
+            <a href="planungsebenen.html">Lektion ansehen</a>
+        </div>
+        <div class="card portfoliomanagement">
+            <h2 onclick="location.href='portfoliomanagement.html'">Agiles Portfoliomanagement</h2>
+            <p>Lernen Sie die Konzepte und Methoden des agilen Portfoliomanagements kennen.</p>
+            <a href="portfoliomanagement.html">Lektion ansehen</a>
+        </div>
+        <div class="card organisation">
+            <h2 onclick="location.href='organisation.html'">Organisation mehrerer Teams in einem Projekt</h2>
+            <p>Erfahren Sie, wie Sie mehrere Teams in einem agilen Projekt effektiv organisieren und koordinieren, um maximale Effizienz und Zusammenarbeit zu erreichen.</p>
+            <a href="organisation.html">Lektion ansehen</a>
+        </div>
+        <div class="card planung">
+            <h2 onclick="location.href='planung.html'">Produkt- und Release-Planung</h2>
+            <p>Vertiefen Sie sich in die Produkt- und Release-Planung im agilen Umfeld. Lernen Sie, wie Sie Releases planen und das Produkt kontinuierlich verbessern können.</p>
+            <a href="planung.html">Lektion ansehen</a>
+        </div>
+    </div>
+    <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+</body>
+</html>

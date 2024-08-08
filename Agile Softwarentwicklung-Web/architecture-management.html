@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architekturmanagement in Agilen Projekten</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header { 
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            background: #007bff;
+        }
+
+        h1 {
+            color: #fff;
+            margin: 20px 0;
+        }
+
+        section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #333; 
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .image {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .highlight {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-left: 4px solid #007bff;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        caption {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Architekturmanagement in Agilen Projekten</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Einführung</h2>
+            <p>In agilen Projekten erfolgt das Architekturmanagement kontinuierlich im Verlauf einzelner Entwicklungszyklen. Entwicklungsteams sollten eigenständig relevante Funktionen bereitstellen können, wobei sie die notwendigen Informationen aus dem Product Backlog erhalten. Bei komplexeren Projekten oder neuen Technologien können Architekturteams wichtige Entscheidungen treffen.</p>
+            <p>Im Gegensatz zu annahmegesteuerten Projekten wird die Architektur iterativ auf Basis von Feedback und Erfahrungen aus bisherigen Zyklen entwickelt. Dies erfordert eine kontinuierliche Überprüfung und Überarbeitung der Softwarearchitektur durch die Teams.</p>
+        </section>
+        
+        <section>
+            <h2>Technische Aufgaben und Backlog-Elemente</h2>
+            <p>Technische Aufgaben, die keine direkt sichtbaren Ergebnisse für Kunden liefern, können als Backlog-Elemente vom Typ „technische Arbeit“ oder „Wissenserwerb“ eingeplant werden. Im Release Train werden solche Aufgaben gezielt im Innovations- und Planungszyklus berücksichtigt.</p>
+        </section>
+
+        <section>
+            <h2>Things-that-Matter-Matrix (TTM-Matrix)</h2>
+            <p>Die TTM-Matrix, entwickelt von King (2010) und beschrieben in Röpstorff und Wiechmann (2012), hilft bei der Zuordnung von Backlog-Elementen zu architektonischen Aspekten. Sie zeigt auf, welche architektonischen Elemente für die Umsetzung wichtig sind und beeinflusst Schätzungen, Priorisierungen und die Arbeitsorganisation im Team.</p>
+            <div class="image">
+                <img src="Bilder/Beispiel einer TTM-Matrix.jpg" alt="Beispiel für eine TTM-Matrix">
+            </div>
+            <p>In der TTM-Matrix werden Backlog-Elemente den verschiedenen architektonischen Schichten zugeordnet, wobei die Komplexität und der Aufwand für jede Schicht in T-Shirt-Größen eingeschätzt werden.</p>
+        </section>
+
+        <section>
+            <h2>Beispielhafte Aussagen aus der TTM-Matrix</h2>
+            <ul>
+                <li><strong>User Story #A:</strong> Hat eine komplexe GUI und eine anspruchsvolle Datenbankanbindung, aber eine einfache Geschäftslogik.</li>
+                <li><strong>User Story #B:</strong> Keine GUI, einfache Webservice-Schnittstelle, jedoch komplexe Geschäftslogik.</li>
+            </ul>
+            <p>Die TTM-Matrix unterstützt Architekten und Entwicklungsteams bei der Schätzung und Planung der Aufgabenverteilung. Sie gibt auch Aufschluss darüber, welche Elemente besonders sorgfältig gestaltet werden müssen.</p>
+        </section>
+
+        <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>

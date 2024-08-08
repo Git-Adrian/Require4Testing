@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organisation mehrerer Teams in einem Projekt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+
+        p, ul {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .image {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Organisation mehrerer Teams in einem Projekt</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Einführung</h2>
+            <p>In kleinen Projekten ist agiles Software Engineering einfach umzusetzen. Für mittlere und große Projekte müssen jedoch mehrere Teams effektiv zusammenarbeiten. Dieser Ansatz wird als „Scaling Agile“ bezeichnet und umfasst Methoden wie SAFe und Nexus.</p>
+        </section>
+
+        <section>
+            <h2>Organisationsformen von Teams</h2>
+            <h3>Komponententeams</h3>
+            <p>Komponententeams sind auf bestimmte Systemkomponenten spezialisiert. Jedes Team bearbeitet ein eigenes Komponenten-Backlog. Die Herausforderung hierbei ist die mögliche Priorisierungsdifferenz zwischen verschiedenen Product Backlogs und der Gefahr, dass der Arbeitsablauf eines Produktes gefährdet wird.</p>
+            <div class="image">
+                <img src="Bilder/Organisation von Komponententeams.jpg" alt="Organisation von Komponententeams">
+                
+            </div>
+
+            <h3>Funktionsteams</h3>
+            <p>Funktionsteams sind für spezifische Produktfunktionen zuständig, die über mehrere Systemkomponenten verteilt sind. Diese Teams erstellen Backlog-Elemente direkt im Product Backlog, was eine optimale Abarbeitung der Aufgaben ermöglicht, aber auch technische Schulden verursachen kann.</p>
+            <div class="image">
+                <img src="Bilder/Organisation in Funktionsteam.jpg" alt="Organisation in Funktionsteams">
+               
+            </div>
+
+            <h3>Mischform aus Funktionsteams und Komponententeams</h3>
+            <p>In dieser Mischform arbeiten Funktionsteams an den Backlog-Elementen und Komponententeams kümmern sich um die technische Pflege der einzelnen Komponenten. Dies ermöglicht eine kontinuierliche Pflege und Weiterentwicklung der Komponenten, kann jedoch zusätzlichen Koordinationsaufwand erfordern.</p>
+            <div class="image">
+                <img src="Bilder/Funktionsteams und technische Komponententeams.jpg" alt="Funktionsteams und technische Komponententeams">
+                
+            </div>
+        </section>
+
+        <section>
+            <h2>Koordination und Abstimmung</h2>
+            <h3>Scrum of Scrums</h3>
+            <p>Der Scrum of Scrums ist eine regelmäßige Veranstaltung zur teamübergreifenden Abstimmung und Problemlösung. Vertreter aller Teams treffen sich, um den Fortschritt, die aktuellen Probleme und geplante Aufgaben zu besprechen.</p>
+            <div class="image">
+                <img src="Bilder/ Scrum of Scrums.jpg" alt="Scrum of Scrums">
+               
+            </div>
+
+            <h3>Release Train</h3>
+            <p>Der Release Train ist eine Organisationsform, bei der mehrere Teams gemeinsam an einer Anwendung oder einem Produkt arbeiten. Die Teams arbeiten synchron und liefern zu festgelegten Zeitpunkten lauffähige Versionen des Produkts aus. Dies fördert regelmäßiges Feedback und Anpassungen.</p>
+            <div class="image">
+                <img src="Bilder/Release Train.jpg" alt="Release Train">
+                 
+            </div>
+
+            <h3>Details eines Releases</h3>
+            <p>Der Release-Zyklus besteht aus mehreren Phasen, darunter die Abarbeitung der Backlog-Elemente und ein Innovations- und Planungszyklus zur Qualitätssicherung und Planung des nächsten Releases.</p>
+            <div class="image">
+                <img src="Bilder/Details eines Releases in einem Release Train.jpg" alt="Details eines Releases">
+                 
+            </div>
+        </section>
+
+        <section>
+            <h2>Übertragung in die Unternehmenspraxis</h2>
+            <p>Die Wahl der Organisationsform hängt von der Größe und Architektur des Systems ab. Teams sollten in der Lage sein, sowohl Produktfunktionen eigenständig zu entwickeln als auch die kontinuierliche Pflege der Systeme sicherzustellen. Die ideale Teamgröße für Scrum liegt bei drei bis neun Personen, und die Zuweisung von Komponentenspezialisten zu Funktionsteams kann die Effizienz verbessern.</p>
+        </section>
+
+        <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>

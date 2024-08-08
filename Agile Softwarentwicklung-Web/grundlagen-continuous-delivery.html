@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grundlagen und Continuous Delivery-Pipeline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header { 
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Grundlagen und Continuous Delivery-Pipeline</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Grundlagen von Continuous Delivery</h2>
+            <p>Continuous Delivery ist ein Begriff aus der agilen Softwareentwicklung, der Konzepte, Methoden und Werkzeuge zur kontinuierlichen Auslieferung von Software an die Kundschaft umfasst. Es ist ein Prinzip, das im agilen Manifest als höchste Priorität genannt wird: „Unsere höchste Priorität ist es, den Kunden durch frühe und kontinuierliche Auslieferung wertvoller Software zufrieden zu stellen“ (Agiles Manifest).</p>
+            <p>Die Continuous Delivery Pipeline beginnt mit jeder Änderung am Quellcode (Commit) und endet mit der Installation und Konfiguration auf dem Produktivsystem (Deployment). Dies unterscheidet sich von klassischen Softwareprozessen durch geringere Batch-Größen und eine andere Reihenfolge der Tests.</p>
+            <img src="Bilder/continiuous deliver pipeline.jpg" alt="Continuous Delivery Pipeline">
+        </section>
+        
+        <section>
+            <h2>Vorteile von Continuous Delivery</h2>
+            <ul>
+                <li><strong>Time-to-Market:</strong> Schnelle Auslieferung kann entscheidend sein, um im Wettbewerb vorne zu bleiben.</li>
+                <li><strong>Risikominimierung:</strong> Automatisierte und häufigere Releases reduzieren die Risiken von Fehlern und Problemen bei der Softwareauslieferung.</li>
+                <li><strong>Schnelles Feedback:</strong> Häufige Rückmeldungen nach jedem Commit verbessern die Qualität und das Vertrauen in die Software.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Prinzipien von Continuous Delivery</h2>
+            <p>Continuous Delivery folgt drei zentralen Prinzipien, die aus dem Satz „If it hurts, do it more often!“ abgeleitet werden:</p>
+            <ul>
+                <li><strong>Regelmäßigkeit:</strong> Häufige und automatisierte Auslieferungsprozesse erhöhen die Professionalität und reduzieren die Aufwände für wiederkehrende Aufgaben.</li>
+                <li><strong>Nachvollziehbarkeit:</strong> Die Dokumentation von Versionen und Testumgebungen ist entscheidend, um den Überblick und die Reproduzierbarkeit zu gewährleisten.</li>
+                <li><strong>Regression:</strong> Kontinuierliche Regressionstests sind notwendig, um Fehler zu identifizieren, die durch Änderungen entstehen können.</li>
+            </ul>
+           
+        </section>
+
+        <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>

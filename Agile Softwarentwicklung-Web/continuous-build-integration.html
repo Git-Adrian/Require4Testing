@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuous Build und Continuous Integration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header { 
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin: 20px 0;
+        }
+
+        section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #333; 
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .image {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Continuous Build und Continuous Integration</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Einführung</h2>
+            <p>Die ersten Schritte der Continuous Delivery-Pipeline umfassen den Build-Prozess sowie Unit- und Integrationstests. In diesem Lernzyklus werden Methoden und Werkzeuge vorgestellt, die Continuous Delivery unterstützen und optimieren. Die Pipeline-Übersicht zeigt, wie diese Werkzeuge den verschiedenen Schritten zugeordnet sind. Der Fokus liegt auf Continuous Build und Continuous Integration.</p>
+            
+            <div class="image">
+                <img src="Bilder/Continuous Delivery Pipeline, mit Werkzeugen.jpg" alt="Pipeline-Übersicht der Continuous Delivery">
+            </div>
+        </section>
+        
+        <section>
+            <h2>Continuous Build</h2>
+            <h3>Die Methode</h3>
+            <p>Continuous Build beschleunigt den Auslieferungsprozess durch Automatisierung und Optimierung. Der Prozess beinhaltet typischerweise:</p>
+            <ul>
+                <li>Kompilieren des Quellcodes und Nachladen von Abhängigkeiten</li>
+                <li>Verarbeiten benötigter Ressourcen</li>
+                <li>Durchführen von Unit-Tests</li>
+                <li>Erzeugen eines auslieferbaren Programmpakets und Ablage in einem Paket-Repository</li>
+            </ul>
+            <p>Der Continuous Build-Prozess wird oft nur für Änderungen in Hauptentwicklungszweigen (z.B. „trunk“ oder „master“) angestoßen. Die Konfiguration ermöglicht es, zu entscheiden, bis zu welchem Punkt der Build-Prozess bei einem Commit durchlaufen wird.</p>
+
+            <h3>Die Werkzeuge</h3>
+            <p>Für Continuous Build sind verschiedene Werkzeuge erforderlich:</p>
+            <ul>
+                <li><strong>Make:</strong> Ein frühes Build-Automatisierungswerkzeug, entwickelt 1977 für Unix-Umgebungen.</li>
+                <li><strong>Ant:</strong> Ein Java-basiertes Werkzeug, das XML-Dateien zur Konfiguration verwendet und die Build-Konfiguration plattformunabhängig speichert.</li>
+                <li><strong>Maven:</strong> Ein moderneres Build-Tool, das auf Konventionen basiert und den Build-Prozess durch den Maven-Default-Lifecycle verfeinert.</li>
+                <li><strong>Gradle:</strong> Ein flexibles Build-Werkzeug, das kompatibel zu Maven ist, jedoch die Sprache Groovy verwendet.</li>
+            </ul>
+            
+            <div class="image">
+                <img src="Bilder/Ordnerstruktur eines Maven-Projekts.jpg" alt="Ordnerstruktur eines Maven-Projekts">
+            </div>
+
+            <div class="image">
+                <img src="Bilder/Die wichtigsten Schritte im Maven-Default-Lifecycle.jpg" alt="Die wichtigsten Schritte im Maven-Default-Lifecycle">
+            </div>
+        </section>
+
+        <section>
+            <h2>Continuous Integration</h2>
+            <h3>Die Methode</h3>
+            <p>Continuous Integration (CI) automatisiert die Integration von Komponenten und erfordert einen CI-Server. Dieser Server führt folgende Schritte durch:</p>
+            <ul>
+                <li>Download aller benötigten Pakete und Programmbibliotheken</li>
+                <li>Kompilierung der integrierten Paketstruktur</li>
+                <li>Ablage der Binärdateien für weiterführende Tests</li>
+            </ul>
+            <p>Der CI-Server ist in der Lage, die Build-Pipeline flexibel zu konfigurieren, einschließlich der automatischen Aufsetzung von Datenbanken und der Steuerung der Versionsstände.</p>
+
+            <h3>Die Werkzeuge</h3>
+            <p>Jenkins ist das prominenteste Werkzeug für Continuous Integration. Es definiert Build-Schritte als Jobs und unterstützt viele Build-Tools und Versionskontrollsysteme:</p>
+            <ul>
+                <li><strong>Jenkins:</strong> Ein weit verbreiteter CI-Server, der Jobs konfiguriert und mit verschiedenen Build-Werkzeugen wie Maven und Gradle arbeitet.</li>
+            </ul>
+            
+            <div class="image">
+                <img src="Bilder/Systeme und deren Abhängigkeiten in einem typischen Continuous Integration-Setup.jpg" alt="Systeme und deren Abhängigkeiten in einem typischen Continuous Integration-Setup">
+            </div>
+
+            <div class="image">
+                <img src="Bilder/Visualisierung der Build-Pipeline in Jenkins.jpg" alt="Visualisierung der Build-Pipeline in Jenkins">
+            </div>
+
+            <p>Jenkins kann durch eine Vielzahl von Plugins erweitert werden, um zusätzliche Funktionen zu integrieren. Es bietet Schnittstellen zu vielen Entwicklungs- und Trackingsystemen wie Eclipse, IntelliJ und JIRA.</p>
+        </section>
+
+        <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>

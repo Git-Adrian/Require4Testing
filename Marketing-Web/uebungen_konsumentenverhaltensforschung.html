@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Übungsaufgaben - Marketing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .task-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .task {
+            margin-bottom: 20px;
+        }
+
+        .task h2 {
+            color: #FF6F61;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .task p {
+            color: #555;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 5px solid #FF6F61;
+            border-radius: 5px;
+        }
+
+        .solution h3 {
+            margin-top: 0;
+            color: #FF6F61;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Übungsaufgaben - Marketing</h1>
+
+    <div class="task-container">
+        <div class="task">
+            <h2 onclick="toggleSolution(1)">Aufgabe 1: Konsumentenverhalten anwenden</h2>
+            <p>Momo und Lilli sammeln gemeinsam in der Fußgängerzone Geld für den Schutz der örtlichen
+Wildkatzenpopulation. Momo schlägt vor, ihre Kenntnisse aus der letzten Marketingvorlesung
+anzuwenden, in der Konsumentenverhalten besprochen wurde. Sie will
+nur bestimmte Leute ansprechen und so ihre Zeit optimal nutzen. Lilli denkt nicht, dass
+das funktionieren wird, denn schließlich würden sie ja nichts verkaufen und die Leute
+seien keine Konsumenten. Wer hat recht?</p>
+            <div id="solution1" class="solution">
+                <h3>Lösung:</h3>
+                <p><strong>Kurze Lösung:</strong><br>
+                Momo hat recht.</p>
+                <p><strong>Ausführliche Lösung:</strong><br>
+                Im weitesten Sinne bezieht sich der Begriff Konsumentenverhalten auf das Verhalten
+aller Ge- und Verbraucher von materiellen und immateriellen Gütern. Das heißt, er hat
+nicht nur Relevanz für Käufer im engeren Sinne, sondern kann auch angewandt werden,
+um das Verhalten von Spendern zu erforschen. Wenn Momo genug Informationen über
+das Verhalten von potenziellen Spendern hat (evtl. laufen diese langsamer, bauen mehr
+Blickkontakt auf etc.), kann ihre Vorgehensweise durchaus funktionieren. Sie würde dann
+tendenziell nur Leute ansprechen, die bereit sind, zu spenden und so mit weniger Aufwand
+mehr Geld einsammeln.</p>
+            </div>
+        </div>
+
+        <!-- Weitere Aufgaben können hier hinzugefügt werden -->
+    </div>
+
+    <div class="back-link">
+        <a href="uebungsaufgaben.html">Zurück zu den Übungsaufgaben</a>
+    </div>
+
+    <script>
+        function toggleSolution(id) {
+            var solution = document.getElementById("solution" + id);
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+            } else {
+                solution.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

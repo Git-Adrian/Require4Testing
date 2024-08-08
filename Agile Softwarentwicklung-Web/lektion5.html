@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agiles Testen Lektionen</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.2s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 15px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card p {
+            padding: 15px;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .card a {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            margin-bottom: 15px;
+        }
+
+        .card a:hover {
+            background-color: #0056b3;
+        }
+
+        .grundlagen {
+            background-color: #FF6F61; /* Red */
+        }
+
+        .teststufen {
+            background-color: #6F9FFF; /* Blue */
+        }
+
+        .automatisierung {
+            background-color: #17dd59; /* Green */
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #ccc;
+            color: #333;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agiles Testen Lektionen</h1>
+    <div class="card-container">
+        <div class="card grundlagen">
+            <h2 onclick="location.href='grundlagen-agiles-testen.html'">Grundlagen des agilen Testens und Anforderungen an die Qualitätssicherung</h2>
+            <p>Erfahren Sie die Grundlagen des agilen Testens und welche Anforderungen an die Qualitätssicherungsorganisation gestellt werden.</p>
+            <a href="grundlagen-agiles-testen.html">Lektion ansehen</a>
+        </div>
+        <div class="card teststufen">
+            <h2 onclick="location.href='teststufen-agilität.html'">Teststufen und Agilität</h2>
+            <p>Erforschen Sie die verschiedenen Teststufen im agilen Kontext und wie sie zur Agilität beitragen.</p>
+            <a href="teststufen-agilität.html">Lektion ansehen</a>
+        </div>
+        <div class="card automatisierung">
+            <h2 onclick="location.href='testautomatisierung.html'">Testautomatisierung</h2>
+            <p>Erfahren Sie alles über die Testautomatisierung, ihre Vorteile und wie sie in agilen Projekten implementiert wird.</p>
+            <a href="testautomatisierung.html">Lektion ansehen</a>
+        </div>
+    </div>
+    <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+</body>
+</html>

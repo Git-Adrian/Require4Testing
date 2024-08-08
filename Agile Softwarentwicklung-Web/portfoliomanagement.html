@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agiles Portfoliomanagement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+
+        p, ul {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .image {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Agiles Portfoliomanagement</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Einführung in Agiles Portfoliomanagement</h2>
+            <p>Die Portfolioplanung ist ein kontinuierlicher Prozess, vergleichbar mit EAM, Projekten oder IT-Services. In Unternehmen werden IT-Projekte oft im Rahmen von EAM oder Multi-Projektmanagement geplant, während Produkthersteller eher ein Produktportfolio verwenden. Projekte und Produkte werden manchmal sprachlich nicht klar getrennt, was zu Missverständnissen führen kann.</p>
+        </section>
+
+        <section>
+            <h2>Portfolio Backlog</h2>
+            <p>Ein Portfolio Backlog wird verwendet, um Elemente wie Anwendungen, Produkte oder Projekte zu steuern. Ähnlich wie ein Product Backlog enthält es eine Priorisierung der Elemente. Das Portfolio Backlog unterliegt einem kontinuierlichen Pflegeprozess, bei dem Elemente hinzugefügt, gelöscht oder neu priorisiert werden können.</p>
+            <div class="image">
+                <img src="Bilder/Beispiel zur Veranschaulichung eines Portfolio Backlogs.jpg" alt="Beispiel Portfolio Backlog">
+                
+            </div>
+        </section>
+
+        <section>
+            <h2>Ziele der Portfolioplanung</h2>
+            <p>Das Hauptziel der Portfolioplanung ist die effiziente Zuweisung begrenzter Ressourcen zu Projekten, um eine wirtschaftliche Nutzung zu gewährleisten. Wichtige Aspekte umfassen:</p>
+            <ul>
+                <li>Priorisierung und Re-Priorisierung von Portfolio-Elementen</li>
+                <li>Entscheidung über Umsetzung oder Nicht-Umsetzung von Projekten</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Aspekte der agilen Portfolioplanung</h2>
+            <h3>Aspekte zur Zeitplanung</h3>
+            <p>Verzögerungskosten und angemessene Schätzniveaus sind entscheidend. Verzögerungskostenprofile helfen, die Auswirkungen von Verzögerungen zu bewerten. Abstrakte Schätzgrößen wie in T-Shirt-Größen helfen, die Kosten grob einzuschätzen.</p>
+            <table>
+                <caption>Beispiele für Verzögerungskostenprofile</caption>
+                <thead>
+                    <tr>
+                        <th>Profil</th>
+                        <th>Name, Beschreibung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lineare Verzögerungskosten</td>
+                        <td>Die Kosten steigen linear mit der Verzögerung.</td>
+                    </tr>
+                    <tr>
+                        <td>Sofortige steigende Verzögerungskosten</td>
+                        <td>Hohe Kosten entstehen sofort bei Verzögerung.</td>
+                    </tr>
+                    <tr>
+                        <td>Fester Termin</td>
+                        <td>Hohe einmalige Kosten bei Nichteinhaltung des Termins.</td>
+                    </tr>
+                    <tr>
+                        <td>Stark steigendes Wachstum</td>
+                        <td>Verzögerungskosten steigen langsam, dann abrupt.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Aspekte zur Einfügung von Projekten</h3>
+            <p>Projekte müssen wirtschaftlich sinnvoll sein. Der „Definition of Profitability“-Filter hilft dabei, Projekte auszuwählen, die den größten Nutzen bieten.</p>
+            <div class="image">
+                <img src="Bilder/Wirtschaftlicher Filter.jpg" alt="Definition of Profitability">
+                
+            </div>
+        </section>
+
+        <section>
+            <h2>Weitere Aspekte der Planung</h2>
+            <h3>Ausbalanciertes Hinzufügen und Entfernen von Elementen</h3>
+            <p>Das Portfolio Backlog sollte regelmäßig gepflegt werden, um einen konstanten Flow zu gewährleisten und die Anzahl aktiver Projekte zu optimieren.</p>
+            <div class="image">
+                <img src="Bilder/Szenario bei zu langen Planungszyklen.jpg" alt="Szenario bei zu langen Planungszyklen">
+                 
+            </div>
+            <h3>Häufige, kleinere Releases</h3>
+            <p>Planen Sie kleinere Releases, um die Reaktionsfähigkeit zu erhöhen und Ressourcen effizient zu nutzen. Größere Projekte sollten in kleinere Einheiten aufgeteilt werden.</p>
+            <h3>Starten von Projekten</h3>
+            <p>Nur so viele Projekte starten, wie mit den verfügbaren Teams effizient bearbeitet werden können. Ein WIP-Limit basierend auf Teams hilft, Überlastungen zu vermeiden.</p>
+            <div class="image">
+                <img src="Bilder/Teams als WIP-Limit.jpg" alt="Teams als WIP-Limit">
+                 
+            </div>
+        </section>
+
+        <section>
+            <h2>Kontinuierliche Bewertung aktiver Projekte</h2>
+            <p>Aktive Projekte müssen regelmäßig überprüft werden, um sicherzustellen, dass weitere Investitionen wirtschaftlich sinnvoll sind. Die Grenznutzenrechnung ist ein Hilfsmittel zur Bewertung.</p>
+            <div class="image">
+                <img src="Bilder/Beispiel für Grenznutzenrechnung.jpg" alt="Grenznutzenrechnung">
+                 
+            </div>
+        </section>
+
+        <section>
+            <h2>Zusammenfassung</h2>
+            <p>Agiles Portfoliomanagement fördert schnelle Reaktionen auf geänderte Rahmenbedingungen und optimiert den Ressourceneinsatz. Durch regelmäßige Neubewertungen, kleinere Releases und die Planung mit vollständigen Teams kann ein Unternehmen schnell auf Marktveränderungen reagieren.</p>
+        </section>
+
+        <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agile Softwareentwicklung</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 15px;
+            font-size: 1.2em;
+            color: #fff;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card p {
+            padding: 15px;
+            color: #555;
+        }
+
+        .merkmale {
+            background-color: #FF6F61; /* Red */
+        }
+
+        .scrum {
+            background-color: #6F9FFF; /* Blue */
+        }
+
+        .portfolio {
+            background-color: #17dd59; /* Green */
+        }
+
+        .anforderungen {
+            background-color: #FFC107; /* Yellow */
+        }
+
+        .testen {
+            background-color: #9C27B0; /* Purple */
+        }
+
+        .delivery {
+            background-color: #FF8C00; /* Orange */
+        }
+    </style>
+</head>
+<body>
+    <h1>Agile Softwareentwicklung</h1>
+    <div class="card-container">
+        <div class="card">
+            <h2 class="merkmale" onclick="location.href='lektion1.html'">1. Merkmale und Prinzipien der Agilität</h2>
+            <p>Erfahren Sie, welche grundlegenden Merkmale und Prinzipien die Agilität in der Softwareentwicklung prägen. </p>
+        </div>
+        <div class="card">
+            <h2 class="scrum" onclick="location.href='lektion2.html'">2. Agilität in kleinen Teams mit Scrum</h2>
+            <p>Entdecken Sie, wie Scrum als agile Methode speziell für kleine Teams funktioniert.</p>
+        </div>
+        <div class="card">
+            <h2 class="portfolio" onclick="location.href='lektion3.html'">3. Agiles Portfolio- und Projektmanagement</h2>
+            <p>Erfahren Sie, wie agile Methoden auf Portfolio- und Projektebene angewendet werden.</p>
+        </div>
+        <div class="card">
+            <h2 class="anforderungen" onclick="location.href='lektion4.html'">4. Agiles Anforderungs- und IT-Architekturmanagement</h2>
+            <p>Verstehen Sie, wie agile Ansätze Anforderungsmanagement und IT-Architektur beeinflussen.</p>
+        </div>
+        <div class="card">
+            <h2 class="testen" onclick="location.href='lektion5.html'">5. Agiles Testen</h2>
+            <p>Erforschen Sie, wie Testen in agilen Projekten durchgeführt wird.</p>
+        </div>
+        <div class="card">
+            <h2 class="delivery" onclick="location.href='lektion6.html'">6. Agiles Delivery und Deployment</h2>
+            <p>Erlernen Sie die besten Methoden für die kontinuierliche Lieferung und Bereitstellung von Software.</p>
+        </div>
+    </div>
+</body>
+</html>

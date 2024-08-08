@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grundlagen des agilen Testens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header { 
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: black;
+            margin: 20px 0;
+        }
+
+        section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #333; 
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .image {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Grundlagen des agilen Testens</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Einführung</h2>
+            <p>Das agile Testen erfordert spezifische organisatorische Vorbereitungen, um agile Prinzipien erfolgreich auf die Testaktivitäten im Entwicklungsprozess auszuweiten. Hierbei ist es wichtig, die grundlegenden Unterschiede zum traditionellen Testen zu verstehen.</p>
+        </section>
+
+        <section>
+            <h2>Klassisches Testen</h2>
+            <p>Im klassischen Testen werden Softwarekomponenten nach ihrer Erstellung getestet, wobei verschiedene Teststufen durchlaufen werden:</p>
+            <ul>
+                <li><strong>Unit-Tests:</strong> Testen einzelner Komponenten durch die Entwickler:innen in der Entwicklungsumgebung.</li>
+                <li><strong>Integrationstests:</strong> Überprüfen des Zusammenspiels der Komponenten in einer Integrationsumgebung.</li>
+                <li><strong>Systemtests:</strong> Funktionale Tests auf produktionsähnlicher Umgebung.</li>
+                <li><strong>Abnahmetests:</strong> Tests durch Endanwender:innen zur Sicherstellung der Einbettung in den Geschäftsprozess.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Unterschiede zwischen klassischem und agilem Testen</h2>
+            <p>Agiles Testen unterscheidet sich in mehreren Aspekten vom klassischen Testen:</p>
+            <ul>
+                <li><strong>Frühes Testen:</strong> Tests beginnen so früh wie möglich und werden häufig wiederholt.</li>
+                <li><strong>Automatisiertes Testen:</strong> Die Automatisierung ist ein zentrales Element des agilen Testens, um die Effizienz zu steigern.</li>
+                <li><strong>Testen der grundlegenden Funktionalität:</strong> Konzentration auf die grundlegende Funktionalität, bevor nicht-funktionale Anforderungen getestet werden.</li>
+                <li><strong>Interdisziplinäres Testen:</strong> Entwickler:innen und Tester:innen arbeiten eng zusammen, ohne strikte Rollentrennung.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Organisatorische Anforderungen</h2>
+            <p>Für effektives agiles Testen sind folgende organisatorische Anpassungen erforderlich:</p>
+            <ul>
+                <li><strong>Verlagerung des Testaufwands:</strong> Mehr Fokus auf automatisierte Unit-Tests und weniger auf manuelle Tests.</li>
+                <li><strong>Integration von Entwickler:innen:</strong> Entwickler:innen übernehmen zunehmend Testaufgaben und verwenden Methoden wie Test-Driven Development (TDD).</li>
+                <li><strong>Testdatenmanagement:</strong> Sicherstellung, dass Testdaten stets aktuell und relevant sind.</li>
+                <li><strong>Verzahnung von Entwicklung und Betrieb:</strong> Einführung des DevOps-Ansatzes zur besseren Zusammenarbeit zwischen Entwicklung und IT-Betrieb.</li>
+                <li><strong>Einbindung der Anwendenden:</strong> Regelmäßiges Feedback von Anwendenden während des Entwicklungsprozesses.</li>
+            </ul>
+        </section>
+
+        <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>
