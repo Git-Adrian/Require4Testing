@@ -42,6 +42,7 @@
             margin-top: 5px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            font-size: 1em;
         }
         button {
             margin-top: 20px;
@@ -56,26 +57,15 @@
         button:hover {
             background-color: #45a049;
         }
-        .login-link {
+        .login-link, .user-management-link {
             margin-top: 15px;
             text-align: center;
         }
-        .login-link a {
+        .login-link a, .user-management-link a {
             color: #4CAF50;
             text-decoration: none;
         }
-        .login-link a:hover {
-            text-decoration: underline;
-        }
-        .user-management-link {
-            margin-top: 15px;
-            text-align: center;
-        }
-        .user-management-link a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-        .user-management-link a:hover {
+        .login-link a:hover, .user-management-link a:hover {
             text-decoration: underline;
         }
         .popup {
@@ -181,7 +171,7 @@
                 const result = await response.json();
 
                 if (result.success) {
-                    showPopup('Registrierung erfolgreich! Sie werden zum Login-Bereich weitergeleitet.', true);
+                    showPopup('Registrierung erfolgreich! Sie werden zur Benutzerverwaltung weitergeleitet.', true);
                 } else {
                     showPopup('Registrierung fehlgeschlagen: ' + result.message);
                 }
@@ -202,7 +192,7 @@
             popupButton.onclick = function() {
                 popup.classList.remove('active');
                 if (redirect) {
-                    window.location.href = 'backend-login.html';
+                    window.location.href = 'user-management.html'; // Leitet den Benutzer zur Benutzerverwaltung weiter
                 }
             };
         }

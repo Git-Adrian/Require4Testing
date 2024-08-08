@@ -148,14 +148,14 @@
                 if (result.success) {
                     localStorage.setItem('loggedInUser', username);
                     errorMessage.textContent = ''; // Fehlermeldung leeren
-                    alert('Anmeldung erfolgreich! Sie werden weitergeleitet.');
-                    window.location.href = 'index.html';
+                    alert('Anmeldung erfolgreich! Sie werden zur Benutzerverwaltung weitergeleitet.');
+                    window.location.href = 'user-management.html'; // Weiterleitung zur Benutzerverwaltung
                 } else {
                     // Fehlermeldung entsprechend der Serverantwort
-                    errorMessage.textContent = 'Sie sind noch nicht registriert. Bitte registrieren Sie sich zuerst.';
+                    errorMessage.textContent = 'Benutzername oder Passwort ist falsch. Bitte versuchen Sie es erneut.';
                 }
             } catch (error) {
-                errorMessage.textContent = 'User nicht gefunden. Bitte registrieren Sie sich zuerst..';
+                errorMessage.textContent = 'Fehler bei der Anmeldung. Bitte versuchen Sie es später erneut.';
             }
         });
     </script>
