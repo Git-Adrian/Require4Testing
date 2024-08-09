@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einführung in JavaServer Faces (JSF)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+        }
+
+        section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Einführung in JavaServer Faces (JSF)</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Was ist JavaServer Faces (JSF)?</h2>
+            <p>JavaServer Faces ist ein Framework, das eine Reihe von Komponenten der Darstellungsschicht vereint, die zuvor unabhängig entwickelt wurden. Es bietet eine einfache und intuitive Möglichkeit, diese Komponenten mit den Attributen von Java-Klassen aus dem Datenmodell zu verbinden, sowie die Programmierung von Anwendungslogik zur Navigation und Validierung von Benutzereingaben zu erleichtern.</p>
+        </section>
+
+        <section>
+            <h2>JSF-Lebenszyklus</h2>
+            <p>Der JSF-Lebenszyklus ist ein sequenzieller Ablauf, der jedes Mal startet, wenn eine HTML-Anfrage beim Server eintrifft. Der Lebenszyklus umfasst mehrere Schritte, die zur dynamischen Erzeugung einer HTML-Seite beitragen.</p>
+            <img src="Bilder/ Schritte des JSF-Lebenszyklus zur dynamischen Erzeugung einer HTML-Seite.jpg" alt="JSF-Lebenszyklus">
+            <p>Abbildung 1: Schritte des JSF-Lebenszyklus zur dynamischen Erzeugung einer HTML-Seite</p>
+            <p>Im ersten Schritt wird der „Komponentenbaum“ aufgebaut, der alle HTML-Komponenten in Form von Java-Objekten enthält. Nach der Validierung der Benutzereingaben werden die Datenmodelle aktualisiert, zusätzliche Methoden aufgerufen, und schließlich wird der Komponentenbaum in eine HTML-Seite umgewandelt.</p>
+        </section>
+
+        <section>
+            <h2>JSF und HTML</h2>
+            <p>Obwohl JSF-Seiten HTML-Seiten ähneln, liegt der Unterschied in den serverseitigen Mechanismen, die den HTML-Code dynamisch erzeugen. Dies wird durch den JSF-Lebenszyklus ermöglicht, der sicherstellt, dass die HTML-Komponenten in JSF korrekt in HTML-Elemente umgewandelt werden.</p>
+            <p>Beispielsweise könnte eine einfache JSF-Seite wie folgt aussehen:</p>
+            <pre><code>&lt;h:form&gt;
+    &lt;h:inputText id="username" value="#{userBean.username}" /&gt;
+    &lt;h:commandButton value="Login" action="#{userBean.login}" /&gt;
+&lt;/h:form&gt;</code></pre>
+            <p>Diese JSF-Komponenten werden zur Laufzeit in HTML-Elemente umgewandelt und als fertige HTML-Seite an den Browser gesendet.</p>
+        </section>
+
+        <section>
+            <h2>Dynamic Content mit JSF</h2>
+            <p>JSF bietet die Möglichkeit, dynamischen Inhalt basierend auf Datenmodell-Attributen zu erzeugen. Durch die Verwendung von Komponenten wie <code>h:outputText</code> und die Verknüpfung mit Beans und der Unified Expression Language (UEL) können Entwickler Inhalte, wie beispielsweise den Namen eines Artikels, dynamisch auf der Webseite anzeigen lassen.</p>
+            <img src="Bilder/„Hello World“-Seite aus JSF-Komponenten  .jpg" alt="Hello World Seite mit JSF-Komponenten">
+            <p>Abbildung 2: "Hello World"-Seite aus JSF-Komponenten</p>
+            <img src="Bilder/h-outputText- Ein JSF-Element, das Text dynamisch aus einem Attribut laden kann.jpg" alt="Hello World Seite mit JSF-Komponenten">
+            <p>Abbildung 3: h:outputText: Ein JSF-Element, das Text dynamisch aus einem Attribut laden kann</p>
+
+        </section>
+
+        <section>
+            <h2>Fazit</h2>
+            <p>JavaServer Faces ist ein leistungsfähiges Framework, das die Entwicklung von Webanwendungen vereinfacht, indem es eine Vielzahl von Komponenten und Mechanismen zur Verfügung stellt. Der JSF-Lebenszyklus und die Möglichkeit, Inhalte dynamisch zu erzeugen, sind nur einige der mächtigen Funktionen, die Entwicklern zur Verfügung stehen.</p>
+        </section> 
+        <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+    </div>
+</body>
+
+</html>
