@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kategorien der Softwareentwicklung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 15px;
+            font-size: 1.2em;
+            color: #fff;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card p {
+            padding: 15px;
+            color: #555;
+        }
+
+        .requirements {
+            background-color: #FF6F61; /* Red */
+        }
+
+        .quality {
+            background-color: #6F9FFF; /* Blue */
+        }
+
+        .agile {
+            background-color: #17dd59; /* Green */
+        }
+
+        .management {
+            background-color: #FFC107; /* Yellow */
+        }
+
+        .testing {
+            background-color: #9C27B0; /* Purple */
+        }
+
+        .delivery {
+            background-color: #FF8C00; /* Orange */
+        }
+    </style>
+</head>
+<body>
+    <h1>Kategorien der Softwareentwicklung</h1>
+    <div class="card-container">
+        <div class="card">
+            <h2 class="requirements" onclick="location.href='index1.html'">1. Requirements Engineering</h2>
+            <p>Erfahren Sie mehr über die Kunst und Wissenschaft des Requirements Engineering in der Softwareentwicklung.</p>
+        </div>
+        <div class="card">
+            <h2 class="quality" onclick="location.href='index2.html'">2. Qualitätssicherung in der Softwareentwicklung</h2>
+            <p>Entdecken Sie Methoden und Best Practices zur Sicherstellung der Softwarequalität.</p>
+        </div>
+        <div class="card">
+            <h2 class="agile" onclick="location.href='index.html'">3. Agile Softwareentwicklung</h2>
+            <p>Erlernen Sie die Prinzipien und Methoden der agilen Softwareentwicklung.</p>
+        </div>
+      
+    </div>
+</body>
+</html>

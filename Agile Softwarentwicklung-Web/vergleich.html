@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gegenüberstellung von Agiler und Klassischer Softwareentwicklung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: #333;
+            margin: 20px 0;
+        }
+
+        section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .image {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gegenüberstellung von Agiler und Klassischer Softwareentwicklung</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Einleitung</h2>
+            <p>Agilität und klassische Softwareentwicklung repräsentieren zwei unterschiedliche Denkschulen in der Softwareentwicklung. Agilität wird als Gestaltungsprinzip für flexible und reaktionsfähige Entwicklungsprozesse verstanden, während die klassische Softwareentwicklung plangetrieben ist und auf detaillierten Vorabplanungen basiert. Die folgende Tabelle vergleicht die wesentlichen Merkmale beider Ansätze.</p>
+        </section>
+
+        <section>
+            <h2>Gegenüberstellung der Ansätze</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bezeichnung</th>
+                        <th>Agile Softwareentwicklung</th>
+                        <th>Klassische Softwareentwicklung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Typische Begriffe</td>
+                        <td>agil, Agilität</td>
+                        <td>plangetrieben</td>
+                    </tr>
+                    <tr>
+                        <td>Beispiel-Vorgehensmodell</td>
+                        <td>Scrum</td>
+                        <td>Wasserfallmodell, V-Modell</td>
+                    </tr>
+                    <tr>
+                        <td>Steuerungsprinzip</td>
+                        <td>erkenntnisgesteuert</td>
+                        <td>annahmegesteuert</td>
+                    </tr>
+                    <tr>
+                        <td>Entscheidungen</td>
+                        <td>Auf Basis von Erkenntnissen (z. B. durch Feedback) treffen</td>
+                        <td>Auf Basis von Annahmen (z. B. durch Vermutung) treffen</td>
+                    </tr>
+                    <tr>
+                        <td>Charakteristika</td>
+                        <td>
+                            <ul>
+                                <li>Kurze Release-Zyklen</li>
+                                <li>Kurze Projektphasen in hoher Frequenz</li>
+                                <li>Wenig spezifizierte Details zu Beginn der Implementierung</li>
+                                <li>Frühes 1. Release</li>
+                                <li>Niedriger Detailgrad in Planungs- und Managementartefakten</li>
+                                <li>Anpassungen an Management- und Ergebnisartefakten sind häufig, erwartet und geplant</li>
+                                <li>Planänderungen werden positiv aufgenommen</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Lange Release-Zyklen</li>
+                                <li>Verhältnismäßig lange Projektphasen in geringer Frequenz</li>
+                                <li>Hoher Detailgrad der Spezifikation bei Beginn der Implementierung</li>
+                                <li>Zeitpunkt des 1. Release relativ spät im Projekt</li>
+                                <li>Hoher Detailgrad in Planungs- und Managementartefakten</li>
+                                <li>Anpassungen an Management- und Ergebnisartefakten stellen Ausnahme dar und sind ungeplant</li>
+                                <li>Planänderungen werden negativ aufgenommen</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section> 
+            <p>Die folgende Abbildung veranschaulicht den Unterschied zwischen erkenntnisgesteuerter und annahmegesteuerter Softwareentwicklung:</p>
+            <p><strong>Annahmegesteuerte Softwareentwicklung</strong></p>
+            <div class="image">
+                <img src="Bilder/Annahmegesteuerte Softwareentwicklung.jpg" alt="Annahmegesteuerte Softwareentwicklung">
+            </div>
+            <p><strong>Erkenntnisgesteuerte Softwareentwicklung</strong></p>
+            <div class="image">
+                <img src="Bilder/Erkenntnisgetriebene Softwareentwicklung .jpg" alt="Erkenntnisgesteuerte Softwareentwicklung">
+            </div>
+            <p>Das Modell zeigt, wie initiale Anforderungen in einem ersten Zyklus umgesetzt und anschließend modifiziert werden können, basierend auf den gewonnenen Erkenntnissen.</p>
+        </section>
+
+        <section>
+            <h2>Agilität als Gestaltungsprinzip</h2>
+            <p>Agilität dient als Gestaltungsprinzip für Softwareprozesse, das nicht auf ein einzelnes Framework beschränkt ist. Verschiedene agile Prinzipien und Methoden, wie Disciplined Agile und das Scaled Agile Framework, zielen darauf ab, Unternehmensagilität zu fördern. Agilität wird als eine Art betrachtet, Softwareprojekte zu organisieren, wobei der Grad der Agilität von den spezifischen Projektbedingungen und Teamkompetenzen abhängt.</p>
+        </section>
+
+        <a href="lektion1.html" class="back-button">Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>

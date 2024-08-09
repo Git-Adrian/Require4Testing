@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klassifikationen von Unsicherheit und Unwissenheit in Softwareprojekten</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: #333;
+            margin: 20px 0;
+        }
+
+        section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        td {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Klassifikationen von Unsicherheit und Unwissenheit in Softwareprojekten</h1>
+    </header>
+    <div class="container">
+        <section> 
+            <p>In der Softwareentwicklung müssen Entscheidungen oft trotz Unsicherheiten und Unwissenheit getroffen werden. In diesem Abschnitt werden relevante Unsicherheitstypen vorgestellt und das Modell „The Five Orders of Ignorance“ zur Beschreibung verschiedener Ebenen von Unwissenheit erläutert.</p>
+        </section>
+
+        <section>
+            <h2>Typen von Unsicherheit</h2>
+            <h3>Produkt-Unsicherheit (Was-Unsicherheit)</h3>
+            <p>Produkt-Unsicherheit beschreibt die Unsicherheit über die Eigenschaften des fertigen Softwaresystems, wie Funktionen, technische Architektur oder Qualität. Diese Unsicherheit kann erst nach Abschluss der Entwicklung beseitigt werden.</p>
+
+            <h3>Methoden-Unsicherheit (Wie-Unsicherheit)</h3>
+            <p>Methoden-Unsicherheit bezieht sich auf die Unsicherheit über die Methoden, Werkzeuge und Aktivitäten, die zur Entwicklung des Systems eingesetzt werden. Auch diese Unsicherheit wird erst nach Abschluss des Projekts vollständig geklärt.</p>
+
+            <h3>Stakeholder-Unsicherheit (Wer-Unsicherheit)</h3>
+            <p>Stakeholder-Unsicherheit betrifft die Unsicherheit über die an der Entwicklung und Nutzung beteiligten Personen und Gruppen. Wer welche Interessen und welchen Einfluss hat, ist oft erst am Ende des Projekts bekannt.</p>
+
+            <h3>Domänen-Unsicherheit (Worin-Unsicherheit)</h3>
+            <p>Domänen-Unsicherheit beschreibt die Unsicherheit über das Fachgebiet oder den Geschäftsbereich, in dem das System eingesetzt werden soll. Dies umfasst Unsicherheiten bezüglich typischer Geschäftsprozesse und -regeln.</p>
+        </section>
+
+        <section>
+            <h2>Ebenen von Unwissenheit</h2>
+            <p>Das Modell „The Five Orders of Ignorance“ teilt Unwissenheit in fünf Ebenen ein, die unterschiedliche Qualitäten von Unwissenheit beschreiben:</p>
+
+            <h3>0th Level of Ignorance – Lack of Ignorance (Fehlen von Unwissenheit)</h3>
+            <p>Auf dieser Ebene ist alles notwendige Wissen vorhanden und kann demonstriert werden.</p>
+
+            <h3>1st Level of Ignorance – Lack of Knowledge (Fehlen von Wissen)</h3>
+            <p>Hier ist bekannt, dass bestimmtes Wissen fehlt, und es können gezielte Fragen gestellt werden, um dieses Wissen zu erlangen.</p>
+
+            <h3>2nd Level of Ignorance – Lack of Awareness (Fehlen eines Bewusstseins)</h3>
+            <p>Auf dieser Ebene fehlt das Bewusstsein dafür, dass etwas nicht gewusst wird. Es können daher keine gezielten Fragen gestellt werden.</p>
+
+            <h3>3rd Level of Ignorance – Lack of Process (Fehlen eines Prozesses)</h3>
+            <p>Es ist bekannt, dass Wissen fehlt, jedoch nicht, wie dieses Wissen erlangt werden kann.</p>
+
+            <h3>4th Level of Ignorance – Meta Ignorance (Meta-Unwissenheit)</h3>
+            <p>Auf dieser Ebene ist nicht bekannt, dass es verschiedene Ebenen von Unwissenheit gibt. Dieses Meta-Unwissen verschwindet jedoch nach Kenntnis des Modells.</p>
+        </section>
+
+        <section>
+        <h2>Tabelle: Beispiele für verschiedene Ebenen von Unwissenheit</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ebenen</th>
+                    <th>Methoden-Unsicherheit</th>
+                    <th>Produkt-Unsicherheit</th>
+                    <th>Stakeholder-Unsicherheit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>0th Order Ignorance (0OI)</strong></td>
+                    <td>Ich kann gezielt die richtige Ermittlungstechnik anwenden.</td>
+                    <td>Ich weiß genau, wie der Algorithmus zur Prämienberechnung implementiert wird.</td>
+                    <td>Ich kenne alle relevanten Stakeholder und deren Interessen.</td>
+                </tr>
+                <tr>
+                    <td><strong>1st Order Ignorance (1OI)</strong></td>
+                    <td>Ich weiß, dass es verschiedene Ermittlungstechniken gibt und wie ich sie erlernen kann.</td>
+                    <td>Ich weiß, dass ich einen Algorithmus zur Prämienberechnung implementieren muss und welche Informationen ich erfragen muss.</td>
+                    <td>Ich kenne alle Stakeholder und weiß, wie ich deren Interessen ermitteln kann.</td>
+                </tr>
+                <tr>
+                    <td><strong>2nd Order Ignorance (2OI)</strong></td>
+                    <td>Ich weiß, dass es im Software Engineering Requirements Engineering gibt, aber nicht, welche Techniken ich nicht kenne.</td>
+                    <td>Ich weiß, dass ich ein System für eine Versicherung programmieren soll, aber nicht, dass ich einen Algorithmus zur Prämienberechnung benötige.</td>
+                    <td>Ich habe eine Stakeholder-Liste erstellt, aber nicht erkannt, dass Stakeholder fehlen.</td>
+                </tr>
+                <tr>
+                    <td><strong>3rd Order Ignorance (3OI)</strong></td>
+                    <td>Ich weiß, dass es Requirements Engineering gibt, aber nicht, wie ich strukturiert Wissen dazu erlangen kann.</td>
+                    <td>Ich weiß, dass ich ein IT-System für eine Versicherung erstellen soll, aber nicht, um welche Art von System es sich handelt.</td>
+                    <td>Mir ist nicht bekannt, dass Stakeholder den Projekterfolg beeinflussen.</td>
+                </tr>
+                <tr>
+                    <td><strong>4th Order Ignorance (4OI)</strong></td>
+                    <td>Ich weiß, dass Software Engineering Wissenserwerb bedeutet.</td>
+                    <td>Ich weiß, dass das Ergebnis von Software Engineering Programcode ist.</td>
+                    <td>Ich weiß, dass Personen im Erstellungsprozess von Software eine Rolle spielen.</td>
+                </tr>
+            </tbody>
+        </table>
+        </section>
+        
+        <a href="lektion1.html" class="back-button">Zurück zur Übersicht</a>
+    
+    </div>
+</body>
+</html>

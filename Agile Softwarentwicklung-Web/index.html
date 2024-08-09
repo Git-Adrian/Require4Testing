@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agile Softwareentwicklung</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Agile Softwareentwicklung</title> 
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -81,6 +80,23 @@
         .delivery {
             background-color: #FF8C00; /* Orange */
         }
+
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -88,7 +104,7 @@
     <div class="card-container">
         <div class="card">
             <h2 class="merkmale" onclick="location.href='lektion1.html'">1. Merkmale und Prinzipien der Agilität</h2>
-            <p>Erfahren Sie, welche grundlegenden Merkmale und Prinzipien die Agilität in der Softwareentwicklung prägen. </p>
+            <p>Erfahren Sie, welche grundlegenden Merkmale und Prinzipien die Agilität in der Softwareentwicklung prägen.</p>
         </div>
         <div class="card">
             <h2 class="scrum" onclick="location.href='lektion2.html'">2. Agilität in kleinen Teams mit Scrum</h2>
@@ -111,5 +127,6 @@
             <p>Erlernen Sie die besten Methoden für die kontinuierliche Lieferung und Bereitstellung von Software.</p>
         </div>
     </div>
+    <a href="home.html" class="back-button">Zurück zur Startseite</a>
 </body>
 </html>
