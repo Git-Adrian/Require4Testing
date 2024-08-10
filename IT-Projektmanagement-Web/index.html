@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT-Projektmanagement Übungsanwendung</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>IT-Projektmanagement Übungsanwendung</title> 
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -125,6 +124,21 @@
         .card h2.pitpm {
             background-color: #3F51B5;
         }
+        .back-button {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .back-button a {
+            background-color: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .back-button a:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -159,13 +173,16 @@
             <p>Lernen Sie, Risiken zu identifizieren, zu bewerten und zu steuern.</p>
         </div>
         <div class="card">
-            <h2 class="organisation" onclick="location.href='organisation-und-struktur.html'">Organisation und Struktur</h2>
+            <h2 class="organisation" onclick="location.href='organisation-und-struktur.html'">Organisation und Struktur von IT-Projekten</h2>
             <p>Verstehen Sie die organisatorischen Aspekte und Strukturen in IT-Projekten.</p>
         </div>
         <div class="card">
             <h2 class="pitpm" onclick="location.href='pragmatisches-itpm.html'">Pragmatisches IT-Projektmanagement</h2>
             <p>Entdecken Sie praxisnahe Ansätze für ein effizientes IT-Projektmanagement.</p>
         </div>
+    </div>
+    <div class="back-button">
+        <a href="home.html">Zurück zur Übersicht</a>
     </div>
 </body>
 </html>

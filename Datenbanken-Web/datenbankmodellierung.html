@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenbankmodellierung Lektionen</title> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 40px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            width: 320px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 25px;
+            color: #fff;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .card p {
+            padding: 20px;
+            color: #666;
+        }
+
+        .card a {
+            display: block;
+            padding: 15px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 0 0 12px 12px;
+            transition: background-color 0.3s;
+        }
+
+        .card a:hover {
+            background-color: #0056b3;
+        }
+
+        .grundlagen {
+            background-color: #ff7f50;
+        }
+
+        .erd-modellierung {
+            background-color: #6a5acd;
+        }
+
+        .normalisierung {
+            background-color: #ffb732;
+        }
+
+        .datenbank-design {
+            background-color: #1e90ff;
+        }
+
+        .uebungen {
+            background-color: #ff5c5c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Datenbankmodellierung Lektionen</h1>
+    <div class="card-container">
+        <div class="card">
+            <h2 class="grundlagen">Grundlagen der Datenbankmodellierung</h2> 
+            <p>Lerne die wichtigsten Konzepte und Begriffe der Datenbankmodellierung kennen.</p>
+            <a href="datenbank-grundlagen.html">Mehr erfahren</a>
+        </div>
+        
+        <div class="card">
+            <h2 class="erd-modellierung">ERD-Modellierung</h2>
+            <p>Verstehe die Entitäts-Beziehungs-Diagramme und deren Anwendung in der Modellierung.</p>
+            <a href="erd-modellierung.html">Mehr erfahren</a>
+        </div>
+
+        <div class="card">
+            <h2 class="normalisierung">Normalisierung</h2>
+            <p>Erlerne die Techniken der Normalisierung zur Optimierung deiner Datenbankstrukturen.</p>
+            <a href="normalisierung.html">Mehr erfahren</a>
+        </div>
+
+        <div class="card">
+            <h2 class="datenbank-design">Datenbank-Design</h2>
+            <p>Vertiefe dein Wissen im Design von Datenbanken für effiziente Datenhaltung.</p>
+            <a href="datenbank-design.html">Mehr erfahren</a>
+        </div>
+
+        <div class="card">
+            <h2 class="uebungen">Übungsanwendung</h2>
+            <p>Teste dein Wissen und wende das Gelernte in praktischen Übungen an.</p>
+            <a href="datenbank-uebungen.html">Mehr erfahren</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT-Projektmanagement: Scrum, PRINCE2 und PITPM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 15px;
+            font-size: 1.2em;
+            color: #fff;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+        }
+
+        .card p {
+            padding: 15px;
+            color: #555;
+        }
+
+        .ueberblick {
+            background-color: #FF6F61;
+        }
+
+        .scrum {
+            background-color: #6F9FFF;
+        }
+
+        .prince2 {
+            background-color: #6FFF9F;
+        }
+
+        .card h2.ueberblick {
+            background-color: #FF6F61;
+        }
+
+        .card h2.scrum {
+            background-color: #6F9FFF;
+        }
+
+        .card h2.prince2 {
+            background-color: #6FFF9F;
+        }
+
+        .back-button {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .back-button a {
+            background-color: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .back-button a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>IT-Projektmanagement: Scrum, PRINCE2 und PITPM</h1>
+    <div class="card-container">
+        <div class="card">
+            <h2 class="ueberblick" onclick="location.href='ueberblick.html'">Überblick Scrum, PRINCE2 und PITPM</h2>
+            <p>Erhalten Sie einen umfassenden Überblick über die Methoden Scrum, PRINCE2 und das Pragmatische IT-Projektmanagement (PITPM).</p>
+        </div>
+        <div class="card">
+            <h2 class="scrum" onclick="location.href='scrum.html'">Scrum</h2>
+            <p>Vertiefen Sie Ihr Wissen über Scrum, das agile Framework für die Entwicklung und das Management von Projekten.</p>
+        </div>
+        <div class="card">
+            <h2 class="prince2" onclick="location.href='prince2.html'">PRINCE2</h2>
+            <p>Lernen Sie PRINCE2 kennen, eine prozessorientierte Methode für das Projektmanagement.</p>
+        </div>
+    </div>
+    <div class="back-button">
+        <a href="index.html">Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>

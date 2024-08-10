@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenbanksysteme Lektionen</title> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #222;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            width: 320px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 25px;
+            color: #fff;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .card p {
+            padding: 20px;
+            color: #666;
+        }
+
+        .card a {
+            display: block;
+            padding: 15px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 0 0 12px 12px;
+            transition: background-color 0.3s;
+        }
+
+        .card a:hover {
+            background-color: #0056b3;
+        }
+
+        .datenbankmodellierung {
+            background-color: #ff7f50;
+        }
+
+        .sql {
+            background-color: #6a5acd;
+        }
+ 
+        .optimierung {
+            background-color: #ffb732;
+        }
+
+        .noSQL-Datenbanksysteme {
+            background-color: #ff5c5c;
+        }
+
+        .uebungen {
+            background-color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Datenbanksysteme Lektionen</h1>
+    <div class="card-container">
+        <div class="card">
+            <h2 class="datenbankmodellierung">Datenbankmodellierung</h2> 
+            <a href="datenbankmodellierung.html">Mehr erfahren</a>
+        </div>
+         
+        <div class="card">
+            <h2 class="sql">SQL</h2>
+            <a href="sql1.html">Mehr erfahren</a>
+        </div>
+        
+        <div class="card">
+            <h2 class="noSQL-Datenbanksysteme">NOSQL-Datenbanksysteme</h2>
+            <a href="noSQL-Datenbanksysteme.html">Mehr erfahren</a>
+        </div>
+
+        <div class="card">
+            <h2 class="uebungen">Übungsanwendung</h2>
+            <a href="index.html">Mehr erfahren</a>
+        </div>
+    </div>
+</body>
+</html>
