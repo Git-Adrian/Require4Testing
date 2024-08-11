@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lernanwendung - Programmierung mit Java EE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Kategorien in Programmierung</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #f0f2f5;
             margin: 0;
             padding: 20px;
@@ -26,8 +25,6 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            max-width: 1200px;
-            width: 100%;
         }
 
         .card {
@@ -82,6 +79,14 @@
             background-color: #0056b3;
         }
 
+        .beans {
+            background-color: #FF6F61; /* Red */
+        }
+
+        .uel {
+            background-color: #6F9FFF; /* Blue */
+        }
+
         .back-button {
             display: inline-block;
             background-color: #ccc;
@@ -100,34 +105,19 @@
     </style>
 </head>
 <body>
-    <h1>Programmierung mit Java EE</h1>
+    <h1>Verknüpfung von View und Model</h1>
     <div class="card-container">
-        <div class="card">
-            <h2 onclick="location.href='komponentenbasierte-web-benutzerschnittstellen.html'">Komponentenbasierte Web-Benutzerschnittstellen</h2>
-            <p>Erfahren Sie, wie Sie interaktive Webschnittstellen mit Java EE entwickeln.</p>
-            <a href="lektion1.html">Lektion starten</a>
+        <div class="card beans">
+            <h2 onclick="location.href='beans.html'">Beans</h2>
+            <p>Erfahren Sie alles über die Verwendung und Verwaltung von Beans in JavaServer Faces.</p>
+            <a href="beans.html">Lektion starten</a>
         </div>
-        <div class="card">
-            <h2 onclick="location.href='verknuepfung-von-view-und-model.html'">Verknüpfung von View und Model</h2>
-            <p>Erlernen Sie die Verbindung von Benutzeroberfläche und Datenmodell.</p>
-            <a href="lektion2.html">Lektion starten</a>
-        </div>
-        <div class="card">
-            <h2 onclick="location.href='komponentenbibliotheken.html'">Komponenten-Bibliotheken</h2>
-            <p>Entdecken Sie die Nutzung von Komponentenbibliotheken in Java EE.</p>
-            <a href="lektion3.html">Lektion starten</a>
-        </div>
-        <div class="card">
-            <h2 onclick="location.href='programmierung-von-geschaeftslogik.html'">Programmierung von Geschäftslogik</h2>
-            <p>Erfahren Sie, wie Sie Geschäftslogik in Java EE implementieren.</p>
-            <a href="lektion4.html">Lektion starten</a>
-        </div>
-        <div class="card">
-            <h2 onclick="location.href='programmierung-von-datenbankanbindungen.html'">Programmierung von Datenbankanbindungen</h2>
-            <p>Lernen Sie die Verbindung von Java EE Anwendungen mit Datenbanken.</p>
-            <a href="lektion5.html">Lektion starten</a>
+        <div class="card uel">
+            <h2 onclick="location.href='uel.html'">Unified Expression Language (UEL)</h2>
+            <p>Entdecken Sie die Unified Expression Language und deren Anwendung in JSF.</p>
+            <a href="uel.html">Lektion starten</a>
         </div>
     </div>
-    <a href="home.html" class="back-button">Zurück zur Übersicht</a>
+    <a href="index.html" class="back-button">Zurück zur Übersicht</a>
 </body>
 </html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validierung von Benutzereingaben im Onlineshop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        section {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+
+        .back-button {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+
+        .weiter-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .weiter-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Validierung von Benutzereingaben</h1>
+
+    <section>
+        <h2>Pflichtfeldvalidierung</h2>
+        <p>
+            Eine Pflichtfeldvalidierung stellt sicher, dass bestimmte Felder nicht leer bleiben. JSF bietet dazu das Attribut <code>required</code>, das auf „true“ gesetzt wird, um sicherzustellen, dass das Feld ausgefüllt werden muss. In der Artikelverwaltung wird diese Validierung zunächst für den Artikelnamen eingeführt.
+        </p>
+        <img src="Bilder/Codebeispiel 20.jpg" alt="Codebeispiel 20 - Pflichtfeldvalidierung">
+        <p>
+            Beim Testen stellt sich heraus, dass ohne Eingabe eines Namens eine automatisch generierte Fehlermeldung angezeigt wird, die den Benutzer darauf hinweist, das Feld auszufüllen, bevor er fortfahren kann.
+        </p>
+        <img src="Bilder/Fehlermeldung von JSF bei fehlgeschlagener Pflichtfeld-Validierung.jpg" alt="Fehlermeldung bei fehlgeschlagener Pflichtfeld-Validierung">
+    </section>
+
+    <section>
+        <h2>Formatvalidierung</h2>
+        <p>
+            Die Formatvalidierung kommt zum Einsatz, wenn die Eingabe einem bestimmten Muster entsprechen muss. Ein gängiges Beispiel ist die Überprüfung des Dateinamens eines Artikelbildes, der bestimmten Regeln folgen sollte, wie etwa der Verwendung einer gültigen Dateiendung (jpeg, jpg, gif oder png). JSF bietet hier die Komponente <code>f:validateRegex</code>, mit der ein regulärer Ausdruck zur Validierung genutzt werden kann.
+        </p>
+        <img src="Bilder/Regulärer Ausdruck zur Definition einer Formatregel für Dateinamen.jpg" alt="Regulärer Ausdruck zur Formatvalidierung">
+        <p>
+            Nach Implementierung der Formatvalidierung zeigt ein fehlerhafter Dateiname eine Fehlermeldung an, die auf das nicht angepasste Regex-Muster hinweist.
+        </p>
+        <img src="Bilder/Codebeispiel 21.jpg" alt="Codebeispiel 21 - Implementierung der Formatvalidierung">
+    </section>
+
+    <section>
+        <h2>Fachliche Validierung</h2>
+        <p>
+            Fachliche Validierungen überprüfen, ob Eingaben bestimmten fachlichen Anforderungen entsprechen. Zum Beispiel müssen Artikelnummern mindestens vierstellig sein. Für solche Überprüfungen bietet JSF verschiedene Komponenten wie <code>f:validateLongRange</code> für Ganzzahlen oder <code>f:validateDoubleRange</code> für Fließkommazahlen an. Diese Validierungen werden durch die Attribute <code>minimum</code> und <code>maximum</code> konfiguriert.
+        </p>
+        <img src="Bilder/Codebeispiel 22  .jpg" alt="Codebeispiel 22 - Fachliche Validierung">
+        <p>
+            Die erzeugte Fehlermeldung weist den Benutzer darauf hin, dass der eingegebene Wert den zulässigen Wertebereich überschreitet oder unterschreitet.
+        </p>
+    </section>
+
+    <section>
+        <h2>Benutzerdefinierte Validierung</h2>
+        <p>
+            Für komplexere Validierungen, die nicht mit den Standardvalidierern abgedeckt werden können, lassen sich benutzerdefinierte Validatoren implementieren. Ein Beispiel dafür ist die Überprüfung eines global eindeutigen Barcodes (GTIN), der mithilfe einer Prüfziffer auf Richtigkeit geprüft wird. Hierfür wird eine eigene Validatormethode implementiert, die bei einem Fehler eine <code>ValidatorException</code> auslöst.
+        </p>
+        <img src="Bilder/Implementierung einer benutzerdefinierten Validator-Methode.jpg" alt="Implementierung einer benutzerdefinierten Validator-Methode">
+        <p>
+            Durch die Implementierung einer solchen Methode ist sichergestellt, dass auch spezielle Anforderungen an die Validierung, wie die Überprüfung der GTIN-Prüfziffer, korrekt durchgeführt werden.
+        </p>
+    </section>
+
+    <div class="button-container">
+        <a href="lektion4.html" class="back-button">Zurück zur Übersicht</a>
+        <a href="konvertierung.html" class="weiter-button">Weiter</a>
+    </div>
+
+</body>
+
+</html>

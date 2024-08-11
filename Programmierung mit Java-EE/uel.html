@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Expression Language (UEL) in JSF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        section {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .note {
+            background-color: #e9f7fd;
+            border-left: 5px solid #007bff;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .note h4 {
+            margin: 0 0 10px;
+            font-size: 1.1em;
+            color: #007bff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+
+        .back-button {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+
+        .weiter-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .weiter-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Unified Expression Language (UEL) in JSF</h1>
+
+    <section>
+        <h2>Einführung in Unified Expression Language (UEL)</h2>
+        <p>
+            Nachdem Herr Koch die Grundlagen zur Umwandlung von Geschäftsobjekten in Beans und die Verwendung von Scope-Annotationen verstanden hat, widmet er sich einem weiteren zentralen Konzept von JavaServer Faces (JSF): der Unified Expression Language (UEL). Mit UEL-Ausdrücken kann Herr Koch die Verbindung zwischen JSF-Komponenten und Beans herstellen, was eine effiziente Verknüpfung von Model- und View-Komponenten ermöglicht.
+        </p>
+    </section>
+
+    <section>
+        <h2>Value-Expressions</h2>
+        <p>
+            Value-Expressions verknüpfen JSF-Komponenten zur Ein- und Ausgabe von Daten mit Attributen einer Bean. Das Attribut <code>value</code> in JSF-Komponenten wie <code>h:outputText</code> wird verwendet, um Werte aus einer Bean anzuzeigen oder Eingaben von Benutzern zu empfangen. Ein Beispiel zeigt, wie Attribute einer Bean über Value-Expressions in die Benutzeroberfläche integriert werden.
+        </p>
+        <img src="Bilder/Codebeispiel 11.jpg" alt="Abbildung 24: Codebeispiel für Value-Expressions">
+    </section>
+
+    <section>
+        <h2>Method-Expressions</h2>
+        <p>
+            Method-Expressions ermöglichen die Verknüpfung von JSF-Komponenten, die Aktionen auslösen (wie <code>h:commandLink</code>), mit Methoden in einer Bean. Diese Ausdrücke stehen im Attribut <code>action</code> und ermöglichen es, Geschäftslogik auszulösen, wenn Benutzerinteraktionen auftreten. Ein Beispiel zeigt, wie Methoden durch Method-Expressions aufgerufen werden.
+        </p>
+        <img src="Bilder/Codebeispiel 12.jpg" alt="Abbildung 25: Codebeispiel für Method-Expressions">
+    </section>
+
+    <section>
+        <h2>Verwendung von UEL für Datenmanipulation</h2>
+        <p>
+            Herr Koch plant, eine neue Seite zur Pflege von Artikeldaten zu erstellen. Dabei nutzt er JSF-Komponenten, die durch Value- und Method-Expressions mit den Attributen und Methoden der Artikel-Objekte verknüpft werden. Die Darstellung und Manipulation von Artikeldaten erfolgt über ein Formular, das JSF-Komponenten wie <code>h:inputText</code> und <code>h:outputLabel</code> verwendet.
+        </p>
+        <img src="Bilder/Skizze für ein Formular zur Pflege der Artikeldaten.jpg" alt="Abbildung 26: Skizze für ein Formular zur Pflege der Artikeldaten">
+    </section>
+
+    <section>
+        <h2>Controller-Bean und JSF-Komponenten</h2>
+        <p>
+            Zur Verarbeitung von Benutzereingaben und Navigation benötigt Herr Koch eine Controller-Bean. Diese Bean übernimmt die Aufgabe, Eingaben zu verarbeiten und zwischen den JSF-Komponenten und der Bean zu vermitteln. Eine separate Controller-Bean für jede HTML-Seite ist eine bewährte Methode. Ein Beispiel zeigt den Controller <code>ArtikelController</code>, der die Artikelpflege ermöglicht.
+        </p>
+        <img src="Bilder/Controller für die Verwaltung der Artikeldaten.jpg" alt="Abbildung 27: Controller für die Verwaltung der Artikeldaten">
+    </section>
+
+    <section>
+        <h2>Verwendung des Singleton-Musters</h2>
+        <p>
+            Um auf das gleiche Sortiment über verschiedene Controller hinweg zuzugreifen, verwendet Herr Koch das Singleton-Muster. Die Bean <code>Shop</code> wird mit <code>@ApplicationScoped</code> annotiert, sodass alle Controller die gleiche Instanz nutzen können. Dies ermöglicht eine konsistente Verwaltung des Sortiments über die gesamte Anwendung hinweg.
+        </p>
+        <img src="Bilder/Codebeispiel 13.jpg" alt="Abbildung 28: Singleton-Muster für die Verwaltung von Artikel-Objekten">
+    </section>
+
+    <section>
+        <h2>JSF-Komponenten für Formulare</h2>
+        <p>
+            Für die Eingabe und Bearbeitung von Daten verwendet Herr Koch JSF-Komponenten wie <code>h:panelGrid</code> für die tabellarische Anordnung und <code>h:inputText</code> für die Eingabe von Werten. Die Verknüpfung von JSF-Komponenten mit Beans erfolgt über Value-Expressions, und die Beschriftungen werden mit <code>h:outputLabel</code> realisiert. Ein Beispiel zeigt, wie diese Komponenten im Formular zur Artikeldatenpflege verwendet werden.
+        </p>
+        <img src="Bilder/Verknüpfung von View und Model bei der Artikel-Pflege.jpg" alt="Abbildung 30: Verknüpfung von View und Model bei der Artikel-Pflege">
+    </section>
+
+    <section>
+        <h2>Weitere Möglichkeiten der UEL</h2>
+        <p>
+            UEL bietet zusätzliche Funktionen, wie die Auswertung von booleschen Ausdrücken und die Verwendung von Operatoren. Zum Beispiel kann die Sichtbarkeit von Komponenten mit dem Attribut <code>rendered</code> gesteuert werden. Auch komplexere Ausdrücke, wie die Formatierung von Preisen oder der Zugriff auf Array-Elemente, sind möglich. Beispiele zeigen, wie diese erweiterten Funktionen der UEL genutzt werden können.
+        </p>
+        <img src="Bilder/Codebeispiel 15.jpg" alt="Abbildung 31: Boolesche Ausdrücke in UEL">
+        <img src="Bilder/Codebeispiel 16.jpg" alt="Abbildung 32: Verwendung von Operatoren in UEL">
+        <img src="Bilder/Codebeispiel 17.jpg" alt="Abbildung 33: Komplexe Ausdrücke in UEL">
+        <img src="Bilder/Codebeispiel 18.jpg" alt="Abbildung 34: Zugriff auf Array-Elemente in UEL">
+        <img src="Bilder/Codebeispiel 19.jpg" alt="Abbildung 35: Methodenparameter in Method-Expressions">
+    </section>
+
+    <div class="button-container">
+        <a href="lektion2.html" class="back-button">Zurück zur Übersicht</a>
+        <a href="lektion2.html" class="weiter-button">Weiter zum nächsten Thema</a>
+    </div>
+</body>
+
+</html>

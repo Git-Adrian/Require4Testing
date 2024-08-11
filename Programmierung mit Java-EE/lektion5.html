@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenbank- und JPA-Kategorien</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.2s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 15px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card p {
+            padding: 15px;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .card a {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            margin-bottom: 15px;
+        }
+
+        .card a:hover {
+            background-color: #0056b3;
+        }
+
+        .persistent-storage {
+            background-color: #FF6F61; /* Red */
+        }
+
+        .orm {
+            background-color: #6F9FFF; /* Blue */
+        }
+
+        .jpa-hibernate {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .entities {
+            background-color: #FFC107; /* Amber */
+        }
+
+        .associations {
+            background-color: orange; /* Orange */
+        }
+
+        .delete-objects {
+            background-color: #FF5722; /* Deep Orange */
+        }
+
+        .dao {
+            background-color: #bbb; /* Grau */
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #ccc;
+            color: #333;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Programmierung von Datenbankanbindungen</h1>
+    <div class="card-container">
+        <div class="card persistent-storage">
+            <h2 onclick="location.href='persistent-speicherung.html'">Persistente Speicherung in Datenbanken</h2>
+            <p>Erfahren Sie, wie Daten dauerhaft in Datenbanken gespeichert werden und welche Technologien dabei verwendet werden.</p>
+            <a href="persistent-speicherung.html">Lektion starten</a>
+        </div>
+        <div class="card orm">
+            <h2 onclick="location.href='objektrelationales-mapping.html'">Objektrelationales Mapping</h2>
+            <p>Entdecken Sie, wie Objekte aus der Programmierung mit relationalen Datenbanken verknüpft werden.</p>
+            <a href="objektrelationales-mapping.html">Lektion starten</a>
+        </div>
+        <div class="card jpa-hibernate">
+            <h2 onclick="location.href='datenbankpersistenz-mit-jpa-hibernate.html'">Datenbankpersistenz mit JPA und Hibernate</h2>
+            <p>Erfahren Sie, wie Sie JPA und Hibernate zur Datenbankpersistenz nutzen können.</p>
+            <a href="datenbankpersistenz-mit-jpa-hibernate.html">Lektion starten</a>
+        </div>
+        <div class="card entities">
+            <h2 onclick="location.href='entitaeten-erzeugen.html'">Erzeugen von Entitäten</h2>
+            <p>Learn how to create entities in your database using JPA.</p>
+            <a href="entitaeten-erzeugen.html">Lektion starten</a>
+        </div>
+        <div class="card associations">
+            <h2 onclick="location.href='assoziationen-zwischen-objekten.html'">Assoziationen zwischen Objekten mittels JPA</h2>
+            <p>Verstehen Sie, wie Assoziationen zwischen Objekten in JPA definiert und verwaltet werden.</p>
+            <a href="assoziationen-zwischen-objekten.html">Lektion starten</a>
+        </div>
+        <div class="card delete-objects">
+            <h2 onclick="location.href='loeschen-von-objekten.html'">Löschen von Objekten mittels JPA</h2>
+            <p>Erfahren Sie, wie Sie Objekte in einer JPA-basierten Anwendung löschen.</p>
+            <a href="loeschen-von-objekten.html">Lektion starten</a>
+        </div>
+        <div class="card dao">
+            <h2 onclick="location.href='data-access-objects.html'">Data Access Objects</h2>
+            <p>Entdecken Sie das Designmuster Data Access Object (DAO) und seine Anwendung in der Datenbankprogrammierung.</p>
+            <a href="data-access-objects.html">Lektion starten</a>
+        </div>
+    </div>
+    <a href="index.html" class="back-button">Zurück zur Übersicht</a>
+</body>
+</html>

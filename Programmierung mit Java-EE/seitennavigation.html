@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seitennavigation mit JSF-Anwendungen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        section {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .note {
+            background-color: #e9f7fd;
+            border-left: 5px solid #007bff;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .note h4 {
+            margin: 0 0 10px;
+            font-size: 1.1em;
+            color: #007bff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+
+        .back-button {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+
+        .weiter-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .weiter-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Seitennavigation mit JSF-Anwendungen</h1>
+
+    <section>
+        <h2>Einführung in die Seitennavigation</h2>
+        <p>
+            In JSF-Anwendungen reicht es oft nicht aus, nur einzelne Seiten zu gestalten. Es ist ebenso wichtig, eine nahtlose Navigation zwischen verschiedenen Seiten zu ermöglichen. Ein typisches Beispiel ist die Navigation von einer Login-Maske zu einer geschützten Seite, wie etwa einer Artikelübersicht. JSF bietet hierfür spezialisierte Techniken, um diese Anforderungen zu erfüllen.
+        </p>
+    </section>
+
+    <section>
+        <h2>Navigation in Webanwendungen</h2>
+        <p>
+            Während in HTML die Navigation hauptsächlich über einfache Hyperlinks erfolgt, reicht dies für komplexere Webanwendungen oft nicht aus. In JSF ist die Navigation häufig von der Anwendungslogik abhängig. Geschäftsregeln bestimmen, ob ein Benutzer zu einer bestimmten Seite navigieren darf und welche Seite ihm als nächstes angezeigt werden soll.
+        </p>
+        <p>
+            In der entsprechenden Phase des JSF-Lebenszyklus wird die Navigation durch Methoden gesteuert, die in der Anwendungslogik aufgerufen werden. Dies erlaubt eine flexible und kontrollierte Weiterleitung basierend auf den Eingaben und Aktionen des Benutzers.
+        </p>
+        <img src="Bilder/Phase der Navigationssteuerung im JSF-Lebenszyklus.jpg" alt="Abbildung 68: Phase der Navigationssteuerung im JSF-Lebenszyklus">
+    </section>
+
+    <section>
+        <h2>Implementierung einer Login-Funktion</h2>
+        <p>
+            Um die Navigation in einer JSF-Anwendung zu steuern, kann eine einfache Login-Funktion implementiert werden. Dabei werden Benutzername und Passwort mit einer Liste vorgefertigter Benutzer verglichen. Ist der Vergleich erfolgreich, wird der Benutzer zur geschützten Seite weitergeleitet, andernfalls bleibt er auf der Login-Seite.
+        </p>
+        <p>
+            Dies wird durch eine Methode im Controller erreicht, die die Eingabedaten prüft und abhängig vom Ergebnis die entsprechende Seite zurückgibt.
+        </p>
+        <img src="Bilder/Codebeispiel 25.jpg" alt="Abbildung 69: Codebeispiel 25">
+    </section>
+
+    <section>
+        <h2>Erstellung der Login-Seite</h2>
+        <p>
+            Die Login-Seite in JSF kann einfach gestaltet werden. Sie enthält eine Eingabemaske für den Benutzernamen und das Passwort sowie eine Schaltfläche, die den Anmeldevorgang auslöst. Diese Schaltfläche ist mit einer Methode im Controller verknüpft, die die eingegebenen Daten überprüft und bei Erfolg zur nächsten Seite navigiert.
+        </p>
+        <img src="Bilder/Codebeispiel 26.jpg" alt="Abbildung 70: Codebeispiel 26">
+    </section>
+
+    <section>
+        <h2>Konfiguration der Startseite</h2>
+        <p>
+            Beim Erstellen eines JSF-Projekts wird oft eine Standard-Startseite eingerichtet. Diese kann jedoch angepasst werden, um beispielsweise die Login-Seite als neue Startseite festzulegen. Dazu muss die Konfiguration in der Datei <code>web.xml</code> geändert werden, die in den „Configuration Files“ der Entwicklungsumgebung zu finden ist.
+        </p>
+        <img src="Bilder/Umstellung der Startseite über die JSF-Servlet- Konfiguration (web.xml).jpg">
+    </section>
+
+    <section>
+        <h2>Überprüfung der Login-Funktion</h2>
+        <p>
+            Nach der Implementierung der Login-Funktion sollte diese gründlich getestet werden. Dabei ist es wichtig, sowohl gültige als auch ungültige Kombinationen aus Benutzername und Passwort zu testen, um sicherzustellen, dass die Navigation korrekt funktioniert.
+        </p>
+        <p>
+            Bei ungültigen Eingaben sollte der Benutzer auf der Login-Seite bleiben und ihm eine entsprechende Fehlermeldung angezeigt werden. Diese Funktion kann im nächsten Schritt durch eine Validierung der Eingabedaten und die Ausgabe passender Fehlermeldungen ergänzt werden.
+        </p>
+        <img src="Bilder/Codebeispiel 27.jpg" alt="Abbildung 71: Codebeispiel 27">
+    </section>
+
+    <div class="button-container">
+        <a href="lektion4.html" class="back-button">Zurück zur Übersicht</a>
+        <a href="seitennavigation.html" class="weiter-button">Weiter</a>
+    </div>
+
+</body>
+
+</html>

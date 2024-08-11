@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX in PrimeFaces</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        section {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .note {
+            background-color: #e9f7fd;
+            border-left: 5px solid #007bff;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .note h4 {
+            margin: 0 0 10px;
+            font-size: 1.1em;
+            color: #007bff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+
+        .back-button {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+
+        .weiter-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .weiter-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>AJAX in PrimeFaces</h1>
+
+    <section>
+        <h2>Einführung in AJAX</h2>
+        <p>
+            AJAX (Asynchronous JavaScript and XML) ermöglicht es Webanwendungen, Inhalte asynchron nachzuladen, ohne die gesamte Seite neu zu laden. Dies verbessert die Benutzererfahrung erheblich, indem nur bestimmte Teile der Seite aktualisiert werden. In PrimeFaces kann AJAX verwendet werden, um die Interaktivität von Webanwendungen zu steigern und die Reaktionsfähigkeit der Benutzeroberfläche zu verbessern.
+        </p>
+    </section>
+
+    <section>
+        <h2>Verwendung der <code>&lt;p:ajax&gt;</code>-Komponente</h2>
+        <p>
+            PrimeFaces bietet die <code>&lt;p:ajax&gt;</code>-Komponente, die es ermöglicht, bestimmte Ereignisse auf der Benutzerseite zu überwachen und darauf zu reagieren. Diese Ereignisse können Mausklicks, Tastatureingaben oder andere Benutzeraktionen umfassen. Die <code>&lt;p:ajax&gt;</code>-Komponente stellt eine Verbindung zwischen der Benutzeroberfläche und dem Server her und ermöglicht so die asynchrone Aktualisierung von Komponenten.
+        </p>
+         
+    </section>
+
+    <section>
+        <h2>Beispiel: Interaktives Bild-Update</h2>
+        <p>
+            Ein praktisches Beispiel für die Verwendung von AJAX ist das dynamische Nachladen von Bildern. Wenn ein Benutzer im Eingabefeld den Pfad zu einem Bild ändert, kann die <code>&lt;p:ajax&gt;</code>-Komponente verwendet werden, um das Bild ohne vollständiges Neuladen der Seite zu aktualisieren. Dies wird erreicht, indem das <code>&lt;inputText&gt;</code>-Element um eine <code>&lt;p:ajax&gt;</code>-Komponente erweitert wird, die auf den <code>keyup</code>-Ereignis reagiert und das <code>&lt;h:graphicImage&gt;</code>-Element aktualisiert.
+        </p>
+        <img src="Bilder/AJAX-Funktionalität im Eingabefeld.jpg" alt="Abbildung 54: AJAX-Funktionalität im Eingabefeld">
+    </section>
+
+    <section>
+        <h2>Vorteile der AJAX-Integration</h2>
+        <p>
+            Durch die Verwendung von AJAX können Webanwendungen reaktionsfähiger und benutzerfreundlicher gestaltet werden. Die asynchrone Aktualisierung von Seiteninhalten führt zu einer besseren Benutzererfahrung, da nur die Teile der Seite aktualisiert werden, die sich geändert haben. Dies reduziert die Notwendigkeit von vollständigen Seitenneuladungen und minimiert die Ladezeiten.
+        </p>
+    </section>
+
+    <section>
+        
+    </section>
+
+    <div class="button-container">
+        <a href="lektion3.html" class="back-button">Zurück zur Übersicht</a>
+        <a href="lektion3.html" class="weiter-button">Weiter</a>
+    </div>
+
+</body>
+
+</html>

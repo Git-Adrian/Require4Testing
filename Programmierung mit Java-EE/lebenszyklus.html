@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSF-Lebenszyklus und Eventhandling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        section {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .note {
+            background-color: #e9f7fd;
+            border-left: 5px solid #007bff;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .note h4 {
+            margin: 0 0 10px;
+            font-size: 1.1em;
+            color: #007bff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+
+        .back-button {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+
+        .weiter-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .weiter-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JSF-Lebenszyklus und Eventhandling</h1>
+
+    <section>
+        <h2>Einführung in den JSF-Lebenszyklus</h2>
+        <p>
+            Der JSF-Lebenszyklus bietet eine strukturierte Abfolge von Phasen, die die Verarbeitung einer Anfrage in einer JSF-Anwendung regeln. Ein wichtiger Aspekt dieses Lebenszyklus ist die Validierung der Eingabefelder, die zu festgelegten Zeiten stattfindet und nicht direkt durch den Entwickler verändert werden kann. Um zusätzliche Validierungen, wie etwa die Validierung von Beziehungen zwischen verschiedenen Eingabefeldern (feldübergreifende Validierung), durchzuführen, ist es notwendig, den Lebenszyklus und die internen Mechanismen von JSF zu verstehen.
+        </p>
+    </section>
+
+    <section>
+        <h2>Probleme bei der feldübergreifenden Validierung</h2>
+        <p>
+            Ein häufiges Problem bei der Implementierung von feldübergreifender Validierung ist, dass zur Zeit der Validierung die Werte der Formulareingaben möglicherweise noch nicht in der Bean verfügbar sind. Der Grund dafür ist, dass die Aktualisierung des Models erst nach der Validierung erfolgt. Daher sind die Benutzereingaben zu diesem Zeitpunkt noch nicht in der Bean gespeichert.
+        </p>
+        <img src="Bilder/Naiver Ansatz zur feldübergreifenden Validierung.jpg" alt="Abbildung 73: Naiver Ansatz zur feldübergreifenden Validierung">
+    </section>
+
+    <section>
+        <h2>Verwendung von System-Events für die Validierung</h2>
+        <p>
+            Eine effektive Lösung für die feldübergreifende Validierung in JSF besteht darin, System-Events zu nutzen. JSF erzeugt verschiedene Ereignisse im Lebenszyklus, die Entwicklern ermöglichen, an bestimmten Stellen zusätzliche Funktionalität einzufügen. Dies geschieht durch die Verwendung von Listener-Methoden, die auf diese Ereignisse reagieren. Die ereignisgesteuerte Architektur (Event-Driven Architecture, EDA) unterscheidet sich von traditionellen Programmen, da sie auf das Eintreffen von Ereignissen wartet, um darauf zu reagieren.
+        </p>
+        <img src="Bilder/Komponenten einer ereignisgesteuerten Architektur.jpg" alt="Abbildung 74: Komponenten einer ereignisgesteuerten Architektur">
+    </section>
+
+    <section>
+        <h2>Implementierung der feldübergreifenden Validierung</h2>
+        <p>
+            Die Implementierung einer feldübergreifenden Validierung erfolgt durch die Nutzung des PostValidate-Events. Dieses Ereignis tritt nach der Validierung einer Komponente auf und ermöglicht es, die Benutzereingaben zwischenzuspeichern, um sie bei der Validierung weiterer Felder zu verwenden. Die Schritte zur Implementierung umfassen das Hinzufügen eines Attributs zum Zwischenspeichern des Benutzernamens, das Programmieren einer Listener-Methode im Controller, das Registrieren dieser Methode in der View, und schließlich die Validierung des Passworts unter Verwendung des zwischengespeicherten Benutzernamens.
+        </p>
+        <img src="Bilder/PostValidate-Event mittels f-event abfangen.jpg" alt="Abbildung 75: PostValidate-Event mittels f:event abfangen">
+        <img src="Bilder/Anwendung einer ereignisgesteuerten Architektur am Beispiel der feldüberqreifenden Validierung.jpg" alt="Abbildung 76: Anwendung einer ereignisgesteuerten Architektur am Beispiel der feldübergreifenden Validierung">
+    </section>
+ 
+
+    <div class="button-container">
+        <a href="lektion4.html" class="back-button">Zurück zur Übersicht</a>
+        <a href="lektion4.html" class="weiter-button">Weiter</a>
+    </div>
+
+</body>
+
+</html>

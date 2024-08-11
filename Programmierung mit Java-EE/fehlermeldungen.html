@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anpassung von Fehlermeldungen in JSF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        section {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .note {
+            background-color: #e9f7fd;
+            border-left: 5px solid #007bff;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .note h4 {
+            margin: 0 0 10px;
+            font-size: 1.1em;
+            color: #007bff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+
+        .back-button {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+
+        .weiter-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .weiter-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Anpassung von Fehlermeldungen in JSF</h1>
+
+    <section>
+        <h2>Definition von Fehlermeldungen</h2>
+        <p>
+            In JSF werden Fehlermeldungen automatisch generiert, wenn Validierungs- oder Konvertierungsfehler auftreten. Standardmäßig legt JSF sowohl den Inhalt als auch die Position dieser Meldungen fest. Benutzerdefinierte Validatoren und Konverter ermöglichen jedoch das Anpassen der angezeigten Nachrichten.
+        </p>
+        <p>
+            Häufig besteht der Wunsch, Fehlermeldungen direkt neben den betroffenen Formularfeldern anzuzeigen, anstatt sie am Anfang oder Ende des Formulars zu platzieren. Dies sorgt für eine bessere Benutzerfreundlichkeit und Übersichtlichkeit.
+        </p>
+    </section>
+
+    <section>
+        <h2>Anpassung der Fehlermeldungsposition</h2>
+        <p>
+            In der Java-EE-Dokumentation werden die JSF-Komponenten <code>h:message</code> und <code>h:messages</code> vorgestellt. Die Komponente <code>h:message</code> zeigt eine Fehlermeldung für eine spezifische JSF-Komponente an, während <code>h:messages</code> alle Fehlermeldungen auf einer Seite darstellt.
+        </p>
+        <p>
+            Um eine <code>h:message</code>-Komponente mit einer Eingabekomponente zu verknüpfen, wird das Attribut <code>for</code> verwendet. Die Platzierung der Fehlermeldung erfolgt idealerweise direkt neben oder unter der Eingabekomponente.
+        </p>
+        <img src="Bilder/View der Artikelverwaltung mit Nachrichtenkomponenten.jpg" alt="Abbildung 64: View der Artikelverwaltung mit Nachrichtenkomponenten">
+    </section>
+
+    <section>
+        <h2>Stil und Darstellung von Fehlermeldungen</h2>
+        <p>
+            Nach der Positionierung der Fehlermeldungen kann deren Darstellung angepasst werden. Beispielsweise können Fehlermeldungen durch das Hinzufügen einer CSS-Klasse in einer auffälligen Farbe, wie Rot, angezeigt werden. Dies kann über das Attribut <code>styleClass</code> erfolgen, welches eine definierte CSS-Klasse referenziert.
+        </p>
+        <p>
+            Diese Methode ermöglicht eine klare Trennung von Inhalt und Darstellung, was die Wartbarkeit des Codes verbessert. Eine gut gestaltete Fehlermeldung kann nicht nur den Fehler anzeigen, sondern auch Lösungsvorschläge enthalten.
+        </p>
+        <img src="Bilder/Artikelverwaltung mit rot eingefärbten Nachrichten.jpg" alt="Abbildung 65: Artikelverwaltung mit rot eingefärbten Nachrichten">
+    </section>
+
+    <section>
+        <h2>Anpassung der Fehlermeldungstexte</h2>
+        <p>
+            In vielen Fällen ist es wünschenswert, die automatisch generierten Fehlermeldungstexte anzupassen. Zum Beispiel kann es sinnvoll sein, die Feld-ID aus den Meldungen zu entfernen oder durch eine benutzerfreundlichere Beschreibung zu ersetzen. Dies kann durch das Attribut <code>label</code> in der entsprechenden Eingabekomponente erreicht werden.
+        </p>
+        <img src="Bilder/Codebeispiel 24.jpg" alt="Abbildung 66: Codebeispiel 24">
+    </section>
+
+    <section>
+        <h2>Eigene Fehlermeldungen definieren</h2>
+        <p>
+            Um noch mehr Kontrolle über die Fehlermeldungen zu erhalten, können benutzerdefinierte Nachrichtentexte erstellt werden. Dies geschieht über Properties-Dateien, die einfache Textdateien sind und im Projekt hinterlegt werden. Diese Dateien können JSF-Systemparameter überschreiben und benutzerdefinierte Nachrichten bereitstellen.
+        </p>
+        <p>
+            Damit JSF diese Dateien erkennt, müssen sie in der JSF-Konfigurationsdatei <code>faces-config.xml</code> registriert werden. Bei modernen Projekten, die auf JSF 2.0 basieren, ist diese Datei oft nicht mehr standardmäßig vorhanden und muss gegebenenfalls manuell angelegt werden.
+        </p>
+        <img src="Bilder/Notwendige Schritte zur Definition eigener Nachrichten.jpg" alt="Abbildung 67: Notwendige Schritte zur Definition eigener Nachrichten">
+    </section>
+
+    <div class="button-container">
+        <a href="lektion4.html" class="back-button">Zurück zur Übersicht</a>
+        <a href="seitennavigation.html" class="weiter-button">Weiter</a>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeFaces Komponentenbibliothek</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        section {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .note {
+            background-color: #e9f7fd;
+            border-left: 5px solid #007bff;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .note h4 {
+            margin: 0 0 10px;
+            font-size: 1.1em;
+            color: #007bff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+
+        .back-button {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+
+        .weiter-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .weiter-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>PrimeFaces Komponentenbibliothek</h1>
+
+    <section>
+        <h2>Einführung in PrimeFaces</h2>
+        <p>
+            PrimeFaces ist eine weit verbreitete Komponentenbibliothek für JavaServer Faces (JSF), die seit 2008 von PrimeTek als Open-Source-Framework entwickelt wird. Die Bibliothek bietet eine Vielzahl von UI-Komponenten, die die Benutzeroberfläche von Webanwendungen erweitern und verbessern können.
+        </p>
+        <img src="Bilder/ Komponentenbibliotheken werden als Java-Bibliotheken ausgeliefert.jpg" alt="Abbildung 37: Hinzufügen der PrimeFaces-Komponentenbibliothek zum Projekt">
+    </section>
+
+    <section>
+        <h2>Importieren und Verwenden von PrimeFaces-Komponenten</h2>
+        <p>
+            Um PrimeFaces-Komponenten in Ihrem Projekt verwenden zu können, müssen Sie den PrimeFaces-Namensraum in Ihrer View deklarieren. Der Namensraum für PrimeFaces lautet <code>http://primefaces.org/ui</code>. Dieser Namensraum wird in der <code>&lt;html&gt;</code>-Deklaration Ihrer JSF-View eingefügt, wie diese Abbildung zeigt.
+        </p>
+        <img src="Bilder/Importieren des PrimeFaces-Namensraumes.jpg" alt="Abbildung 39: Importieren des PrimeFaces-Namensraumes">
+    </section>
+
+    <section>
+        <h2>Verwendung der Kalenderkomponente</h2>
+        <p>
+            Eine der interessanten Komponenten von PrimeFaces ist die Kalenderkomponente. Diese kann einfach in einer View integriert werden, indem Sie das Tag <code>&lt;p:calendar/&gt;</code> verwenden. Die Kalenderkomponente muss innerhalb eines <code>&lt;h:form&gt;</code>-Elements platziert werden, damit das Datum an den Server gesendet wird.
+        </p>
+        <img src="Bilder/Verwenden von PrimeFaces-Komponenten mittels des p--Namensraumes.jpg" alt="Abbildung 40: Verwendung der PrimeFaces-Kalenderkomponente">
+        <p>
+            Die Kalenderkomponente bietet eine benutzerfreundliche Oberfläche zur Datumsauswahl, die im Browser angezeigt wird. Die Darstellung der Kalenderkomponente wird in dieser Abbildung veranschaulicht.
+        </p>
+        <img src="Bilder/Ansicht der Kalenderkomponente.jpg" alt="Abbildung 41: Ansicht der Kalenderkomponente">
+    </section>
+
+    <section>
+        <h2>Integration in Modellklassen</h2>
+        <p>
+            Um das Verfügbarkeitsdatum für Artikel in einem Webshop zu verwalten, kann die Kalenderkomponente verwendet werden. Dazu wird die Modellklasse angepasst, um ein Attribut für das Verfügbarkeitsdatum hinzuzufügen. Diese Abbildung zeigt die notwendigen Anpassungen in der Modellklasse.
+        </p>
+        <img src="Bilder/Anpassungen in der Klasse Artikel.jpg" alt="Abbildung 42: Anpassungen in der Klasse Artikel">
+        <p>
+            In der View wird das Datum dann mittels des UEL-Ausdrucks mit der Kalenderkomponente verknüpft. PrimeFaces übernimmt die Konvertierung des Datums in eine Zeichenkette automatisch.
+        </p>
+        <img src="Bilder/Verknüpfung von Kalenderkomponente und Datumsattribut.jpg" alt="Abbildung 43: Verknüpfung von Kalenderkomponente und Datumsattribut">
+        <p>
+            Nach der Anpassung wird das Verfügbarkeitsdatum für jeden Artikel angezeigt. Der Standardwert wird gemäß der Initialisierung mit <code>new Date(0)</code> angezeigt.
+        </p>
+        <img src="Bilder/Ansicht der Kalenderkomponente.jpg" alt="Abbildung 44: Ansicht der verknüpften Kalenderkomponente">
+    </section>
+
+    <section>
+        <h2>Formatierung und weitere Komponenten</h2>
+        <p>
+            PrimeFaces ermöglicht auch die Anpassung der Formatierung von Datumsangaben. Mit dem <code>pattern</code>-Attribut der Kalenderkomponente können Sie das Datumsformat anpassen (siehe Abbildung 45). Neben der Kalenderkomponente bietet PrimeFaces auch Editorkomponenten wie <code>&lt;p:textEditor&gt;</code>, die Textformatierung ermöglichen. Die Verwendung dieser Editorkomponente wird in dieser Abbildung gezeigt.
+        </p>
+        <img src="Bilder/Formatierung von Datumsangaben mittels datePattern.jpg" alt="Abbildung 46: Verwendung und Darstellung der PrimeFaces-Editorkomponente">
+        <p>
+            Die Editorkomponente kann in ihrer Funktionalität angepasst werden, um nur bestimmte Formatierungsoptionen anzuzeigen. Diese Abbildung zeigt den vollständigen Funktionsumfang der Editorkomponente und die Anpassung der sichtbaren Funktionen.
+        </p>
+        <img src="Bilder/Verwendung und Darstellung der PrimeFaces-Editorkomponente.jpg" alt="Abbildung 47: Vollständiger Funktionalitätsumfang der Editorkomponente">
+    </section>
+
+    <section>
+        <h2>Weitere Eingabekomponenten und Panels</h2>
+        <p>
+            PrimeFaces bietet auch Eingabekomponenten wie <code>&lt;p:slider&gt;</code> und <code>&lt;p:spinner&gt;</code>, um Werte innerhalb eines bestimmten Bereichs einzugeben. Abbildung 48 zeigt die Verwendung dieser Komponenten. Zudem können Panels verwendet werden, um Komponenten zu gruppieren. Ein Beispiel für ein Panel, das mehrere Komponenten gruppiert, wird in dieser Abbildung gezeigt.
+        </p>
+        <img src="Bilder/Eingabe von Zahlen aus einem vorgegebenen Wertebereich.jpg" alt="Abbildung 48: Eingabe von Zahlen aus einem vorgegebenen Wertebereich">
+        <img src="Bilder/Ein Panel gruppiert mehrere Komponenten.jpg" alt="Abbildung 49: Ein Panel gruppiert mehrere Komponenten">
+        <p>
+            Besondere Panel-Typen wie <code>&lt;p:tabView&gt;</code> und <code>&lt;p:accordionPanel&gt;</code> ermöglichen das Umschalten zwischen Gruppen von Komponenten. Diese Panels unterscheiden sich in ihrer Darstellung, wie in Abbildung 50 gezeigt.
+        </p>
+        <img src="Bilder/TabView und AccordionPanel.jpg" alt="Abbildung 50: TabView und AccordionPanel">
+    </section>
+
+    <section>
+        <h2>DataTable-Komponente und Sortierung</h2>
+        <p>
+            Die <code>&lt;p:dataTable&gt;</code>-Komponente von PrimeFaces erweitert die bekannte JSF-DataTable um zusätzliche Funktionen. Sie bindet an eine Sammlung von Daten und zeigt diese in Tabellenform an. Diese Abbildung zeigt, wie eine Tabelle in einer Demoseite integriert wird. Die Sortierung der Tabelleneinträge kann durch die Attribute <code>sortBy</code> und <code>sortOrder</code> konfiguriert werden.
+        </p>
+        <img src="Bilder/PrimeFaces-DataTable-Komponente.jpg" alt="Abbildung 51: PrimeFaces-DataTable-Komponente">
+        <img src="Bilder/Sortieren der PrimeFaces-DataTable-Komponente.jpg" alt="Abbildung 52: Sortieren der PrimeFaces-DataTable-Komponente">
+        <p>
+            Damit Benutzer die Tabelle selbst sortieren können, wird <code>sortBy</code> als Spaltenattribut hinzugefügt. Dies ermöglicht das Sortieren der Spalten durch Klicken auf die Titelzeile.
+        </p>
+        <img src="Bilder/Manuelles Sortieren der Komponente p-dataTable.jpg" alt="Abbildung 53: Manuelles Sortieren der Komponente p:dataTable">
+    </section>
+
+    <div class="button-container">
+        <a href="lektion3.html" class="back-button">Zurück zur Übersicht</a>
+        <a href="ajax.html" class="weiter-button">Weiter</a>
+    </div>
+
+</body>
+
+</html>

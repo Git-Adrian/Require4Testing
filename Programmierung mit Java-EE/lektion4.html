@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lernanwendung - Programmierung mit Java EE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Kategorien zur Programmierung mit JSF</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #f0f2f5;
             margin: 0;
             padding: 20px;
@@ -26,8 +25,6 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            max-width: 1200px;
-            width: 100%;
         }
 
         .card {
@@ -82,6 +79,26 @@
             background-color: #0056b3;
         }
 
+        .validation {
+            background-color: #FF6F61; /* Red */
+        }
+
+        .conversion {
+            background-color: #6F9FFF; /* Blue */
+        }
+
+        .error-handling {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .navigation {
+            background-color: #FFC107; /* Amber */
+        }
+
+        .lifecycle {
+            background-color: Orange; /* Purple */
+        }
+
         .back-button {
             display: inline-block;
             background-color: #ccc;
@@ -100,34 +117,34 @@
     </style>
 </head>
 <body>
-    <h1>Programmierung mit Java EE</h1>
+    <h1>Programmierung von Geschäftslogik</h1>
     <div class="card-container">
-        <div class="card">
-            <h2 onclick="location.href='komponentenbasierte-web-benutzerschnittstellen.html'">Komponentenbasierte Web-Benutzerschnittstellen</h2>
-            <p>Erfahren Sie, wie Sie interaktive Webschnittstellen mit Java EE entwickeln.</p>
-            <a href="lektion1.html">Lektion starten</a>
+        <div class="card validation">
+            <h2 onclick="location.href='validierung.html'">Validierung von Benutzereingaben</h2>
+            <p>Erfahren Sie, wie Sie Benutzereingaben validieren, um Datenintegrität sicherzustellen.</p>
+            <a href="validierung.html">Lektion starten</a>
         </div>
-        <div class="card">
-            <h2 onclick="location.href='verknuepfung-von-view-und-model.html'">Verknüpfung von View und Model</h2>
-            <p>Erlernen Sie die Verbindung von Benutzeroberfläche und Datenmodell.</p>
-            <a href="lektion2.html">Lektion starten</a>
+        <div class="card conversion">
+            <h2 onclick="location.href='konvertierung.html'">Konvertierung von Zahlen, Währungen und Datumsfeldern</h2>
+            <p>Entdecken Sie, wie Sie Zahlen, Währungen und Datumswerte korrekt konvertieren und formatieren.</p>
+            <a href="konvertierung.html">Lektion starten</a>
         </div>
-        <div class="card">
-            <h2 onclick="location.href='komponentenbibliotheken.html'">Komponenten-Bibliotheken</h2>
-            <p>Entdecken Sie die Nutzung von Komponentenbibliotheken in Java EE.</p>
-            <a href="lektion3.html">Lektion starten</a>
+        <div class="card error-handling">
+            <h2 onclick="location.href='fehlermeldungen.html'">Definition von Fehlermeldungen</h2>
+            <p>Lernen Sie, wie Sie effektive Fehlermeldungen in Ihren JSF-Anwendungen definieren und verwalten.</p>
+            <a href="fehlermeldungen.html">Lektion starten</a>
         </div>
-        <div class="card">
-            <h2 onclick="location.href='programmierung-von-geschaeftslogik.html'">Programmierung von Geschäftslogik</h2>
-            <p>Erfahren Sie, wie Sie Geschäftslogik in Java EE implementieren.</p>
-            <a href="lektion4.html">Lektion starten</a>
+        <div class="card navigation">
+            <h2 onclick="location.href='seitennavigation.html'">Seitennavigation mit JSF-Anwendungen</h2>
+            <p>Erfahren Sie, wie Sie eine effektive Navigation zwischen Seiten in JSF-Anwendungen implementieren.</p>
+            <a href="seitennavigation.html">Lektion starten</a>
         </div>
-        <div class="card">
-            <h2 onclick="location.href='programmierung-von-datenbankanbindungen.html'">Programmierung von Datenbankanbindungen</h2>
-            <p>Lernen Sie die Verbindung von Java EE Anwendungen mit Datenbanken.</p>
-            <a href="lektion5.html">Lektion starten</a>
+        <div class="card lifecycle">
+            <h2 onclick="location.href='lebenszyklus.html'">JSF-Lebenszyklus und Eventhandling</h2>
+            <p>Vertiefen Sie sich in den JSF-Lebenszyklus und lernen Sie, wie Sie Ereignisse in Ihren Anwendungen handhaben.</p>
+            <a href="lebenszyklus.html">Lektion starten</a>
         </div>
     </div>
-    <a href="home.html" class="back-button">Zurück zur Übersicht</a>
+    <a href="index.html" class="back-button">Zurück zur Übersicht</a>
 </body>
 </html>

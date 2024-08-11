@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konvertierung von Zahlen, Währungen und Datumsfeldern</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        section {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .note {
+            background-color: #e9f7fd;
+            border-left: 5px solid #007bff;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .note h4 {
+            margin: 0 0 10px;
+            font-size: 1.1em;
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+
+        .back-button {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+
+        .weiter-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .weiter-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Konvertierung von Zahlen, Währungen und Datumsfeldern</h1>
+
+    <section>
+        <h2>Einführung in die Konvertierung</h2>
+        <p>
+            Bei der Eingabe von Daten in Onlineformularen werden die Informationen immer als Zeichenketten übertragen, unabhängig davon, ob es sich um Zahlen oder Daten handelt. Dies liegt an den zugrundeliegenden Technologien wie HTML und HTTP, die nur Zeichenkettenformate kennen. Früher musste diese Umwandlung von Hand erfolgen, was viel Aufwand bedeutete. Doch mit der Einführung von Frameworks wie JSF werden diese Schritte weitgehend automatisiert.
+        </p>
+        <img src="Bilder/Codebeispiel 23.jpg" alt="Abbildung 61: Codebeispiel 23">
+    </section>
+
+    <section>
+        <h2>Standardkonvertierer in JSF</h2>
+        <p>
+            JSF bietet eingebaute Standardkonvertierer, die automatisch erkennen können, in welchen Typ eine Zeichenkette umgewandelt werden soll. Beispielsweise können Ganzzahlen und Fließkommazahlen problemlos konvertiert werden. Wenn höhere Anforderungen an die Formatierung gestellt werden, kann man die Konvertierer explizit konfigurieren, um etwa Datumsformate oder Währungsdarstellungen zu steuern.
+        </p>
+        <img src="Bilder/Konfiguration eines Standardkonvertierers- Datum.jpg" alt="Abbildung 62: Konfiguration eines Standardkonvertierers: Datum">
+    </section>
+
+    <section>
+        <h2>Konvertierung von Datumsfeldern</h2>
+        <p>
+            Die Konvertierung von Datumsfeldern erfolgt in JSF durch die Komponente <code>f:convertDateTime</code>. Damit kann das Datum nicht nur korrekt gespeichert, sondern auch in verschiedenen Formaten angezeigt werden. Die Wahl des Datumsstils (z. B. „short“ oder „full“) ermöglicht es, das Datum je nach Bedarf unterschiedlich darzustellen.
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stil</th>
+                    <th>Beispiel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>short</td>
+                    <td>10.01.14</td>
+                </tr>
+                <tr>
+                    <td>medium</td>
+                    <td>10.01.2014</td>
+                </tr>
+                <tr>
+                    <td>long</td>
+                    <td>10. Januar 2014</td>
+                </tr>
+                <tr>
+                    <td>full</td>
+                    <td>Freitag, 10. Januar 2014</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="note">
+            <h4>Hinweis</h4>
+            <p>
+                Die Formatierung eines Datums kann auch anhand eines Musters definiert werden, um spezifische Anforderungen zu erfüllen. Ein Beispiel wäre das Muster „dd.MM.yyyy hh:mm:ss:SSS“, das ein Datum nach dem Schema „10.01.2014 15:08:14:863“ formatiert.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Konvertierung von Währungsfeldern</h2>
+        <p>
+            Für die Konvertierung von Währungswerten in JSF wird die Komponente <code>f:convertNumber</code> verwendet. Diese Komponente ermöglicht es, Zahlen in Währungsformaten darzustellen, wobei auch Währungssymbole und Dezimalstellen angepasst werden können. Zum Beispiel kann das Euro-Symbol durch „EUR“ ersetzt werden, wenn dies gewünscht ist.
+        </p>
+        <img src="Bilder/Konfiguration eines Standardkonvertierers- Währung  .jpg" alt="Abbildung 63: Konfiguration eines Standardkonvertierers: Währung">
+    </section>
+
+    <section>
+        <h2>Eigene Konvertierer erstellen</h2>
+        <p>
+            Wenn die Standardkonvertierer nicht ausreichen, können eigene Konvertierer erstellt werden. Diese benutzerdefinierten Klassen müssen das Interface <code>javax.faces.convert.Converter</code> implementieren und die Methoden <code>getAsObject()</code> und <code>getAsString()</code> bereitstellen. Fehlerhafte Eingaben führen zu einer <code>ConverterException</code>, die dem Benutzer als Fehlermeldung angezeigt wird.
+        </p>
+        <div class="note">
+            <h4>Hinweis</h4>
+            <p>
+                Standardkonvertierer können durch die allgemeine JSF-Komponente <code>f:converter</code> in Elemente eingebunden werden. Eine Übersicht aller Konvertierer bietet die Java-EE-Dokumentation.
+            </p>
+        </div>
+    </section>
+    
+    <div class="button-container">
+        <a href="lektion4.html" class="back-button">Zurück zur Übersicht</a>
+        <a href="fehlermeldungen.html" class="weiter-button">Weiter</a>
+    </div>
+
+</body>
+
+</html>

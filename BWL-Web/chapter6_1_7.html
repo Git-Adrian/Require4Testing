@@ -7,60 +7,40 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
         header {
             background-color: #007bff;
             color: white;
+            padding: 1.5rem 0;
             text-align: center;
-            padding: 2rem 1rem;
         }
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
-        .content {
-            margin: 2rem;
-            line-height: 1.6;
+        h2 {
             color: #333;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #555;
+            margin-bottom: 1.5rem;
         }
         .section {
             background-color: white;
-            padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
         }
-        .section h2 {
+        h3 {
+            margin-top: 1.5rem;
             color: #007bff;
-            font-size: 1.5rem;
-            margin-top: 0;
-        }
-        .section ul {
-            list-style: disc;
-            padding-left: 1.5rem;
-            margin: 1rem 0;
-        }
-        .section ul ul {
-            list-style: circle;
-        }
-        .section p, .section ul {
-            margin-bottom: 1rem;
-        }
-        .section p:last-child {
-            margin-bottom: 0;
-        }
-        .fazit {
-            background-color: #007bff22;
-            border-left: 4px solid #007bff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .fazit h2 {
-            color: #0056b3;
         }
         .back-button {
             display: block;
@@ -86,79 +66,52 @@
     <h1>Informations- und Kommunikationssysteme in Einkauf und Beschaffung</h1>
 </header>
 
-<div class="content">
+<div class="container">
 
-    <div class="section">
-        <h2>Informations- und Kommunikationssysteme in Einkauf und Beschaffung</h2>
-        <p>Die Einführung von Informations- und Kommunikationssystemen (IKS) in der Beschaffung, insbesondere Online-Bestellungen und elektronisch unterstützte Beschaffungsaktivitäten, steigert die Durchlaufgeschwindigkeit, erhöht die Preistransparenz und ermöglicht Echtzeitinformationen über Bestellabwicklung und Lieferstatus. E-Sourcing unterstützt sowohl administrative als auch operative Prozesse, wodurch Beschaffungsprozesse wie Antragserstellung, Bestellschreibung, Angebotsbestätigung und Rechnungsabwicklung automatisiert werden. Auch strategische Aufgaben wie Beschaffungsmarktforschung, Beschaffungscontrolling und Supplier Relationship Management (SRM) werden durch elektronische Unterstützung vereinfacht und effektiver gestaltet.</p>
+    <div class="section"> 
+        <p>Die Digitalisierung hat die Beschaffungsprozesse revolutioniert. Online-Bestellungen und elektronische Systeme steigern die Effizienz, erhöhen die Preistransparenz und bieten Echtzeitinformationen zu Bestellungen und Lieferungen. Elektronische Systeme entlasten Beschaffer von operativen Aufgaben und verbessern strategische Aufgaben wie das Beschaffungscontrolling und das Supplier Relationship Management (SRM).</p>
     </div>
 
     <div class="section">
-        <h2>Operative Potenzialverbesserungen durch elektronische Beschaffung</h2>
+        <h2>Operative Potenzialverbesserungen</h2>
+        <p>Elektronische Beschaffungssysteme optimieren zahlreiche operative Prozesse:</p>
         <ul>
-            <li>Tracking & Tracing: Verfolgung und Rückverfolgung von Waren.</li>
-            <li>Automatisierte Beschaffung und Zahlungsabwicklung: Verwendung der Purchasing Card.</li>
-            <li>Elektronische Abwicklung der Bestellprozesse: Effiziente und schnelle Bestellungen.</li>
-            <li>Standardisierung der Beschaffungsprozesse: Einheitliche Abläufe.</li>
-            <li>Optimierung des C-Teile-Managements: Schnellere Beschaffung von Kleinteilen.</li>
-            <li>Supplier Relationship Management: Intensivierung der Lieferantenbeziehungen.</li>
+            <li>Warenverfolgung und -rückverfolgung (Tracking & Tracing)</li>
+            <li>Automatisierte Beschaffung und elektronische Zahlungsabwicklung</li>
+            <li>Standardisierung und Optimierung der Beschaffungsprozesse</li>
+            <li>Verbesserung des C-Teile-Managements</li>
+            <li>Stärkung der Lieferantenbeziehungen durch SRM</li>
         </ul>
     </div>
 
     <div class="section">
-        <h2>Instrumente und Konzepte für E-Sourcing</h2>
-        <ul>
-            <li><strong>Desktop Purchasing System (DPS)</strong>
-                <ul>
-                    <li>Multi-Lieferanten-Kataloge: Vom Unternehmen oder Dienstleister bereitgestellte Kataloge mit vorqualifizierten Lieferanten.</li>
-                    <li>Intranet-Bereitstellung: Beschaffer stellen Multi-Lieferanten-Kataloge über das Intranet zur Verfügung.</li>
-                    <li>Elektronischer Warenkorb: Mitarbeiter stellen elektronische Warenkörbe zusammen, die nach Genehmigung an Lieferanten weitergeleitet werden.</li>
-                    <li>Integration in ERP-Systeme: Harmonisierung des ERP-Systems mit externen Systemen und Geschäftsprozessen der Lieferanten.</li>
-                    <li>Funktionen: Einheitliche Benutzeroberfläche, Integration ins ERP-System, Unterstützung sämtlicher Beschaffungsprozesse, dynamische Preisfindung, Echtzeit-Verfügbarkeitsprüfung.</li>
-                </ul>
-            </li>
-            <li><strong>Provider-Systeme</strong>
-                <ul>
-                    <li>Content-Broking: Outsourcing der Katalogpflege, wobei der Content-Broker die Lieferanten im MSPC (multiple supplier product catalogue) auswählt und Transaktionen bezahlt werden.</li>
-                    <li>Content-Service: Dienstleister pflegen den MSPC und stellen die Daten dem beschaffenden Unternehmen zur Verfügung.</li>
-                    <li>Content-Manager: Unterstützen Beschaffungsprozesse durch Einspielen und Freigabe von E-Katalogen, Automatisierung von Updates, Datenintegration und Produktklassifizierung.</li>
-                </ul>
-            </li>
-            <li><strong>Online-Nachfrageauktionen (Reverse Auctions)</strong>
-                <ul>
-                    <li>Elektronische Nachfrageauktionen: Lieferanten geben Preisangebote online ab, der günstigste Anbieter erhält den Zuschlag.</li>
-                    <li>Dynamische Preisfindung: Lieferanten können Preise bis zum Ablauf der Auktion anpassen.</li>
-                    <li>Vorteile: Reduzierung der Beschaffungskosten, direkter Wettbewerb unter Lieferanten, Echtzeit-Überblick über Angebotssituation und Preis-Leistungs-Verhältnisse.</li>
-                </ul>
-            </li>
-            <li><strong>Elektronische Frachtenbörsen</strong>
-                <ul>
-                    <li>Transportnachfrage und -angebot: Verlader buchen freie Transportkapazitäten von Spediteuren, umgekehrt bieten Spediteure ihre freien Kapazitäten an.</li>
-                    <li>Mehrwertleistungen: Bonitätsprüfungen, Risikoanalysen, Warenverfolgung.</li>
-                    <li>Vorteile: Minimierung von Leerfahrten, Nutzung von Mehrwertleistungen, Aufbau langfristiger Geschäftsbeziehungen.</li>
-                </ul>
-            </li>
-            <li><strong>Elektronische Marktplätze</strong>
-                <ul>
-                    <li>Virtuelle Verhandlungsräume: Beschaffer und Lieferanten verhandeln und kooperieren online.</li>
-                    <li>Transaktionsautomatisierung: Effiziente Lieferantenauswahl, Vertragsvereinbarungen, Rechnungsabwicklung und Lieferantenkontrolle.</li>
-                    <li>Horizontale und vertikale Marktplätze: Branchenübergreifende vs. branchenspezifische Marktplätze.</li>
-                    <li>ERP-Integration: Beschleunigter Informationsfluss und automatische Verbuchung von Bestelldaten.</li>
-                    <li>Echtzeit-Materialfluss: Abbildung des Materialflusses zwischen Lieferanten und Beschaffern.</li>
-                </ul>
-            </li>
-        </ul>
+        <h2>Desktop Purchasing System (DPS)</h2>
+        <p>DPS sind Multi-Lieferanten-Kataloge, die den Beschaffern über das Intranet zur Verfügung gestellt werden. Sie ermöglichen eine schnelle Auswahl und Bestellung von Produkten, die nach Kategorien organisiert sind. Das System integriert sich in das ERP-System des Unternehmens, unterstützt alle Beschaffungsprozesse und ermöglicht dynamische Preisfindungen.</p>  
     </div>
 
-    <div class="fazit">
-        <h2>Fazit</h2>
-        <p>Die Integration von Informations- und Kommunikationssystemen in Einkauf und Beschaffung optimiert die Prozesse erheblich. E-Sourcing und elektronische Beschaffungsinstrumente erhöhen die Effizienz, Transparenz und Kontrolle über Beschaffungsprozesse und tragen zur langfristigen Optimierung der Lieferantenbeziehungen bei. Die verschiedenen Systeme und Konzepte wie DPS, Provider-Systeme, Online-Auktionen, elektronische Frachtenbörsen und Marktplätze bieten zahlreiche operative und strategische Vorteile, die die Wettbewerbsfähigkeit und Flexibilität des Unternehmens steigern.</p>
+    <div class="section">
+        <h2>Provider-Systeme</h2>
+        <p>Bei Provider-Systemen wird der E-Katalog von einem Content-Provider gepflegt. Die Dienstleistungen umfassen Content-Broking, bei dem der Provider die gesamte Katalogpflege übernimmt, und Content-Service, bei dem der Provider die Datenqualität verbessert und den Katalog zur Verfügung stellt.</p>
     </div>
 
-    <div class="back-button">
-        <a href="lesson6_1.html">Zurück</a>
+    <div class="section">
+        <h2>Online-Nachfrageauktionen</h2>
+        <p>Bei Reverse Auctions geben Lieferanten online Preisangebote ab. Der Beschaffer wählt den Lieferanten mit dem besten Preis-Leistungs-Verhältnis aus. Diese dynamischen Auktionen reduzieren die Beschaffungskosten und erhöhen die Transparenz.</p>
     </div>
 
+    <div class="section">
+        <h2>Elektronische Frachtenbörsen</h2>
+        <p>Elektronische Frachtenbörsen gleichen Transportnachfrage und -angebot aus. Verlader können freie Transportkapazitäten buchen, und Spediteure bieten freie Kapazitäten an. Dies reduziert Leerfahrten und ermöglicht kostengünstige Transportlösungen, besonders für Auftragsspitzen und flexible Transportabwicklungen.</p>
+    </div>
+
+    <div class="section">
+        <h2>Elektronische Marktplätze</h2>
+        <p>Elektronische Marktplätze bieten eine Plattform für Beschaffer und Lieferanten zur Durchführung von Transaktionen und zur Zusammenarbeit. Sie erleichtern den Informationsaustausch, die Automatisierung von Prozessen und bieten viele Mehrwertleistungen. Es gibt horizontale, branchenübergreifende Marktplätze sowie vertikale, branchenspezifische Marktplätze.</p>
+    </div>
+
+</div>
+<div class="back-button">
+    <a href="lesson6_1.html">Zurück</a>
 </div>
 
 </body>

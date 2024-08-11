@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komponentenbibliotheken in JSF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        section {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .note {
+            background-color: #e9f7fd;
+            border-left: 5px solid #007bff;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .note h4 {
+            margin: 0 0 10px;
+            font-size: 1.1em;
+            color: #007bff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+
+        .back-button {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+
+        .weiter-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .weiter-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Komponentenbibliotheken in JSF</h1>
+
+    <section>
+        <h2>Einführung in Komponentenbibliotheken</h2>
+        <p>
+            In JavaServer Faces (JSF) werden alle Komponenten zur Anzeige im Browser in HTML-Code übersetzt. Jede JSF-Komponente wird durch eine spezifische Klasse in der JSF-Bibliothek repräsentiert, die für die Transformation in HTML verantwortlich ist. Der generierte HTML-Code kann je nach Komplexität der Komponente variieren, wobei komplexe Komponenten mehr HTML erzeugen können.
+        </p>
+        <img src="Bilder/ Abbildung von JSF-Tags auf HTML-Quelltext und Darstellung im Browser.jpg" alt="Abbildung 36: Abbildung von JSF-Tags auf HTML-Quelltext und Darstellung im Browser">
+    </section>
+
+    <section>
+        <h2>Erweiterung durch Komponentenbibliotheken</h2>
+        <p>
+            JSF bietet Entwicklern die Möglichkeit, eigene Komponenten zu erstellen und zu implementieren. Diese benutzerdefinierten Komponenten können in Form von Komponentenbibliotheken bereitgestellt werden. Eine solche Bibliothek wird als Java-Bibliothek (jar-Datei) bereitgestellt und in ein Projekt eingebunden. Sie enthält die benötigten Klassen, um zur Laufzeit den entsprechenden HTML-Code zu generieren.
+        </p>
+        <img src="Bilder/ Komponentenbibliotheken werden als Java-Bibliotheken ausgeliefert.jpg" alt="Abbildung 37: Komponentenbibliotheken werden als Java-Bibliotheken ausgeliefert">
+    </section>
+
+    <section>
+        <h2>Importieren und Verwenden von Komponenten</h2>
+        <p>
+            Bevor Sie die neuen Komponenten in Ihren Views verwenden können, müssen Sie den entsprechenden XML-Namensraum importieren. Dies geschieht durch das Angeben des Namensraums im umgebenden <code>&lt;html&gt;</code>-Element. Diese Abbildung zeigt, wie der PrimeFaces-Namensraum <strong> „http://primefaces.org/ui“ </strong> unter dem Namen „p“ importiert wird. Dieser Namensraum sorgt dafür, dass die Eindeutigkeit der Komponenten auch bei der Verwendung mehrerer Bibliotheken gewährleistet bleibt.
+        </p>
+        <img src="Bilder/ Importieren von XML-Namensräumen.jpg" alt="Abbildung 38: Importieren von XML-Namensräumen">
+    </section>
+
+    <section>
+        <h2>Verwendung von Komponenten aus verschiedenen Bibliotheken</h2>
+        <p>
+            Durch die Verwendung von Namensräumen können verschiedene Komponenten aus unterschiedlichen Bibliotheken auf einer View verwendet werden. Dies ermöglicht eine differenzierte Gestaltung von Benutzeroberflächen, da Komponenten aus verschiedenen Quellen kombiniert werden können, um unterschiedliche Effekte und Funktionen zu erzielen.
+        </p>
+    </section>
+
+    <div class="button-container">
+        <a href="lektion3.html" class="back-button">Zurück zur Übersicht</a>
+        <a href="primefaces.html" class="weiter-button">Weiter</a>
+    </div>
+
+</body>
+
+</html>

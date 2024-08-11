@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beans in Java EE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        section {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .note {
+            background-color: #e9f7fd;
+            border-left: 5px solid #007bff;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .note h4 {
+            margin: 0 0 10px;
+            font-size: 1.1em;
+            color: #007bff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+
+        .back-button {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .back-button:hover {
+            background-color: #bbb;
+        }
+
+        .weiter-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .weiter-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Beans in Java EE</h1>
+
+    <section>
+        <h2>Einführung in Beans</h2>
+        <p>
+            Webanwendungen unterscheiden sich von anderen Softwareanwendungen vor allem dadurch, dass sie über einen Browser genutzt werden und die Geschäftslogik zentral auf einem Server ausgeführt wird. Die Trennung von Darstellung und Datenmodell sorgt dafür, dass die zugrunde liegenden Daten unabhängig von der Präsentationsform bleiben. In vielen Webprojekten wird bereits vorhandenes Java-Datenmodell genutzt. Um diese Datenmodelle wiederverwendbar zu machen, verwendet Java Enterprise Edition das Konzept der „Beans“ im Rahmen des CDI-Frameworks (Contexts and Dependency Injection).
+        </p>
+    </section>
+
+    <section>
+        <h2>Was ist eine Bean?</h2>
+        <p>
+            Beans sind einfache Containerklassen, die Daten speichern. Um eine Klasse als Bean zu deklarieren, muss sie bestimmte Kriterien erfüllen:
+            <ul>
+                <li>Ein öffentlicher parameterloser Konstruktor.</li>
+                <li>Öffentliche Getter- und Setter-Methoden für die Datenfelder.</li>
+                <li>Optional: Serialisierbarkeit für die Speicherung von Daten in sequentieller Form.</li>
+            </ul>
+            Ein Beispiel für eine Bean in Java ist eine Klasse, die diese Anforderungen erfüllt und somit als Bean verwendet werden kann.
+        </p>
+        <img src="Bilder/Bean_Codebeispiel.jpg" alt="Abbildung 13: Codebeispiel für eine Bean">
+    </section>
+
+    <section>
+        <h2>Verknüpfung mit der Darstellungsschicht</h2>
+        <p>
+            Beans können über die Unified Expression Language (UEL) mit der Darstellungsschicht verknüpft werden. In einer Java-Anwendung wird die Instanziierung normalerweise durch die main()-Methode vorgenommen. In einer Webanwendung, die das CDI-Framework verwendet, erfolgt die Instanziierung der Beans jedoch auf andere Weise. Die wichtigsten Schritte sind:
+            <ol>
+                <li>Deklaration der Bean mit Annotationen wie <code>@Named</code> und <code>@Produces</code> für die Sichtbarkeit und Instanziierung.</li>
+                <li>Verwendung der Bean in JSF-Seiten über ihre Namen oder durch Injektion mit <code>@Inject</code>.</li>
+                <li>Festlegung des Gültigkeitsbereichs der Bean, wie <code>@RequestScoped</code>, <code>@SessionScoped</code> oder <code>@ApplicationScoped</code>.</li>
+            </ol>
+        </p>
+        <img src="Bilder/Bean_Annotationen.jpg" alt="Abbildung 14: Bean-Annotationen">
+    </section>
+
+    <section>
+        <h2>Gültigkeitsbereiche von Beans</h2>
+        <p>
+            Der Gültigkeitsbereich (Scope) einer Bean bestimmt, wie lange die Bean existiert. Verschiedene Annotationen definieren diese Bereiche:
+            <ul>
+                <li><code>@Dependent</code>: Existiert so lange wie das aufrufende Objekt.</li>
+                <li><code>@RequestScoped</code>: Gültig für die Dauer einer HTTP-Anfrage.</li>
+                <li><code>@ViewScoped</code>: Beschränkt auf eine JSF-Seite.</li>
+                <li><code>@ConversationScoped</code>: Für Prozesse über mehrere Seiten hinweg.</li>
+                <li><code>@SessionScoped</code>: Gültig für die Dauer der Benutzersitzung.</li>
+                <li><code>@ApplicationScoped</code>: Gültig solange die Anwendung läuft.</li>
+            </ul>
+            Ein Überblick über alle möglichen Gültigkeitsbereiche bietet Tabelle 1.
+        </p>
+        <img src="Bilder/Scopes_Uebersicht.jpg" alt="Tabelle 1: Überblick über Scopes in Java EE7">
+    </section>
+
+    <section>
+        <h2>Konventionen und Annotations</h2>
+        <p>
+            Um die einfache Verwendung von Beans in JSF-Komponenten zu ermöglichen, müssen bestimmte Konventionen eingehalten werden. Dies umfasst:
+            <ul>
+                <li>Objektbezeichner sollten den gleichen Namen wie die Klasse haben, jedoch mit kleinem Anfangsbuchstaben.</li>
+                <li>Methodensignaturen sollten dem Muster „getAttributname“ und „setAttributname“ folgen.</li>
+            </ul>
+            Alternativ können Annotations verwendet werden, um die Namen und Methoden selbst zu definieren.
+        </p>
+        <img src="Bilder/UEL_Konventionen.jpg" alt="Abbildung 18: Einhaltung der Regeln für UEL-Ausdrücke">
+    </section>
+
+    <section>
+        <h2>Manipulation und Tests</h2>
+        <p>
+            Für die Manipulation von Beans, wie das Löschen von Einträgen, kann die <code>h:commandLink</code>-Komponente verwendet werden, die eine Methode aufruft, wenn der Benutzer darauf klickt. Diese Komponente muss in einem Formular eingebettet sein, um korrekt zu funktionieren.
+            <br><br>
+            Tests mit verschiedenen Gültigkeitsbereichen zeigen unterschiedliche Verhaltensweisen in Bezug auf Datenpersistenz und Benutzerinteraktion. Beispielsweise bleibt eine Bean mit <code>@SessionScoped</code> während der Sitzung erhalten, während eine Bean mit <code>@ApplicationScoped</code> sogar über unterschiedliche Sitzungen hinweg gültig bleibt.
+        </p>
+        <img src="Bilder/CommandLink_Beispiel.jpg" alt="Abbildung 20: Einsatz der JSF-Komponente h:commandLink zur Manipulation einer Bean">
+    </section>
+
+    <section>
+        <h2>Ergebnisse der Experimente</h2>
+        <p>
+            Durch Tests mit verschiedenen Gültigkeitsbereichen konnte festgestellt werden, dass der <code>@ApplicationScoped</code>-Bereich am besten geeignet ist, um eine Bean dauerhaft über Anfragen und Sitzungen hinweg zu speichern. Herr Koch hat gelernt, wie Beans in verschiedenen Gültigkeitsbereichen arbeiten und wird diese Kenntnisse in zukünftigen Projekten anwenden.
+        </p>
+        <img src="Bilder/Session_vs_Application_Scope.jpg" alt="Abbildung 23: Unterschiedliche Gültigkeitsbereiche im Test">
+    </section>
+
+    <div class="button-container">
+        <a href="lektion2.html" class="back-button">Zurück zur Übersicht</a>
+        <a href="uel.html" class="weiter-button">Weiter</a>
+    </div>
+</body>
+
+</html>
