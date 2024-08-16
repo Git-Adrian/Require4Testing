@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktivitäten zum logischen Datenbankentwurf</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2, h3 {
+            color: #222;
+            text-align: center;
+        }
+
+        section {
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            padding: 30px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .caption {
+            font-size: 0.9em;
+            color: #777;
+            text-align: center;
+        }
+
+        .note {
+            background-color: #ffebcc;
+            padding: 10px;
+            border-left: 4px solid #ff9900;
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aktivitäten zum logischen Datenbankentwurf</h1>
+
+    <section>
+        <h2>Überblick des Entwurfsprozesses</h2>
+        <p>
+            Der logische Entwurf einer Datenbank ist ein komplexer, iterativer Prozess, der mehrere Schritte umfasst. Die Hauptaktivitäten umfassen das Identifizieren von Entitäten, das Festlegen von Beziehungen und Primärschlüsseln, die Transformation des konzeptionellen Modells in ein physikalisches Modell sowie die Festlegung von Attributen, Konsistenzbedingungen und Transaktionen. Diese Schritte werden in der Praxis oft mehrmals durchlaufen, um sicherzustellen, dass das endgültige Datenbankschema optimal auf die Anforderungen des Projekts zugeschnitten ist.
+        </p>
+        <img src="Bilder/Aktivitäten im Entwurfsprozess für Datenbanken.jpg" alt="Aktivitäten im Entwurfsprozess für Datenbanken">
+        <p class="caption">Abbildung: Überblick über die Aktivitäten im Datenbankentwurfsprozess</p>
+    </section>
+
+    <section>
+        <h2>1. Entitäten identifizieren</h2>
+        <p>
+            Der erste Schritt im logischen Entwurf besteht darin, die zentralen Entitäten zu identifizieren. Entitäten repräsentieren die wichtigsten Objekte oder Konzepte, die in der Datenbank gespeichert werden sollen, wie z. B. "Kunde", "Produkt" oder "Bestellung". Diese Entitäten werden oft bereits im Requirements Engineering bestimmt und bilden die Grundlage für das konzeptionelle Datenmodell.
+        </p>
+        <p>
+            In diesem Schritt geht es darum, die fachlichen Anforderungen in Datenbankstrukturen zu überführen. Jede Entität wird durch Attribute beschrieben, die ihre Eigenschaften definieren. 
+            Zum Beispiel könnte die Entität "Kunde" Attribute wie "Name", "Adresse" und "Kundennummer" besitzen.
+        </p>
+    </section>
+
+    <section>
+        <h2>2. Beziehungen festlegen</h2>
+        <p>
+            Sobald die relevanten Entitäten identifiziert wurden, werden deren Beziehungen untereinander definiert. Beziehungen stellen die Verknüpfungen zwischen den Entitäten dar, wie zum Beispiel "Kunden geben Bestellungen auf" oder "Produkte gehören zu einer Kategorie". 
+            Diese Beziehungen werden durch Kardinalitäten (1:1, 1:n, m:n) näher beschrieben, die angeben, wie viele Instanzen einer Entität mit einer anderen verknüpft werden können.
+        
+    </section>
+
+    <section>
+        <h2>3. Primärschlüssel festlegen</h2>
+        <p>
+            Primärschlüssel sind eindeutige Identifikatoren, die jeder Entität zugeordnet werden, um einzelne Datensätze zu unterscheiden. 
+            In vielen Fällen werden natürliche Primärschlüssel verwendet, wie etwa die Kundennummer oder Artikelnummer. Alternativ können auch künstliche, automatisch generierte Schlüssel eingesetzt werden. Diese Schlüssel gewährleisten die Integrität und Eindeutigkeit der Daten in der Datenbank.
+        </p>
+        <p>
+            Der Primärschlüssel ist dabei besonders wichtig, um eindeutige Referenzen in Fremdschlüsselbeziehungen herzustellen und die Konsistenz der Datenbank zu gewährleisten.
+        </p>
+    </section>
+
+    <section>
+        <h2>4. Umwandlung in ein physikalisches Datenmodell</h2>
+        <p>
+            Nachdem das konzeptionelle Modell definiert wurde, wird es in ein physikalisches Datenmodell überführt. Dieser Schritt umfasst die Umwandlung der Entitäten und Beziehungen in Tabellenstrukturen, die von relationalen Datenbanksystemen unterstützt werden. 
+            Das Ergebnis ist ein Schema, das die Grundlage für die tatsächliche Implementierung der Datenbank bildet.
+        
+        <div class="note">
+            Hinweis: Der physikalische Entwurf berücksichtigt auch die Leistung der Datenbank, indem Optimierungen für Abfragen und Speicheranforderungen vorgenommen werden.
+        </div>
+    </section>
+
+    <section>
+        <h2>5. Attribute festlegen und normalisieren</h2>
+        <p>
+            In diesem Schritt werden die Attribute der Entitäten genau festgelegt und ihre Datentypen definiert. 
+            Ein wichtiger Teil dieses Prozesses ist die Normalisierung der Datenbank, um Redundanzen zu vermeiden und die Konsistenz der Daten sicherzustellen. 
+            Normalisierung bezieht sich auf das Aufteilen von Tabellen, um Redundanzen und Anomalien bei der Datenverarbeitung zu minimieren. In der Regel wird bis zur 3. Normalform normalisiert.
+        </p>
+    </section>
+
+    <section>
+        <h2>6. Konsistenzbedingungen festlegen</h2>
+        <p>
+            Neben der Definition der Tabellenstrukturen müssen auch spezifische Konsistenzbedingungen festgelegt werden, die von der Datenbank gewährleistet werden. 
+            Diese Bedingungen sollen sicherstellen, dass die Daten stets valide sind, beispielsweise indem sichergestellt wird, dass Primärschlüssel eindeutig sind und Fremdschlüssel korrekt aufgelöst werden können. 
+            Weitere Konsistenzregeln könnten die Formatierung von Daten oder die Einhaltung bestimmter Wertebereiche umfassen.
+        
+    </section>
+
+    <section>
+        <h2>7. Transaktionen formulieren</h2>
+        <p>
+            Eine Transaktion ist eine Gruppe von SQL-Operationen, die als Einheit ausgeführt werden müssen, um sicherzustellen, dass die Datenbank nach Abschluss konsistent bleibt. 
+            Transaktionen spielen eine wichtige Rolle bei der Gewährleistung der Datensicherheit, insbesondere bei komplexen Operationen, die aus mehreren Schritten bestehen.
+        </p>
+        <p>
+            Wenn eine Transaktion aus irgendeinem Grund nicht erfolgreich abgeschlossen wird, muss das System in der Lage sein, alle Änderungen rückgängig zu machen, um den vorherigen konsistenten Zustand der Datenbank wiederherzustellen.
+        </p>
+    </section>
+
+    <a href="erstellung.html" class="back-button">Zurück</a>
+</body>
+</html>

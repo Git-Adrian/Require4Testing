@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenbankoperationen</title>
+    <title>SQL Kategorien</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,7 +23,6 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 20px; /* Space for the back button */
         }
 
         .card {
@@ -37,6 +36,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            height: 300px;
         }
 
         .card:hover {
@@ -49,51 +49,51 @@
             padding: 25px;
             color: #fff;
             border-radius: 12px 12px 0 0;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .card p {
             padding: 20px;
             color: #666;
-            flex-grow: 1;
+            flex: 2;
         }
 
         .card a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
             padding: 15px;
             background-color: #007BFF;
             color: #fff;
             text-decoration: none;
             border-radius: 0 0 12px 12px;
             transition: background-color 0.3s;
-            min-height: 50px;
         }
 
         .card a:hover {
             background-color: #0056b3;
         }
 
-        .einzeltabelle {
-            background-color: #ff7f50;
+        /* Custom card colors */
+        .datentypen {
+            background-color: #28a745;
         }
 
-        .mehrfachtabellen {
-            background-color: #6a5acd;
-        }
- 
-        .datensatzmanipulation {
-            background-color: #ffb732;
+        .tabellen-anlegen {
+            background-color: #17a2b8;
         }
 
         .back-button {
-            margin-top: 20px;
-            padding: 10px 20px;
             background-color: #007BFF;
-            color: #fff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
             text-decoration: none;
-            border-radius: 8px;
-            transition: background-color 0.3s;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 40px;
         }
 
         .back-button:hover {
@@ -102,27 +102,20 @@
     </style>
 </head>
 <body>
-    <h1>Datenbankoperationen</h1>
+    <h1>Tabellen anlegen in SQL</h1>
     <div class="card-container">
         <div class="card">
-            <h2 class="einzeltabelle">Datenbankanfragen an genau eine Tabelle</h2>
-            <p>Grundlegende SQL-Abfragen, die Daten aus einer einzigen Tabelle extrahieren.</p>
-            <a href="einzeltabelle.html">Mehr erfahren</a>
+            <h2 class="datentypen">Datentypen in SQL</h2>
+            <p>Erfahren Sie mehr über die verschiedenen Datentypen in SQL, einschließlich numerischer, Zeichen- und Datumsdatentypen.</p>
+            <a href="datentypen.html">Mehr erfahren</a>
         </div>
 
         <div class="card">
-            <h2 class="mehrfachtabellen">Komplexe Datenbankabfragen auf mehreren Tabellen</h2>
-            <p>Erstellen von komplexen Abfragen, die Daten aus mehreren Tabellen kombinieren.</p>
-            <a href="mehrfachtabellen.html">Mehr erfahren</a>
-        </div>
-        
-        <div class="card">
-            <h2 class="datensatzmanipulation">Manipulieren von Datensätzen in Datenbanken</h2>
-            <p>Ändern, Einfügen und Löschen von Datensätzen in relationalen Datenbanken.</p>
-            <a href="datensatzmanipulation.html">Mehr erfahren</a>
+            <h2 class="tabellen-anlegen">Anlegen von Tabellen mit SQL</h2>
+            <p>Entdecken Sie, wie Sie mit SQL Tabellen erstellen, Beziehungen definieren und Constraints anwenden können.</p>
+            <a href="tabellen-anlegen.html">Mehr erfahren</a>
         </div>
     </div>
-
-    <a class="back-button" href="home.html">Zurück zur Hauptseite</a>
+    <a href="erstellung.html" class="back-button">Zurück</a>
 </body>
 </html>

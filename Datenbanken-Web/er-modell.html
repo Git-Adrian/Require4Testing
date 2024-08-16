@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Das Entity-Relationship-Modell</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2, h3 {
+            color: #222;
+            text-align: center;
+        }
+
+        section {
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .tip, .note {
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            padding: 10px;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .note {
+            background-color: #ffecb3;
+            border-color: #ffeb3b;
+        }
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Das Entity-Relationship-Modell</h1>
+
+    <section>
+        <h2>Überblick</h2>
+        <p>
+            Die Erstellung der Struktur einer relationalen Datenbank ist ein iterativer Prozess. 
+            Auf Basis eines fachlichen Datenmodells wird ein technisches Datenmodell erstellt, welches die Struktur in einem Datenbankmanagementsystem (DBMS) definiert. 
+            Ähnlich wie bei der Objektorientierung geht es beim Entwurf nicht um die Implementierung eines Systems, sondern um die Implementierung einer Datenbankstruktur.
+        </p>
+        <p>
+            Zur Modellierung und Dokumentation dieser Struktur wird das Entity-Relationship-Diagramm (ER-Diagramm) genutzt. 
+            Dieses ist speziell zur Modellierung von Datenschemata ausgelegt und unterscheidet sich von universelleren Modellierungssprachen wie der UML (Unified Modeling Language).
+        </p>
+    </section>
+
+    <section>
+        <h2>Modellelemente in einem ER-Modell</h2>
+        <p>
+            Ein ER-Modell besteht aus den folgenden Modellelementen: Entitäten, Attribute, Schlüssel und Beziehungen. 
+            In der Praxis werden oft künstliche Schlüssel als Primärschlüssel verwendet, die rein technische Informationen beinhalten und von der Datenbank automatisch generiert werden.
+        </p>
+         
+
+        <h3>Beziehung (engl.: relationship)</h3>
+        <p>
+            Entitäten stehen in Beziehung zueinander. Eine Beziehung ist mindestens zweistellig (zwischen zwei Entitäten), kann jedoch auch mehrstellig sein. 
+            Eine Beziehung kann außerdem eigene Attribute besitzen.
+        </p>
+        <div class="note">
+            <strong>Hinweis:</strong> Beziehungen in ER-Modellen sind vergleichbar mit denen in UML-Klassendiagrammen.
+        </div>
+    </section>
+
+    <section>
+        <h2>Grafische Notation von Entitäten und Attributen in ER-Modellen</h2>
+        <p>
+            Die wichtigsten Notationselemente in grafischen ER-Diagrammen werden durch verschiedene Notationsformen dargestellt. 
+            Die drei gebräuchlichsten Formen sind die Chen-Notation, die Martin-Notation (auch Krähenfußnotation genannt) und UML-Klassendiagramme.
+        </p>
+    </section>
+
+    <section>
+        <h3>Chen-Notation</h3>
+        <p>
+            Die Chen-Notation ist eine der ältesten grafischen Notationen für relationale Datenmodelle. Entitäten werden durch Rechtecke und Attribute durch Ovale dargestellt. 
+            Primärschlüssel werden durch Unterstreichen des Attributnamens hervorgehoben.
+        </p>
+        <img src="Bilder/Chen-Notation.jpg" alt="Chen-Notation">
+        <p class="caption">Abbildung 13: Konzeption und Modellierung von relationalen Datenbanken</p>
+    </section>
+
+    <section>
+        <h3>Martin-Notation (Krähenfußnotation)</h3>
+        <p>
+            In der Martin-Notation wird der Name der Entität über einem Rechteck notiert. Der Primärschlüssel befindet sich im oberen Bereich des Rechtecks, während alle anderen Attribute darunter aufgelistet werden.
+        </p>
+        <img src="Bilder/Martin-Notation.jpg" alt="Martin-Notation">
+        <p class="caption">Abbildung 14: Entitäten und Attribute in der Martin-Notation</p>
+    </section>
+
+    <section>
+        <h3>UML-Klassendiagramm</h3>
+        <p>
+            UML-Klassendiagramme werden genutzt, um Entitäten als Klassen mit Attributen darzustellen. Primärschlüssel werden als Eigenschaften des Attributes in geschweiften Klammern notiert.
+        </p>
+        <img src="Bilder/UML-Klassendiagramm .jpg" alt="UML-Klassendiagramm">
+        <p class="caption">Abbildung 15: Entitäten und Attribute in UML</p>
+    </section>
+    <a href="konzeption.html" class="back-button">Zurück</a>
+</body>
+</html>

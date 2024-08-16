@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenbankmodellierung und Datenbanksysteme</title>
+    <title>Datenbankbeziehungen</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -75,16 +75,25 @@
             background-color: #0056b3;
         }
 
-        .grundlagen {
-            background-color: #ff7f50;
+        /* Custom card colors */
+        .one-to-one {
+            background-color: #28a745;
         }
 
-        .konzeption {
-            background-color: #6a5acd;
+        .one-to-many {
+            background-color: #17a2b8;
         }
 
-        .erstellung {
-            background-color: #ff5c5c;
+        .many-to-many {
+            background-color: #ffc107;
+        }
+
+        .recursive {
+            background-color: #6c757d;
+        }
+
+        .inheritance {
+            background-color: #dc3545;
         }
 
         .back-button {
@@ -96,7 +105,7 @@
             border-radius: 5px;
             font-size: 16px;
             transition: background-color 0.3s ease;
-            margin-top: 20px;
+            margin-top: 40px;
         }
 
         .back-button:hover {
@@ -105,26 +114,38 @@
     </style>
 </head>
 <body>
-    <h1>Datenbanksysteme Lektionen</h1>
+    <h1>Datenbankbeziehungen</h1>
     <div class="card-container">
         <div class="card">
-            <h2 class="grundlagen">Grundlagen relationaler Datenbanken</h2>
-            <p>Einführung in die Grundprinzipien und -konzepte relationaler Datenbanken.</p>
-            <a href="grundlagen.html">Mehr erfahren</a>
+            <h2 class="one-to-one">1:1-Beziehungen im physikalischen Datenmodell</h2>
+            <p>Entdecken Sie die Abbildungen von 1:1-Beziehungen in Datenmodellen und deren Anwendungen.</p>
+            <a href="one-to-one.html">Mehr erfahren</a>
         </div>
 
         <div class="card">
-            <h2 class="konzeption">Konzeption und Modellierung</h2>
-            <p>Entwicklung von Datenbankmodellen und Konzeptionen für relationale Datenbanken.</p>
-            <a href="konzeption.html">Mehr erfahren</a>
+            <h2 class="one-to-many">1:N-Beziehungen im physikalischen Datenmodell</h2>
+            <p>Erfahren Sie mehr über 1:N-Beziehungen und deren Implementierung in relationalen Datenbanken.</p>
+            <a href="one-to-many.html">Mehr erfahren</a>
         </div>
 
         <div class="card">
-            <h2 class="erstellung">Erstellung relationaler Datenbanken</h2>
-            <p>Umsetzung von Datenbankmodellen in physische Datenbanksysteme.</p>
-            <a href="erstellung.html">Mehr erfahren</a>
+            <h2 class="many-to-many">N:M-Beziehungen im physikalischen Datenmodell</h2>
+            <p>Verstehen Sie die Konzepte hinter N:M-Beziehungen und wie man sie effizient modelliert.</p>
+            <a href="many-to-many.html">Mehr erfahren</a>
         </div>
+        
+        <div class="card">
+            <h2 class="recursive">Rekursive Beziehungen im physikalischen Datenmodell</h2>
+            <p>Erforschen Sie rekursive Beziehungen und ihre Anwendungen in komplexen Datenmodellen.</p>
+            <a href="recursive.html">Mehr erfahren</a>
+        </div>
+        
+        <div class="card">
+            <h2 class="inheritance">Vererbungsbeziehungen im physikalischen Datenmodell</h2>
+            <p>Erfahren Sie, wie Vererbungsbeziehungen in Datenbanken dargestellt und verwendet werden.</p>
+            <a href="inheritance.html">Mehr erfahren</a>
+        </div>  
     </div>
-    <a href="home.html" class="back-button">Zurück zur Hauptseite</a>
+    <a href="erstellung.html" class="back-button">Zurück</a>
 </body>
 </html>

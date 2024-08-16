@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anlegen von Tabellen mit SQL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2, h3 {
+            color: #222;
+            text-align: center;
+        }
+
+        section {
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .note {
+            background-color: #ffecb3;
+            border-left: 6px solid #ffeb3b;
+            padding: 10px;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .caption {
+            font-size: 0.9em;
+            color: #555;
+            text-align: center;
+        }
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 40px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Anlegen von Tabellen mit SQL</h1>
+
+    <section>
+        <h2>Grundlagen des Anlegens von Tabellen</h2>
+        <p>Beim Anlegen einer Tabelle wird die Struktur geschaffen, in der die Datensätze physikalisch gespeichert werden. Zu den definierten Angaben gehören:</p>
+        <ul>
+            <li>Ein eindeutiger Tabellenname.</li>
+            <li>Spalten mit eindeutigen Namen, Datentypen und optionalen Einschränkungen wie <strong>NOT NULL</strong> oder <strong>UNIQUE</strong>.</li>
+            <li>Primär- und Fremdschlüssel sowie Integritätsbedingungen.</li>
+        </ul>
+        <p>Der Befehl zum Anlegen einer Tabelle lautet <code>CREATE TABLE</code>. Hier ein Beispiel:</p>
+        <pre><code>
+CREATE TABLE Kunde (
+    KundeID INTEGER,
+    Name VARCHAR(500),
+    Vorname VARCHAR(500),
+    KundenNR VARCHAR(15)
+);
+        </code></pre>
+        <p>Nach dem Anlegen können Änderungen mit <code>ALTER TABLE</code> durchgeführt werden.</p>
+    </section>
+
+    <section>
+        <h2>Allgemeiner Aufbau von CREATE TABLE</h2>
+        <p>Der Aufbau eines <code>CREATE TABLE</code>-Statements folgt diesem Schema:</p>
+        <pre><code>
+CREATE TABLE Name (
+    Spaltendefinition,
+    Primärschlüsseldefinition,
+    [Integritätsregeln],
+    [Fremdschlüsseldefinition],
+    [Bedingungen für Spalten]
+);
+        </code></pre>
+        <p>Einige wichtige Elemente der Spaltendefinition:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Element</th>
+                    <th>Beschreibung</th>
+                    <th>Beispiel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>name</td>
+                    <td>Tabellenweit eindeutiger Spaltenname</td>
+                    <td>Name, KundeID</td>
+                </tr>
+                <tr>
+                    <td>datentyp</td>
+                    <td>Datentyp der Spalte</td>
+                    <td>INTEGER, VARCHAR(500)</td>
+                </tr>
+                <tr>
+                    <td>NOT NULL</td>
+                    <td>Verbietet NULL-Werte</td>
+                    <td>KundeID INTEGER NOT NULL</td>
+                </tr>
+                <tr>
+                    <td>DEFAULT</td>
+                    <td>Definiert einen Standardwert</td>
+                    <td>Sterne INTEGER DEFAULT '0'</td>
+                </tr>
+                <tr>
+                    <td>UNIQUE</td>
+                    <td>Erzwingt eindeutige Werte</td>
+                    <td>KundeID INTEGER UNIQUE</td>
+                </tr>
+                <tr>
+                    <td>CHECK</td>
+                    <td>Prüft Bedingungen</td>
+                    <td>CHECK (Endedatum > Beginndatum)</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 46: Elemente der Spaltendefinition</p>
+    </section>
+
+    <section>
+        <h2>Primärschlüssel</h2>
+        <p>Primärschlüssel identifizieren jeden Datensatz eindeutig. Ein Primärschlüssel darf keine NULL-Werte enthalten und muss eindeutig sein. Beispiel:</p>
+        <pre><code>
+CREATE TABLE Adresse (
+    AdresseID INTEGER,
+    Strasse VARCHAR(500),
+    Hausnummer VARCHAR(50),
+    Ort VARCHAR(500),
+    PLZ CHAR(5),
+    PRIMARY KEY (AdresseID)
+);
+        </code></pre>
+        <p>Es kann auch ein künstlicher Schlüssel wie <code>AUTO_INCREMENT</code> verwendet werden, um eindeutige Werte automatisch zu erzeugen:</p>
+        <pre><code>
+CREATE TABLE Adresse (
+    AdresseID INTEGER AUTO_INCREMENT,
+    Strasse VARCHAR(500),
+    Hausnummer VARCHAR(50),
+    Ort VARCHAR(500),
+    PLZ CHAR(5),
+    PRIMARY KEY (AdresseID)
+);
+        </code></pre>
+    </section>
+
+    <section>
+        <h2>Fremdschlüssel</h2>
+        <p>Fremdschlüssel definieren Beziehungen zwischen Tabellen. Das folgende Beispiel zeigt, wie ein Fremdschlüssel eingerichtet wird, der auf die Tabelle <code>Kunde</code> verweist:</p>
+        <pre><code>
+CREATE TABLE Adresse (
+    AdresseID INTEGER AUTO_INCREMENT,
+    Strasse VARCHAR(500),
+    Hausnummer VARCHAR(50),
+    Ort VARCHAR(500),
+    PLZ CHAR(5),
+    PRIMARY KEY (AdresseID),
+    KundeID INTEGER NOT NULL,
+    FOREIGN KEY (KundeID) REFERENCES Kunde(KundeID)
+);
+        </code></pre>
+        <p class="caption">Tabelle 48: Adresse mit Fremdschlüssel KundeID</p>
+        <img src="foreign_key_example.png" alt="Beispiel für Fremdschlüssel">
+    </section>
+
+    <section>
+        <h2>Referenzielle Integrität</h2>
+        <p>Die referenzielle Integrität stellt sicher, dass Fremdschlüssel konsistent bleiben. SQL unterstützt Aktionen wie <code>CASCADE</code>, <code>SET NULL</code> und <code>RESTRICT</code> zur Steuerung von Änderungen:</p>
+        <pre><code>
+CREATE TABLE Adresse (
+    AdresseID INTEGER AUTO_INCREMENT,
+    [...],
+    KundeID INTEGER NOT NULL,
+    FOREIGN KEY (KundeID) REFERENCES Kunde(KundeID)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+        </code></pre>
+        <table>
+            <thead>
+                <tr>
+                    <th>Aktion</th>
+                    <th>Schlüsselwort</th>
+                    <th>Beschreibung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Automatisches Übernehmen der Änderungen</td>
+                    <td>CASCADE</td>
+                    <td>Änderungen oder Löschungen des referenzierten Datensatzes werden auf den referenzierenden Datensatz übertragen.</td>
+                </tr>
+                <tr>
+                    <td>Fremdschlüssel auf NULL setzen</td>
+                    <td>SET NULL</td>
+                    <td>Der Fremdschlüsselwert wird auf NULL gesetzt, sofern <code>NOT NULL</code> nicht verwendet wurde.</td>
+                </tr>
+                <tr>
+                    <td>Änderungen oder Löschungen verbieten</td>
+                    <td>RESTRICT</td>
+                    <td>Verhindert Änderungen oder Löschungen in der referenzierten Tabelle.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 49: Erhaltung der referenziellen Integrität</p>
+    </section>
+
+    <section>
+        <h2>Fachliche Integritätsbedingungen</h2>
+        <p>Mit dem <code>CHECK</code>-Schlüsselwort können Bedingungen für die Dateneingabe festgelegt werden. Beispiel für eine Gutscheinaktion:</p>
+        <pre><code>
+CREATE TABLE Gutscheinaktion (
+    AktionID INTEGER AUTO_INCREMENT,
+    Beginnaktion DATE,
+    Endeaktion DATE,
+    Gutscheincode CHAR(8),
+    PRIMARY KEY (AktionID),
+    CHECK (Beginnaktion < Endeaktion)
+);
+        </code></pre>
+    </section>
+    <a href="sql-tabellen.html" class="back-button">Zurück</a>
+</body>
+
+</html>

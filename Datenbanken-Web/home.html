@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenbanksysteme Lektionen</title> 
+    <title>Datenbankmodellierung und Datenbanksysteme</title> 
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,6 +33,9 @@
             width: 320px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card:hover {
@@ -45,11 +48,16 @@
             padding: 25px;
             color: #fff;
             border-radius: 12px 12px 0 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .card p {
             padding: 20px;
             color: #666;
+            flex-grow: 1;
         }
 
         .card a {
@@ -74,40 +82,31 @@
             background-color: #6a5acd;
         }
  
-        .optimierung {
-            background-color: #ffb732;
-        }
-
         .noSQL-Datenbanksysteme {
             background-color: #ff5c5c;
         }
 
-        .uebungen {
-            background-color: #1e90ff;
-        }
     </style>
 </head>
 <body>
-    <h1>Datenbanksysteme Lektionen</h1>
+    <h1>Datenbankmodellierung und Datenbanksysteme</h1>
     <div class="card-container">
         <div class="card">
             <h2 class="datenbankmodellierung">Datenbankmodellierung</h2> 
+            <p>Einführung in die Modellierung von Datenbanken, ER-Modelle und deren Anwendung.</p>
             <a href="datenbankmodellierung.html">Mehr erfahren</a>
         </div>
          
         <div class="card">
             <h2 class="sql">SQL</h2>
-            <a href="sql1.html">Mehr erfahren</a>
+            <p>Grundlagen und fortgeschrittene SQL-Abfragen sowie deren Optimierung.</p>
+            <a href="sql.html">Mehr erfahren</a>
         </div>
         
         <div class="card">
             <h2 class="noSQL-Datenbanksysteme">NOSQL-Datenbanksysteme</h2>
+            <p>Erfahre mehr über die Funktionsweise von NoSQL-Datenbanken und deren Vorteile.</p>
             <a href="noSQL-Datenbanksysteme.html">Mehr erfahren</a>
-        </div>
-
-        <div class="card">
-            <h2 class="uebungen">Übungsanwendung</h2>
-            <a href="index.html">Mehr erfahren</a>
         </div>
     </div>
 </body>

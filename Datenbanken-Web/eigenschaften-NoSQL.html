@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoSQL Datenbanksysteme</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2 {
+            color: #222;
+            text-align: center;
+        }
+
+        section {
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            padding: 30px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .caption {
+            font-size: 0.9em;
+            color: #777;
+            text-align: center;
+        }
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 40px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>NoSQL Datenbanksysteme</h1>
+
+    <section>
+        <h2>Motivation und Grundidee</h2>
+        <p>
+            Mit dem Aufkommen von schnell wachsenden, weltweit verbreiteten Webanwendungen, die oft mehrere hunderttausend Nutzer bedienen, stieg der Bedarf an Datenbanksystemen, deren Kapazität sich ohne den Einsatz teurer Spezialhardware schnell erweitern lässt. NoSQL fasst neuartige Datenbanksysteme zusammen, die speziell auf die Anforderungen solcher Anwendungen zugeschnitten sind, wie z.B. hohe Verfügbarkeit, einfache Skalierung und die Verarbeitung großer Datenmengen. Dabei steht NoSQL für „Not only SQL“, da diese Systeme nicht oder nicht nur auf die Standardsprache SQL angewiesen sind.
+        </p>
+     
+    </section>
+
+    <section>
+        <h2>Bedeutung von NoSQL</h2>
+        <p>
+            Ein Datenbanksystem (DBMS) wird als NoSQL-System klassifiziert, wenn es bestimmte Eigenschaften aufweist. Diese Systeme zeichnen sich dadurch aus, dass sie nicht auf dem relationalen Datenmodell basieren und sich vor allem durch Flexibilität, Skalierbarkeit und einfache Handhabung großer Datenmengen auszeichnen. Folgende Punkte sind charakteristisch für NoSQL:
+        </p>
+        <h3>1. Nicht-relationales Datenmodell</h3>
+        <p>
+            NoSQL-Systeme verwenden nicht das relationale Datenmodell, sondern alternative Modelle wie Wide Column Stores, Key-Value-Systeme oder Document Stores, die flexiblere Datenschemata bieten.
+        </p>
+
+        <h3>2. Verteilte und horizontale Skalierbarkeit</h3>
+        <p>
+            NoSQL-Systeme sind darauf ausgelegt, große Datenmengen und Nutzerzahlen zu verarbeiten. Durch horizontale Skalierbarkeit können Kapazitäten durch das Hinzuschalten zusätzlicher Systeme erweitert werden, ohne den Betrieb zu unterbrechen.
+        </p>
+
+        <h3>3. Datenreplikation</h3>
+        <p>
+            Um verteilte Architekturen zu unterstützen, bieten NoSQL-Datenbanken einfache Mechanismen zur Replikation von Daten, die für die Skalierung unerlässlich sind.
+        </p>
+
+        <h3>4. Schemafreiheit</h3>
+        <p>
+            Viele NoSQL-Systeme sind schemafrei oder haben nur schwache Schemarestriktionen. Dies erlaubt es Anwendungen, sich schnell und flexibel zu entwickeln, ohne die Datenbank ständig neu strukturieren zu müssen.
+        </p>
+
+        <h3>5. Eventually Consistent und BASE</h3>
+        <p>
+            Während relationale Datenbanken das ACID-Prinzip (Atomicity, Consistency, Isolation, Durability) befolgen, um eine strikte Konsistenz der Daten zu gewährleisten, verwenden NoSQL-Systeme oft das BASE-Prinzip (Basically Available, Soft State, Eventually Consistent). Dieses Modell erlaubt es, in verteilten Systemen eine spätere Konsistenz der Daten zu akzeptieren, was in vielen Anwendungsfällen ausreichend ist.
+
+        </p>
+
+        <h3>6. Einfache API</h3>
+        <p>
+            NoSQL-Systeme bieten in der Regel eine einfache API anstelle der komplexen SQL-Sprache. Diese Schnittstellen sind auf einfache Abfragen ausgelegt und eignen sich gut für viele moderne Anwendungen.
+        </p>
+    </section>
+
+    <section>
+        <h2>NoSQL-Systeme sind Open Source</h2>
+        <p>
+            Viele NoSQL-Datenbanken sind Open Source oder wurden aus Open Source-Projekten entwickelt. Dies erleichtert die Weiterentwicklung und Anpassung an spezifische Anforderungen.
+        </p>
+    </section>
+    <a href="noSQL-Datenbanksysteme.html" class="back-button">Zurück</a>
+</body>
+
+</html>

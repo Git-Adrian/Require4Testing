@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ausgewählte Gruppen von NoSQL-Systemen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        section {
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            padding: 30px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        p {
+            color: #34495e;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .caption {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            text-align: center;
+        }
+
+        .back-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 40px;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ausgewählte Gruppen von NoSQL-Systemen</h1>
+
+    <section>
+        <h2>Key-Value-Systeme</h2>
+        <p>
+            Das Prinzip der Key-Value-Systeme ist simpel: Ein Schlüssel (engl. key) wird mit einem Wert (engl. value) verknüpft, wobei der Wert selbst komplexe Datenstrukturen wie Listen oder Mengen enthalten kann. Diese Systeme ermöglichen eine schnelle und effiziente Organisation großer Datenmengen ohne schemabedingte Abhängigkeiten zwischen Datensätzen. Die Formulierung von Abfragen wird jedoch häufig durch die API des Herstellers beschränkt.
+        </p>
+        <img src="Bilder/Datenorganisation bei Wide Column Stores.jpg" alt="Datenorganisation in Key-Value-Systemen">
+        <p class="caption">Abbildung: Datenorganisation in Key-Value-Systemen</p>
+        <h3>Typische Vertreter</h3>
+        <ul>
+            <li>Redis</li>
+            <li>Chordless</li>
+            <li>Riak</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Wide Column Stores</h2>
+        <p>
+            In Wide Column Stores werden Daten in spaltenorientierten Tabellen gespeichert. Im Gegensatz zu relationalen Datenbanken, die zeilenweise speichern, werden hier alle Daten einer Spalte direkt hintereinander abgelegt, was schnelles Lesen und Ändern ganzer Spalten ermöglicht. Diese Struktur ist ideal für analytische Anwendungen, wie sie im Data-Warehouse-Umfeld zum Einsatz kommen.
+        </p>
+        <img src="Bilder/Datenorganisation bei Wide Column Stores" alt="Datenorganisation bei Wide Column Stores">
+        <p class="caption">Abbildung: Datenorganisation bei Wide Column Stores</p>
+        <h3>Typische Vertreter</h3>
+        <ul>
+            <li>HBase</li>
+            <li>Cassandra</li>
+            <li>Amazon SimpleDB</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Document Stores</h2>
+        <p>
+            Document Stores speichern keine traditionellen Dokumente, sondern strukturierten Text in Formaten wie JSON oder XML. Diese flexible Struktur ermöglicht es, Daten ohne festes Schema zu speichern. Allerdings muss die Konsistenz der Daten durch die Anwendung sichergestellt werden.
+        </p>
+        <img src="Bilder/Schema von UPDATE.jpg" alt="Schema von Document Stores">
+        <p class="caption">Abbildung: Schema von Document Stores</p>
+        <h3>Typische Vertreter</h3>
+        <ul>
+            <li>CouchDB</li>
+            <li>MongoDB</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Graphdatenbanken</h2>
+        <p>
+            Graphdatenbanken verwenden Graphen als Datenstruktur zur Organisation der gespeicherten Informationen. Diese Struktur eignet sich besonders für vernetzte Informationen wie soziale Netzwerke oder Verkehrsnetze. Durch die Knoten und Kanten, die typisiert werden können, lassen sich Beziehungen zwischen Daten effizient abbilden und schnell durchqueren.
+        </p>
+        <img src="Bilder/Datenorganisation in Graphdatenbanken.jpg" alt="Datenorganisation in Graphdatenbanken">
+        <p class="caption">Abbildung: Datenorganisation in Graphdatenbanken</p>
+        <h3>Typische Vertreter</h3>
+        <ul>
+            <li>AllegroGraph</li>
+            <li>Neo4j</li>
+        </ul>
+    </section>
+
+    <a href="noSQL-Datenbanksysteme.html" class="back-button">Zurück</a>
+</body>
+
+</html>

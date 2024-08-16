@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenbankmodellierung: Konzeptionelles und Physikalisches Datenmodell</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2, h3 {
+            color: #222;
+            text-align: center;
+        }
+
+        section {
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            padding: 30px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .caption {
+            font-size: 0.9em;
+            color: #777;
+            text-align: center;
+        }
+
+        .note {
+            background-color: #ffebcc;
+            padding: 10px;
+            border-left: 4px solid #ff9900;
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Datenbankmodellierung: Konzeptionelles und Physikalisches Datenmodell</h1>
+
+    <section>
+        <h2>Konzeptionelles Datenmodell</h2>
+        <p>
+            Der erste Schritt im Datenbankentwurf besteht darin, ein konzeptionelles Datenmodell zu erstellen. Dieses Modell dokumentiert alle relevanten Entitäten, deren Beziehungen und Attribute ohne spezifische Datenbankinformationen. Das konzeptionelle Modell wird in der Regel im Rahmen des Requirements Engineerings begonnen und entwickelt sich zu einem detaillierten fachlich-technischen Datenmodell. Es stellt ein Netzwerk aus Entitäten, Klassen und Vererbungsbeziehungen dar, das die Grundlage für die spätere physikalische Modellierung bildet.
+        </p>
+        <img src="Bilder/ Beispiel für ein konzeptionelles Datenmodell in Form eines UML-Klassendiagramms.jpg" alt="Beispiel für ein konzeptionelles Datenmodell in Form eines UML-Klassendiagramms">
+        <p class="caption">Abbildung: Beispiel für ein konzeptionelles Datenmodell in Form eines UML-Klassendiagramms</p>
+    </section>
+
+    <section>
+        <h2>Physikalisches Datenmodell</h2>
+        <p>
+            Im Gegensatz zum konzeptionellen Modell berücksichtigt das physikalische Datenmodell die spezifischen Anforderungen und Einschränkungen relationaler Datenbanken. Es definiert die Tabellenstruktur, Attribute, Primärschlüssel und Beziehungen in einer Form, die von der relationalen Datenbank unterstützt wird. Während das konzeptionelle Modell häufig komplexe Beziehungen wie N:M oder Vererbungen enthält, werden diese im physikalischen Modell in 1:N oder 1:C Beziehungen umgewandelt. Vererbungen werden ebenfalls auf einfache Beziehungen reduziert, um den Datenbankanforderungen gerecht zu werden.
+        </p>
+        
+        <div class="note">
+            Hinweis: Das physikalische Datenmodell berücksichtigt die Leistung und Optimierung der Datenbank, um eine effiziente Speicherung und Abfrage der Daten zu gewährleisten.
+        </div>
+    </section>
+
+    <a href="erstellung.html" class="back-button">Zurück zur Übersicht</a>
+</body>
+</html>

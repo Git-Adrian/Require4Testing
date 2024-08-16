@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verbundmengen und JOIN-Typen in Relationalen Datenbanken</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        table caption {
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .buttons a {
+            background-color: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .buttons a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Verbundmengen und JOIN-Typen in Relationalen Datenbanken</h1>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2>Tabelle: Artikel</h2>
+            <table>
+                <caption>Artikel</caption>
+                <thead>
+                    <tr>
+                        <th>ArtikelID</th>
+                        <th>ArtikelNR</th>
+                        <th>Preis</th>
+                        <th>Name</th>
+                        <th>Verfügbarkeit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>UZEHN78126</td>
+                        <td>10.99</td>
+                        <td>Auf dem Weg ins Nichts</td>
+                        <td>sofort</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>ZHBH789123</td>
+                        <td>13.99</td>
+                        <td>Hinter uns</td>
+                        <td>sofort</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>KJNSM7873</td>
+                        <td>9.99</td>
+                        <td>Help you</td>
+                        <td>in 3 Tagen</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>UIHJKHSD7</td>
+                        <td>8.99</td>
+                        <td>Around the Planet</td>
+                        <td>in 2 Tagen</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Tabelle: Film</h2>
+            <table>
+                <caption>Film</caption>
+                <thead>
+                    <tr>
+                        <th>FilmID</th>
+                        <th>Regisseur</th>
+                        <th>Sprachen</th>
+                        <th>Untertitel</th>
+                        <th>Anzahl Discs</th>
+                        <th>Studio</th>
+                        <th>Medium</th>
+                        <th>ArtikelID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>3</td>
+                        <td>Sophie Little</td>
+                        <td>DE, EN, FR</td>
+                        <td>DE, EN</td>
+                        <td>1</td>
+                        <td>DreamPictures</td>
+                        <td>DVD</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Fred van Heldt</td>
+                        <td>EN, FR</td>
+                        <td>EN, FR, DE</td>
+                        <td>2</td>
+                        <td>MovieFactory</td>
+                        <td>DVD</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Tabelle: Wichtige Verbundtypen relationaler Datenbanken</h2>
+            <table>
+                <caption>Verbundtypen</caption>
+                <thead>
+                    <tr>
+                        <th>Verbundtyp</th>
+                        <th>Beschreibung</th>
+                        <th>Beispiel-SQL-Statement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>INNER JOIN mit ON</td>
+                        <td>Führt alle Datensätze zusammen, zu denen das Verbundkriterium erfüllt ist. Alle Spalten aller Tabellen sind im Ergebnis enthalten.</td>
+                        <td><code>SELECT * FROM Artikel INNER JOIN Film ON Artikel.ArtikelID=Film.ArtikelID;</code></td>
+                    </tr>
+                    <tr>
+                        <td>INNER JOIN mit USING</td>
+                        <td>Führt alle Datensätze zusammen, deren Werte in allen Spalten, die als Parameter von USING genannt wurden, übereinstimmen. Die Vergleichsspalten sind nur einmal in der Ergebnistabelle vorhanden.</td>
+                        <td><code>SELECT * FROM Artikel INNER JOIN Film USING(ArtikelID);</code></td>
+                    </tr>
+                    <tr>
+                        <td>NATURAL JOIN</td>
+                        <td>Vergleicht die Datensätze aller Spalten mit dem gleichen Spaltennamen. Nur bei einer vollständigen Übereinstimmung wird der Datensatz in die Ergebnistabelle aufgenommen.</td>
+                        <td><code>SELECT * FROM Artikel NATURAL JOIN Film;</code></td>
+                    </tr>
+                    <tr>
+                        <td>LEFT JOIN</td>
+                        <td>Führt alle Datensätze zusammen, zu denen das Verbundkriterium erfüllt ist. Alle Spalten aller Tabellen sind im Ergebnis enthalten. Alle Datensätze der linken Tabelle werden mit NULL aufgefüllt, wenn keine Übereinstimmung in der rechten Tabelle vorliegt.</td>
+                        <td><code>SELECT * FROM Artikel LEFT JOIN Film ON Artikel.ArtikelID=Film.ArtikelID;</code></td>
+                    </tr>
+                    <tr>
+                        <td>RIGHT JOIN</td>
+                        <td>Führt alle Datensätze zusammen, zu denen das Verbundkriterium erfüllt ist. Alle Spalten aller Tabellen sind im Ergebnis enthalten. Alle Datensätze der rechten Tabelle werden mit NULL aufgefüllt, wenn keine Übereinstimmung in der linken Tabelle vorliegt.</td>
+                        <td><code>SELECT * FROM Artikel RIGHT JOIN Film ON Artikel.ArtikelID=Film.ArtikelID;</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+ 
+        <div class="buttons">
+            <a href="verbundmengen.html">Zurück</a> 
+        </div>
+    </div>
+
+</body>
+
+</html>

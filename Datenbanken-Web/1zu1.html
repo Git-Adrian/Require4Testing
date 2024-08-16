@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beziehungen und Kardinalitäten in ER-Modellen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .table-container {
+            width: 80%;
+            overflow-x: auto;
+            border-radius: 8px;
+            background-color: #fff;
+            padding: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Beziehungen und Kardinalitäten in ER-Modellen</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Beziehungstyp</th>
+                    <th>Schematische Darstellung</th>
+                    <th>Oben: Martin-Notation
+                        Mitte/Unten: UML-Notation
+                        Unten: Chen-Notation</th>
+                    <th>Anwendungsbeispiel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1:1</td>
+                    <td><img src="Bilder/1-1-Schema.png" alt="1:1-Beziehungen"></td>
+                    <td><img src="Bilder/1-1-Notation.png" alt="1:1-Beziehungen"></td>
+                    <td>Einem Kunden ist genau ein Artikel zugeordnet, jeder Artikel gehört zu genau einem Kunden.</td>
+                </tr>
+                <tr>
+                    <td>1:N</td>
+                    <td><img src="Bilder/1-C-Schema.png" alt="1:N-Beziehungen"></td>
+                    <td><img src="Bilder/1-C- Notation.png" alt="1:N-Beziehungen"></td>
+                    <td>Jedem Kunde ist kein oder genau ein Artikel zugeordnet, jeder Artikel gehört genau zu einem Kunden.</td>
+                </tr>
+                <tr>
+                    <td>N:M</td>
+                    <td><img src="Bilder/C-C-Schema.png" alt="N:M-Beziehungen"></td>
+                    <td><img src="Bilder/C-C-Notation.png" alt="N:M-Beziehungen"></td>
+                    <td>Jedem Kunde ist kein oder genau ein Artikel zugeordnet, jeder Artikel ist keinem oder genau einem Kunden zugeordnet.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="beziehungen.html" class="back-button">Zurück</a>
+    
+</body>
+</html>

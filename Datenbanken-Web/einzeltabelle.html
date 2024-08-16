@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Abfragekategorien</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 25px;
+            color: #fff;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .card p {
+            padding: 20px;
+            color: #666;
+            flex-grow: 1;
+        }
+
+        .card a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 0 0 12px 12px;
+            transition: background-color 0.3s;
+            min-height: 50px;
+        }
+
+        .card a:hover {
+            background-color: #0056b3;
+        }
+
+        .card-1 {
+            background-color: #3498db;
+        }
+
+        .card-2 {
+            background-color: #e67e22;
+        }
+
+        .card-3 {
+            background-color: #8e44ad;
+        }
+
+        .card-4 {
+            background-color: #27ae60;
+        }
+
+        .card-5 {
+            background-color: #e74c3c;
+        }
+
+        .card-6 {
+            background-color: #f1c40f;
+        }
+
+        .card-7 {
+            background-color: #1abc9c;
+        }
+
+        .card-8 {
+            background-color: #2980b9;
+        }
+
+        .card-9 {
+            background-color: #d35400;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>SQL Abfragekategorien</h1>
+    <div class="card-container">
+        <div class="card">
+            <h2 class="card-1">Daten abfragen an einer Tabelle (SELECT)</h2>
+            <p>Grundlegende SELECT-Abfragen zum Abrufen von Daten aus einer einzigen Tabelle.</p>
+            <a href="select.html">Mehr erfahren</a>
+        </div>
+
+        <div class="card">
+            <h2 class="card-2">Logische Operatoren</h2>
+            <p>Verwendung von logischen Operatoren wie AND, OR, und NOT in SQL-Abfragen.</p>
+            <a href="logische_operatoren.html">Mehr erfahren</a>
+        </div>
+
+        <div class="card">
+            <h2 class="card-3">Vergleichsoperatoren</h2>
+            <p>Vergleiche in SQL mit Operatoren wie =, <>, >, >=, <, <=.</p>
+            <a href="vergleichsoperatoren.html">Mehr erfahren</a>
+        </div>
+
+        <div class="card">
+            <h2 class="card-4">Zeichenketten und Datumswerte</h2>
+            <p>Arbeiten mit Zeichenketten und Datumswerten in SQL-Abfragen.</p>
+            <a href="zeichenketten_datumswerte.html">Mehr erfahren</a>
+        </div>
+
+        <div class="card">
+            <h2 class="card-5">Abfragen sortieren (ORDER BY)</h2>
+            <p>Daten sortieren in SQL-Abfragen mit der ORDER BY-Klausel.</p>
+            <a href="order_by.html">Mehr erfahren</a>
+        </div>
+
+        <div class="card">
+            <h2 class="card-6">Gruppenbildung (GROUP BY)</h2>
+            <p>Gruppieren von Daten mit der GROUP BY-Klausel und Aggregatfunktionen.</p>
+            <a href="group_by.html">Mehr erfahren</a>
+        </div>
+
+        <div class="card">
+            <h2 class="card-7">Aggregatsfunktionen</h2>
+            <p>Verwendung von Aggregatsfunktionen wie COUNT, SUM, AVG, MIN, MAX in SQL.</p>
+            <a href="aggregatsfunktionen.html">Mehr erfahren</a>
+        </div>
+
+        <div class="card">
+            <h2 class="card-8">Verschachtelte Abfragen</h2>
+            <p>Erstellen von Unterabfragen mit verschachtelten SELECT-Abfragen.</p>
+            <a href="unterabfragen.html">Mehr erfahren</a>
+        </div>
+
+        <div class="card">
+            <h2 class="card-9">Mengenoperatoren</h2>
+            <p>Vergleich von Mengen in SQL mit Operatoren wie IN, ANY, ALL und EXISTS.</p>
+            <a href="mengenoperatoren.html">Mehr erfahren</a>
+        </div>
+    </div>
+
+    <a class="back-button" href="sql.html">Zurück</a>
+</body>
+</html>

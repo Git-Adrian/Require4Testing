@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typen von N:M-Beziehungen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .table-container {
+            width: 90%;
+            overflow-x: auto;
+            border-radius: 8px;
+            background-color: #fff;
+            padding: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Typen von N:M-Beziehungen</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Beziehungstyp</th>
+                    <th>Schematische Darstellung</th>
+                    <th>Oben: Martin-Notation
+                        Mitte/Unten: UML-Notation
+                        Unten: Chen-Notation</th>
+                    <th>Anwendungsbeispiel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>N:M</td>
+                    <td><img src="Bilder/N-M-Schema.png" alt="N:M-Beziehungen"></td>
+                    <td><img src="Bilder/N-M-Notation.png" alt="N:M-Beziehungen"></td>
+                    <td>Einem Kunden gehört mindestens ein Artikel und jeder Artikel gehört zu mindestens einem Kunden.</td>
+                </tr>
+                <tr>
+                    <td>N:CM</td>
+                    <td><img src="Bilder/N-CM-Schema.png" alt="N:CM-Beziehungen"></td>
+                    <td><img src="Bilder/N-CM-Notation.png" alt="N:CM-Beziehungen"></td>
+                    <td>Einem Kunden gehören beliebig viele Artikel und jeder Artikel gehört zu mindestens einem Kunden.</td>
+                </tr>
+                <tr>
+                    <td>CN:CM</td>
+                    <td><img src="Bilder/CN-CM-Schema.png" alt="CN:CM-Beziehungen"></td>
+                    <td><img src="Bilder/CN-CM-Notation.png" alt="CN:CM-Beziehungen"></td>
+                    <td>Einem Kunden gehören beliebig viele Artikel und jeder Artikel gehört zu beliebig vielen Kunden.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="beziehungen.html" class="back-button">Zurück</a>
+</body>
+</html>

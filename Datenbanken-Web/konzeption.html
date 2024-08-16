@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL Lektionen</title> 
+    <title>Datenbankmodellierung und Datenbanksysteme</title> 
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,7 +17,6 @@
 
         h1 {
             color: #222;
-            margin-bottom: 40px;
         }
 
         .card-container {
@@ -67,59 +66,55 @@
             background-color: #0056b3;
         }
 
-        .sql-einfuehrung {
-            background-color: #6a5acd;
-        }
-
-        .sql-abfragen {
+        .er-modell {
             background-color: #ff7f50;
         }
+
+        .beziehungen {
+            background-color: #6a5acd;
+        }
  
-        .sql-datenmanipulation {
-            background-color: #ffb732;
+        .normalformen {
+            background-color: #ffc107;
+        }
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
 
-        .sql-erweitert {
-            background-color: #1e90ff;
-        }
-
-        .sql-uebungen {
-            background-color: #ff5c5c;
+        .back-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <h1>SQL Lektionen</h1>
+    <h1>Datenbankmodellierung</h1>
     <div class="card-container">
         <div class="card">
-            <h2 class="sql-einfuehrung">Einführung in SQL</h2> 
-            <p>Lerne die Grundlagen von SQL und verstehe die Bedeutung dieser mächtigen Datenbanksprache.</p>
-            <a href="sql-einfuehrung.html">Mehr erfahren</a>
+            <h2 class="er-modell">Das Entity-Relationship-Modell</h2>
+            <p>Grundlagen des Entity-Relationship-Modells und dessen Anwendung in der Datenmodellierung.</p>
+            <a href="er-modell.html">Mehr erfahren</a>
+        </div>
+         
+        <div class="card">
+            <h2 class="beziehungen">Beziehungen und Kardinalitäten</h2>
+            <p>Analyse und Darstellung von Beziehungen und Kardinalitäten in ER-Modellen.</p>
+            <a href="beziehungen.html">Mehr erfahren</a>
         </div>
         
         <div class="card">
-            <h2 class="sql-abfragen">SQL-Abfragen</h2>
-            <p>Erfahre, wie du komplexe Datenbankabfragen erstellst und Daten effizient abrufst.</p>
-            <a href="sql-abfragen.html">Mehr erfahren</a>
-        </div>
-
-        <div class="card">
-            <h2 class="sql-datenmanipulation">Datenmanipulation</h2>
-            <p>Erlerne Techniken zur Manipulation von Daten mit INSERT, UPDATE und DELETE Befehlen.</p>
-            <a href="sql-datenmanipulation.html">Mehr erfahren</a>
-        </div>
-
-        <div class="card">
-            <h2 class="sql-erweitert">Erweiterte SQL-Techniken</h2>
-            <p>Vertiefe dein Wissen mit erweiterten SQL-Funktionen, Joins und Subqueries.</p>
-            <a href="sql-erweitert.html">Mehr erfahren</a>
-        </div>
-
-        <div class="card">
-            <h2 class="sql-uebungen">Übungsanwendung</h2>
-            <p>Teste dein Wissen mit praktischen SQL-Übungen und Anwendungsfällen.</p>
-            <a href="sql-uebungen.html">Mehr erfahren</a>
+            <h2 class="normalformen">Normalformen von Datenbanken</h2>
+            <p>Einführung in die Normalisierung und die verschiedenen Normalformen relationaler Datenbanken.</p>
+            <a href="normalformen.html">Mehr erfahren</a>
         </div>
     </div>
+    <a href="datenbankmodellierung.html" class="back-button">Zurück</a>
+
 </body>
 </html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Datentypen und Tabellen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2, h3 {
+            color: #222;
+            text-align: center;
+        }
+
+        section {
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .tip, .note {
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            padding: 10px;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .note {
+            background-color: #ffecb3;
+            border-color: #ffeb3b;
+        }
+
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            display: block;
+            width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SQL Datentypen und Tabellen</h1>
+
+    <section>
+        <h2>Anlegen von Tabellen in SQL</h2>
+        <p>
+            Bevor Daten in relationalen Datenbanken gespeichert werden können, muss die dafür vorgesehene Tabellenstruktur angelegt werden. Dieser Schritt entspricht in der objektorientierten Programmierung dem Anlegen von Klassen, bevor konkrete Objekte der Klasse erzeugt werden können. Das Anlegen von Tabellen erfolgt mit Ausdrücken einer Data Definition Language (DDL). Die Sprache SQL sieht dafür eine Menge an Schlüsselwörtern vor, von denen eine Auswahl der im praktischen Einsatz am häufigsten genutzten im Folgenden vorgestellt wird.
+        </p>
+    </section>
+
+    <section>
+        <h2>Datentypen in SQL</h2>
+        <p>
+            Zu jedem Attribut einer Tabelle in SQL muss ein Datentyp festgelegt werden. Mit der Definition des Datentyps wird automatisch auch der von der Datenbank zu reservierende Speicherplatz festgelegt. Darüber hinaus bestimmt die Auswahl des Datentyps auch, wie die gespeicherten Daten intern vom DBMS organisiert werden.
+        </p>
+        
+    </section>
+
+    <section>
+        <h2>Texttypen in SQL</h2>
+        <p>
+            Grundsätzlich gibt es Texttypen, die eine fest vorgegebene, eine maximale und eine quasi unbegrenzte Menge an Schriftzeichen speichern. 
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Art</th>
+                    <th>SQL-Datentyp</th>
+                    <th>Beispiele</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Zeichenketten mit immer genau n Zeichen Länge</td>
+                    <td>CHAR(n)</td>
+                    <td>Ländercodes: CHAR(2), ISBN-13: CHAR(13)</td>
+                </tr>
+                <tr>
+                    <td>Zeichenketten mit variabler Länge</td>
+                    <td>VARCHAR(n)</td>
+                    <td>Bezeichnungen: VARCHAR(55), VARCHAR(160)</td>
+                </tr>
+                <tr>
+                    <td>Sehr lange Zeichenketten</td>
+                    <td>TEXT</td>
+                    <td>Texte, Blogeinträge</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Zahlentypen in SQL</h2>
+        <p>Für die Speicherung von Zahlen gibt es verschiedene Typen. Für Geldbeträge wird der Datentyp DECIMAL empfohlen.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Art</th>
+                    <th>SQL-Datentyp</th>
+                    <th>Beispiele</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ganze Zahlen</td>
+                    <td>INTEGER</td>
+                    <td>Anzahl, Index</td>
+                </tr>
+                <tr>
+                    <td>Dezimalzahlen</td>
+                    <td>DECIMAL(n,m)</td>
+                    <td>Geldbeträge: DECIMAL(9,2)</td>
+                </tr>
+                <tr>
+                    <td>Gleitkommazahlen</td>
+                    <td>REAL</td>
+                    <td>Messwerte</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Datumstypen in SQL</h2>
+        <p>Die folgenden Datentypen werden zur Speicherung von Datums- und Zeitangaben verwendet.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Art</th>
+                    <th>SQL-Datentyp</th>
+                    <th>Beispiele</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Kalenderdaten</td>
+                    <td>DATE</td>
+                    <td>Datum: 2014-06-14</td>
+                </tr>
+                <tr>
+                    <td>Zeitangaben</td>
+                    <td>TIME</td>
+                    <td>Uhrzeit: 13:43:56</td>
+                </tr>
+                <tr>
+                    <td>Bestimmung eines Zeitpunktes</td>
+                    <td>TIMESTAMP</td>
+                    <td>2014-06-14 14:00:02</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Weitere Datentypen in SQL</h2>
+        <p>Die folgenden Datentypen werden zur Speicherung von Binärdaten und Boolschen Werten verwendet.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Art</th>
+                    <th>SQL-Datentyp</th>
+                    <th>Beispiele</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Binärdaten</td>
+                    <td>VARBINARY(n)</td>
+                    <td>Speicherung von Binärdaten (z.B. Bilder)</td>
+                </tr>
+                <tr>
+                    <td>Boolsche Werte</td>
+                    <td>BOOLEAN</td>
+                    <td>TRUE/FALSE</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <a href="sql-tabellen.html" class="back-button">Zurück</a>
+
+</body>
+</html>

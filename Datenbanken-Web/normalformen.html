@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normalformen von Datenbanken</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2, h3 {
+            color: #222;
+            text-align: center;
+        }
+
+        section {
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .note {
+            background-color: #ffecb3;
+            border-left: 6px solid #ffeb3b;
+            padding: 10px;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .caption {
+            font-size: 0.9em;
+            color: #555;
+            text-align: center;
+        }
+
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .highlight {
+            background-color: #d1e7fd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Normalformen von Datenbanken</h1>
+
+    <section>
+        <h2>Überblick</h2>
+        <p>
+            Um Fehler bei der Arbeit mit gespeicherten Daten zu vermeiden, wird die Struktur von Tabellen und Datenbanken anhand objektiver Kriterien optimiert. 
+            Dies geschieht durch Normalisierung, bei der eine Datenbank in bestimmte Normalformen gebracht wird. Ziel ist es, Redundanzen zu verringern und Inkonsistenzen zu vermeiden.
+            Die gängigsten Normalformen sind die 1., 2. und 3. Normalform. In der Praxis reichen diese oft aus, obwohl es noch weitere Normalformen wie die Boyce-Codd-Normalform und die 4. Normalform gibt.
+        </p>
+    </section>
+
+    <section>
+        <h2>Beispieltabelle: Artikellieferung</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Lieferant</th>
+                    <th>Kunde</th>
+                    <th>Artikel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>MediaService, Hattstadt</td>
+                    <td>Sophie Weber, 182932</td>
+                    <td>Edge of Tomorrow; EAN 838883</td>
+                </tr>
+                <tr>
+                    <td>MovieGroup, Hamburg</td>
+                    <td>Sophie Weber, 182932</td>
+                    <td>Cry Baby; EAN 1222233</td>
+                </tr>
+                <tr>
+                    <td>MovieGroup, Hamburg</td>
+                    <td>Ralf Fischer, 488389</td>
+                    <td>In the Morning; ISBU XX-NHN-223</td>
+                </tr>
+                <tr>
+                    <td>FilmService, Berlin</td>
+                    <td>Maria Bolz, 299376</td>
+                    <td>Edge of Tomorrow; EAN 838883</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 26: Beispieltabelle Artikellieferung</p>
+    </section>
+
+    <section>
+        <h2>Erste Normalform</h2>
+        <p>
+            Um die erste Normalform zu erreichen, müssen alle Attribute atomare Werte enthalten. Außerdem muss jeder Datensatz eindeutig identifizierbar sein. 
+            Im Fall der Artikellieferungstabelle werden zusammengesetzte Attribute aufgeteilt und ein Primärschlüssel bestimmt. 
+            In der folgenden Tabelle wurde ein zusammengesetzter Primärschlüssel aus den Attributen „KundeNummer“ und „ArtikelID“ verwendet.
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th class="highlight">LieferantName</th>
+                    <th>LieferantSitz</th>
+                    <th class="highlight">KundeName</th>
+                    <th>KundeVorname</th>
+                    <th class="highlight">KundeNummer</th>
+                    <th>ArtikelName</th>
+                    <th class="highlight">ArtikelID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>MediaService</td>
+                    <td>Hattstadt</td>
+                    <td>Weber</td>
+                    <td>Sophie</td>
+                    <td>182932</td>
+                    <td>Edge of Tomorrow</td>
+                    <td>EAN 838883</td>
+                </tr>
+                <tr>
+                    <td>Movie Group</td>
+                    <td>Hamburg</td>
+                    <td>Weber</td>
+                    <td>Sophie</td>
+                    <td>182932</td>
+                    <td>Cry Baby</td>
+                    <td>EAN 1222233</td>
+                </tr>
+                <tr>
+                    <td>Movie Group</td>
+                    <td>Hamburg</td>
+                    <td>Fischer</td>
+                    <td>Ralf</td>
+                    <td>488389</td>
+                    <td>In the Morning</td>
+                    <td>ISBU XX-NHN-223</td>
+                </tr>
+                <tr>
+                    <td>FilmService</td>
+                    <td>Berlin</td>
+                    <td>Bolz</td>
+                    <td>Maria</td>
+                    <td>299376</td>
+                    <td>Edge of Tomorrow</td>
+                    <td>EAN 838883</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 27: 1. Normalform, mit zusammengesetztem Primärschlüssel</p>
+    </section>
+
+    <section>
+        <h3>Alternative: 1. Normalform mit einfachem Primärschlüssel</h3>
+        <p>
+            Eine Alternative zur Verwendung eines zusammengesetzten Primärschlüssels ist die Einführung eines künstlichen Schlüssels, wie in den folgenden Tabellen dargestellt.
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th class="highlight">ArtikellieferungID</th>
+                    <th>LieferantName</th>
+                    <th>LieferantSitz</th>
+                    <th>KundeName</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>L01</td>
+                    <td>MediaService</td>
+                    <td>Hattstadt</td>
+                    <td>Weber</td>
+                </tr>
+                <tr>
+                    <td>L02</td>
+                    <td>Movie Group</td>
+                    <td>Hamburg</td>
+                    <td>Weber</td>
+                </tr>
+                <tr>
+                    <td>L03</td>
+                    <td>Movie Group</td>
+                    <td>Hamburg</td>
+                    <td>Fischer</td>
+                </tr>
+                <tr>
+                    <td>L04</td>
+                    <td>FilmService</td>
+                    <td>Berlin</td>
+                    <td>Bolz</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 28: 1. Normalform, mit einfachem Primärschlüssel. Teil 1</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="highlight">ArtikellieferungID</th>
+                    <th>KundeVorname</th>
+                    <th>KundeNummer</th>
+                    <th>ArtikelName</th>
+                    <th class="highlight">ArtikelID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>L01</td>
+                    <td>Sophie</td>
+                    <td>182932</td>
+                    <td>Edge of Tomorrow</td>
+                    <td>EAN 838883</td>
+                </tr>
+                <tr>
+                    <td>L02</td>
+                    <td>Sophie</td>
+                    <td>182932</td>
+                    <td>Cry Baby</td>
+                    <td>EAN 1222233</td>
+                </tr>
+                <tr>
+                    <td>L03</td>
+                    <td>Ralf</td>
+                    <td>488389</td>
+                    <td>In the Morning</td>
+                    <td>ISBU XX-NHN-223</td>
+                </tr>
+                <tr>
+                    <td>L04</td>
+                    <td>Maria</td>
+                    <td>299376</td>
+                    <td>Edge of Tomorrow</td>
+                    <td>EAN 838883</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 29: 1. Normalform, mit einfachem Primärschlüssel. Teil 2</p>
+    </section>
+
+    <section>
+        <h2>Zweite Normalform</h2>
+        <p>
+            Die zweite Normalform setzt voraus, dass alle Nichtschlüsselattribute vom gesamten zusammengesetzten Primärschlüssel und nicht nur von einem Teil davon abhängig sind. 
+            Um diese Anforderung zu erfüllen, werden die Abhängigkeiten zu Teilen des Schlüssels durch die Einführung separater Tabellen aufgelöst.
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>LieferantName</th>
+                    <th>LieferantSitz</th>
+                    <th>KundeNummer</th>
+                    <th>ArtikelID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>MediaService</td>
+                    <td>Hattstadt</td>
+                    <td>182932</td>
+                    <td>EAN 838883</td>
+                </tr>
+                <tr>
+                    <td>MovieGroup</td>
+                    <td>Hamburg</td>
+                    <td>182932</td>
+                    <td>EAN 1222233</td>
+                </tr>
+                <tr>
+                    <td>MovieGroup</td>
+                    <td>Hamburg</td>
+                    <td>488389</td>
+                    <td>ISBU XX-NHN-223</td>
+                </tr>
+                <tr>
+                    <td>FilmService</td>
+                    <td>Berlin</td>
+                    <td>299376</td>
+                    <td>EAN 838883</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 30: Artikellieferung, 2. Normalform</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>KundeName</th>
+                    <th>KundeVorname</th>
+                    <th>KundeNummer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Weber</td>
+                    <td>Sophie</td>
+                    <td>182932</td>
+                </tr>
+                <tr>
+                    <td>Fischer</td>
+                    <td>Ralf</td>
+                    <td>488389</td>
+                </tr>
+                <tr>
+                    <td>Bolz</td>
+                    <td>Maria</td>
+                    <td>299376</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 31: Kunde, 2. Normalform</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ArtikelName</th>
+                    <th>ArtikelID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Edge of Tomorrow</td>
+                    <td>EAN 838883</td>
+                </tr>
+                <tr>
+                    <td>Cry Baby</td>
+                    <td>EAN 1222233</td>
+                </tr>
+                <tr>
+                    <td>In the Morning</td>
+                    <td>ISBU XX-NHN-233</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 32: Artikel, 2. Normalform</p>
+    </section>
+    <section>
+        <h2>Dritte Normalform</h2>
+        <p>
+            Eine Tabelle liegt in der 3. Normalform vor, wenn die Kriterien der 1. und 2. Normalform erfüllt sind. Darüber hinaus muss gelten:
+        </p>
+        <p>Jedes Nichtschlüsselattribut hängt direkt vom Schlüsselattribut ab. Es gibt keine funktionalen Abhängigkeiten zwischen Attributen, die nicht Teil des Primärschlüssels sind.</p>
+         
+        <p>
+            Mit der 2. Normalform sind die verbliebenen Nichtschlüsselattribute einer Tabelle zwar thematisch miteinander verbunden. 
+            Es muss allerdings untersucht werden, ob es nicht Abhängigkeiten zwischen den Attributen gibt, die man in eine eigene Tabelle auslagern sollte.
+        </p>
+
+        <p>
+            Die Abhängigkeiten zwischen den Attributen LieferantName und LieferantSitz aus der Tabelle "Artikellieferung" zeigen eine funktionale Abhängigkeit, die nicht in Bezug zu einem Teil des Primärschlüssels steht. Diese Abhängigkeit muss aufgelöst werden, um die 3. Normalform zu erreichen.
+        </p>
+        <img src="Bilder/ Abhängigkeiten in der 2. Normalform.jpg" alt="Abbildung 18: Abhängigkeiten in der 2. Normalform">
+        <p class="caption">Abbildung 18: Abhängigkeiten in der 2. Normalform</p>
+
+        <p>
+            Die 3. Normalform der ursprünglichen Tabelle ist in der folgenden Abbildung dargestellt. 
+            Es wurden insgesamt 4 Tabellen erstellt, die alle transitiven Abhängigkeiten beseitigen.
+        </p>
+
+        <img src="Bilder/3. Normalform mit zusammengesetztem Primärschlüsse.jpg" alt="Abbildung 19: 3. Normalform mit zusammengesetztem Primärschlüssel">
+        <p class="caption">Abbildung 19: 3. Normalform mit zusammengesetztem Primärschlüssel</p>
+
+        <p>
+            In der folgenden Abbildung wird die 3. Normalform der ursprünglichen Tabelle mit einem neu eingeführten einfachen Primärschlüssel dargestellt. 
+            Auch hier wurden für die 3. Normalform insgesamt 4 Tabellen erstellt, um alle transitiven Abhängigkeiten zu entfernen.
+        </p>
+
+        <img src="Bilder/3. Normalform mit einfachem Primärschlüssel.jpg" alt="Abbildung 20: 3. Normalform mit einfachem Primärschlüssel">
+        <p class="caption">Abbildung 20: 3. Normalform mit einfachem Primärschlüssel</p>
+    </section>
+
+    <section>
+        <h3>Beispieltabellen der 3. Normalform</h3>
+        <p>
+            Um die 3. Normalform zu erreichen, müssen die in den vorherigen Abbildungen dargestellten Abhängigkeiten zwischen den Attributen in separate Tabellen ausgelagert werden. 
+            Hier sind die resultierenden Tabellen:
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>LieferantID</th>
+                    <th>LieferantName</th>
+                    <th>LieferantSitz</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>MediaService</td>
+                    <td>Hattstadt</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>MovieGroup</td>
+                    <td>Hamburg</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>FilmService</td>
+                    <td>Berlin</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 33: Lieferant, 3. Normalform</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>KundeID</th>
+                    <th>KundeName</th>
+                    <th>KundeVorname</th>
+                    <th>KundeNummer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Weber</td>
+                    <td>Sophie</td>
+                    <td>182932</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Fischer</td>
+                    <td>Ralf</td>
+                    <td>488389</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Bolz</td>
+                    <td>Maria</td>
+                    <td>299376</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 34: Kunde, 3. Normalform</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ArtikelID</th>
+                    <th>ArtikelName</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>EAN 838883</td>
+                    <td>Edge of Tomorrow</td>
+                </tr>
+                <tr>
+                    <td>EAN 1222233</td>
+                    <td>Cry Baby</td>
+                </tr>
+                <tr>
+                    <td>ISBU XX-NHN-233</td>
+                    <td>In the Morning</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 35: Artikel, 3. Normalform</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ArtikellieferungID</th>
+                    <th>KundeID</th>
+                    <th>ArtikelID</th>
+                    <th>LieferantID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>L01</td>
+                    <td>1</td>
+                    <td>EAN 838883</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>L02</td>
+                    <td>1</td>
+                    <td>EAN 1222233</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>L03</td>
+                    <td>2</td>
+                    <td>ISBU XX-NHN-223</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>L04</td>
+                    <td>3</td>
+                    <td>EAN 838883</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tabelle 36: Artikellieferung, 3. Normalform</p>
+    </section>
+
+    <a href="konzeption.html" class="back-button">Zurück</a>
+
+</body>
+
+</html>
+
+ 

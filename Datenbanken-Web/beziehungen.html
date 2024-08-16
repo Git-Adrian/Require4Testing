@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenbankoperationen</title>
+    <title>Beziehungen und Kardinalitäten in ER-Modellen</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,7 +23,6 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 20px; /* Space for the back button */
         }
 
         .card {
@@ -34,9 +33,6 @@
             width: 320px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
         .card:hover {
@@ -54,46 +50,42 @@
         .card p {
             padding: 20px;
             color: #666;
-            flex-grow: 1;
         }
 
         .card a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
             padding: 15px;
             background-color: #007BFF;
             color: #fff;
             text-decoration: none;
             border-radius: 0 0 12px 12px;
             transition: background-color 0.3s;
-            min-height: 50px;
         }
 
         .card a:hover {
             background-color: #0056b3;
         }
 
-        .einzeltabelle {
+        .eins-zu-eins {
             background-color: #ff7f50;
         }
 
-        .mehrfachtabellen {
+        .eins-zu-viele {
             background-color: #6a5acd;
         }
- 
-        .datensatzmanipulation {
-            background-color: #ffb732;
-        }
 
+        .viele-zu-viele {
+            background-color: #ffc107;
+        }
         .back-button {
-            margin-top: 20px;
-            padding: 10px 20px;
             background-color: #007BFF;
-            color: #fff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
             text-decoration: none;
-            border-radius: 8px;
-            transition: background-color 0.3s;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
 
         .back-button:hover {
@@ -102,27 +94,27 @@
     </style>
 </head>
 <body>
-    <h1>Datenbankoperationen</h1>
+    <h1>Beziehungen und Kardinalitäten in ER-Modellen</h1>
     <div class="card-container">
         <div class="card">
-            <h2 class="einzeltabelle">Datenbankanfragen an genau eine Tabelle</h2>
-            <p>Grundlegende SQL-Abfragen, die Daten aus einer einzigen Tabelle extrahieren.</p>
-            <a href="einzeltabelle.html">Mehr erfahren</a>
+            <h2 class="eins-zu-eins">1:1-Beziehungen</h2>
+            <p>Eine Beziehung zwischen zwei Entitäten, bei der jede Entität genau einem anderen Element zugeordnet ist.</p>
+            <a href="1zu1.html">Mehr erfahren</a>
         </div>
-
+         
         <div class="card">
-            <h2 class="mehrfachtabellen">Komplexe Datenbankabfragen auf mehreren Tabellen</h2>
-            <p>Erstellen von komplexen Abfragen, die Daten aus mehreren Tabellen kombinieren.</p>
-            <a href="mehrfachtabellen.html">Mehr erfahren</a>
+            <h2 class="eins-zu-viele">1:N-Beziehungen</h2>
+            <p>Eine Beziehung, bei der eine Entität mit mehreren anderen Entitäten verbunden ist.</p>
+            <a href="1zuN.html">Mehr erfahren</a>
         </div>
         
         <div class="card">
-            <h2 class="datensatzmanipulation">Manipulieren von Datensätzen in Datenbanken</h2>
-            <p>Ändern, Einfügen und Löschen von Datensätzen in relationalen Datenbanken.</p>
-            <a href="datensatzmanipulation.html">Mehr erfahren</a>
+            <h2 class="viele-zu-viele">N:M-Beziehungen</h2>
+            <p>Eine Beziehung, bei der mehrere Entitäten mit mehreren anderen Entitäten verbunden sind.</p>
+            <a href="NzuM.html">Mehr erfahren</a>
         </div>
     </div>
+    <a href="konzeption.html" class="back-button">Zurück</a>
 
-    <a class="back-button" href="home.html">Zurück zur Hauptseite</a>
 </body>
 </html>

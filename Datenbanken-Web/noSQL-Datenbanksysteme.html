@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenbankoperationen</title>
+    <title>NoSQL Kategorien</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,7 +23,6 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 20px; /* Space for the back button */
         }
 
         .card {
@@ -37,6 +36,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            height: 300px;
         }
 
         .card:hover {
@@ -46,54 +46,55 @@
 
         .card h2 {
             margin: 0;
-            padding: 25px;
+            padding: 0 20px;
             color: #fff;
             border-radius: 12px 12px 0 0;
+            height: 130px; /* Feste Höhe für h2 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
         .card p {
             padding: 20px;
             color: #666;
-            flex-grow: 1;
+            flex: 2;
         }
 
         .card a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
             padding: 15px;
             background-color: #007BFF;
             color: #fff;
             text-decoration: none;
             border-radius: 0 0 12px 12px;
             transition: background-color 0.3s;
-            min-height: 50px;
         }
 
         .card a:hover {
             background-color: #0056b3;
         }
 
-        .einzeltabelle {
-            background-color: #ff7f50;
+        /* Custom card colors */
+        .eigenschaften {
+            background-color: #28a745;
         }
 
-        .mehrfachtabellen {
-            background-color: #6a5acd;
-        }
- 
-        .datensatzmanipulation {
-            background-color: #ffb732;
+        .gruppen {
+            background-color: #17a2b8;
         }
 
         .back-button {
-            margin-top: 20px;
-            padding: 10px 20px;
             background-color: #007BFF;
-            color: #fff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
             text-decoration: none;
-            border-radius: 8px;
-            transition: background-color 0.3s;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 40px;
         }
 
         .back-button:hover {
@@ -102,27 +103,20 @@
     </style>
 </head>
 <body>
-    <h1>Datenbankoperationen</h1>
-    <div class="card-container">
+    <h1>NoSQL Datenbanksysteme</h1>
+    <div class="card-container"> 
         <div class="card">
-            <h2 class="einzeltabelle">Datenbankanfragen an genau eine Tabelle</h2>
-            <p>Grundlegende SQL-Abfragen, die Daten aus einer einzigen Tabelle extrahieren.</p>
-            <a href="einzeltabelle.html">Mehr erfahren</a>
+            <h2 class="eigenschaften">Eigenschaften von NoSQL-Datenbanksystemen</h2>
+            <p>Entdecken Sie die einzigartigen Eigenschaften von NoSQL-Datenbanken, wie Skalierbarkeit, Flexibilität und Schemafreiheit.</p>
+            <a href="eigenschaften-NoSQL.html">Mehr erfahren</a>
         </div>
 
         <div class="card">
-            <h2 class="mehrfachtabellen">Komplexe Datenbankabfragen auf mehreren Tabellen</h2>
-            <p>Erstellen von komplexen Abfragen, die Daten aus mehreren Tabellen kombinieren.</p>
-            <a href="mehrfachtabellen.html">Mehr erfahren</a>
-        </div>
-        
-        <div class="card">
-            <h2 class="datensatzmanipulation">Manipulieren von Datensätzen in Datenbanken</h2>
-            <p>Ändern, Einfügen und Löschen von Datensätzen in relationalen Datenbanken.</p>
-            <a href="datensatzmanipulation.html">Mehr erfahren</a>
+            <h2 class="gruppen">Gruppen von NoSQL-Systemen</h2>
+            <p>Erfahren Sie mehr über die verschiedenen Gruppen von NoSQL-Systemen, wie Dokumenten-, Spalten-, Schlüssel-Wert- und Graphdatenbanken.</p>
+            <a href="gruppen-SQL-Systeme.html">Mehr erfahren</a>
         </div>
     </div>
-
-    <a class="back-button" href="home.html">Zurück zur Hauptseite</a>
+    <a href="home.html" class="back-button">Zurück zur Hauptseite</a>
 </body>
 </html>

@@ -75,16 +75,21 @@
             background-color: #0056b3;
         }
 
-        .grundlagen {
-            background-color: #ff7f50;
+        /* Custom card colors */
+        .logisch-entwurf {
+            background-color: #28a745;
         }
 
-        .konzeption {
-            background-color: #6a5acd;
+        .physikalisch-entwurf {
+            background-color: #17a2b8;
         }
 
-        .erstellung {
-            background-color: #ff5c5c;
+        .sql-tabellen {
+            background-color: #ffc107;
+        }
+
+        .konzeptionelles-modell {
+            background-color: #6c757d;
         }
 
         .back-button {
@@ -96,7 +101,7 @@
             border-radius: 5px;
             font-size: 16px;
             transition: background-color 0.3s ease;
-            margin-top: 20px;
+            margin-top: 40px;
         }
 
         .back-button:hover {
@@ -105,26 +110,33 @@
     </style>
 </head>
 <body>
-    <h1>Datenbanksysteme Lektionen</h1>
+    <h1>Datenbankmodellierung und Datenbanksysteme</h1>
     <div class="card-container">
         <div class="card">
-            <h2 class="grundlagen">Grundlagen relationaler Datenbanken</h2>
-            <p>Einführung in die Grundprinzipien und -konzepte relationaler Datenbanken.</p>
-            <a href="grundlagen.html">Mehr erfahren</a>
+            <h2 class="logisch-entwurf">Aktivitäten zum logischen Datenbankentwurf</h2>
+            <p>Entdecken Sie die Schritte zur logischen Modellierung von Datenbanken und die Bedeutung der Normalisierung.</p>
+            <a href="logischer-entwurf.html">Mehr erfahren</a>
         </div>
 
         <div class="card">
-            <h2 class="konzeption">Konzeption und Modellierung</h2>
-            <p>Entwicklung von Datenbankmodellen und Konzeptionen für relationale Datenbanken.</p>
-            <a href="konzeption.html">Mehr erfahren</a>
+            <h2 class="konzeptionelles-modell">Konzeptionelles und Physikalisches Datenmodell</h2>
+            <p>Erforschen Sie die Unterschiede und die Beziehung zwischen konzeptionellen und physikalischen Datenmodellen.</p>
+            <a href="konzeptionelles-physikalisches-modell.html">Mehr erfahren</a>
         </div>
 
         <div class="card">
-            <h2 class="erstellung">Erstellung relationaler Datenbanken</h2>
-            <p>Umsetzung von Datenbankmodellen in physische Datenbanksysteme.</p>
-            <a href="erstellung.html">Mehr erfahren</a>
+            <h2 class="physikalisch-entwurf">Abbildung im physikalische Datenmodell</h2>
+            <p>Erfahren Sie, wie das konzeptionelle Datenmodell in die physikalische Struktur der Datenbank umgesetzt wird.</p>
+            <a href="physikalische-abbildung.html">Mehr erfahren</a>
         </div>
+        
+        <div class="card">
+            <h2 class="sql-tabellen">Erzeugen von Tabellen in SQL-Datenbanken aus ER-Diagrammen</h2>
+            <p>Erlernen Sie die Schritte zur Erstellung von SQL-Tabellen basierend auf Entity-Relationship-Diagrammen.</p>
+            <a href="sql-tabellen.html">Mehr erfahren</a>
+        </div>  
+        
     </div>
-    <a href="home.html" class="back-button">Zurück zur Hauptseite</a>
+    <a href="datenbankmodellierung.html" class="back-button">Zurück</a>
 </body>
 </html>
